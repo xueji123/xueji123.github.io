@@ -23,11 +23,16 @@
 <meta property="og:site_name" content="Coding">
 <meta property="og:description" content="1、Cache是在计算机存储系统的层次结构中，介于中央处理器和主存储器之间的高速小容量存储器。它和主存储器一起构成一级的存储器。高速缓冲存储器和主存储器之间信息的调度和传送是由硬件自动进行的，所以其读写速度最快。内存速度次之，硬盘是有机械装置的存储方式，比较慢，光盘最慢。 2、直接内存访问（DMA，Direct Memory Access）是一些计算机总线架构提供的功能，它能使数据从附加设备（如磁">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/02/04/network_engineer/SNMP.png">
+<meta property="og:image" content="http://example.com/2023/02/04/network_engineer/manager.png">
+<meta property="og:image" content="http://example.com/2023/02/04/network_engineer/snmp_message.png">
+<meta property="og:image" content="http://example.com/2023/02/04/network_engineer/structured_cabling_system.png">
 <meta property="article:published_time" content="2023-02-04T06:38:03.243Z">
-<meta property="article:modified_time" content="2023-02-04T10:41:01.537Z">
+<meta property="article:modified_time" content="2023-02-04T10:55:34.955Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="总结">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/02/04/network_engineer/SNMP.png">
   
   
   
@@ -345,7 +350,7 @@
 <p>XSS<br>XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私密网页内容、会话和cookie等各种内容。</p>
 <p>HTTP头攻击<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51387754/article/details/116481515">https://blog.csdn.net/weixin_51387754/article/details/116481515</a></p>
 <p>37、在SNMP协议中Trap上报是通过UDP协议的 162 端口。<br>通过UDP协议的162端口进行的</p>
-
+<img src="/2023/02/04/network_engineer/SNMP.png" srcset="/img/loading.gif" lazyload class="">
 
 
 <p>38、在OSPF的广播网络中，有4台路由器Router A、Router B、Router C和Router D，其优先级分别为2、1、1和0，Router ID分别为192.168.1.1、192.168.2.1、192.168.3.1和192.168.4.1。若在此4台路由器上同时启用OSPF协议，OSPF选出的BDR为 Router C　</p>
@@ -353,10 +358,10 @@
 <p>为减小多路访问网络中OSPF流量，OSPF会选择一个指定路由器（DR）和一个备份指定路由器（BDR），DR/BDR的选举是基于接口的，接口的DR优先级越大越优先，因此OSPF选出的DR为Router A，BDR则在Router B和Router C中选择，由于两个优先级相同，故再比较ID，选择ID大的即Router C为BDR。</p>
 <p>39、在生成快速转发表的过程中，五元组是指 源IP地址、目的IP地址、源端口号、目的端口号、协议号</p>
 <p>40、可以发出SNMP GetRequest的网络实体是 Manager</p>
-
+<img src="/2023/02/04/network_engineer/manager.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>41、SNMP报文中不包括 优先级</p>
-
+<img src="/2023/02/04/network_engineer/snmp_message.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>42、网络工程师5天修炼  p47<br>1）给定ip地址和掩码，求网络地址、广播地址、子网范围、子网能容纳的最大主机数<br>网络地址：主机位全为0；广播地址：主机位全为1</p>
 <p>子网能容纳的最大主机数 = 2^主机位-2（减2是去除网络地址和广播地址）<br>子网范围 = 子网地址（网络地址） ~ 广播地址<br>子网中某台主机的ip地址 和 子网掩码 以 二进制形式 按位与 得到子网地址（网络地址）</p>
@@ -378,7 +383,7 @@
 <p>49、WPA2认证方式使用了AES加密算法，安全性更高。<br>A.开放式　　B.WPA　　C.WPA2　　D.WEP</p>
 <p>50、分布式存储方式常使用多副本技术实现数据冗余。<br>A.DAS　　B.NAS　　C.SAN　　D.分布式</p>
 <p>51、结构化布线系统中，实现各楼层设备间子系统互联的是 干线子系统</p>
-
+<img src="/2023/02/04/network_engineer/structured_cabling_system.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>52、属于网络安全等级保护第三级且是在上一级基础上增加的安全要求是应对关键设备实施电磁屏蔽。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.51cto.com/wuchenwen/5827535">https://blog.51cto.com/wuchenwen/5827535</a></p>
