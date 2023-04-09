@@ -16,24 +16,25 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安卓SDK：   用户 ID，32 位无符号整数。建议设置范围：1 到 (2^32-1)，并保证唯一性。如果不指定（即设为 0），SDK 会自动分配一个，并在 onJoinChannelSuccess 回调方法中返回，App 需自行维护该返回值，SDK 不对该返回值进行维护。optionalUid 在 SDK 内部用 32 位无符号整数表示，由于 Java 不支持无符号整数，optionalU">
+    <meta name="description" content="1、子网划分，确定主机ip段范围和对应的子网掩码    pc-&gt;RJ45跳线连到信息面板-&gt;网线配线架-&gt;交换机 交换机 跟一台带光口的 服务器 互联服务器-&gt;光纤跳线-&gt;光纤配线架-&gt;光纤跳线-&gt;交换机光接口（插一个光模块）    2、建筑群子系统间是通过光纤（传输介质）连接，光纤与交换机连接需要用到 光模块、跳线、尾纤、配线架 局域网传输介质： 有线传">
 <meta property="og:type" content="article">
-<meta property="og:title" content="int和long转换">
-<meta property="og:url" content="http://example.com/2023/01/25/int%E5%92%8Clong%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:title" content="network_engineer2022下_下午">
+<meta property="og:url" content="http://example.com/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="安卓SDK：   用户 ID，32 位无符号整数。建议设置范围：1 到 (2^32-1)，并保证唯一性。如果不指定（即设为 0），SDK 会自动分配一个，并在 onJoinChannelSuccess 回调方法中返回，App 需自行维护该返回值，SDK 不对该返回值进行维护。optionalUid 在 SDK 内部用 32 位无符号整数表示，由于 Java 不支持无符号整数，optionalU">
+<meta property="og:description" content="1、子网划分，确定主机ip段范围和对应的子网掩码    pc-&gt;RJ45跳线连到信息面板-&gt;网线配线架-&gt;交换机 交换机 跟一台带光口的 服务器 互联服务器-&gt;光纤跳线-&gt;光纤配线架-&gt;光纤跳线-&gt;交换机光接口（插一个光模块）    2、建筑群子系统间是通过光纤（传输介质）连接，光纤与交换机连接需要用到 光模块、跳线、尾纤、配线架 局域网传输介质： 有线传">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/01/25/int%E5%92%8Clong%E8%BD%AC%E6%8D%A2/test.png">
-<meta property="article:published_time" content="2023-01-25T04:04:25.000Z">
-<meta property="article:modified_time" content="2023-02-04T10:56:37.615Z">
+<meta property="og:image" content="http://example.com/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/1_1.png">
+<meta property="og:image" content="http://example.com/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/1_2.png">
+<meta property="article:published_time" content="2023-02-11T05:52:25.049Z">
+<meta property="article:modified_time" content="2023-04-05T13:59:20.252Z">
 <meta property="article:author" content="xueji123">
-<meta property="article:tag" content="原创">
+<meta property="article:tag" content="总结">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/01/25/int%E5%92%8Clong%E8%BD%AC%E6%8D%A2/test.png">
+<meta name="twitter:image" content="http://example.com/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/1_1.png">
   
   
   
-  <title>int和long转换 - Coding</title>
+  <title>network_engineer2022下_下午 - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="int和long转换"></span>
+            <span id="subtitle" data-typed-text="network_engineer2022下_下午"></span>
           
         </div>
 
@@ -210,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-25 12:04" pubdate>
-          January 25, 2023 pm
+        <time datetime="2023-02-11 13:52" pubdate>
+          February 11, 2023 pm
         </time>
       </span>
     
@@ -222,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k words
+          1.1k words
         
       </span>
     
@@ -233,7 +234,7 @@
         
         
         
-          22 mins
+          10 mins
         
       </span>
     
@@ -271,92 +272,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">int和long转换</h1>
+            <h1 style="display: none">network_engineer2022下_下午</h1>
             
             
               <div class="markdown-body">
                 
-                <p>  安卓SDK：</p>
-<p>  用户 ID，32 位无符号整数。建议设置范围：1 到 (2^32-1)，并保证唯一性。如果不指定（即设为 0），SDK 会自动分配一个，并在 onJoinChannelSuccess 回调方法中返回，App 需自行维护该返回值，SDK 不对该返回值进行维护。optionalUid 在 SDK 内部用 32 位无符号整数表示，由于 Java 不支持无符号整数，optionalUid 被当成 32 位有符号整数处理，对于过大的整数，Java 会表示为负数，如有需要可以用 (uid&amp;0xffffffffL) 转换成 64 位整数。频道内每个用户的 UID 必须是唯一的。如果想要从不同的设备同时接入同一个频道，请确保每个设备上使用的 UID 是不同的。</p>
-<p>  java int型范围 </p>
-<p>  c++ unsigned int型为无符号32位整数，占4个字节，取值范围在0~4,294,967,295（2^32-1）之间。</p>
-<p>  uid&amp;0xffffffffL 详解<br>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/storyfull/article/details/103147478">https://blog.csdn.net/storyfull/article/details/103147478</a></p>
-<p>  00 111 1111 1111 1111 1111 1111 1111 1111    2147483647  2^31-1</p>
-<p>  01 111 1111 1111 1111 1111 1111 1111 1111   -2147483647  0XFFFFFFFF<br>                   二进制&amp;运算<br>  01 000 0000 0000 0000 0000 0000 0000 0000    2147483648  SDK返回的uid超过32位了，通过uid&amp;0xffffffffL转成64位long型</p>
-<p>  01 000 0000 0000 0000 0000 0000 0000 0000    2147483648  </p>
-<p>  public class UserTest {<br>    public static void main(String[] args) throws Exception {<br>        // UserTest.User user1 = new UserTest().new User();</p>
-<pre><code class="hljs">    // UserTest user6 = new UserTest();
-    // UserTest.User user1 = user6.new User();
-
-    User user1 = new User();
-
-    user1.age = 10;
-    // User user2 = new User();
-    // UserTest.User user2 = new UserTest().new User();
-
-    // User user3 = user1;
-
-    // System.out.println(user1.age);
-
-    // System.out.println(user1);
-    // System.out.println(user2);
-    // System.out.println(user3);
-
-    // System.out.println(user1 == user2);
-
-    // instanceof 判断左边对象是否为其右边类的实例
-    // user1是对象实例，User是类
-    // System.out.println(user1 instanceof User);
-
-    // System.out.println(&quot;\u0000&quot;.length());
-    // System.out.println(&quot;&quot;.length());
-
-    // char c = 0;
-    // char d = &#39;\u0000&#39;;
-
-    // System.out.println(c == d);
-    // System.out.println(&quot;c: &quot; + c);
-    // System.out.println(&quot;d: &quot; + d);
-    // System.out.println(&quot;e: &quot; + user1.e);
-
-    // System.out.println(user1.e == d);
-
-    // boolean a = 1 &amp; 0xFFFFFFFFL;
-
-    long a = 2147483650L;
-
-    long b = a &amp; 0xFFFFFFFFL;
-
-    // System.out.println(new Long(a).intValue());
-
-    System.out.println(Long.valueOf(a).intValue());
-
-    System.out.println(b);
-    System.out.println(a);
-
-&#125;
-</code></pre>
-<p>}</p>
-<p>class User {<br>    String name;<br>    int age;<br>    char e;</p>
-<p>} </p>
-<p>剑指offer：Python 二进制中1的个数 &amp;0xffffffff是什么意思<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/storyfull/article/details/103147478">https://blog.csdn.net/storyfull/article/details/103147478</a></p>
-<p>静态博客框架jekyll、hexo和hugo三者之间的区别与差异<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/368407566">https://zhuanlan.zhihu.com/p/368407566</a></p>
-<p>GitHub Pages + Hexo搭建个人博客网站，史上最全教程<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">https://blog.csdn.net/yaorongke/article/details/119089190</a></p>
-<p>Jekyll + Github Pages 搭建个人免费博客<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/87225594">https://zhuanlan.zhihu.com/p/87225594</a></p>
-<p>Jekyll主题<br><a target="_blank" rel="noopener" href="https://jekyllrb.com/docs/themes/">https://jekyllrb.com/docs/themes/</a></p>
-<p>hexo官网<br><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
-<p>GitHub Pages 快速入门<br><a target="_blank" rel="noopener" href="https://docs.github.com/zh/pages/quickstart">https://docs.github.com/zh/pages/quickstart</a></p>
-<p>切换mac默认的ruby版本<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f3e4ae8e14a6">https://www.jianshu.com/p/f3e4ae8e14a6</a></p>
-<p>如何在 GitHub 上写博客<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20962496">https://www.zhihu.com/question/20962496</a></p>
-<p>Java中32位无符号数的取法<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39469127/article/details/98526363">https://blog.csdn.net/weixin_39469127/article/details/98526363</a></p>
-<p>【JAVA】Java的boolean 和 int互相转换 ——Java的true、false和1、0之间的相互转化<br><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15049790/4351833">https://blog.51cto.com/u_15049790/4351833</a></p>
-<p>上传github<br><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-credential-cache">https://git-scm.com/docs/git-credential-cache</a></p>
-<img src="/2023/01/25/int%E5%92%8Clong%E8%BD%AC%E6%8D%A2/test.png" srcset="/img/loading.gif" lazyload class="">
+                <p>1、子网划分，确定主机ip段范围和对应的子网掩码</p>
+<img src="/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/1_1.png" srcset="/img/loading.gif" lazyload class="">
 
 
+<p>pc-&gt;RJ45跳线连到信息面板-&gt;网线配线架-&gt;交换机</p>
+<p>交换机 跟一台带光口的 服务器 互联<br>服务器-&gt;光纤跳线-&gt;光纤配线架-&gt;光纤跳线-&gt;交换机光接口（插一个光模块）</p>
+<img src="/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/1_2.png" srcset="/img/loading.gif" lazyload class="">
 
 
-
+<p>2、建筑群子系统间是通过光纤（传输介质）连接，光纤与交换机连接需要用到 光模块、跳线、尾纤、配线架</p>
+<p>局域网传输介质：</p>
+<p>有线传输介质（导向传输介质）<br>①同轴电缆<br>②双绞线<br>a.STP 屏蔽双绞线<br>b.UTP 无屏蔽双绞线<br>③光纤<br>传输距离≤550m 选择多模光纤，否则选择单模光纤</p>
+<p>单模光纤带宽 ＞ 10Gbps<br>多模光纤带宽 ≈ 2.5Gbps</p>
+<p>单模光纤直径较小，光在其中沿直线传播，很少反射，所以色散减小，带宽增加，传输距离得到加长；但与之配套的光端设备价格较高。<br>多模光纤直径较大，不同波长和相位的光束沿光纤壁不停地反射着向前传输，造成色散，限制了两个中继器之间的传输距离和带宽。</p>
+<p>中继器（RP repeater）是工作在物理层上的连接设备。适用于完全相同的两个网络的互连，主要功能是通过对数据信号的重新发送或者转发，来扩大网络传输的距离。 中继器是对信号进行再生和还原的网络设备：OSI模型的物理层设备。<br>中继器是局域网环境下用来延长网络距离的，但是它属于网络互联设备，操作在OSI的物理层，中继器对在线路上的信号具有放大再生的功能，用于扩展局域网网段的长度（仅用于连接相同的局域网网段）。</p>
+<p>中继器（RP repeater）是连接网络线路的一种装置，常用于两个网络节点之间物理信号的双向转发工作。中继器主要完成物理层的功能，负责在两个节点的物理层上按位传递信息，完成信号的复制、调整和放大功能，以此来延长网络的长度。由于存在损耗，在线路上传输的信号功率会逐渐衰减，衰减到一定程度时将造成信号失真，因此会导致接收错误。中继器就是为解决这一问题而设计的。它完成物理线路的连接，对衰减的信号进行放大，保持与原数据相同。一般情况下，中继器的两端连接的是相同的媒体，但有的中继器也可以完成不同媒体的转接工作。从理论上讲中继器的使用是无限的，网络也因此可以无限延长。事实上这是不可能的，因为网络标准中都对信号的延迟范围作了具体的规定，中继器只能在此规定范围内进行有效的工作，否则会引起网络故障。</p>
+<p>3、1080p视频传输一路要4M左右带宽<br>接入交换机、核心交换机<br>百兆交换机、千兆交换机</p>
+<p>4、21张图带你了解什么是VPN（虚拟专用网络）以及VPN的分类<br><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1724457048928923155&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1724457048928923155&amp;wfr=spider&amp;for=pc</a></p>
 
                 
               </div>
@@ -375,7 +313,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  <a href="/categories/NetWork-afternoon/" class="category-chain-item">NetWork afternoon</a>
   
   
 
@@ -390,7 +328,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
+        <a href="/tags/%E6%80%BB%E7%BB%93/">#总结</a>
       
     </div>
   
@@ -402,8 +340,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>int和long转换</div>
-      <div>http://example.com/2023/01/25/int和long转换/</div>
+      <div>network_engineer2022下_下午</div>
+      <div>http://example.com/2023/02/11/network_engineer2022年11月_下午/</div>
     </div>
     <div class="license-meta">
       
@@ -415,7 +353,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>January 25, 2023</div>
+          <div>February 11, 2023</div>
         </div>
       
       
@@ -447,9 +385,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/04/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8A%E5%8D%88/" title="network_engineer2022年11月_上午">
+                      <a href="/2023/02/11/network_engineer2022%E4%B8%8B_%E4%B8%8B%E5%8D%88/" title="network_engineer2022下_下午">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">network_engineer2022年11月_上午</span>
+                        <span class="hidden-mobile">network_engineer2022下_下午</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -457,8 +395,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/25/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2023/02/05/network_enginner2022%E5%B9%B45%E6%9C%88_%E4%B8%8A%E5%8D%88/" title="network_engineer2022年5月_上午">
+                        <span class="hidden-mobile">network_engineer2022年5月_上午</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
