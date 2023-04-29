@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="交换机工作原理：基于源mac地址进行mac地址表学习，基于目的mac地址进行数据帧的转发 FC、ATM、帧中继交换机，默认都是 二层以太网交换机 交换机的寻址 mac地址表、路由表、ARP表   学习构建mac地址表不知道的话，发ARP报文去找对方的mac地址知道后，进行数据封装（目的mac地址、源mac地址等）以太网帧格式在局域网4-6那章有讲   基于源mac地址进行学习，构建自己的mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6-1-3 网桥与交换机">
+<meta property="og:url" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="交换机工作原理：基于源mac地址进行mac地址表学习，基于目的mac地址进行数据帧的转发 FC、ATM、帧中继交换机，默认都是 二层以太网交换机 交换机的寻址 mac地址表、路由表、ARP表   学习构建mac地址表不知道的话，发ARP报文去找对方的mac地址知道后，进行数据封装（目的mac地址、源mac地址等）以太网帧格式在局域网4-6那章有讲   基于源mac地址进行学习，构建自己的mac">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/1.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/2.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/3.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/4.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/5.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/6.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/7.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/8.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/9.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/10.png">
+<meta property="og:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/11.png">
+<meta property="article:published_time" content="2023-04-29T07:10:01.000Z">
+<meta property="article:modified_time" content="2023-04-29T07:49:53.129Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/1.png">
+  
+  
+  
+  <title>6-1-3 网桥与交换机 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="6-1-3 网桥与交换机"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-29 15:10" pubdate>
+          April 29, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          681 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          6 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">6-1-3 网桥与交换机</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/1.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>交换机工作原理：<br>基于源mac地址进行mac地址表学习，基于目的mac地址进行数据帧的转发</p>
+<p>FC、ATM、帧中继交换机，默认都是 二层以太网交换机</p>
+<p>交换机的寻址</p>
+<p>mac地址表、路由表、ARP表</p>
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/2.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>学习构建mac地址表<br>不知道的话，发ARP报文去找对方的mac地址<br>知道后，进行数据封装（目的mac地址、源mac地址等）<br>以太网帧格式在局域网4-6那章有讲</p>
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/3.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>基于源mac地址进行学习，构建自己的mac地址表</p>
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/4.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/5.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/6.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/7.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/8.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/9.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>习题</p>
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/10.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>linux 系统上的 kali 系统 macof命令</p>
+<p>二层攻击有哪些：<br>①mac地址洪泛攻击<br>洪泛攻击，在短时间内向目标系统发送大量的虚假请求的攻击方式。导致目标系统疲于应付无用信息，而无法为合法用户提供正常服务</p>
+<p>SYN泛洪攻击</p>
+<p>SYN攻击利用的是TCP的三次握手机制，攻击端利用伪造的IP地址向被攻击端发出请求，而被攻击端发出的响应 报文将永远发送不到目的地，那么被攻击端在等待关闭这个连接的过程中消耗了资源，如果有成千上万的这种连接，主机资源将被耗尽，从而达到攻击的目的。</p>
+<p>TCP SYN泛洪发生在OSI第四层，这种方式利用TCP协议的特性，就是三次握手。攻击者发送TCP SYN，SYN是TCP三次握手中的第一个数据包，而当服务器返回ACK后，该攻击者就不对其进行再确认，那这个TCP连接就处于挂起状态，也就是所谓的半连接状态，服务器收不到再确认的话，还会重复发送ACK给攻击者。这样更加会浪费服务器的资源。攻击者就对服务器发送非常大量的这种TCP连接，由于每一个都没法完成三次握手，所以在服务器上，这些TCP连接会因为挂起状态而消耗CPU和内存，最后服务器可能死机，就无法为正常用户提供服务了。</p>
+<img src="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/11.png" srcset="/img/loading.gif" lazyload class="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>6-1-3 网桥与交换机</div>
+      <div>http://example.com/2023/04/29/6-1-3网桥与交换机/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 29, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/29/6-1-4%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/" title="6-1-4 路由器与三层交换机">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">6-1-4 路由器与三层交换机</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/29/6-1-2%E4%B8%AD%E7%BB%A7%E5%99%A8%E4%B8%8E%E9%9B%86%E7%BA%BF%E5%99%A8/" title="6-1-2 中继器与集线器">
+                        <span class="hidden-mobile">6-1-2 中继器与集线器</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
