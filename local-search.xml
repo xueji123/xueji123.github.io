@@ -4,11 +4,111 @@
   
   
   <entry>
+    <title>6-3-2 TCP三次握手</title>
+    <link href="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
+    <url>/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>6-3-1 TCP UDP报文格式</title>
+    <link href="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/"/>
+    <url>/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<p>传输层封装协议</p><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/1.png" class=""><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/2.png" class=""><p>0-65535  2^16=65536  16位</p><p>序列号：TCP报文序列ID<br>确认号：TCP报文确认ID</p><p>SYN：<br>ACK：<br>FIN：<br>URG：紧急<br>RST：重置，如果端口没开放，发SYN探测，回RST<br>PUSH：上层快速取走缓冲区里数据<br>窗口：16位，滑动窗口，用于流量控制</p><p>TCP伪首部，用于TCP校验和计算</p><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/3.png" class=""><p>UDP报头8字节</p><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/4.png" class=""><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/5.png" class=""><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/6.png" class=""><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/7.png" class=""><img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/8.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>6-2-5 ICMP协议</title>
+    <link href="/2023/04/30/6-2-5ICPM%E5%8D%8F%E8%AE%AE/"/>
+    <url>/2023/04/30/6-2-5ICPM%E5%8D%8F%E8%AE%AE/</url>
+    
+    <content type="html"><![CDATA[<p>tracert后有“*”：NAT、防火墙、超时</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>6-2-4 ARP和RARP</title>
+    <link href="/2023/04/30/6-2-4ARP%E5%92%8CRARP/"/>
+    <url>/2023/04/30/6-2-4ARP%E5%92%8CRARP/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/1.png" class=""><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/2.png" class=""><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/3.png" class=""><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/4.png" class=""><p>重点：</p><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/5.png" class=""><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/6.png" class=""><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/7.png" class=""><p>arp -a 或 arp -g 查看arp表<br>静态是手工绑定的，动态是通过arp协议学习到的</p><p>arp -s ip地址 mac地址  添加静态表项</p><p>arp -d 删除表项</p><p>ARP地址解析五步曲<br>①主机A查自己的arp表，有没有主机B的mac地址<br>可以通过arp -a 查看A自己的arp表；如果有主机 B ip地址对应的mac地址，直接进行以太网封装<br>如果没有则进行②</p><p>②ARP  Request 报文 请求B ip地址对应mac地址</p><p>③主机B 收到请求后，先更新自己的mac地址表（有A的ip和mac地址对应关系）</p><p>④主机B Reply  单播</p><p>⑤主机A收到后，更新自己ARP表，写入ARP表项中</p><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/8.png" class=""><p>在手工配完ip地址后 或者 DHCP过程完成后，获得地址，发Gratuitous ARP做冲突检测</p><p>Gratuitous ARP 免费ARP，用来检测IP地址冲突</p><p>原理：以我自己的ip地址去请求相应的mac地址，如果有回应，则证明冲突</p><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/9.png" class=""><p>代理ARP</p><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/10.png" class=""><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/11.png" class=""><img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/12.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>6-2-3 IP地址分类和特殊地址</title>
     <link href="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/"/>
     <url>/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/</url>
     
-    <content type="html"><![CDATA[<p>组播：IPTV 分组去分发，运营商，特定行业有应用</p><p>RIPv2、OSPF组播更新</p><img src="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/1.png" class="">]]></content>
+    <content type="html"><![CDATA[<p>组播：IPTV 分组去分发，运营商，特定行业有应用</p><p>RIPv2、OSPF组播更新</p><img src="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/1.png" class=""><p>127.0.0.0/8 本地环回地址<br>测试协议栈，如果能ping通127网段地址，证明tcp/ip协议栈安装没问题</p><p>loopback地址才是用来做协议更新的</p><img src="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/2.png" class=""><img src="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/3.png" class=""><img src="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/4.png" class=""><img src="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/5.png" class=""><img src="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/6.png" class="">]]></content>
     
     
     <categories>
@@ -283,7 +383,7 @@
     <link href="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/"/>
     <url>/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/</url>
     
-    <content type="html"><![CDATA[<img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/1.png" class=""><p>Lmin = 2R * d/v</p><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/2.png" class=""><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/3.png" class=""><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/4.png" class=""><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/5.png" class="">]]></content>
+    <content type="html"><![CDATA[<img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/1.png" class=""><p>Lmin = 2R * d/v</p><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/2.png" class=""><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/3.png" class=""><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/4.png" class=""><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/5.png" class=""><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/6.png" class=""><p>节点总时延 = 节点处理时延 + 排队时延 + 传输时延 + 传播时延</p><p>①处理时延：检查分组首部和决定将该分组导向何处所需要的时间 + 如检查比特级别的差错所需要的时间 等等（该差错岀现在从上游节点向 路由器A传输这些分组比特的过程中）</p><p>②排队时延：在队列中，当分组在链路上等待传输时，它经手 排队时延<br>实际的排队时延可以是毫秒到微秒量级。</p><p>③传输时延：<br>假定分组以先到先服务方式传输— 这在分组交换网中是常见的方式，仅当所有已经 到达的分组被传输后，才能传输刚到达的分组。用厶比特表示该分组的长度，用R bps<br>(即b/s)表示从路由器A到路由器B的链路传输速率。例如，对于一条10Mbps的以太网 链路，速率尺二10Mbps;对于100Mbps的以太网链路，速率R = 100Mbps。传输时延是L/R。这是将所有分组的比特推向链路(即传输，或者说发射)所需要的时间。实际的传输<br>计算机网络和因特网 25<br>时延通常在毫秒到微秒量级。</p><p>④传播时延：<br>一旦一个比特被推向链路，该比特需要向路由器B传播。从该链路的起点到路由器B<br>传播所需要的时间是传播时延。该比特以该链路的传播速率传播。该传播速率取决于该链 路的物理媒体(即光纤、双绞铜线等)，其速率范围是2xlO8-3xlO8m/S,这等于或略小<br>于光速。该传播时延等于两台路由器之间的距离除以传播速率。即传播时延是其中 d是路由器A和路由器B之间的距离，•’是该链路的传播速率。一旦该分组的最后一个比<br>特传播到节点B,该比特及前面的所有比特被存储于路由器B。整个过程将随着路由器B 执行转发而持续下去。在广域网中，传播时延为毫秒量级。</p><img src="/2023/04/29/4-5%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E8%AE%A1%E7%AE%97/7.png" class="">]]></content>
     
     
     <categories>
@@ -479,24 +579,11 @@
   
   
   <entry>
-    <title>STP（Spanning Tree Protocol）</title>
-    <link href="/2023/04/12/STP/"/>
-    <url>/2023/04/12/STP/</url>
-    
-    <content type="html"><![CDATA[<p>1、STP生成树技术背景</p><p>①交换机单链路上行，存在单点故障，线路和设备都不具备冗余性。任何一条链路或者设备故障，网络将面临断网。<br>冗余拓扑能够解决单点故障问题</p><img src="/2023/04/12/STP/background1.png" class=""><p>②二层环路问题<br>但是冗余拓扑带来了二层环路问题<br>经常产生二层环路从而引发网络故障</p><img src="/2023/04/12/STP/background2.png" class=""><img src="/2023/04/12/STP/Second_level_loop.png" class=""><p>二层环路问题<br>1）广播风暴<br>现象：<br>网络慢、所有指示灯高速闪烁、CPU使用率高、CLI卡顿</p><img src="/2023/04/12/STP/broadcast_storm.png" class=""><p>2）MAC地址表震荡</p><img src="/2023/04/12/STP/mac_shock.png" class=""><p>3、STP基本概念<br>Spanning Tree Protocol，一种链路管理协议<br>①为网络提供路径冗余<br>在网络出现拓扑变更时及时收敛，保障网络冗余性<br>②防止产生环路<br>在网络中存在环路的时候，通过逻辑阻塞特定端口，打破环路</p><img src="/2023/04/12/STP/concept1.png" class=""><img src="/2023/04/12/STP/concept2.png" class=""><p>作用<br>①逻辑上断开环路，防止广播风暴产生<br>②当线路出现故障时，断开的接口被激活，恢复通信，起到备份线路作用<br>③形成一个最佳的树型拓扑</p><p>网桥ID（Bridge ID）<br>桥ID一共8个字节（byte），由2个字节优先级和6个字节的MAC地址构成<br>桥优先级默认为32768，可以手工修改<br>MAC地址为交换机背板MAC<br>优先级都是4096的倍数，4096*8 = 32768，桥优先级和MAC地址都是越小越优先</p><img src="/2023/04/12/STP/Bridge_ID.png" class=""><p>路径开销（Path Cost）<br>路径开销与端口带宽成反比</p><img src="/2023/04/12/STP/Path_Cost.png" class=""><p>4、STP选举操作<br>1）确定一个根网桥（Root Bridge）<br>选优先级和MAC地址最小的网桥<br>根桥（根交换机）发的是 BPDU报文（生成树的控制报文）</p><img src="/2023/04/12/STP/election1.png" class=""><p>2）确定其他网桥的根接口（Root Port）RP<br>非根桥的端口到根桥最近的接口</p><img src="/2023/04/12/STP/election2.png" class=""><p>3）每个段选择一个指定接口（Designated Port）DP<br>先选指定桥，指定桥上为指定接口<br>（指定桥：到根桥最优先的网桥）</p><p>根桥上所有接口都是指定接口（DP）</p><p>指定接口：<br>具有最低根路径的接口（链路中间观察）<br>如果一个链路上有多个端口具有相同的到根的开销，则进一步比较接口上收到的BPDU优劣</p><img src="/2023/04/12/STP/election3.png" class=""><p>4）选出非指定接口（NonDesignated Port）</p><img src="/2023/04/12/STP/election4.png" class=""><img src="/2023/04/12/STP/STP_enum.png" class=""><img src="/2023/04/12/STP/IEEE_STP.png" class=""><img src="/2023/04/12/STP/DP4_2.png" class=""><img src="/2023/04/12/STP/DP4_1.png" class=""><img src="/2023/04/12/STP/DP3.png" class=""><img src="/2023/04/12/STP/DP2.png" class=""><img src="/2023/04/12/STP/DP1.png" class=""><img src="/2023/04/12/STP/summary.png" class="">]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>4-8 生成树协议STP（Spanning Tree Protocol）</title>
-    <link href="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/"/>
-    <url>/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/</url>
+    <link href="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/"/>
+    <url>/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/</url>
     
-    <content type="html"><![CDATA[<p>1、STP生成树技术背景</p><p>①交换机单链路上行，存在单点故障，线路和设备都不具备冗余性。任何一条链路或者设备故障，网络将面临断网。<br>冗余拓扑能够解决单点故障问题</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/background1.png" class=""><p>②二层环路问题<br>但是冗余拓扑带来了二层环路问题<br>经常产生二层环路从而引发网络故障</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/background2.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/Second_level_loop.png" class=""><p>二层环路问题<br>1）广播风暴<br>现象：<br>网络慢、所有指示灯高速闪烁、CPU使用率高、CLI卡顿</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/broadcast_storm.png" class=""><p>2）MAC地址表震荡</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/mac_shock.png" class=""><p>3、STP基本概念<br>Spanning Tree Protocol，一种链路管理协议<br>①为网络提供路径冗余<br>在网络出现拓扑变更时及时收敛，保障网络冗余性<br>②防止产生环路<br>在网络中存在环路的时候，通过逻辑阻塞特定端口，打破环路</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/concept1.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/concept2.png" class=""><p>作用<br>①逻辑上断开环路，防止广播风暴产生<br>②当线路出现故障时，断开的接口被激活，恢复通信，起到备份线路作用<br>③形成一个最佳的树型拓扑</p><p>网桥ID（Bridge ID）<br>桥ID一共8个字节（byte），由2个字节优先级和6个字节的MAC地址构成<br>桥优先级默认为32768，可以手工修改<br>MAC地址为交换机背板MAC<br>优先级都是4096的倍数，4096*8 = 32768，桥优先级和MAC地址都是越小越优先</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/Bridge_ID.png" class=""><p>路径开销（Path Cost）<br>路径开销与端口带宽成反比</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/Path_Cost.png" class=""><p>4、STP选举操作<br>1）确定一个根网桥（Root Bridge）<br>选优先级和MAC地址最小的网桥<br>根桥（根交换机）发的是 BPDU报文（生成树的控制报文）</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election1.png" class=""><p>2）确定其他网桥的根接口（Root Port）RP<br>非根桥的端口到根桥最近的接口</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election2.png" class=""><p>3）每个段选择一个指定接口（Designated Port）DP<br>先选指定桥，指定桥上为指定接口<br>（指定桥：到根桥最优先的网桥）</p><p>根桥上所有接口都是指定接口（DP）</p><p>指定接口：<br>具有最低根路径的接口（链路中间观察）<br>如果一个链路上有多个端口具有相同的到根的开销，则进一步比较接口上收到的BPDU优劣</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election3.png" class=""><p>4）选出非指定接口（NonDesignated Port）</p><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election4.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/STP_enum.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/IEEE_STP.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP4_2.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP4_1.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP3.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP2.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP1.png" class=""><img src="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/summary.png" class="">]]></content>
+    <content type="html"><![CDATA[<p>1、STP生成树技术背景</p><p>①交换机单链路上行，存在单点故障，线路和设备都不具备冗余性。任何一条链路或者设备故障，网络将面临断网。<br>冗余拓扑能够解决单点故障问题</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/background1.png" class=""><p>②二层环路问题<br>但是冗余拓扑带来了二层环路问题<br>经常产生二层环路从而引发网络故障</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/background2.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/Second_level_loop.png" class=""><p>二层环路问题<br>1）广播风暴<br>现象：<br>网络慢、所有指示灯高速闪烁、CPU使用率高、CLI卡顿</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/broadcast_storm.png" class=""><p>2）MAC地址表震荡</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/mac_shock.png" class=""><p>3、STP基本概念<br>Spanning Tree Protocol，一种链路管理协议<br>①为网络提供路径冗余<br>在网络出现拓扑变更时及时收敛，保障网络冗余性<br>②防止产生环路<br>在网络中存在环路的时候，通过逻辑阻塞特定端口，打破环路</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/concept1.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/concept2.png" class=""><p>作用<br>①逻辑上断开环路，防止广播风暴产生<br>②当线路出现故障时，断开的接口被激活，恢复通信，起到备份线路作用<br>③形成一个最佳的树型拓扑</p><p>网桥ID（Bridge ID）<br>桥ID一共8个字节（byte），由2个字节优先级和6个字节的MAC地址构成<br>桥优先级默认为32768，可以手工修改<br>MAC地址为交换机背板MAC<br>优先级都是4096的倍数，4096*8 = 32768，桥优先级和MAC地址都是越小越优先</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/Bridge_ID.png" class=""><p>路径开销（Path Cost）<br>路径开销与端口带宽成反比</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/Path_Cost.png" class=""><p>4、STP选举操作<br>1）确定一个根网桥（Root Bridge）<br>选优先级和MAC地址最小的网桥<br>根桥（根交换机）发的是 BPDU报文（生成树的控制报文）</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election1.png" class=""><p>2）确定其他网桥的根接口（Root Port）RP<br>非根桥的端口到根桥最近的接口</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election2.png" class=""><p>3）每个段选择一个指定接口（Designated Port）DP<br>先选指定桥，指定桥上为指定接口<br>（指定桥：到根桥最优先的网桥）</p><p>根桥上所有接口都是指定接口（DP）</p><p>指定接口：<br>具有最低根路径的接口（链路中间观察）<br>如果一个链路上有多个端口具有相同的到根的开销，则进一步比较接口上收到的BPDU优劣</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election3.png" class=""><p>4）选出非指定接口（NonDesignated Port）</p><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/election4.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/STP_enum.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/IEEE_STP.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP4_2.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP4_1.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP3.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP2.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/DP1.png" class=""><img src="/2023/04/13/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/summary.png" class="">]]></content>
     
     
     <categories>

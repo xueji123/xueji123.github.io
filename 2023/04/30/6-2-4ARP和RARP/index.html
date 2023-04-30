@@ -16,43 +16,35 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、STP生成树技术背景 ①交换机单链路上行，存在单点故障，线路和设备都不具备冗余性。任何一条链路或者设备故障，网络将面临断网。冗余拓扑能够解决单点故障问题   ②二层环路问题但是冗余拓扑带来了二层环路问题经常产生二层环路从而引发网络故障     二层环路问题1）广播风暴现象：网络慢、所有指示灯高速闪烁、CPU使用率高、CLI卡顿    2）MAC地址表震荡    3、STP基本概念Spannin">
+    <meta name="description" content="重点：       arp -a 或 arp -g 查看arp表静态是手工绑定的，动态是通过arp协议学习到的 arp -s ip地址 mac地址  添加静态表项 arp -d 删除表项 ARP地址解析五步曲①主机A查自己的arp表，有没有主机B的mac地址可以通过arp -a 查看A自己的arp表；如果有主机 B ip地址对应的mac地址，直接进行以太网封装如果没有则进行② ②A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STP（Spanning Tree Protocol）">
-<meta property="og:url" content="http://example.com/2023/04/12/STP/index.html">
+<meta property="og:title" content="6-2-4 ARP和RARP">
+<meta property="og:url" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="1、STP生成树技术背景 ①交换机单链路上行，存在单点故障，线路和设备都不具备冗余性。任何一条链路或者设备故障，网络将面临断网。冗余拓扑能够解决单点故障问题   ②二层环路问题但是冗余拓扑带来了二层环路问题经常产生二层环路从而引发网络故障     二层环路问题1）广播风暴现象：网络慢、所有指示灯高速闪烁、CPU使用率高、CLI卡顿    2）MAC地址表震荡    3、STP基本概念Spannin">
+<meta property="og:description" content="重点：       arp -a 或 arp -g 查看arp表静态是手工绑定的，动态是通过arp协议学习到的 arp -s ip地址 mac地址  添加静态表项 arp -d 删除表项 ARP地址解析五步曲①主机A查自己的arp表，有没有主机B的mac地址可以通过arp -a 查看A自己的arp表；如果有主机 B ip地址对应的mac地址，直接进行以太网封装如果没有则进行② ②A">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/background1.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/background2.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/Second_level_loop.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/broadcast_storm.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/mac_shock.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/concept1.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/concept2.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/Bridge_ID.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/Path_Cost.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/election1.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/election2.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/election3.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/election4.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/STP_enum.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/IEEE_STP.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/DP4_2.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/DP4_1.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/DP3.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/DP2.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/DP1.png">
-<meta property="og:image" content="http://example.com/2023/04/12/STP/summary.png">
-<meta property="article:published_time" content="2023-04-12T15:16:00.000Z">
-<meta property="article:modified_time" content="2023-04-22T04:19:29.126Z">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/1.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/2.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/3.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/4.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/5.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/6.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/7.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/8.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/9.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/10.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/11.png">
+<meta property="og:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/12.png">
+<meta property="article:published_time" content="2023-04-30T02:30:00.000Z">
+<meta property="article:modified_time" content="2023-04-30T03:12:47.222Z">
 <meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/04/12/STP/background1.png">
+<meta name="twitter:image" content="http://example.com/2023/04/30/6-2-4ARP%E5%92%8CRARP/1.png">
   
   
   
-  <title>STP（Spanning Tree Protocol） - Coding</title>
+  <title>6-2-4 ARP和RARP - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="STP（Spanning Tree Protocol）"></span>
+            <span id="subtitle" data-typed-text="6-2-4 ARP和RARP"></span>
           
         </div>
 
@@ -229,8 +221,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-12 23:16" pubdate>
-          April 12, 2023 pm
+        <time datetime="2023-04-30 10:30" pubdate>
+          April 30, 2023 am
         </time>
       </span>
     
@@ -241,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          767 words
+          380 words
         
       </span>
     
@@ -252,7 +244,7 @@
         
         
         
-          7 mins
+          4 mins
         
       </span>
     
@@ -290,74 +282,50 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">STP（Spanning Tree Protocol）</h1>
+            <h1 style="display: none">6-2-4 ARP和RARP</h1>
             
             
               <div class="markdown-body">
                 
-                <p>1、STP生成树技术背景</p>
-<p>①交换机单链路上行，存在单点故障，线路和设备都不具备冗余性。任何一条链路或者设备故障，网络将面临断网。<br>冗余拓扑能够解决单点故障问题</p>
-<img src="/2023/04/12/STP/background1.png" srcset="/img/loading.gif" lazyload class="">
+                <img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/1.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>②二层环路问题<br>但是冗余拓扑带来了二层环路问题<br>经常产生二层环路从而引发网络故障</p>
-<img src="/2023/04/12/STP/background2.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/2.png" srcset="/img/loading.gif" lazyload class="">
 
-<img src="/2023/04/12/STP/Second_level_loop.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/3.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>二层环路问题<br>1）广播风暴<br>现象：<br>网络慢、所有指示灯高速闪烁、CPU使用率高、CLI卡顿</p>
-<img src="/2023/04/12/STP/broadcast_storm.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/4.png" srcset="/img/loading.gif" lazyload class="">
 
+<p>重点：</p>
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/5.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>2）MAC地址表震荡</p>
-<img src="/2023/04/12/STP/mac_shock.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/6.png" srcset="/img/loading.gif" lazyload class="">
 
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/7.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>3、STP基本概念<br>Spanning Tree Protocol，一种链路管理协议<br>①为网络提供路径冗余<br>在网络出现拓扑变更时及时收敛，保障网络冗余性<br>②防止产生环路<br>在网络中存在环路的时候，通过逻辑阻塞特定端口，打破环路</p>
-<img src="/2023/04/12/STP/concept1.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/concept2.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>作用<br>①逻辑上断开环路，防止广播风暴产生<br>②当线路出现故障时，断开的接口被激活，恢复通信，起到备份线路作用<br>③形成一个最佳的树型拓扑</p>
-<p>网桥ID（Bridge ID）<br>桥ID一共8个字节（byte），由2个字节优先级和6个字节的MAC地址构成<br>桥优先级默认为32768，可以手工修改<br>MAC地址为交换机背板MAC<br>优先级都是4096的倍数，4096*8 = 32768，桥优先级和MAC地址都是越小越优先</p>
-<img src="/2023/04/12/STP/Bridge_ID.png" srcset="/img/loading.gif" lazyload class="">
-
-
-<p>路径开销（Path Cost）<br>路径开销与端口带宽成反比</p>
-<img src="/2023/04/12/STP/Path_Cost.png" srcset="/img/loading.gif" lazyload class="">
+<p>arp -a 或 arp -g 查看arp表<br>静态是手工绑定的，动态是通过arp协议学习到的</p>
+<p>arp -s ip地址 mac地址  添加静态表项</p>
+<p>arp -d 删除表项</p>
+<p>ARP地址解析五步曲<br>①主机A查自己的arp表，有没有主机B的mac地址<br>可以通过arp -a 查看A自己的arp表；如果有主机 B ip地址对应的mac地址，直接进行以太网封装<br>如果没有则进行②</p>
+<p>②ARP  Request 报文 请求B ip地址对应mac地址</p>
+<p>③主机B 收到请求后，先更新自己的mac地址表（有A的ip和mac地址对应关系）</p>
+<p>④主机B Reply  单播</p>
+<p>⑤主机A收到后，更新自己ARP表，写入ARP表项中</p>
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/8.png" srcset="/img/loading.gif" lazyload class="">
 
 
+<p>在手工配完ip地址后 或者 DHCP过程完成后，获得地址，发Gratuitous ARP做冲突检测</p>
+<p>Gratuitous ARP 免费ARP，用来检测IP地址冲突</p>
+<p>原理：以我自己的ip地址去请求相应的mac地址，如果有回应，则证明冲突</p>
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/9.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>代理ARP</p>
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/10.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/11.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/04/30/6-2-4ARP%E5%92%8CRARP/12.png" srcset="/img/loading.gif" lazyload class="">
 
 
-
-<p>4、STP选举操作<br>1）确定一个根网桥（Root Bridge）<br>选优先级和MAC地址最小的网桥<br>根桥（根交换机）发的是 BPDU报文（生成树的控制报文）</p>
-<img src="/2023/04/12/STP/election1.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>2）确定其他网桥的根接口（Root Port）RP<br>非根桥的端口到根桥最近的接口</p>
-<img src="/2023/04/12/STP/election2.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>3）每个段选择一个指定接口（Designated Port）DP<br>先选指定桥，指定桥上为指定接口<br>（指定桥：到根桥最优先的网桥）</p>
-<p>根桥上所有接口都是指定接口（DP）</p>
-<p>指定接口：<br>具有最低根路径的接口（链路中间观察）<br>如果一个链路上有多个端口具有相同的到根的开销，则进一步比较接口上收到的BPDU优劣</p>
-<img src="/2023/04/12/STP/election3.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>4）选出非指定接口（NonDesignated Port）</p>
-<img src="/2023/04/12/STP/election4.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/STP_enum.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/IEEE_STP.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/DP4_2.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/DP4_1.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/DP3.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/DP2.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/DP1.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/04/12/STP/summary.png" srcset="/img/loading.gif" lazyload class="">
                 
               </div>
             
@@ -365,6 +333,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
+      
+    </div>
   
 </div>
 
@@ -374,8 +370,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>STP（Spanning Tree Protocol）</div>
-      <div>http://example.com/2023/04/12/STP/</div>
+      <div>6-2-4 ARP和RARP</div>
+      <div>http://example.com/2023/04/30/6-2-4ARP和RARP/</div>
     </div>
     <div class="license-meta">
       
@@ -387,7 +383,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>April 12, 2023</div>
+          <div>April 30, 2023</div>
         </div>
       
       
@@ -419,9 +415,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/22/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%93%E9%A2%98/" title="路由协议专题">
+                      <a href="/2023/04/30/6-2-5ICPM%E5%8D%8F%E8%AE%AE/" title="6-2-5 ICMP协议">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">路由协议专题</span>
+                        <span class="hidden-mobile">6-2-5 ICMP协议</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -429,8 +425,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/12/4-8%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP/" title="4-8 生成树协议STP（Spanning Tree Protocol）">
-                        <span class="hidden-mobile">4-8 生成树协议STP（Spanning Tree Protocol）</span>
+                      <a href="/2023/04/29/6-2-3IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB%E5%92%8C%E7%89%B9%E6%AE%8A%E5%9C%B0%E5%9D%80/" title="6-2-3 IP地址分类和特殊地址">
+                        <span class="hidden-mobile">6-2-3 IP地址分类和特殊地址</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
