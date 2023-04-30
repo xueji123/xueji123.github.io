@@ -4,11 +4,111 @@
   
   
   <entry>
+    <title>6-4-2 静态路由和默认路由</title>
+    <link href="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/"/>
+    <url>/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/1.png" class=""><img src="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/2.png" class=""><img src="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/3.png" class=""><img src="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/4.png" class=""><img src="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/5.png" class=""><img src="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/6.png" class=""><img src="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/7.png" class=""><p><a href="https://xueji123.github.io/2023/04/22/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%93%E9%A2%98/">https://xueji123.github.io/2023/04/22/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%93%E9%A2%98/</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>6-4-1 IP路由基础</title>
+    <link href="/2023/04/30/6-4-1IP%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/"/>
+    <url>/2023/04/30/6-4-1IP%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/04/30/6-4-1IP%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/1.png" class=""><img src="/2023/04/30/6-4-1IP%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/2.png" class=""><img src="/2023/04/30/6-4-1IP%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/3.png" class=""><img src="/2023/04/30/6-4-1IP%E8%B7%AF%E7%94%B1%E5%9F%BA%E7%A1%80/4.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>6-3-4 重点协议端口号总结</title>
+    <link href="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/"/>
+    <url>/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/</url>
+    
+    <content type="html"><![CDATA[<p>FTP：控制端口21，数据端口20</p><p>DHCP（Dynamic Host Configuration Protocol）<br>DHCP服务端使用 UDP 67端口 来监听和接收客户请求消息<br>客户端使用 UDP 68端口 来接收DHCP服务器的消息回复<br>windows系统中，DHCP客户端无法找到对应的服务器、获取合法IP地址失败前提下，<br>获取IP地址值为 169.254.x.x  169.254.0.0/16</p><p>SNMP（Simple Network Management Protocol）<br>网络管理站NMS（Network Management Service）通过 UDP 162 接收来自 管理代理Agent的trap报文<br>管理代理Agent（在被管设备内）通过 UDP 161 接收来自 网络管理站的request报文</p><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/1.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/2.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/3.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/4.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/5.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/6.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/7.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/8.png" class=""><img src="/2023/04/30/6-3-4%E9%87%8D%E7%82%B9%E5%8D%8F%E8%AE%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7%E6%80%BB%E7%BB%93/9.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>6-3-3 流量控制和拥塞控制</title>
+    <link href="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/"/>
+    <url>/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/</url>
+    
+    <content type="html"><![CDATA[<p>流量控制：为了防止发送方发送速度过快，导致接收方处理不过来，造成丢包重传，浪费网络资源<br>TCP流量控制机制：可变大小的滑动窗口</p><p>A发的数据win=3，代表A自己的窗口值</p><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/1.png" class=""><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/2.png" class=""><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/3.png" class=""><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/4.png" class=""><p>指数级增长（慢开始阶段）至ssthresh门限值后 改为 线性增长（拥塞避免阶段）</p><p>线性增长至发生超时（网络拥塞）的拥塞窗口值时做2件事<br>①回到1重新开始<br>②更新ssthresh为拥塞窗口的一半</p><p>SD-WAN还是广域网加速方案都有 TCP协议优化（算法优化）</p><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/5.png" class=""><p>习题</p><p>能发送出去的报文量拥塞窗口和滑动窗口中最小的值<br>①滑动窗口值由对方指定<br>②拥塞窗口值存在本地，根据网络中状态，自己去计算</p><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/6.png" class=""><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/7.png" class=""><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/8.png" class=""><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/9.png" class=""><img src="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/10.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>6-3-2 TCP三次握手</title>
     <link href="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/"/>
     <url>/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>考点一：控制位<br>ctl=SYN 和 SYN=1 是一样的意思（ctl是控制位）<br>只有第一个包没有ACK，ACK=0了，后面ACK=1</p><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/1.png" class=""><p>考点二：序列号和确认号<br>小写ack：确认号<br>seq：序列号</p><p>ack=1两层意思<br>①确认已经收到<br>②下次想要A发送序列号为seq=1的报文</p><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/2.png" class=""><p>考点三：状态</p><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/3.png" class=""><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/4.png" class=""><p>TCP四次挥手断开连接</p><p>2种情况<br>1、A发完了，A要和B断开连接，B同意，A到B数据发完了</p><p>B到A的数据也发完了，B直接断开</p><p>2、B到A的数据还没发完，连接不断seq就不同</p><p>seq=301有2个 是因为1个包做2件事情<br>①B确认A要和自己断开连接<br>②B也要和A断开连接</p><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/5.png" class=""><p>习题</p><p>RST在端口扫描时是证明端口没开，会回复RST</p><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/6.png" class=""><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/7.png" class=""><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/8.png" class=""><img src="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/9.png" class="">]]></content>
     
     
     <categories>
