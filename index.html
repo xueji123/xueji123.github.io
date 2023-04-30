@@ -293,7 +293,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" target="_self">
         <div>
-          传输层封装协议     0-65535  2^16=65536  16位 序列号：TCP报文序列ID确认号：TCP报文确认ID SYN：ACK：FIN：URG：紧急RST：重置，如果端口没开放，发SYN探测，回RSTPUSH：上层快速取走缓冲区里数据窗口：16位，滑动窗口，用于流量控制 TCP伪首部，用于TCP校验和计算   UDP报头8字节
+          传输层封装协议     0-65535  2^16=65536  16位 序列号：TCP报文序列ID确认号：TCP报文确认ID 标记FlagSYN：同步（SYN）– 发起连接ACK：建立连接后的报文回应，ACK设置为1FIN：终止（FIN）– 释放连接URG：紧急  紧急有效，需要尽快传送 urgentRST：重置，如果端口没开放，发SYN探测，回RSTPSH：Push上层快速取走缓冲区里数据，接
         </div>
       </a>
 

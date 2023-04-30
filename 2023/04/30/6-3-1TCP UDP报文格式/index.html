@@ -16,12 +16,12 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="传输层封装协议     0-65535  2^16&#x3D;65536  16位 序列号：TCP报文序列ID确认号：TCP报文确认ID SYN：ACK：FIN：URG：紧急RST：重置，如果端口没开放，发SYN探测，回RSTPUSH：上层快速取走缓冲区里数据窗口：16位，滑动窗口，用于流量控制 TCP伪首部，用于TCP校验和计算   UDP报头8字节">
+    <meta name="description" content="传输层封装协议     0-65535  2^16&#x3D;65536  16位 序列号：TCP报文序列ID确认号：TCP报文确认ID 标记FlagSYN：同步（SYN）– 发起连接ACK：建立连接后的报文回应，ACK设置为1FIN：终止（FIN）– 释放连接URG：紧急  紧急有效，需要尽快传送 urgentRST：重置，如果端口没开放，发SYN探测，回RSTPSH：Push上层快速取走缓冲区里数据，接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6-3-1 TCP UDP报文格式">
 <meta property="og:url" content="http://example.com/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="传输层封装协议     0-65535  2^16&#x3D;65536  16位 序列号：TCP报文序列ID确认号：TCP报文确认ID SYN：ACK：FIN：URG：紧急RST：重置，如果端口没开放，发SYN探测，回RSTPUSH：上层快速取走缓冲区里数据窗口：16位，滑动窗口，用于流量控制 TCP伪首部，用于TCP校验和计算   UDP报头8字节">
+<meta property="og:description" content="传输层封装协议     0-65535  2^16&#x3D;65536  16位 序列号：TCP报文序列ID确认号：TCP报文确认ID 标记FlagSYN：同步（SYN）– 发起连接ACK：建立连接后的报文回应，ACK设置为1FIN：终止（FIN）– 释放连接URG：紧急  紧急有效，需要尽快传送 urgentRST：重置，如果端口没开放，发SYN探测，回RSTPSH：Push上层快速取走缓冲区里数据，接">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/1.png">
 <meta property="og:image" content="http://example.com/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/2.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/7.png">
 <meta property="og:image" content="http://example.com/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/8.png">
 <meta property="article:published_time" content="2023-04-30T03:29:00.000Z">
-<meta property="article:modified_time" content="2023-04-30T03:51:54.238Z">
+<meta property="article:modified_time" content="2023-04-30T04:02:49.993Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="备考">
 <meta name="twitter:card" content="summary_large_image">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          157 words
+          252 words
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          2 mins
+          3 mins
         
       </span>
     
@@ -290,7 +290,8 @@
 
 <p>0-65535  2^16=65536  16位</p>
 <p>序列号：TCP报文序列ID<br>确认号：TCP报文确认ID</p>
-<p>SYN：<br>ACK：<br>FIN：<br>URG：紧急<br>RST：重置，如果端口没开放，发SYN探测，回RST<br>PUSH：上层快速取走缓冲区里数据<br>窗口：16位，滑动窗口，用于流量控制</p>
+<p>标记Flag<br>SYN：同步（SYN）– 发起连接<br>ACK：建立连接后的报文回应，ACK设置为1<br>FIN：终止（FIN）– 释放连接<br>URG：紧急  紧急有效，需要尽快传送 urgent<br>RST：重置，如果端口没开放，发SYN探测，回RST<br>PSH：Push上层快速取走缓冲区里数据，接收方应该尽快将这个报文段交给上层协议，<br>无需等缓存满</p>
+<p>窗口：16位，滑动窗口，用于流量控制</p>
 <p>TCP伪首部，用于TCP校验和计算</p>
 <img src="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/3.png" srcset="/img/loading.gif" lazyload class="">
 
