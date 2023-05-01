@@ -4,6 +4,356 @@
   
   
   <entry>
+    <title>2-11 CRC循环冗余校验码</title>
+    <link href="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/"/>
+    <url>/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/1.png" class=""><img src="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/2.png" class=""><img src="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/3.png" class=""><img src="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/4.png" class=""><p>总结：</p><img src="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/5.png" class=""><img src="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/6.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-10 海明纠错码</title>
+    <link href="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/"/>
+    <url>/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<p>只有海明码有纠错功能</p><p>纠错相对只检错：传输效率更低、对计算机性能要求更高</p><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/1.png" class=""><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/2.png" class=""><p>k：校验位，m：数据位</p><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/3.png" class=""><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/4.png" class=""><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/5.png" class=""><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/6.png" class=""><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/7.png" class=""><img src="/2023/05/01/2-10%E6%B5%B7%E6%98%8E%E7%BA%A0%E9%94%99%E7%A0%81/8.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-9 数字传输系统E1T1</title>
+    <link href="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/"/>
+    <url>/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/</url>
+    
+    <content type="html"><![CDATA[<p>光纤入户：上网、电视（IPTV）、电话   多路复用</p><p>运营商OLT：光线路终端(Optical Line Terminal)<br>然后光线路终端( OLT )通过一个或者更多的外发端口发送数据</p><p>光猫ONU：光网络单元 光网络单元(Optical Network Unit)</p><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/1.png" class=""><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/2.png" class=""><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/3.png" class=""><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/4.png" class=""><p>E1和T1被OTN 光传送网(Optical Transport Network) 取代了</p><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/5.png" class=""><p>时分复用<br>SONET （Synchronous Optical Network）同步光纤网络<br>SDH的一个技术 （Synchronous Digital Hierarchy，同步数字体系）</p><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/6.png" class=""><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/7.png" class=""><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/8.png" class=""><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/9.png" class=""><img src="/2023/05/01/2-9%E6%95%B0%E5%AD%97%E4%BC%A0%E8%BE%93%E7%B3%BB%E7%BB%9FE1T1/10.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-8 通信和交换方式</title>
+    <link href="/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/"/>
+    <url>/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<p>一、数据通信方式</p><p>wifi 时间片很短，小到没有感觉，微观层面</p><img src="/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/1.png" class=""><img src="/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/2.png" class=""><img src="/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/3.png" class=""><img src="/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/4.png" class=""><p>二、数据交换方式</p><img src="/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/5.png" class=""><p>分组交换<br>①数据报：乱序，走多条路<br>②虚电路：不乱序，只能走一条路，沿一条路径传输</p><p>X.25 FR（Frame Relay）帧中继  ATM 异步传输模式（ATM Asynchronous Transfer Mode） 就是建立在电路交换和分组交换的基础上的一种交换技术。</p><img src="/2023/05/01/2-8%E9%80%9A%E4%BF%A1%E5%92%8C%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F/6.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-7 脉码调制PCM</title>
+    <link href="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E6%95%B4PCM/"/>
+    <url>/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E6%95%B4PCM/</url>
+    
+    <content type="html"><![CDATA[<p>数字数据 通过 数字发送器 -&gt; 数字信号  编码</p><p>数字数据 通过 调制器  -&gt; 模拟信号  调制</p><p>模拟数据 通过 PCM编码器 -&gt; 数字信号  编码</p><p>模拟数据 通过 放大器调制器 -&gt; 模拟信号  调制</p><p>PCM计算、曼彻斯特编码、差分曼彻斯特编码 都不需要 代入 R=Blog2N=2Wlog2N，C=Wlog2(1+S/N)</p><p>dB=10log10(S/N)</p><p>log2N=log2(128)=7bit</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-6 调制技术</title>
+    <link href="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/"/>
+    <url>/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/</url>
+    
+    <content type="html"><![CDATA[<p>数字数据不仅可以用脉冲传输，也可以用模拟信号来传输。</p><p>用数字数据调制模拟信号的过程 叫 数字调制</p><p>模拟信号承载数字数据</p><p>ASK（Amplitude Shift Keying）  幅移键控</p><p>FSK（Frequency Shift Keying）  频移键控</p><p>PSK（phase shift keying） 相移键控</p><p>DPSK（Differential Phase Shift Keying）  差分相移键控<br>有0无1（模拟信号是 比较 波形）</p><p>差分曼彻斯特编码有0无1（数字信号是 比较 电平是否跳变）！！！</p><p>QAM  (Quadrature Amplitude Modulation)  正交幅度调制</p><img src="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/1.png" class=""><img src="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/2.png" class=""><p>PSK=BPSK=2PSK   （phase shift keying） 相移键控</p><img src="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/3.png" class=""><img src="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/4.png" class=""><img src="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/5.png" class=""><img src="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/6.png" class=""><img src="/2023/05/01/2-6%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF/7.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-5 数据编码</title>
+    <link href="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/"/>
+    <url>/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<p>曼彻斯特编码    Manchester Code</p><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/1.png" class=""><p>差分曼彻斯特编码   Differential Manchester Encoding</p><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/2.png" class=""><p>区别</p><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/3.png" class=""><p>其他编码</p><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/4.png" class=""><p>习题</p><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/5.png" class=""><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/6.png" class=""><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/7.png" class=""><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/8.png" class=""><p>有（跳变）0  无（跳变）1    有0无1</p><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/9.png" class=""><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/11.png" class=""><img src="/2023/05/01/2-5%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81/10.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-4 传输介质</title>
+    <link href="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/"/>
+    <url>/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/1.png" class=""><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/2.png" class=""><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/3.png" class=""><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/4.png" class=""><p>有线传输介质</p><p>双绞线：常用的是4对，8芯（根），两两缠绕</p><p>网线传的是电信号，会产生磁场，磁场之间会相互干扰，为了降低干扰，两两缠绕电磁波互相抵消</p><p>8芯一分为二，分线器</p><p>百兆100M，4（芯）根</p><p>千兆1000M，必须8（芯）根</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/5.png" class=""><p>双绞线规格：</p><p>网线传输距离是100m</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/6.png" class=""><p>为了防止 里面数据泄露 和 外面磁场影响里面传的数据 可以用STP屏蔽双绞线</p><p>锡箔可以有效隔绝电磁波，特别涉密场景都会用STP 屏蔽双绞线</p><p>减少辐射，减少外面磁场的干扰</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/6.png" class=""><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/7.png" class=""><p>光纤</p><p>波分技术里面，一根光纤，里面传输速率可达 4Tbit/s</p><p>交换机的话，400G 和 400G 这根线就可以传400G</p><p>有些单位要求光纤到桌面（检察院和法院），pc里面插光纤网卡，网线有可能信息泄露<br>普通电口（插网线的网卡），几十元钱；光纤网卡（几百上千元）</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/8.png" class=""><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/9.png" class=""><p>光纤2头要连设备，连的是交换机光口</p><p>交换机要插一个光模块</p><p>光纤跳线一般都是双芯的</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/14.png" class=""><p><a href="https://xueji123.github.io/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/">https://xueji123.github.io/2023/02/11/network_engineer2022%E5%B9%B411%E6%9C%88_%E4%B8%8B%E5%8D%88/</a></p><p>如果线路超过100km，可以加中继器或者光放大器</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/10.png" class=""><p>光模块一般是双芯的，一收、一发，单芯可以节省光纤，但是贵（光模块）</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/13.png" class=""><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/11.png" class=""><p>光纤连接器<br>网线：RJ11（接电话） RJ45（接电脑）</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/12.png" class=""><p>跳线与尾纤</p><p>跳线：带接头的传输介质<br>网线：没有接头</p><p>跳线切一刀就变成2个尾纤了，尾纤用来跟光纤做熔纤</p><p>手工做接头损耗大，光纤用的多的就是熔纤（损耗小）</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/15.png" class=""><p>习题：</p><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/16.png" class=""><img src="/2023/05/01/2-4%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/17.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-3 信道延时</title>
+    <link href="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/"/>
+    <url>/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/1.png" class=""><img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/2.png" class=""><img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/3.png" class=""><img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/4.png" class=""><img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/5.png" class=""><img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/6.png" class=""><img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/7.png" class=""><img src="/2023/05/01/2-3%E4%BF%A1%E9%81%93%E5%BB%B6%E6%97%B6/8.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-2 信道特性</title>
+    <link href="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/"/>
+    <url>/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/1.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/2.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/3.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/4.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/5.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/6.png" class=""><p>习题：</p><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/7.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/8.png" class=""><p>信号状态就是N</p><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/9.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/10.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/11.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/12.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/13.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/14.png" class=""><img src="/2023/05/01/2-2%E4%BF%A1%E9%81%93%E7%89%B9%E6%80%A7/15.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2-1 数据通信基础-考点分析</title>
+    <link href="/2023/05/01/2-1%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80-%E8%80%83%E7%82%B9%E5%88%86%E6%9E%90/"/>
+    <url>/2023/05/01/2-1%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80-%E8%80%83%E7%82%B9%E5%88%86%E6%9E%90/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/01/2-1%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80-%E8%80%83%E7%82%B9%E5%88%86%E6%9E%90/1.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1-3 数据封装与解封过程</title>
+    <link href="/2023/05/01/1-3%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85%E4%B8%8E%E8%A7%A3%E5%B0%81%E8%BF%87%E7%A8%8B/"/>
+    <url>/2023/05/01/1-3%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85%E4%B8%8E%E8%A7%A3%E5%B0%81%E8%BF%87%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<p>封装（加上报头的过程）</p><p>二层以太网报头、IP报头、TCP报头。。。</p><p>应用层   APDU：应用层协议数据单元   进程号<br>传输层   数据段/报 Segment        端口号<br>网络层   数据包/分组 Packet       IP地址<br>数据链路层    数据帧 Frame        Mac地址<br>物理层     比特流 Bit</p><p>解封（去掉报头的过程）</p><p>类比快递封装</p><p>习题：</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1-2 OSI和TCPIP参考模型</title>
+    <link href="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/"/>
+    <url>/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<p>为什么要分层？</p><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/1.png" class=""><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/2.png" class=""><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/3.png" class=""><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/4.png" class=""><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/5.png" class=""><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/6.png" class=""><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/7.png" class=""><p>习题：</p><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/8.png" class=""><img src="/2023/05/01/1-2OSI%E5%92%8CTCPIP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B/9.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1-1 计算机网络发展与分类</title>
+    <link href="/2023/05/01/1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/"/>
+    <url>/2023/05/01/1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/01/1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/1.png" class=""><img src="/2023/05/01/1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/2.png" class=""><img src="/2023/05/01/1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/3.png" class=""><img src="/2023/05/01/1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%91%E5%B1%95%E4%B8%8E%E5%88%86%E7%B1%BB/4.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>6-4-2 静态路由和默认路由</title>
     <link href="/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/"/>
     <url>/2023/04/30/6-4-2%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/</url>
