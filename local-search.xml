@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>华为配置专题05ACL配置</title>
+    <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9805ACL%E9%85%8D%E7%BD%AE/"/>
+    <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9805ACL%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9805ACL%E9%85%8D%E7%BD%AE/1.png" class=""><p>在互联网的路由GE 0/0/0 上添加回城的静态路由</p><p>ip route-static 0.0.0.0 0 1.1.1.254</p><p>路由一定是一个双向来回的过程！！！</p><p>rule 10 deny ip source 192.168.1.0 0.0.0.255 destination 192.168.3.100 0 （单个ip）</p><p>rule 20 permit ip source 192.168.2.0 0.0.0.255 destination 192.168.3.100 0（单个ip）</p><p>rule 30 deny ip source any destination 192.168.3.100 0</p><p>interface Ethernet 4/0/0</p><p>traffic-filter outbound acl 3000</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>华为配置专题04ACL原理</title>
+    <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/"/>
+    <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>ACL概述</p><p>ACL工作原理</p><p>ACL配置及应用</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/1.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/2.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/3.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/4.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/5.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/6.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/7.png" class=""><p>eq=equal</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/8.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/9.png" class=""><p>ACL应用位置</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/10.png" class=""><p>ACL基础配置命令</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/11.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/12.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/13.png" class=""><p>高级ACL命令<br>gt port   greater than 大于</p><p>lt port   less than  小于</p><p>eq port   equal   等于</p><p>tcp-flag {ack|fin|syn}</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/14.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/15.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/16.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/17.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/18.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>华为配置专题03DHCPVLAN配置</title>
+    <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/"/>
+    <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/1.png" class=""><p>PC1和PC2跨VLAN通信实验，通过SW三层交换机</p><p>undo info-center enable 关闭设备自动消息提示</p><p>display vlan summary 查看现有vlan</p><p>一、<br>三层启VLAN接口</p><p>vlan 10</p><p>interface Vlanif 10  进入VLANIF10接口</p><p>ip address 192.168.10.254 24  配置IP地址为 192.168.10.254，掩码长度为24位</p><p>vlan 20</p><p>interface Vlanif 20  进入VLANIF20接口</p><p>ip address 192.168.20.254 24  配置IP地址为 192.168.20.254，掩码长度为24位</p><p>quit</p><p>二、<br>二层，把相应接口放到对应的VLAN里</p><p>创建了3层的vlan接口后</p><p>（VLANIF接口是基于VLAN的三层逻辑接口，可以配置IP地址。划分VLAN后，同一VLAN内的用户可以互相通信，但是属于不同VLAN的用户不能直接通信。为了实现VLAN间通信，可通过配置逻辑的三层接口——VLANIF接口来实现）</p><p>interface GigabitEthernet 0/0/1  进入千兆以太网接口 G 0/0/1</p><p>port link-type access  配置端口链路类型位ACCESS</p><p>port default vlan 10   配置端口的默认VLAN为10</p><hr><p>interface GigabitEthernet 0/0/2 进入千兆以太网接口 G 0/0/2</p><p>port link-type access  配置端口链路类型位ACCESS</p><p>port default vlan 20   配置端口的默认VLAN为20</p><p>参考链接：<br><a href="https://www.itmemo.cn/html/819.html">https://www.itmemo.cn/html/819.html</a></p><p>display ip routing-table</p><p>把三层交换机作为DHCP服务器</p><hr><p>基于接口地址池的DHCP</p><p>dhcp enable  开启DHCP功能</p><p>interface Vlanif 10  进入接口Vlanif 10</p><p>dhcp select interface 选择基于接口地址池，把接口ip地址段作为DHCP地址池</p><p>dhcp server dns-list 8.8.8.8  指定接口地址池下的DNS服务器地址</p><p>dhcp server excluded-ip-address 192.168.10.101 192.168.10.253 配置接口地址池中不参与自动分配的ip地址范围</p><p>dhcp server lease day 8 配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p><p>display this</p><p>在PC1接口处抓包看还有 Gratuitous ARP（免费ARP）：<br>去请求自己ip地址的mac地址<br>发Gratuitous ARP做冲突检测<br>Gratuitous ARP 免费ARP，用来检测IP地址是否冲突</p><hr><p>开始配置PC2</p><p>基于全局地址池的DHCP</p><p>interface Vlanif 20<br>dhcp select global<br>quit</p><p>ip pool 20   创建全局地址池</p><p>network 192.168.20.0 mask 24 配置全局地址池可动态分配的IP地址范围（宣告）</p><p>gateway-list 192.168.20.254   配置DHCP客户端的网关地址</p><p>dns-list 9.9.9.9  指定接口地址池下的DNS服务器地址</p><p>lease day 10  配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p><p>excluded-ip-address 192.168.20.151 192.168.20.253 配置接口地址池中不参与自动分配的ip地址范围</p><p>quit</p><p>display current-configuration 查看全局地址池配置</p><hr><p>把PC1也变成基于全局地址池</p><p>interface Vlanif10</p><p>undo dhcp select interface</p><p>display this</p><p>dhcp select global</p><p>ip pool 10</p><p>network 192.168.10.0 mask 24  配置全局地址池可动态分配的IP地址范围（宣告）</p><p>dns-list 8.8.8.8</p><p>lease 8</p><p>流量上来时先会判断属于哪个VLAN，会跟VLANIF10相同网关地址，也就是pool 10地址</p><p>relay，DHCP服务器和DHCP客户端不在同一网段</p><p>扩展知识点</p><p>一、DHCP Relay 中继<br>如果LSW2是DHCP服务器，路由器可以隔离广播，PC1和PC2的广播就不能到LSW2了<br>通过DHCP Relay，DHCP广播转换成单播，发给DHCP服务器</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/2.png" class=""><p>二、DHCP Snooping</p><p>dhcp snooping enable</p><p>有其他DHCP服务器，插入家用路由器（默认是一个DHCP服务器）<br>启用snooping功能，把GE 0/0/3设置成trust接口，其他接口都是unTrust<br>其他任何地方来的DHCP地址都不接受</p><p>interface GigabitEthernet 0/0/1<br>DHCP snooping trusted</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/3.png" class=""><p>三、DHCP选项</p><p>要配置到pool里</p><p>interface VLANIF10</p><p>ip pool 20</p><p>option 43</p><p>跟下面的主机分配ip地址同时，再分配一个ip地址<br>无线里面经常用<br>DHCP<br>option 43<br>给AP分ip地址的同时，告诉AP AC的地址是多少，AP要找AC，通过AC对AP进行全局控制</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/4.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>华为配置专题02动态主机配置协议DHCP</title>
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9802%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AEDHCP/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9802%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AEDHCP/</url>

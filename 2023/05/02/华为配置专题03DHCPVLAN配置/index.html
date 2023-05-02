@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PC1和PC2跨VLAN通信实验，通过SW三层交换机 undo info-center enable 关闭设备自动消息提示 display vlan summary 查看现有vlan 一、三层启VLAN接口 vlan 10 interface Vlanif 10  进入VLANIF10接口 ip address 192.168.10.254 24  配置IP地址为 192.168.10.254">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为配置专题03DHCPVLAN配置">
+<meta property="og:url" content="http://example.com/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="PC1和PC2跨VLAN通信实验，通过SW三层交换机 undo info-center enable 关闭设备自动消息提示 display vlan summary 查看现有vlan 一、三层启VLAN接口 vlan 10 interface Vlanif 10  进入VLANIF10接口 ip address 192.168.10.254 24  配置IP地址为 192.168.10.254">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/1.png">
+<meta property="og:image" content="http://example.com/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/2.png">
+<meta property="og:image" content="http://example.com/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/3.png">
+<meta property="og:image" content="http://example.com/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/4.png">
+<meta property="article:published_time" content="2023-05-02T05:08:00.000Z">
+<meta property="article:modified_time" content="2023-05-02T10:15:10.347Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/1.png">
+  
+  
+  
+  <title>华为配置专题03DHCPVLAN配置 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="华为配置专题03DHCPVLAN配置"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-02 13:08" pubdate>
+          May 2, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">华为配置专题03DHCPVLAN配置</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/1.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>PC1和PC2跨VLAN通信实验，通过SW三层交换机</p>
+<p>undo info-center enable 关闭设备自动消息提示</p>
+<p>display vlan summary 查看现有vlan</p>
+<p>一、<br>三层启VLAN接口</p>
+<p>vlan 10</p>
+<p>interface Vlanif 10  进入VLANIF10接口</p>
+<p>ip address 192.168.10.254 24  配置IP地址为 192.168.10.254，掩码长度为24位</p>
+<p>vlan 20</p>
+<p>interface Vlanif 20  进入VLANIF20接口</p>
+<p>ip address 192.168.20.254 24  配置IP地址为 192.168.20.254，掩码长度为24位</p>
+<p>quit</p>
+<p>二、<br>二层，把相应接口放到对应的VLAN里</p>
+<p>创建了3层的vlan接口后</p>
+<p>（VLANIF接口是基于VLAN的三层逻辑接口，可以配置IP地址。划分VLAN后，同一VLAN内的用户可以互相通信，但是属于不同VLAN的用户不能直接通信。为了实现VLAN间通信，可通过配置逻辑的三层接口——VLANIF接口来实现）</p>
+<p>interface GigabitEthernet 0/0/1  进入千兆以太网接口 G 0/0/1</p>
+<p>port link-type access  配置端口链路类型位ACCESS</p>
+<p>port default vlan 10   配置端口的默认VLAN为10</p>
+<hr>
+<p>interface GigabitEthernet 0/0/2 进入千兆以太网接口 G 0/0/2</p>
+<p>port link-type access  配置端口链路类型位ACCESS</p>
+<p>port default vlan 20   配置端口的默认VLAN为20</p>
+<p>参考链接：<br><a target="_blank" rel="noopener" href="https://www.itmemo.cn/html/819.html">https://www.itmemo.cn/html/819.html</a></p>
+<p>display ip routing-table</p>
+<p>把三层交换机作为DHCP服务器</p>
+<hr>
+<p>基于接口地址池的DHCP</p>
+<p>dhcp enable  开启DHCP功能</p>
+<p>interface Vlanif 10  进入接口Vlanif 10</p>
+<p>dhcp select interface 选择基于接口地址池，把接口ip地址段作为DHCP地址池</p>
+<p>dhcp server dns-list 8.8.8.8  指定接口地址池下的DNS服务器地址</p>
+<p>dhcp server excluded-ip-address 192.168.10.101 192.168.10.253 配置接口地址池中不参与自动分配的ip地址范围</p>
+<p>dhcp server lease day 8 配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p>
+<p>display this</p>
+<p>在PC1接口处抓包看还有 Gratuitous ARP（免费ARP）：<br>去请求自己ip地址的mac地址<br>发Gratuitous ARP做冲突检测<br>Gratuitous ARP 免费ARP，用来检测IP地址是否冲突</p>
+<hr>
+<p>开始配置PC2</p>
+<p>基于全局地址池的DHCP</p>
+<p>interface Vlanif 20<br>dhcp select global<br>quit</p>
+<p>ip pool 20   创建全局地址池</p>
+<p>network 192.168.20.0 mask 24 配置全局地址池可动态分配的IP地址范围（宣告）</p>
+<p>gateway-list 192.168.20.254   配置DHCP客户端的网关地址</p>
+<p>dns-list 9.9.9.9  指定接口地址池下的DNS服务器地址</p>
+<p>lease day 10  配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p>
+<p>excluded-ip-address 192.168.20.151 192.168.20.253 配置接口地址池中不参与自动分配的ip地址范围</p>
+<p>quit</p>
+<p>display current-configuration 查看全局地址池配置</p>
+<hr>
+<p>把PC1也变成基于全局地址池</p>
+<p>interface Vlanif10</p>
+<p>undo dhcp select interface</p>
+<p>display this</p>
+<p>dhcp select global</p>
+<p>ip pool 10</p>
+<p>network 192.168.10.0 mask 24  配置全局地址池可动态分配的IP地址范围（宣告）</p>
+<p>dns-list 8.8.8.8</p>
+<p>lease 8</p>
+<p>流量上来时先会判断属于哪个VLAN，会跟VLANIF10相同网关地址，也就是pool 10地址</p>
+<p>relay，DHCP服务器和DHCP客户端不在同一网段</p>
+<p>扩展知识点</p>
+<p>一、DHCP Relay 中继<br>如果LSW2是DHCP服务器，路由器可以隔离广播，PC1和PC2的广播就不能到LSW2了<br>通过DHCP Relay，DHCP广播转换成单播，发给DHCP服务器</p>
+<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/2.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>二、DHCP Snooping</p>
+<p>dhcp snooping enable</p>
+<p>有其他DHCP服务器，插入家用路由器（默认是一个DHCP服务器）<br>启用snooping功能，把GE 0/0/3设置成trust接口，其他接口都是unTrust<br>其他任何地方来的DHCP地址都不接受</p>
+<p>interface GigabitEthernet 0/0/1<br>DHCP snooping trusted</p>
+<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/3.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>三、DHCP选项</p>
+<p>要配置到pool里</p>
+<p>interface VLANIF10</p>
+<p>ip pool 20</p>
+<p>option 43</p>
+<p>跟下面的主机分配ip地址同时，再分配一个ip地址<br>无线里面经常用<br>DHCP<br>option 43<br>给AP分ip地址的同时，告诉AP AC的地址是多少，AP要找AC，通过AC对AP进行全局控制</p>
+<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/4.png" srcset="/img/loading.gif" lazyload class="">
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>华为配置专题03DHCPVLAN配置</div>
+      <div>http://example.com/2023/05/02/华为配置专题03DHCPVLAN配置/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 2, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/" title="华为配置专题04ACL原理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">华为配置专题04ACL原理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9802%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AEDHCP/" title="华为配置专题02动态主机配置协议DHCP">
+                        <span class="hidden-mobile">华为配置专题02动态主机配置协议DHCP</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
