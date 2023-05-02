@@ -224,6 +224,189 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" target="_self">
+          6-3-3 流量控制和拥塞控制
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/30/6-3-3%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E5%92%8C%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" target="_self">
+        <div>
+          流量控制：为了防止发送方发送速度过快，导致接收方处理不过来，造成丢包重传，浪费网络资源TCP流量控制机制：可变大小的滑动窗口 A发的数据win=3，代表A自己的窗口值         指数级增长（慢开始阶段）至ssthresh门限值后 改为 线性增长（拥塞避免阶段） 线性增长至发生超时（网络拥塞）的拥塞窗口值时做2件事①回到1重新开始②更新ssthresh为拥塞窗口的一半 SD-WAN还是广域网加
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-30 14:55" pubdate>
+              2023-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/" target="_self">
+          6-3-2 TCP三次握手
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/30/6-3-2TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/" target="_self">
+        <div>
+          考点一：控制位ctl=SYN 和 SYN=1 是一样的意思（ctl是控制位）只有第一个包没有ACK，ACK=0了，后面ACK=1    考点二：序列号和确认号小写ack：确认号seq：序列号 ack=1两层意思①确认已经收到②下次想要A发送序列号为seq=1的报文   考点三：状态      TCP四次挥手断开连接 2种情况1、A发完了，A要和B断开连接，B同意，A到B数据发完了 B到A的数据也发
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-30 11:52" pubdate>
+              2023-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" target="_self">
+          6-3-1 TCP UDP报文格式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/30/6-3-1TCP%20UDP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" target="_self">
+        <div>
+          传输层封装协议     0-65535  2^16=65536  16位 序列号：TCP报文序列ID确认号：TCP报文确认ID 标记FlagSYN：同步（SYN）– 发起连接ACK：建立连接后的报文回应，ACK设置为1FIN：终止（FIN）– 释放连接URG：紧急  紧急有效，需要尽快传送 urgentRST：重置，如果端口没开放，发SYN探测，回RSTPSH：Push上层快速取走缓冲区里数据，接
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-30 11:29" pubdate>
+              2023-04-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2023/04/30/6-2-5ICPM%E5%8D%8F%E8%AE%AE/" target="_self">
           6-2-5 ICMP协议
         </a>
@@ -645,194 +828,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/04/29/6-1-4%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/" target="_self">
-          6-1-4 路由器与三层交换机
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/29/6-1-4%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/" target="_self">
-        <div>
-          要实现跨VLAN通信：（3层设备）路由器、三层交换机、防火墙 集线器（二层交换机）的问题1、数据扩散问题造成信息泄露 -&gt; 根据交换机的工作原理：基于目的mac地址进行转发，基于源mac地址 进行mac地址表的学习 这种机制 可以解决数据扩散问题，构建专属的交换通道。 （基于源mac地址进行mac地址表学习，基于目的mac地址进行数据帧的转发） 2、广播风暴 -&gt; VLAN解决 不同V
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-04-29 15:52" pubdate>
-              2023-04-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" target="_self">
-          6-1-3 网桥与交换机
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/29/6-1-3%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA/" target="_self">
-        <div>
-          交换机工作原理：基于源mac地址进行mac地址表学习，基于目的mac地址进行数据帧的转发 FC、ATM、帧中继交换机，默认都是 二层以太网交换机 交换机的寻址 mac地址表、路由表、ARP表   学习构建mac地址表不知道的话，发ARP报文去找对方的mac地址知道后，进行数据封装（目的mac地址、源mac地址等）以太网帧格式在局域网4-6那章有讲   基于源mac地址进行学习，构建自己的mac
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-04-29 15:10" pubdate>
-              2023-04-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/04/29/6-1-2%E4%B8%AD%E7%BB%A7%E5%99%A8%E4%B8%8E%E9%9B%86%E7%BA%BF%E5%99%A8/" target="_self">
-          6-1-2 中继器与集线器
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/04/29/6-1-2%E4%B8%AD%E7%BB%A7%E5%99%A8%E4%B8%8E%E9%9B%86%E7%BA%BF%E5%99%A8/" target="_self">
-        <div>
-          中继器可以进行信号的放大，延长传输距离，只有2个接口   集线器Hub有多个接口，满足众多终端接入，进行信号放大     集线器工作原理   集线器工作原理与问题
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-04-29 15:01" pubdate>
-              2023-04-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
