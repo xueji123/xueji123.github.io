@@ -4,7 +4,57 @@
   
   
   <entry>
-    <title>华为配置专题05ACL配置</title>
+    <title>华为配置专题07 NAT配置</title>
+    <link href="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9807NAT%E9%85%8D%E7%BD%AE/"/>
+    <url>/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9807NAT%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<p>要让PC1 ping 12.1.1.254 可以通，需要在AR1上配置NAT</p><p>ping数据可以到AR2，但AR2的回包无法通过</p><p>静态NAT<br>nat static global 12.1.1.2 inside 192.168.1.1</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>华为配置专题06 NAT原理</title>
+    <link href="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/"/>
+    <url>/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>NAT（Network Address Translation），是指网络地址转换</p><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/1.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/2.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/3.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/4.png" class=""><p>静态NAT</p><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/5.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/6.png" class=""><p>动态NAT</p><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/7.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/8.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/9.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/10.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/11.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/12.png" class=""><p>NAPT（增加地址利用率）</p><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/13.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/14.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/15.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/16.png" class=""><p>Easy-IP</p><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/17.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/18.png" class=""><p>NAT Server（解决安全问题和负载均衡问题f5？）</p><p>外部用户访问内网服务器，右外到内主动发起访问</p><p>外网用户访问到内网服务器几种方式<br>①给内网服务器配置一个公网ip，很不安全<br>②VPN访问<br>③只把内网服务器80端口映射出去</p><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/19.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/20.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/21.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/22.png" class=""><img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/23.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>华为配置专题05 ACL配置</title>
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9805ACL%E9%85%8D%E7%BD%AE/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9805ACL%E9%85%8D%E7%BD%AE/</url>
     
@@ -29,7 +79,7 @@
   
   
   <entry>
-    <title>华为配置专题04ACL原理</title>
+    <title>华为配置专题04 ACL原理</title>
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/</url>
     
@@ -54,7 +104,7 @@
   
   
   <entry>
-    <title>华为配置专题03DHCPVLAN配置</title>
+    <title>华为配置专题03 DHCPVLAN配置</title>
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/</url>
     
@@ -79,7 +129,7 @@
   
   
   <entry>
-    <title>华为配置专题02动态主机配置协议DHCP</title>
+    <title>华为配置专题02 动态主机配置协议DHCP</title>
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9802%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AEDHCP/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9802%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AEDHCP/</url>
     
@@ -104,7 +154,7 @@
   
   
   <entry>
-    <title>华为配置专题01基础配置</title>
+    <title>华为配置专题01 基础配置</title>
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</url>
     
@@ -655,10 +705,10 @@
   
   <entry>
     <title>6-2-5 ICMP协议</title>
-    <link href="/2023/04/30/6-2-5ICPM%E5%8D%8F%E8%AE%AE/"/>
-    <url>/2023/04/30/6-2-5ICPM%E5%8D%8F%E8%AE%AE/</url>
+    <link href="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/"/>
+    <url>/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/</url>
     
-    <content type="html"><![CDATA[<p>tracert后有“*”：NAT、防火墙、超时</p>]]></content>
+    <content type="html"><![CDATA[<p>tracert后有“*”：NAT、防火墙、超时</p><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/1.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/2.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/3.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/4.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/5.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/6.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/7.png" class="">]]></content>
     
     
     <categories>
