@@ -708,7 +708,7 @@
     <link href="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/"/>
     <url>/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/</url>
     
-    <content type="html"><![CDATA[<p>tracert后有“*”：NAT、防火墙、超时</p><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/1.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/2.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/3.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/4.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/5.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/6.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/7.png" class="">]]></content>
+    <content type="html"><![CDATA[<p>tracert后有“*”可能因为<br>NAT、防火墙、超时</p><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/1.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/2.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/3.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/4.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/5.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/6.png" class=""><img src="/2023/04/30/6-2-5ICMP%E5%8D%8F%E8%AE%AE/7.png" class="">]]></content>
     
     
     <categories>
