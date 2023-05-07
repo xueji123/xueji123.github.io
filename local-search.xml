@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>华为配置专题11路由综合实验</title>
+    <link href="/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%20%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/"/>
+    <url>/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%20%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/</url>
+    
+    <content type="html"><![CDATA[<p>RIP、OSPF、BGP配置</p><p>实验目的：<br>PC1可以ping通PC2，R1和R5要分别学到对端网段的路由</p><p>R1、R2、R3之间运行IGP<br>R3和R4之间是EBGP（不同AS之间）<br>R4和R5之间是IBGP</p><p>步骤</p><p>一、配置R1、R2、R3、R4、R5的接口ip<br>检查ip是否配错</p><p>二、配置路由</p><p>先配置AS 100里的，R1、R2、R3运行RIP协议</p><p>R1:<br>rip 1（进程号）<br>version 2   RIP2才支持子网掩码等<br>将3个网段都宣告进rip，只能宣告主类网络<br>network 100.0.0.0<br>network 12.0.0.0<br>network 13.0.0.0<br>quit</p><p>R2:<br>rip 1<br>version 2<br>network 12.0.0.0<br>network 23.0.0.0<br>quit</p><p>R3:<br>rip 1<br>version 2<br>network 23.0.0.0<br>network 13.0.0.0<br>quit<br>display ip routing-table</p><p>运行OSPF最短路径优先路由协议</p><p>R1、R2、R3删除rip协议配置<br>undo rip 1</p><p>R1<br>ospf 1（进程号）<br>area 0 （主干区域）<br>network 100.1.1.0 0.0.0.255（宣告网络）<br>network 12.1.1.0 0.0.0.3（/30就是3）<br>network 13.1.1.0 0.0.0.3<br>quit</p><p>R2<br>ospf 1<br>area 0<br>network 12.1.1.0 0.0.0.3<br>network 23.1.1.0 0.0.0.3</p><p>R3<br>ospf 1<br>area 0<br>network 23.1.1.1 0.0.0.3<br>network 13.1.1.0 0.0.0.3<br>display ospf peer brief 查看邻居关系是否建立，简写，收敛完成</p><p>运行IGP实现内部互通</p><p>配置BGP<br>R3<br>bgp 100 （R3在bgp 100里）<br>peer 34.1.1.2 as-number 200  对等体</p><p>R4<br>bgp 200<br>peer 34.1.1.1 as-number 100<br>peer 45.1.1.2 as-number 200</p><p>R5<br>bgp 200<br>peer 45.1.1.1 as-number 200</p><p>undo peer 34.1.1.1 删除指定ip的peer</p><p>display bgp peer 看bgp邻居关系</p><p>bgp路由比较特别，要手工的宣告或者把其他路由协议学到的路由导入到bgp里面才有，只有邻居关系bgp是没有路由的</p><p>2种方式</p><p>①在bgp里把路由宣告进去<br>比如在R5里<br>ipv4-family unicast   ipv4的单播路由<br>network 200.1.1.0 24  把pc2的网段宣告进bgp，这时R3和R4都学到了PC2网段的路由</p><p>②路由的引入</p><p>pc1 ping通 pc2</p><p>R3已经学到了200.1.1.0/24的路由，把R3通过BGP学到的路由引入到OSPF进程里<br>R3右边通过BGP学到了200的路由，右边学到的路由导入到左边来就行</p><p>互导 叫 路由的引入<br>bgp的路由引入到ospf里</p><p>R3上<br>ospf 1<br>import-route bgp</p><p>ospf路由引入到bgp里</p><p>R3上<br>bgp 100<br>import-route ospf 1</p><p>这时R4上有100.1.1.0/24的路由，但R5上没有</p><p>display bgp routing-table</p><p>R5上已经学到了左边OSPF的路由，但没有加表</p><p>因为R5没有34.1.1.0/30的路由，就不会加入路由表<br>下一跳不可达</p><p>1、在R5上写静态路由，这样就加表了，让下一跳可达</p><p>ip route-static 34.1.1.0 30 45.1.1.1</p><p>2、<br>删除上面配置的静态路由</p><p>在R4上配置</p><p>bgp 200</p><p>peer 45.1.1.2 next-hop-local  R4向R5 bgp peer宣告路由时，把下一跳设置成自己</p><p>先前是从左边学到的路由，对外宣告的时候，下一跳还是R3，R5到R3不可达，所以宣告过去路由，R5不会加表</p><p>如果下一跳改成自己，R4和R5是直连路由，直接可以通，所以就加表</p><p>R5上<br>display ip routing-table</p><p>display bgp routing-table</p><p>pc1<br>ping 200.1.1.1 可以通<br>tracert 200.1.1.1</p><p>把R1到R3之间线路关闭</p><p>R1上<br>interface GigabitEthernet 0/0/2<br>shutdown</p><p>再在pc1上tracert 200.1.1.1</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>华为配置专题10浮动路由和BFD配置</title>
     <link href="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/"/>
     <url>/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/</url>

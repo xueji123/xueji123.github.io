@@ -16,31 +16,22 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、先把router 4个接口的ip配置上 display ip interface brief 查看是否配置错误 CMCC、CUCC、internet 3台设备的接口也都配置好 interface LoopBack 0 环回口一般用来做测试，比较稳定 2、 CMCC、CUCC、internet 3台设备  配置OSPF，把所有的网段宣告出去 ospf 1area 0network 0.0.0">
+    <meta name="description" content="RIP、OSPF、BGP配置   实验目的：PC1可以ping通PC2，R1和R5要分别学到对端网段的路由 R1、R2、R3之间运行IGPR3和R4之间是EBGP（不同AS之间）R4和R5之间是IBGP 步骤 一、配置R1、R2、R3、R4、R5的接口ip检查ip是否配错 二、配置路由 先配置AS 100里的，R1、R2、R3运行RIP协议 R1:rip 1（进程号）version 2   RIP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="华为配置专题10浮动路由和BFD配置">
-<meta property="og:url" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="华为配置专题11路由综合实验">
+<meta property="og:url" content="http://example.com/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%20%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="1、先把router 4个接口的ip配置上 display ip interface brief 查看是否配置错误 CMCC、CUCC、internet 3台设备的接口也都配置好 interface LoopBack 0 环回口一般用来做测试，比较稳定 2、 CMCC、CUCC、internet 3台设备  配置OSPF，把所有的网段宣告出去 ospf 1area 0network 0.0.0">
+<meta property="og:description" content="RIP、OSPF、BGP配置   实验目的：PC1可以ping通PC2，R1和R5要分别学到对端网段的路由 R1、R2、R3之间运行IGPR3和R4之间是EBGP（不同AS之间）R4和R5之间是IBGP 步骤 一、配置R1、R2、R3、R4、R5的接口ip检查ip是否配错 二、配置路由 先配置AS 100里的，R1、R2、R3运行RIP协议 R1:rip 1（进程号）version 2   RIP">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/1.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/2.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/3.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/4.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/5.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/6.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/7.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/8.png">
-<meta property="article:published_time" content="2023-05-03T08:52:00.000Z">
-<meta property="article:modified_time" content="2023-05-04T02:37:47.937Z">
+<meta property="article:published_time" content="2023-05-04T03:15:00.000Z">
+<meta property="article:modified_time" content="2023-05-07T08:50:52.114Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="备考">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/1.png">
   
   
   
-  <title>华为配置专题10浮动路由和BFD配置 - Coding</title>
+  <title>华为配置专题11路由综合实验 - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="华为配置专题10浮动路由和BFD配置"></span>
+            <span id="subtitle" data-typed-text="华为配置专题11路由综合实验"></span>
           
         </div>
 
@@ -217,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-03 16:52" pubdate>
-          May 3, 2023 pm
+        <time datetime="2023-05-04 11:15" pubdate>
+          May 4, 2023 am
         </time>
       </span>
     
@@ -229,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k words
+          1.7k words
         
       </span>
     
@@ -240,7 +231,7 @@
         
         
         
-          16 mins
+          15 mins
         
       </span>
     
@@ -278,69 +269,85 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">华为配置专题10浮动路由和BFD配置</h1>
+            <h1 style="display: none">华为配置专题11路由综合实验</h1>
             
             
               <div class="markdown-body">
                 
-                <img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/1.png" srcset="/img/loading.gif" lazyload class="">
+                <p>RIP、OSPF、BGP配置</p>
 
-<p>1、先把router 4个接口的ip配置上</p>
-<p>display ip interface brief 查看是否配置错误</p>
-<p>CMCC、CUCC、internet 3台设备的接口也都配置好</p>
-<p>interface LoopBack 0 环回口一般用来做测试，比较稳定</p>
-<p>2、</p>
-<p>CMCC、CUCC、internet 3台设备  配置OSPF，把所有的网段宣告出去</p>
-<p>ospf 1<br>area 0<br>network 0.0.0.0 0.0.0.0 把自己直连的所有网段通告进OSPF中 （传统的方法是把当前路由器直连的网段宣告进OSPF）</p>
-<p>display ospf peer brief 查看邻居路由</p>
-<p>3、配置出口路由器router</p>
-<p>NAT配置<br>easy ip 把所有内部ip都转成出口ip地址</p>
-<p>acl 2000<br>rule 10 permit source 192.168.10.0 0.0.0.255<br>rule 20 permit source 192.168.20.0 0.0.0.255<br>quit</p>
-<p>interface GigabitEthernet 0/0/2<br>nat outbound 2000<br>quit</p>
-<p>interface GigabitEthernet 4/0/0<br>nat outbound 2000<br>quit</p>
-<p>配置了2个NAT，到底往哪边走，配置出口路由决定</p>
-<p>配置2条出口路由（2个运营商 电信和联通），2条等价（优先级一样的话）的默认路由，出口必须要用默认路由</p>
-<p>ip route-static 0.0.0.0 0 12.1.1.2</p>
-<p>ip route-static 0.0.0.0 0 13.1.1.2</p>
-<p>在PC1和PC2 tracert 互联网地址 22.22.22.22，发现都是从 13.1.1.2走的</p>
-<p>所以要在router配置负载均衡  load-balance src-ip</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/2.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>还是不行，是不是上面链路不通，可以把上面关闭试试看<br>interface GigabitEthernet 4/0/0<br>shutdown</p>
-<p>取消关闭接口<br>undo shutdown<br>display ip interface brief 查看接口状态</p>
-<p>还是只走下面的13.1.1.2，因为华为的AR中低端系列路由器，不是基于单个包进行负载均衡的，不能设置。<br>高端NE系列，NE40、NE20是支持的。基于单包做负载均衡，对路由器的CPU和缓存消耗较大</p>
-<p>出口router上调节路由的Preference，越小越优先<br>ip route-static 0.0.0.0 0 13.1.1.2 preference 100</p>
-<p>display ip routing-table 查看联通路由已经没有了</p>
-<p>这就是浮动路由！！！<br>把preference调大后，就不优先了，不优先就隐藏起来<br>上面电信的路由一挂，就会走下面的preference 100的路由，会重新启用</p>
-<p>interface GigabitEthernet 0/0/2<br>shutdown<br>quit</p>
-<p>display ip routing-table</p>
-<p>电信的 0/0/0挂了，也会走下面preference 100的路由<br>在CTCC上 interface GigabitEthernet 0/0/0<br>shutdown<br>quit</p>
-<p>在router和CTCC之间增加一台交换机，并把CTCC的 0/0/0接口shutdown</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/3.png" srcset="/img/loading.gif" lazyload class="">
+<p>实验目的：<br>PC1可以ping通PC2，R1和R5要分别学到对端网段的路由</p>
+<p>R1、R2、R3之间运行IGP<br>R3和R4之间是EBGP（不同AS之间）<br>R4和R5之间是IBGP</p>
+<p>步骤</p>
+<p>一、配置R1、R2、R3、R4、R5的接口ip<br>检查ip是否配错</p>
+<p>二、配置路由</p>
+<p>先配置AS 100里的，R1、R2、R3运行RIP协议</p>
+<p>R1:<br>rip 1（进程号）<br>version 2   RIP2才支持子网掩码等<br>将3个网段都宣告进rip，只能宣告主类网络<br>network 100.0.0.0<br>network 12.0.0.0<br>network 13.0.0.0<br>quit</p>
+<p>R2:<br>rip 1<br>version 2<br>network 12.0.0.0<br>network 23.0.0.0<br>quit</p>
+<p>R3:<br>rip 1<br>version 2<br>network 23.0.0.0<br>network 13.0.0.0<br>quit<br>display ip routing-table</p>
+<p>运行OSPF最短路径优先路由协议</p>
+<p>R1、R2、R3删除rip协议配置<br>undo rip 1</p>
+<p>R1<br>ospf 1（进程号）<br>area 0 （主干区域）<br>network 100.1.1.0 0.0.0.255（宣告网络）<br>network 12.1.1.0 0.0.0.3（/30就是3）<br>network 13.1.1.0 0.0.0.3<br>quit</p>
+<p>R2<br>ospf 1<br>area 0<br>network 12.1.1.0 0.0.0.3<br>network 23.1.1.0 0.0.0.3</p>
+<p>R3<br>ospf 1<br>area 0<br>network 23.1.1.1 0.0.0.3<br>network 13.1.1.0 0.0.0.3<br>display ospf peer brief 查看邻居关系是否建立，简写，收敛完成</p>
 
-<p>这时候出口路由还是走CTCC，这时候需要通过BFD来解决该问题（router探测不到LSW1和CTCC之间线路故障）</p>
-<p>BFD是Bidirectional Forwarding Detection的缩写，它是一个用于检测两个转发点之间故障的网络协议<br><a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/BFD.html">https://info.support.huawei.com/info-finder/encyclopedia/zh/BFD.html</a></p>
-<p>BFD链路质量、接口地址探测</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/4.png" srcset="/img/loading.gif" lazyload class="">
 
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/5.png" srcset="/img/loading.gif" lazyload class="">
+<p>运行IGP实现内部互通</p>
+<p>配置BGP<br>R3<br>bgp 100 （R3在bgp 100里）<br>peer 34.1.1.2 as-number 200  对等体</p>
+<p>R4<br>bgp 200<br>peer 34.1.1.1 as-number 100<br>peer 45.1.1.2 as-number 200</p>
+<p>R5<br>bgp 200<br>peer 45.1.1.1 as-number 200</p>
+<p>undo peer 34.1.1.1 删除指定ip的peer</p>
+<p>display bgp peer 看bgp邻居关系</p>
+<p>bgp路由比较特别，要手工的宣告或者把其他路由协议学到的路由导入到bgp里面才有，只有邻居关系bgp是没有路由的</p>
+<p>2种方式</p>
+<p>①在bgp里把路由宣告进去<br>比如在R5里<br>ipv4-family unicast   ipv4的单播路由<br>network 200.1.1.0 24  把pc2的网段宣告进bgp，这时R3和R4都学到了PC2网段的路由</p>
 
-<p>display bfd session all 查看BFD状态</p>
-<p>模拟器不支持单臂回声，因此要在2台路由器设备都配置BFD才行</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/6.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>router上：<br>bfd<br>quit<br>bfd 1 bind peer-ip 12.1.1.2 source-ip 12.1.1.1 auto<br>commit   让BFD生效</p>
-<p>display bfd session all</p>
-<p>这时去router上把 0/0/2 shutdown<br>在CTCC上监测BFD就会是 Init关闭状态了</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/7.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>这时在router上做一件事情，上面这条默认路由跟踪一个BFD<br>ip route-static 0.0.0.0 12.1.1.2 track bfd-session 1<br>如果这个bfd不通了后，这条路由就会删掉</p>
-<p>在CTCC上<br>interface GigabitEthernet 0/0/0<br>shutdown</p>
-<p>display bfd session all</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/8.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>router上的电信路由就被删除了<br>display ip routing-table</p>
-<p>浮动路由和BFD联合应用！！！</p>
+<p>②路由的引入</p>
+<p>pc1 ping通 pc2</p>
+<p>R3已经学到了200.1.1.0/24的路由，把R3通过BGP学到的路由引入到OSPF进程里<br>R3右边通过BGP学到了200的路由，右边学到的路由导入到左边来就行</p>
+<p>互导 叫 路由的引入<br>bgp的路由引入到ospf里</p>
+<p>R3上<br>ospf 1<br>import-route bgp</p>
+
+
+<p>ospf路由引入到bgp里</p>
+<p>R3上<br>bgp 100<br>import-route ospf 1</p>
+<p>这时R4上有100.1.1.0/24的路由，但R5上没有</p>
+
+
+<p>display bgp routing-table</p>
+<p>R5上已经学到了左边OSPF的路由，但没有加表</p>
+
+
+<p>因为R5没有34.1.1.0/30的路由，就不会加入路由表<br>下一跳不可达</p>
+<p>1、在R5上写静态路由，这样就加表了，让下一跳可达</p>
+<p>ip route-static 34.1.1.0 30 45.1.1.1</p>
+
+
+
+<p>2、<br>删除上面配置的静态路由</p>
+<p>在R4上配置</p>
+<p>bgp 200</p>
+<p>peer 45.1.1.2 next-hop-local  R4向R5 bgp peer宣告路由时，把下一跳设置成自己</p>
+<p>先前是从左边学到的路由，对外宣告的时候，下一跳还是R3，R5到R3不可达，所以宣告过去路由，R5不会加表</p>
+<p>如果下一跳改成自己，R4和R5是直连路由，直接可以通，所以就加表</p>
+<p>R5上<br>display ip routing-table</p>
+
+
+
+<p>display bgp routing-table</p>
+
+
+
+<p>pc1<br>ping 200.1.1.1 可以通<br>tracert 200.1.1.1</p>
+<p>把R1到R3之间线路关闭</p>
+<p>R1上<br>interface GigabitEthernet 0/0/2<br>shutdown</p>
+<p>再在pc1上tracert 200.1.1.1</p>
+
+
 
                 
               </div>
@@ -386,8 +393,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>华为配置专题10浮动路由和BFD配置</div>
-      <div>http://example.com/2023/05/03/华为配置专题10浮动路由和BFD配置/</div>
+      <div>华为配置专题11路由综合实验</div>
+      <div>http://example.com/2023/05/04/华为配置专题11 路由综合实验/</div>
     </div>
     <div class="license-meta">
       
@@ -399,7 +406,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 3, 2023</div>
+          <div>May 4, 2023</div>
         </div>
       
       
@@ -431,18 +438,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%20%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" title="华为配置专题11路由综合实验">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">华为配置专题11路由综合实验</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9809VRRP%E9%85%8D%E7%BD%AE/" title="华为配置专题09 VRRP配置">
-                        <span class="hidden-mobile">华为配置专题09 VRRP配置</span>
+                      <a href="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/" title="华为配置专题10浮动路由和BFD配置">
+                        <span class="hidden-mobile">华为配置专题10浮动路由和BFD配置</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
