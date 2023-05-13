@@ -430,10 +430,10 @@
   
   <entry>
     <title>2-7 脉码调制PCM</title>
-    <link href="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E6%95%B4PCM/"/>
-    <url>/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E6%95%B4PCM/</url>
+    <link href="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/"/>
+    <url>/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/</url>
     
-    <content type="html"><![CDATA[<p>数字数据 通过 数字发送器 -&gt; 数字信号  编码</p><p>数字数据 通过 调制器  -&gt; 模拟信号  调制</p><p>模拟数据 通过 PCM编码器 -&gt; 数字信号  编码</p><p>模拟数据 通过 放大器调制器 -&gt; 模拟信号  调制</p><p>PCM计算、曼彻斯特编码、差分曼彻斯特编码 都不需要 代入 R=Blog2N=2Wlog2N，C=Wlog2(1+S/N)</p><p>dB=10log10(S/N)</p><p>log2N=log2(128)=7bit</p>]]></content>
+    <content type="html"><![CDATA[<p>数字数据 通过 数字发送器 -&gt; 数字信号  编码</p><p>数字数据 通过 调制器  -&gt; 模拟信号  调制</p><p>模拟数据 通过 PCM编码器 -&gt; 数字信号  编码</p><p>模拟数据 通过 放大器调制器 -&gt; 模拟信号  调制</p><img src="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/1.png" class=""><p>PCM计算、曼彻斯特编码、差分曼彻斯特编码 都不需要 代入 R=Blog2N=2Wlog2N，C=Wlog2(1+S/N)</p><p>dB=10log10(S/N)</p><p>log2N=log2(128)=7bit</p><img src="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/2.png" class=""><img src="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/3.png" class=""><img src="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/4.png" class=""><img src="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/5.png" class=""><img src="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/6.png" class=""><img src="/2023/05/01/2-7%E8%84%89%E7%A0%81%E8%B0%83%E5%88%B6PCM/7.png" class="">]]></content>
     
     
     <categories>
