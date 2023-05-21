@@ -16,52 +16,38 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="隔离:①VLAN  802.1Q tag，局域网QinQ（城域网用的很多）  4094个VLAN，2个VLAN就行，4094*4094，扩展VLAN数量Vxlan  24位VNI虚拟网络号   隔离出2^24网络号，跟QinQ一样，数据中心租户的隔离  vlan有12位表示VLAN">
+    <meta name="description" content="场景化无线部署方案 室外AP高密AP墙面AP分布式AP    室外AP：①防水、防尘，IP67、IP68②覆盖范围广③功率大 发射功率室内AP：100mw   20dBm室外AP：500mw   27dBm 无线控制器AC功能①实现用户无线漫游（从学生宿舍走到教学楼，无线网络一直不掉线，AP之间切换无感知；AC控制下面所有AP）②AP管理③安全控制 转发模式①隧道转发（AP和AC建立capwap隧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IP子网划分专题">
-<meta property="og:url" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/index.html">
+<meta property="og:title" content="2023年5月模拟题A">
+<meta property="og:url" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="隔离:①VLAN  802.1Q tag，局域网QinQ（城域网用的很多）  4094个VLAN，2个VLAN就行，4094*4094，扩展VLAN数量Vxlan  24位VNI虚拟网络号   隔离出2^24网络号，跟QinQ一样，数据中心租户的隔离  vlan有12位表示VLAN">
+<meta property="og:description" content="场景化无线部署方案 室外AP高密AP墙面AP分布式AP    室外AP：①防水、防尘，IP67、IP68②覆盖范围广③功率大 发射功率室内AP：100mw   20dBm室外AP：500mw   27dBm 无线控制器AC功能①实现用户无线漫游（从学生宿舍走到教学楼，无线网络一直不掉线，AP之间切换无感知；AC控制下面所有AP）②AP管理③安全控制 转发模式①隧道转发（AP和AC建立capwap隧">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/1.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/2.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/3.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/4.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/5.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/6.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/7.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/8.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/9.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/10.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/11.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/12.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/13.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/14.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/15.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/16.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/17.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/18.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/19.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/20.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/21.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/22.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/23.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/24.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/25.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/26.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/27.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/28.png">
-<meta property="og:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/29.png">
-<meta property="article:published_time" content="2023-05-20T05:29:00.000Z">
-<meta property="article:modified_time" content="2023-05-20T11:15:27.447Z">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/1.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/2.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/3.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/4.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/6.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/5.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/7.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/8.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/9.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/10.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/11.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/12.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/14.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/13.png">
+<meta property="og:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/15.png">
+<meta property="article:published_time" content="2023-05-21T03:38:00.000Z">
+<meta property="article:modified_time" content="2023-05-21T10:10:04.112Z">
 <meta property="article:author" content="xueji123">
-<meta property="article:tag" content="备考">
+<meta property="article:tag" content="真题">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/1.png">
+<meta name="twitter:image" content="http://example.com/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/1.png">
   
   
   
-  <title>IP子网划分专题 - Coding</title>
+  <title>2023年5月模拟题A - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="IP子网划分专题"></span>
+            <span id="subtitle" data-typed-text="2023年5月模拟题A"></span>
           
         </div>
 
@@ -238,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-20 13:29" pubdate>
-          May 20, 2023 pm
+        <time datetime="2023-05-21 11:38" pubdate>
+          May 21, 2023 am
         </time>
       </span>
     
@@ -250,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          158 words
+          2.1k words
         
       </span>
     
@@ -261,7 +247,7 @@
         
         
         
-          2 mins
+          18 mins
         
       </span>
     
@@ -299,73 +285,90 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">IP子网划分专题</h1>
+            <h1 style="display: none">2023年5月模拟题A</h1>
             
             
               <div class="markdown-body">
                 
-                <img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/1.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/2.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/3.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/4.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/5.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/6.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/7.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/8.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/9.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/10.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/11.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/12.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/13.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/14.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/15.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/16.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/17.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/18.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/19.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/20.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/21.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/22.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/23.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/24.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/25.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/26.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/27.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/28.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/29.png" srcset="/img/loading.gif" lazyload class="">
+                <p>场景化无线部署方案</p>
+<p>室外AP<br>高密AP<br>墙面AP<br>分布式AP</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/1.png" srcset="/img/loading.gif" lazyload class="">
 
 
-<p>隔离:<br>①VLAN  802.1Q tag，局域网<br>QinQ（城域网用的很多）  4094个VLAN，2个VLAN就行，4094*4094，扩展VLAN数量<br>Vxlan  24位VNI虚拟网络号   隔离出2^24网络号，跟QinQ一样，数据中心租户的隔离 </p>
-<p>vlan有12位表示VLAN ID  2^12=4096</p>
-<p>防火墙划分ZONE，FC交换机里也有</p>
+<p>室外AP：<br>①防水、防尘，IP67、IP68<br>②覆盖范围广<br>③功率大</p>
+<p>发射功率<br>室内AP：100mw   20dBm<br>室外AP：500mw   27dBm</p>
+<p>无线控制器AC功能<br>①实现用户无线漫游（从学生宿舍走到教学楼，无线网络一直不掉线，AP之间切换无感知；AC控制下面所有AP）<br>②AP管理<br>③安全控制</p>
+<p>转发模式<br>①隧道转发（AP和AC建立capwap隧道，数据从AC出去）<br>②直接转发（数据从AP直接出去）</p>
+<p>capwap隧道功能<br>①控制流量（比如下发版本升级）<br>②传数据流量</p>
+<p>capwap隧道协议是基于udp的封装<br>vxlan基于udp的封装（数据中心用的多些）</p>
+<p>基于udp的封装具有很好的穿透性，穿透NAT</p>
+<p>云AC（华三绿洲、锐捷），AC放在云端，下面的AC跨过互联网，找到云AC，由云AC对所有的设备统一配置。</p>
+<p>教育、医疗不会用云AC；商业连锁云AC用的多些，稍微小一些的场景（商场）</p>
+<p>企业和分支机构也会用云AC：<br>比如中石油，每个加油站都要部署wifi，2、3个AP，在总部放2个AC，下面所有AP都找这2个AC</p>
+<p>一个项目里，部分人用隧道模式，另一部分用直接转发模式，如何实现？<br>①SSID<br>②VAP<br>一个AP广播出2个SSID，对应2个VAP，每个VAP服务模式在后台可以设置</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/2.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>禁止迅雷等软件：使用 上网行为管理<br>日志保存是用 日志审计  保存6个月</p>
+<p>网络安全法：<br>指定网络安全负责人，对个人信息隐私提出保护，在2017年6月1日提出</p>
+<p>园区网规划设计：防火墙、入侵检测、漏扫</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/3.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>无线安全认证</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/4.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>访客用的最多的是短信认证，微信认证用的很少，腾讯把认证接口都关闭了</p>
+<p>短信认证的目的是什么：实名认证</p>
+<p>NQA、BFD 网络探测的技术</p>
+<p><a target="_blank" rel="noopener" href="https://xueji123.github.io/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9808VRRP%E5%8E%9F%E7%90%86/">https://xueji123.github.io/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9808VRRP%E5%8E%9F%E7%90%86/</a></p>
+<p>探测电信网络是否正常，通过ICMP</p>
+<p>浮动路由，2条等价默认路由（优先级60），调整其中一条路由优先级，其中一条路由优先级挂掉后，另一条可以生效</p>
+<p><a target="_blank" rel="noopener" href="https://xueji123.github.io/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/">https://xueji123.github.io/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/</a></p>
+<p>核心交换机和出口路由器之间配置静态路由<br>①核心交换机要配置默认路由 指向路由器<br>②出口路由器配置默认指向 互联网<br>③出口路由器要配置静态路由器<br>路由协议专题<br><a target="_blank" rel="noopener" href="https://xueji123.github.io/2023/04/22/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%93%E9%A2%98/">https://xueji123.github.io/2023/04/22/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E4%B8%93%E9%A2%98/</a></p>
+<p>内部设备上一定要有默认路由指向互联网出口</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/6.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/5.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/7.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/8.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/9.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>策略路由怎么配置？<br>①配置ACL，匹配流量<br>②流分类<br>③流行为<br>④流策略<br>⑤接口应用策略</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/10.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/11.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>配置题：<br>1、题干描述<br>2、配置上下文，对称的</p>
+<p>裸光纤/裸纤（80公里以内）、专线、IPSec VPN</p>
+<p>学校里裸光纤很多，新老校区之间</p>
+<p>裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。<br>专线的成本和部署难度介于裸纤和IPSec VPN之间</p>
+<p>光纤配线架、ODF</p>
+<p>专线，MPLS  Multi-Protocol Label Switching<br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2264523?from=15425&amp;areaSource=102001.2&amp;traceId=9_rCHzRb00Z1vJSLXeAPN">https://cloud.tencent.com/developer/article/2264523?from=15425&amp;areaSource=102001.2&amp;traceId=9_rCHzRb00Z1vJSLXeAPN</a></p>
+<p>政务单位，政务网。<br>裸光纤：光纤断了后，就无法互联。<br>专线：运营商逻辑线路，错综复杂，冗余效果</p>
+<p>双活数据中心里面，对2个数据中心距离要求是60或80公里以内</p>
+<p>接入交换机常配置的功能<br>①认证 802.1x<br>②VLAN<br>③STP<br>④端口安全</p>
+<p>二层的攻击有哪些：<br>①mac地址欺骗<br>②mac地址表洪泛<br>③STP（洪泛BPDU）<br>④VLAN欺骗<br>⑤跨VLAN数据的欺骗</p>
+<p>三层的攻击：<br>①IP地址欺骗<br>②ICMP洪泛<br>③OSPF路由表的攻击</p>
+<p>双核心<br>①VRRP+MSTP<br>②堆叠+链路聚合</p>
+<p>VRRP+MSTP方案的问题<br>①设备多，网络管理复杂<br>②接口被生成树阻塞，链路利用率低</p>
+<p>堆叠<br>优势<br>①逻辑上变为一台设备，简化网络管理<br>②提升系统可靠性，避免单点故障<br>③配合链路聚合等技术，防止接口被生成树阻塞，提升链路利用率</p>
+<p>劣势<br>①堆叠是私有协议，不支持跨厂商设备堆叠<br>②系统升级会造成业务中断<br>③多台设备堆叠，只有一个主控处理工作状态，存在资源浪费</p>
+<p>二、（网络安全+存储、计算带宽）<br>抗D设备也是旁挂，引流+清洗</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/12.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/14.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>重放攻击，已经发过的数据包再发一次，目的是获取授权</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/13.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>代理服务器：隐藏攻击者ip</p>
+<img src="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/15.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>2T 要几个RAID6</p>
+<p>RAID2.0优势<br>①自动负载均衡，降低了存储系统整体故障率<br>②快速精简重构，降低了双盘系统失效率和数据丢失风险<br>③故障自检自愈，保证了系统可靠性<br>④虚拟化池设计，降低存储系统管理难度</p>
+<p>试题3<br>路由策略</p>
 
                 
               </div>
@@ -399,7 +402,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%87%E8%80%83/">#备考</a>
+        <a href="/tags/%E7%9C%9F%E9%A2%98/">#真题</a>
       
     </div>
   
@@ -411,8 +414,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>IP子网划分专题</div>
-      <div>http://example.com/2023/05/20/IP子网划分专题/</div>
+      <div>2023年5月模拟题A</div>
+      <div>http://example.com/2023/05/21/2023年5月模拟题A/</div>
     </div>
     <div class="license-meta">
       
@@ -424,7 +427,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 20, 2023</div>
+          <div>May 21, 2023</div>
         </div>
       
       
@@ -456,18 +459,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/" title="2023年5月模拟题A">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023年5月模拟题A</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/14/%E8%AE%A1%E7%AE%97%E4%B8%93%E9%A2%98%E7%AA%81%E7%A0%B4/" title="计算专题突破">
-                        <span class="hidden-mobile">计算专题突破</span>
+                      <a href="/2023/05/20/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/" title="IP子网划分专题">
+                        <span class="hidden-mobile">IP子网划分专题</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
