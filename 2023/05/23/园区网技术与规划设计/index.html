@@ -16,16 +16,39 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="VRRP：网关冗余抢占延时  preempt-mode timer delay主的挂了后，备-&gt;主，主恢复后，主抢占回主 堆叠 配合链路聚合，端口聚合，防止形成环路 入侵检测IDS和入侵防御IPS区别   ①IDS:只检测，不阻断（镜像）IPS:检测 和 阻断②IDS:旁挂  入侵检测IPS:串行  入侵防御 防火墙串行和旁挂有什么区别旁挂:引流，有选择的引流检测，通过策略路由、SDN 引流">
+<meta property="og:type" content="article">
 <meta property="og:title" content="园区网技术与规划设计">
-<meta property="og:url" content="http://example.com/2023/05/02/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:url" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Coding">
+<meta property="og:description" content="VRRP：网关冗余抢占延时  preempt-mode timer delay主的挂了后，备-&gt;主，主恢复后，主抢占回主 堆叠 配合链路聚合，端口聚合，防止形成环路 入侵检测IDS和入侵防御IPS区别   ①IDS:只检测，不阻断（镜像）IPS:检测 和 阻断②IDS:旁挂  入侵检测IPS:串行  入侵防御 防火墙串行和旁挂有什么区别旁挂:引流，有选择的引流检测，通过策略路由、SDN 引流">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-05-02T01:55:00.000Z">
-<meta property="article:modified_time" content="2023-05-02T01:55:43.345Z">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/2.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/1.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/3.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/4.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/5.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/6.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/7.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/8.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/9.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/10.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/11.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/12.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/13.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/14.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/15.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/17.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/16.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/18.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/19.png">
+<meta property="og:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/20.png">
+<meta property="article:published_time" content="2023-05-23T00:54:00.000Z">
+<meta property="article:modified_time" content="2023-05-25T12:54:49.139Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="备考">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/2.png">
   
   
   
@@ -206,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-02 09:55" pubdate>
-          May 2, 2023 am
+        <time datetime="2023-05-23 08:54" pubdate>
+          May 23, 2023 am
         </time>
       </span>
     
@@ -218,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          1.9k words
         
       </span>
     
@@ -229,7 +252,7 @@
         
         
         
-          1 mins
+          16 mins
         
       </span>
     
@@ -272,7 +295,114 @@
             
               <div class="markdown-body">
                 
-                
+                <p>VRRP：网关冗余<br>抢占延时  preempt-mode timer delay<br>主的挂了后，备-&gt;主，主恢复后，主抢占回主</p>
+<p>堆叠</p>
+<p>配合链路聚合，端口聚合，防止形成环路</p>
+<p>入侵检测IDS和入侵防御IPS区别</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/2.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>①<br>IDS:只检测，不阻断（镜像）<br>IPS:检测 和 阻断<br>②<br>IDS:旁挂  入侵检测<br>IPS:串行  入侵防御</p>
+<p>防火墙串行和旁挂有什么区别<br>旁挂:引流，有选择的引流检测，通过策略路由、SDN 引流<br>串行:所有数据流量都会经过</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/1.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>纵向网<br>省、市、区县  纵向骨干大网<br>zf、公安、公检法</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/3.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/4.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>逻辑设计<br>出口路由器:<br>NAT、多业务接口、策略路由、智能选路、端口映射</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/5.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>物理设计:综合布线<br>1、接入交换机放到每层交换机里<br>2、接入交换机通过多模光纤连到汇聚交换机<br>3、多栋楼，汇聚交换机连到中心机房，中心机房里放核心交换机<br>汇聚交换机和核心交换机之间通过单模光纤<br>多模500m以内。单模10KM、40KM</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/6.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>交换机选择<br>内网、外网、设备网</p>
+<p>信息点:网口（单口或双口）CAD图里有标注<br>企业级项目里 交换机都是 24口或者48口（下行接口，连电脑、设备等终端的接口），上行接口没算在24或48里<br>设备网:连门禁、监控摄像头，考虑POE交换机；外网里有wifi、无线AP，考虑用POE交换机</p>
+<p>wifi建设</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/7.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>场景化无线部署方案</p>
+<p>无线不重叠信道：2.4G、5G<br>2.4G  1   6   11<br>5G    5个</p>
+<p>阶梯教室 1000个人开会，找性能强的AP，带的人数多，高密AP</p>
+<p>面板AP</p>
+<p>分布式AP（比如酒店走廊）中间有个中心AP，用网线向里面放置分布式AP</p>
+<p>墙面AP和分布式AP的区别？<br>中心AP：POE交换机+微AC，分布式的省授权license（比如1个墙面AP只算0.5license）</p>
+<p>室外AP:跟运营商天线基站一样，防尘、防水、覆盖范围大（无线城市）</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/8.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>网络安全设计<br>端口安全:限制端口只连一个PC，根据mac地址<br>MAC地址表<br>mac地址、接口、VLAN  16K、32K 交换机mac地址表项容量</p>
+<p>MAC地址表、ARP表、路由表</p>
+<p>BPDU Guard</p>
+<p>DHCP Snooping 防止私接</p>
+<p>三级等保一般多久做一次测评：1年<br>日志存6个月（半年）</p>
+<p>网络安全法（颁布时间2016年11月7日 实施时间2017年6月1日）、<br>密码法（颁布时间2019年10月26日 实施时间2020年1月1日）、<br>数据安全法 （颁布时间2021年6月10日 实施时间2021年9月1日）</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/9.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>网络优化设计</p>
+<p>负载均衡<br>1、链路负载均衡（防火墙、路由器、LB）<br>2、服务器负载均衡（LB）<br>3、全局负载均衡（互联网公司在全球有很多数据中心，多数据中心的应用）</p>
+<p>广域网加速（SD-WAN）（WOC）<br>SD-WAN: 数据压缩   在线视频会议、赛事转播<br>针对TCP、UDP协议优化，让其工作更高效，适用于上层业务</p>
+<p>总分机构</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/10.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>运维设计</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/11.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/12.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>以太网/IP-SAN  典型带宽: 10G、40G<br>FC-SAN  典型带宽: 2G、4G、8G、16G、32G</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/13.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>高优先级 -&gt; 低优先级 outbound 出口<br>低优先级 -&gt; 高优先级 inbound 入口</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/14.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>NFS、CIFS（微软） -&gt; NAS</p>
+<p>接入层和核心层功能   二层架构</p>
+<p>优点<br>①架构简单，部署管理方便<br>②节省成本</p>
+<p>缺点<br>①网络规模受限制，板卡固定<br>②对核心交换机操作，会影响业务平稳运行</p>
+<p>基于源地址的策略路由</p>
+<p>电子政务内网要是物理隔离  </p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/15.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>视频会议（polycom宝利通）一般用VPN 或者 专线</p>
+<p>端口映射太耗费地址</p>
+<p>H.323  TCP 1719、1720</p>
+<p>FC-SAN       IP-SAN</p>
+<p>网络存储技术</p>
+<p>一、RAID（Redundant Arrays of independent Disks）独立冗余磁盘阵列</p>
+<p>二、DAS（Direct-Attached Storage）开放系统的直连式存储</p>
+<p>三、NAS（Network Attached Storage）网络附属存储</p>
+<p>带有瘦AP服务的存储设备，有自己控制器，大大降低存储成本</p>
+<p>NAS中存储信息都是采用RAID技术进行管理的，能有效保护数据。NAS可以通过以太网网络同时共享给多个客户端</p>
+<p>采用TCP/IP网络进行数据交换，不同厂商的产品（服务器、交换机）只要满足标准的协议就可以互联互通，没有兼容性要求</p>
+<p>四、SAN（Storage Area Network）存储区域网络</p>
+<p>防火墙串行部署  和 旁挂部署的区别 </p>
+<p>旁挂模式可以有选择地将流量引导到防火墙上，即对需要安全检测的流量引导到防火墙上进行处理，对不需要进行安全检测的流量<br>直接通过路由器转发</p>
+<p>NAT   NAT-Server（端口映射）</p>
+<p>CSS集群  istack堆叠    Eth-trunk端口聚合</p>
+<p>出口路由器功能：</p>
+<p>防火墙</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/17.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/16.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/18.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/19.png" srcset="/img/loading.gif" lazyload class="">
+
+
+
+<p>NAT、智能选路  路由器<br>安全   防火墙</p>
+<img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/20.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>AAA  认证、计费、授权</p>
+<p>PPPOE  MAC   认证</p>
+<p>同一个厂商的都用堆叠，异构厂商要用VRRP</p>
+
                 
               </div>
             
@@ -318,7 +448,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>园区网技术与规划设计</div>
-      <div>http://example.com/2023/05/02/园区网技术与规划设计/</div>
+      <div>http://example.com/2023/05/23/园区网技术与规划设计/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +460,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 2, 2023</div>
+          <div>May 23, 2023</div>
         </div>
       
       
@@ -362,9 +492,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/" title="华为配置专题01 基础配置">
+                      <a href="/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/" title="考前冲刺知识点">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">华为配置专题01 基础配置</span>
+                        <span class="hidden-mobile">考前冲刺知识点</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -372,8 +502,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/01/2-11CRC%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81/" title="2-11 CRC循环冗余校验码">
-                        <span class="hidden-mobile">2-11 CRC循环冗余校验码</span>
+                      <a href="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/" title="2023年5月模拟题A">
+                        <span class="hidden-mobile">2023年5月模拟题A</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

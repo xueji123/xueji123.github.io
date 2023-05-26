@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>2023年5月模拟B卷</title>
+    <link href="/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/"/>
+    <url>/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>真题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>考前冲刺知识点</title>
+    <link href="/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <url>/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    
+    <content type="html"><![CDATA[<img src="/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/1.png" class=""><img src="/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/2.png" class=""><img src="/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/3.png" class=""><p>策略路由和路由策略区别</p><p>1、功能不同<br>策略路由 是根据特定策略和应用，让数据流量按划定的规则转发；路由策略是用ACL/route-policy/filter-policy控制路由发布，让对方学到适当路由条目</p><p>2、作用层面不同<br>策略路由 转发层面       路由策略 控制层面（控制路由信息发布）</p><p>3、与路由表关系不同</p><p>策略路由需要手工逐跳配置，以保证报文按策略转发；路由策略跟路由表天然集成</p><p>4、应用工具和命令不同</p><p>策略路由：traffic-policy<br>路由策略: route-polic、filter-policy</p><img src="/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/4.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>园区网技术与规划设计</title>
+    <link href="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/"/>
+    <url>/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/</url>
+    
+    <content type="html"><![CDATA[<p>VRRP：网关冗余<br>抢占延时  preempt-mode timer delay<br>主的挂了后，备-&gt;主，主恢复后，主抢占回主</p><p>堆叠</p><p>配合链路聚合，端口聚合，防止形成环路</p><p>入侵检测IDS和入侵防御IPS区别</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/2.png" class=""><p>①<br>IDS:只检测，不阻断（镜像）<br>IPS:检测 和 阻断<br>②<br>IDS:旁挂  入侵检测<br>IPS:串行  入侵防御</p><p>防火墙串行和旁挂有什么区别<br>旁挂:引流，有选择的引流检测，通过策略路由、SDN 引流<br>串行:所有数据流量都会经过</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/1.png" class=""><p>纵向网<br>省、市、区县  纵向骨干大网<br>zf、公安、公检法</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/3.png" class=""><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/4.png" class=""><p>逻辑设计<br>出口路由器:<br>NAT、多业务接口、策略路由、智能选路、端口映射</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/5.png" class=""><p>物理设计:综合布线<br>1、接入交换机放到每层交换机里<br>2、接入交换机通过多模光纤连到汇聚交换机<br>3、多栋楼，汇聚交换机连到中心机房，中心机房里放核心交换机<br>汇聚交换机和核心交换机之间通过单模光纤<br>多模500m以内。单模10KM、40KM</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/6.png" class=""><p>交换机选择<br>内网、外网、设备网</p><p>信息点:网口（单口或双口）CAD图里有标注<br>企业级项目里 交换机都是 24口或者48口（下行接口，连电脑、设备等终端的接口），上行接口没算在24或48里<br>设备网:连门禁、监控摄像头，考虑POE交换机；外网里有wifi、无线AP，考虑用POE交换机</p><p>wifi建设</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/7.png" class=""><p>场景化无线部署方案</p><p>无线不重叠信道：2.4G、5G<br>2.4G  1   6   11<br>5G    5个</p><p>阶梯教室 1000个人开会，找性能强的AP，带的人数多，高密AP</p><p>面板AP</p><p>分布式AP（比如酒店走廊）中间有个中心AP，用网线向里面放置分布式AP</p><p>墙面AP和分布式AP的区别？<br>中心AP：POE交换机+微AC，分布式的省授权license（比如1个墙面AP只算0.5license）</p><p>室外AP:跟运营商天线基站一样，防尘、防水、覆盖范围大（无线城市）</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/8.png" class=""><p>网络安全设计<br>端口安全:限制端口只连一个PC，根据mac地址<br>MAC地址表<br>mac地址、接口、VLAN  16K、32K 交换机mac地址表项容量</p><p>MAC地址表、ARP表、路由表</p><p>BPDU Guard</p><p>DHCP Snooping 防止私接</p><p>三级等保一般多久做一次测评：1年<br>日志存6个月（半年）</p><p>网络安全法（颁布时间2016年11月7日 实施时间2017年6月1日）、<br>密码法（颁布时间2019年10月26日 实施时间2020年1月1日）、<br>数据安全法 （颁布时间2021年6月10日 实施时间2021年9月1日）</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/9.png" class=""><p>网络优化设计</p><p>负载均衡<br>1、链路负载均衡（防火墙、路由器、LB）<br>2、服务器负载均衡（LB）<br>3、全局负载均衡（互联网公司在全球有很多数据中心，多数据中心的应用）</p><p>广域网加速（SD-WAN）（WOC）<br>SD-WAN: 数据压缩   在线视频会议、赛事转播<br>针对TCP、UDP协议优化，让其工作更高效，适用于上层业务</p><p>总分机构</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/10.png" class=""><p>运维设计</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/11.png" class=""><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/12.png" class=""><p>以太网/IP-SAN  典型带宽: 10G、40G<br>FC-SAN  典型带宽: 2G、4G、8G、16G、32G</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/13.png" class=""><p>高优先级 -&gt; 低优先级 outbound 出口<br>低优先级 -&gt; 高优先级 inbound 入口</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/14.png" class=""><p>NFS、CIFS（微软） -&gt; NAS</p><p>接入层和核心层功能   二层架构</p><p>优点<br>①架构简单，部署管理方便<br>②节省成本</p><p>缺点<br>①网络规模受限制，板卡固定<br>②对核心交换机操作，会影响业务平稳运行</p><p>基于源地址的策略路由</p><p>电子政务内网要是物理隔离  </p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/15.png" class=""><p>视频会议（polycom宝利通）一般用VPN 或者 专线</p><p>端口映射太耗费地址</p><p>H.323  TCP 1719、1720</p><p>FC-SAN       IP-SAN</p><p>网络存储技术</p><p>一、RAID（Redundant Arrays of independent Disks）独立冗余磁盘阵列</p><p>二、DAS（Direct-Attached Storage）开放系统的直连式存储</p><p>三、NAS（Network Attached Storage）网络附属存储</p><p>带有瘦AP服务的存储设备，有自己控制器，大大降低存储成本</p><p>NAS中存储信息都是采用RAID技术进行管理的，能有效保护数据。NAS可以通过以太网网络同时共享给多个客户端</p><p>采用TCP/IP网络进行数据交换，不同厂商的产品（服务器、交换机）只要满足标准的协议就可以互联互通，没有兼容性要求</p><p>四、SAN（Storage Area Network）存储区域网络</p><p>防火墙串行部署  和 旁挂部署的区别 </p><p>旁挂模式可以有选择地将流量引导到防火墙上，即对需要安全检测的流量引导到防火墙上进行处理，对不需要进行安全检测的流量<br>直接通过路由器转发</p><p>NAT   NAT-Server（端口映射）</p><p>CSS集群  istack堆叠    Eth-trunk端口聚合</p><p>出口路由器功能：</p><p>防火墙</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/17.png" class=""><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/16.png" class=""><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/18.png" class=""><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/19.png" class=""><p>NAT、智能选路  路由器<br>安全   防火墙</p><img src="/2023/05/23/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/20.png" class=""><p>AAA  认证、计费、授权</p><p>PPPOE  MAC   认证</p><p>同一个厂商的都用堆叠，异构厂商要用VRRP</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2023年5月模拟题A</title>
     <link href="/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/"/>
     <url>/2023/05/21/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9F%E9%A2%98A/</url>
@@ -359,31 +434,6 @@
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</url>
     
     <content type="html"><![CDATA[<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/1.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/2.png" class=""><p>配置视图</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/3.png" class=""><p>一、华为设备登录配置</p><p>inbound 入站，进来，通过telnet协议进来访问设备</p><p>aaa：用户名+密码<br>password：只有密码，无用户名</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/4.png" class=""><p>二、VLAN与VLANIF地址配置</p><p>配置VLANIF接口的用途：实现不同VLAN间通信</p><p>VLANIF接口是基于VLAN的三层逻辑接口，可以配置IP地址。划分VLAN后，同一VLAN内的用户可以互相通信，但是属于不同VLAN的用户不能直接通信。为了实现VLAN间通信，可通过配置逻辑的三层接口——VLANIF接口来实现。</p><p><a href="https://www.itmemo.cn/html/819.html">https://www.itmemo.cn/html/819.html</a></p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/5.png" class=""><p>三、DHCP配置命令</p><p>network 10.1.1.0 宣告网段</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/6.png" class=""><p>四、ACL访问控制列表配置</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/7.png" class=""><p>五、NAT地址转换配置</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9801%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/8.png" class="">]]></content>
-    
-    
-    <categories>
-      
-      <category>网络工程师</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>备考</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>园区网技术与规划设计</title>
-    <link href="/2023/05/02/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/"/>
-    <url>/2023/05/02/%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/</url>
-    
-    <content type="html"><![CDATA[]]></content>
     
     
     <categories>
