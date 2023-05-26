@@ -16,13 +16,15 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="历年试题https:&#x2F;&#x2F;blog.51cto.com&#x2F;wuchenwen&#x2F;5683307 总分机构互联方式 ①裸光纤 （学校不同校区同城校区互联）②专线 zf机构用的多③IPeSec ①裸光纤&#x2F;裸纤（80公里以内）②专线③IPSec VPN 成本和部署难度 学校里裸光纤很多，新老校区之间裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。专线的成本和部署难度介于裸纤和IPSec">
+<meta property="og:type" content="article">
 <meta property="og:title" content="2023年5月模拟B卷">
 <meta property="og:url" content="http://example.com/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/index.html">
 <meta property="og:site_name" content="Coding">
+<meta property="og:description" content="历年试题https:&#x2F;&#x2F;blog.51cto.com&#x2F;wuchenwen&#x2F;5683307 总分机构互联方式 ①裸光纤 （学校不同校区同城校区互联）②专线 zf机构用的多③IPeSec ①裸光纤&#x2F;裸纤（80公里以内）②专线③IPSec VPN 成本和部署难度 学校里裸光纤很多，新老校区之间裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。专线的成本和部署难度介于裸纤和IPSec">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-26T05:51:00.000Z">
-<meta property="article:modified_time" content="2023-05-26T05:51:10.558Z">
+<meta property="article:modified_time" content="2023-05-26T06:18:15.817Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="真题">
 <meta name="twitter:card" content="summary_large_image">
@@ -218,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          795 words
         
       </span>
     
@@ -229,7 +231,7 @@
         
         
         
-          1 mins
+          7 mins
         
       </span>
     
@@ -272,7 +274,24 @@
             
               <div class="markdown-body">
                 
-                
+                <p>历年试题<br><a target="_blank" rel="noopener" href="https://blog.51cto.com/wuchenwen/5683307">https://blog.51cto.com/wuchenwen/5683307</a></p>
+<p>总分机构互联方式</p>
+<p>①裸光纤 （学校不同校区同城校区互联）<br>②专线 zf机构用的多<br>③IPeSec</p>
+<p>①裸光纤/裸纤（80公里以内）<br>②专线<br>③IPSec VPN</p>
+<p>成本和部署难度</p>
+<p>学校里裸光纤很多，新老校区之间<br>裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。<br>专线的成本和部署难度介于裸纤和IPSec VPN之间</p>
+<p>光纤配线架、ODF</p>
+<p>专线，MPLS  Multi-Protocol Label Switching<br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2264523?from=15425&amp;areaSource=102001.2&amp;traceId=9_rCHzRb00Z1vJSLXeAPN">https://cloud.tencent.com/developer/article/2264523?from=15425&amp;areaSource=102001.2&amp;traceId=9_rCHzRb00Z1vJSLXeAPN</a></p>
+<p>政务单位，政务网。<br>裸光纤：光纤断了后，就无法互联。<br>专线：运营商逻辑线路，错综复杂，冗余效果</p>
+<p>双活数据中心里面，对2个数据中心距离要求是60或80公里以内</p>
+<p>防火墙双击热备之间的线：心跳线<br>防火墙双机热备的方案<br>①VRRP 链路聚合、端口聚合<br>②防火墙厂商私有协议</p>
+<p>交换机<br>①VRRP   链路聚合、端口聚合<br>②堆叠   （级连） </p>
+<p>①堆叠可以统一控制层面，简化网络管理，但也存在控制层面被攻击崩溃的风险<br>②堆叠结合链路聚合技术，可以提升带宽利用率<br>③物理上的无环网络，无需再部署STP，网络架构更简单，但堆叠是私有技术，不支持跨厂商部署</p>
+<p>双核心<br>①VRRP+MSTP<br>②堆叠+链路聚合</p>
+<p>VRRP+MSTP方案的问题<br>①设备多，网络管理复杂<br>②接口被生成树阻塞，链路利用率低</p>
+<p>堆叠<br>优势<br>①逻辑上变为一台设备，简化网络管理<br>②提升系统可靠性，避免单点故障<br>③配合链路聚合等技术，防止接口被生成树阻塞，提升链路利用率</p>
+<p>劣势<br>①堆叠是私有协议，不支持跨厂商设备堆叠<br>②系统升级会造成业务中断<br>③多台设备堆叠，只有一个主控处于工作状态，存在资源浪费</p>
+
                 
               </div>
             
