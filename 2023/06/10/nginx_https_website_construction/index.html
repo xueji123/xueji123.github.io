@@ -16,24 +16,22 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="历年试题https:&#x2F;&#x2F;blog.51cto.com&#x2F;wuchenwen&#x2F;5683307 试题一： 总分机构互联方式 ①裸光纤 （学校不同校区同城校区互联）②专线 zf机构用的多③IPeSec ①裸光纤&#x2F;裸纤（80公里以内）②专线③IPSec VPN 成本和部署难度 学校里裸光纤很多，新老校区之间裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。专线的成本和部署难度介于裸纤和">
+    <meta name="description" content="一、查看 nginx 安装目录 ps -ef | grep nginx 二、查看配置文件 nginx.conf 路径 nginx -t 这条命令也可以用于检查配置文件是否正确。 重启nginxsystemctl restart nginx 重启nginx&#x2F;usr&#x2F;sbin&#x2F;nginx -s reload 当然也可以使用 find 命令进行文件查找 从 &#x2F; 根目录下查找文件名为 nginx.conf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2023年5月模拟B卷">
-<meta property="og:url" content="http://example.com/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/index.html">
+<meta property="og:title" content="operation and maintenance">
+<meta property="og:url" content="http://example.com/2023/06/10/nginx_https_website_construction/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="历年试题https:&#x2F;&#x2F;blog.51cto.com&#x2F;wuchenwen&#x2F;5683307 试题一： 总分机构互联方式 ①裸光纤 （学校不同校区同城校区互联）②专线 zf机构用的多③IPeSec ①裸光纤&#x2F;裸纤（80公里以内）②专线③IPSec VPN 成本和部署难度 学校里裸光纤很多，新老校区之间裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。专线的成本和部署难度介于裸纤和">
+<meta property="og:description" content="一、查看 nginx 安装目录 ps -ef | grep nginx 二、查看配置文件 nginx.conf 路径 nginx -t 这条命令也可以用于检查配置文件是否正确。 重启nginxsystemctl restart nginx 重启nginx&#x2F;usr&#x2F;sbin&#x2F;nginx -s reload 当然也可以使用 find 命令进行文件查找 从 &#x2F; 根目录下查找文件名为 nginx.conf">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/1.png">
-<meta property="article:published_time" content="2023-05-26T05:51:00.000Z">
-<meta property="article:modified_time" content="2023-05-26T12:44:45.847Z">
+<meta property="article:published_time" content="2023-06-10T06:42:12.602Z">
+<meta property="article:modified_time" content="2023-06-11T08:17:38.407Z">
 <meta property="article:author" content="xueji123">
-<meta property="article:tag" content="真题">
+<meta property="article:tag" content="server">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/1.png">
   
   
   
-  <title>2023年5月模拟B卷 - Coding</title>
+  <title>operation and maintenance - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="2023年5月模拟B卷"></span>
+            <span id="subtitle" data-typed-text="operation and maintenance"></span>
           
         </div>
 
@@ -210,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-26 13:51" pubdate>
-          May 26, 2023 pm
+        <time datetime="2023-06-10 14:42" pubdate>
+          June 10, 2023 pm
         </time>
       </span>
     
@@ -222,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k words
+          2.2k words
         
       </span>
     
@@ -233,7 +231,7 @@
         
         
         
-          18 mins
+          19 mins
         
       </span>
     
@@ -271,81 +269,54 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">2023年5月模拟B卷</h1>
+            <h1 style="display: none">operation and maintenance</h1>
             
             
               <div class="markdown-body">
                 
-                <p>历年试题<br><a target="_blank" rel="noopener" href="https://blog.51cto.com/wuchenwen/5683307">https://blog.51cto.com/wuchenwen/5683307</a></p>
-<p>试题一：</p>
-<p>总分机构互联方式</p>
-<p>①裸光纤 （学校不同校区同城校区互联）<br>②专线 zf机构用的多<br>③IPeSec</p>
-<p>①裸光纤/裸纤（80公里以内）<br>②专线<br>③IPSec VPN</p>
-<p>成本和部署难度</p>
-<p>学校里裸光纤很多，新老校区之间<br>裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。<br>专线的成本和部署难度介于裸纤和IPSec VPN之间</p>
-<p>光纤配线架、ODF</p>
-<p>专线，MPLS  Multi-Protocol Label Switching<br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2264523?from=15425&amp;areaSource=102001.2&amp;traceId=9_rCHzRb00Z1vJSLXeAPN">https://cloud.tencent.com/developer/article/2264523?from=15425&amp;areaSource=102001.2&amp;traceId=9_rCHzRb00Z1vJSLXeAPN</a></p>
-<p>政务单位，政务网。<br>裸光纤：光纤断了后，就无法互联。<br>专线：运营商逻辑线路，错综复杂，冗余效果</p>
-<p>双活数据中心里面，对2个数据中心距离要求是60或80公里以内</p>
-<p>防火墙双击热备之间的线：心跳线<br>防火墙双机热备的方案<br>①VRRP 链路聚合、端口聚合<br>②防火墙厂商私有协议</p>
-<p>交换机<br>①VRRP   链路聚合、端口聚合<br>②堆叠   （级连） </p>
-<p>①堆叠可以统一控制层面，简化网络管理，但也存在控制层面被攻击崩溃的风险<br>②堆叠结合链路聚合技术，可以提升带宽利用率<br>③物理上的无环网络，无需再部署STP，网络架构更简单，但堆叠是私有技术，不支持跨厂商部署</p>
-<p>双核心<br>①VRRP+MSTP<br>②堆叠+链路聚合</p>
-<p>VRRP+MSTP方案的问题<br>①设备多，网络管理复杂<br>②接口被生成树阻塞，链路利用率低</p>
-<p>堆叠<br>优势<br>①逻辑上变为一台设备，简化网络管理<br>②提升系统可靠性，避免单点故障<br>③配合链路聚合等技术，防止接口被生成树阻塞，提升链路利用率</p>
-<p>劣势<br>①堆叠是私有协议，不支持跨厂商设备堆叠<br>②系统升级会造成业务中断<br>③多台设备堆叠，只有一个主控处于工作状态，存在资源浪费</p>
-<p>心跳线</p>
-<p>NAT、IPSec、安全过滤</p>
-<p>wifi上网速度慢，无线优化策略：<br>①调整AP发射功率，大部分都是降低功率，不同AP间干扰严重，调小功率即可，减少不同AP的交集<br>②调整/优化使用的信道   1  6  11 信道    蜂窝部署 1 6 11<br>③覆盖不足，信号弱，要增加AP功率</p>
-<p>汇聚交换机和核心交换机<br>采用  光纤传输</p>
-<p>材料：光纤跳线、光模块、光纤配线架</p>
-<p>设备：熔纤机、红光笔、光功率计、OTDR</p>
-<p>传输介质：双绞线、同轴电缆、光纤</p>
-<p>IKE：密钥交换，A和B之间通过IKE协商密码 UDP 500<br>AH：完整性校验，不提供数据加密 IP 51 （认证）<br>ESP：数据加密 IP 50 （认证和加密）</p>
-<p>远程办公默认用SSL VPN</p>
-<p>NAT Server发布服务器，让所有人访问内网服务器</p>
-<p>对外的Web服务器，Nat server发布出去</p>
-<p>非常核心关键的服务器：登陆某个堡垒机（运维审计），堡垒机作为跳板再去访问内部数据库或资源服务器</p>
-<p>试题二：</p>
-<p>APT攻击</p>
-<p>技术和管理上进行防范</p>
-<p>技术：<br>①部署沙箱、态势感知系统<br>②联动防火墙、入侵检测IDS、交换机等设备进行综合分析</p>
-<p>管理：<br>①制定管理制度<br>②明确主体责任，责任到人<br>③人员权限管控，加强审计<br>④加强人员网络安全意识，培训考试</p>
-<p>①制定网络安全管理制度<br>②明确网络安全主体责任<br>③细化网络安全工作职责，责任到人<br>④合理分配人员权限，最小权限和加强审计<br>⑤加强网络安全意识和技能培训<br>⑥强化网络安全执行监督</p>
-<p>APT特点：<br>①时间长<br>②有组织<br>③威胁大，隐蔽性强</p>
-<p>震网事件，美-&gt;伊</p>
-<p>HW</p>
-<p>勒索病毒<br>①打补丁<br>②杀毒<br>③封端口，445、134、139，在电脑和交换机ACL上禁用端口都可以<br>④定期备份数据</p>
-<p>蠕虫：繁殖强</p>
-<p>使用代理/跳板/肉鸡，清除攻击日志、使用隐蔽信道（加密）</p>
-<p>攻击日志在本机、日志审计设备上、态势感知（分析日志，采集流量）大数据分析，可视化图表展示</p>
-<p>unix是封闭的  像IBM AZX小型机器人<br>hp-unix</p>
-<p>pam组件跟认证相关</p>
-<p>字典/暴力破解/猜密码</p>
-<p>如何防范：<br>①限制登录次数<br>②设置强密码<br>③定期修改密码</p>
-<p>uid=0 超级用户  root</p>
-<p>RAID 木桶效应  </p>
-<p>Server-Free   增量</p>
-<p>常见网络备份架构有哪些</p>
-<p>最基础的是服务器上挂一个DAS，进行相应的备份</p>
-<p>LAN-BASED拓扑</p>
-<p>把VLAN 10网关优先级设置成120，变为master     backup</p>
-<img src="/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/1.png" srcset="/img/loading.gif" lazyload class="">
+                <p>一、查看 nginx 安装目录</p>
+<p>ps -ef | grep nginx</p>
+<p>二、查看配置文件 nginx.conf 路径</p>
+<p>nginx -t</p>
+<p>这条命令也可以用于检查配置文件是否正确。</p>
+<p>重启nginx<br>systemctl restart nginx</p>
+<p>重启nginx<br>/usr/sbin/nginx -s reload</p>
+<p>当然也可以使用 find 命令进行文件查找</p>
+<p>从 / 根目录下查找文件名为 nginx.conf 的文件<br>find / -name nginx.conf</p>
+<p>从 /etc 目录下查找文件名为 nginx.conf 的文件<br>find /etc -name nginx.conf</p>
+<p>三、指定配置文件并启动 nginx 服务</p>
+<p>nginx安装目录 -c nginx.conf配置文件目录</p>
+<p>其中：参数 “-c” 指定了配置文件的路径，如果不加 “-c” 参数，Nginx 会默认加载其安装目录的 conf 子目录中的 nginx.conf 文件。</p>
+<p>四、命令参数</p>
+<p>/usr/local/nginx/sbin/nginx -参数</p>
+<p>Nginx 的参数包括：<br>-c <path_to_config>：使用指定的配置文件而不是 conf 目录下的 nginx.conf 。<br>-t：测试配置文件是否正确，在运行时需要重新加载配置的时候，此命令非常重要，用来检测所修改的配置文件是否有语法错误。<br>-v：显示 nginx 版本号。<br>-V：显示 nginx 的版本号以及编译环境信息以及编译时的参数。</p>
+<p>检测新的配置文件：</p>
+<p>/usr/local/nginx/conf# /usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf</p>
+<p>要确定当前正在使用哪个 Nginx 实例以及其安装目录，可以执行以下步骤：</p>
+<p>1、首先使用以下命令查看系统上所有正在运行的 Nginx 进程：</p>
+<p>ps aux | grep nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>上述命令会列出所有包含 <span class="hljs-string">&quot;nginx&quot;</span> 关键字的进程，包括正在运行的 Nginx 进程和其他相关进程。在输出结果中，可以查看每个进程的命令行参数，以确定哪个是当前正在使用的 Nginx 实例。<br><br>2、如果您已经确定了当前正在使用的 Nginx 进程，可以使用以下命令查看其安装目录：<br><br><span class="hljs-built_in">which</span> nginx<br></code></pre></td></tr></table></figure>
 
-<p>priority   primary （STP优先级改成0） secondary（优先级改成4096）</p>
-<p>enable    </p>
-<p>4096 优先级  </p>
-<p>4094 VLAN ID</p>
-<p>GVRP协议所支持的VLANID范围为1-4094，而VTP协议只支持1-1001号的VLAN。<br>GVRP是GARP的一种应用，由IEEE制定<br>交换机之间的协议报文交互必须在VLAN Trunk链路上进行<br>GVRP配置时需要在每一台交换机上建立VLAN</p>
-<p>import-route</p>
-<p>BGP生成路由方式<br>手动聚合、自动聚合、network、import</p>
-<p>手动聚合生成路由优先级最高<br>import生成路由优先级最低</p>
-<p>路由聚合的作用<br>①有效减少路由表中条目，减小对系统资源的占用。不影响系统性能<br>②避免网络中的路由震荡，提高网络的稳定性</p>
-<p>内部路由器</p>
-<p>AAA：认证、授权、计费</p>
-<p>PPPoE依赖BRAS设备   校园网、运营商家庭带宽</p>
-<p>CHAP   哈希/HASH</p>
-<p>PPPoE底层认证方式：<br>①CHAP<br>②PAP</p>
+<p>该命令会输出当前正在使用的 Nginx 可执行文件的完整路径，通常情况下位于 <code>/usr/sbin/nginx</code> 或 <code>/usr/local/nginx/sbin/nginx</code>。<br>另外，如果您知道 Nginx 的配置文件路径，可以在其中查找 pid 文件，该文件包含了当前正在运行的 Nginx 进程的进程 ID（PID），可以使用 ps 命令查看该进程的详细信息，包括其安装目录。默认情况下，Nginx 的 pid 文件位于 /var/run/nginx.pid。</p>
+<p>Nginx的配置–HTTP服务器<br>使用 Nginx 作为 HTTP 服务器是个不错的选择，怎么做才能成为一个 HTTP 服务器呢？请接着看。</p>
+<p>如果你研究了 Nginx 的默认配置文件 nginx.conf，你会发现，可以总体归纳为三个模块：</p>
+<p>#全局模块<br>events {<br>    #events模块<br>}</p>
+<p>http<br>{</p>
+<p>   #http全局模块</p>
+<p>   server<br>   {</p>
+<pre><code class="hljs">    #server全局模块
+ 
+    location [PATTERN]&#123;
+       #location模块
+    &#125;
+</code></pre>
+<p>   }<br>}</p>
+<p>如何使用 Certbot 独立模式检索让我们在 Ubuntu 22.04 上加密 SSL 证书<br><a target="_blank" rel="noopener" href="https://devpress.csdn.net/linux/62ec254319c509286f416593.html">https://devpress.csdn.net/linux/62ec254319c509286f416593.html</a></p>
+<p>Nginx报错：nginx: [error] invalid PID number in “/run/nginx.pid”的解决方案<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Xbinbin/article/details/99542799">https://blog.csdn.net/Xbinbin/article/details/99542799</a></p>
+<p>在Nginx或Tengine服务器上安装证书<br><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/98728.html?spm=0.2020520163.help.dexternal.5093djEndjEnJE">https://help.aliyun.com/document_detail/98728.html?spm=0.2020520163.help.dexternal.5093djEndjEnJE</a></p>
+<p>web部署到nginx以后js,css等静态文件加载不正常<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/JackRen_Developer/article/details/98739613">https://blog.csdn.net/JackRen_Developer/article/details/98739613</a></p>
+<p>在ubuntu中配置web页面时候，可以获取js和css,但是无法加载这些，导致页面布局失效。</p>
+<p>解决方法：include   /etc/nginx/mime.types; 在http{}内。<br>http块：可以嵌套多个server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。<br>如文件引入，mime-type定义，日志自定义，是否使用sendfile传输文件，连接超时时间，单连接请求数等。<br>什么是MIME-TYPE？<br>在浏览器中显示的内容有 HTML、有 XML、有 GIF、还有 Flash …那么，浏览器是如何区分它们，什么内容用什么形式来显示呢？<br>答案是 MIME Type，也就是该资源的媒体类型。<br>当web服务器收到静态的资源文件请求时，依据请求文件的后缀名在服务器的MIME配置文件中找到对应的MIME Type，<br>再根据MIME Type设置HTTP Response的Content-Type，然后浏览器根据Content-Type的值处理文件。<br>当我们在配置Nginx的时候，缺少mime.types，自然就会出现我们js,css等静态问题加载不正常的问题。</p>
 
                 
               </div>
@@ -364,7 +335,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  <a href="/categories/linux-operation-and-maintenance/" class="category-chain-item">linux operation and maintenance</a>
   
   
 
@@ -379,7 +350,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%9C%9F%E9%A2%98/">#真题</a>
+        <a href="/tags/server/">#server</a>
       
     </div>
   
@@ -391,8 +362,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2023年5月模拟B卷</div>
-      <div>http://example.com/2023/05/26/2023年5月模拟B卷/</div>
+      <div>operation and maintenance</div>
+      <div>http://example.com/2023/06/10/nginx_https_website_construction/</div>
     </div>
     <div class="license-meta">
       
@@ -404,7 +375,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 26, 2023</div>
+          <div>June 10, 2023</div>
         </div>
       
       
@@ -436,18 +407,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/10/nginx_https_website_construction/" title="operation and maintenance">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">operation and maintenance</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/25/%E8%80%83%E5%89%8D%E5%86%B2%E5%88%BA%E7%9F%A5%E8%AF%86%E7%82%B9/" title="考前冲刺知识点">
-                        <span class="hidden-mobile">考前冲刺知识点</span>
+                      <a href="/2023/05/26/2023%E5%B9%B45%E6%9C%88%E6%A8%A1%E6%8B%9FB%E5%8D%B7/" title="2023年5月模拟B卷">
+                        <span class="hidden-mobile">2023年5月模拟B卷</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
