@@ -24,7 +24,7 @@
 <meta property="og:description" content="一、查看 nginx 安装目录 ps -ef | grep nginx 二、查看配置文件 nginx.conf 路径 nginx -t 这条命令也可以用于检查配置文件是否正确。 重启nginxsystemctl restart nginx 重启nginx&#x2F;usr&#x2F;sbin&#x2F;nginx -s reload 当然也可以使用 find 命令进行文件查找 从 &#x2F; 根目录下查找文件名为 nginx.conf">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-10T06:42:12.602Z">
-<meta property="article:modified_time" content="2023-06-11T08:17:38.407Z">
+<meta property="article:modified_time" content="2023-06-18T07:03:31.983Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="server">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k words
+          3.3k words
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          19 mins
+          28 mins
         
       </span>
     
@@ -317,6 +317,20 @@
 <p>web部署到nginx以后js,css等静态文件加载不正常<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/JackRen_Developer/article/details/98739613">https://blog.csdn.net/JackRen_Developer/article/details/98739613</a></p>
 <p>在ubuntu中配置web页面时候，可以获取js和css,但是无法加载这些，导致页面布局失效。</p>
 <p>解决方法：include   /etc/nginx/mime.types; 在http{}内。<br>http块：可以嵌套多个server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。<br>如文件引入，mime-type定义，日志自定义，是否使用sendfile传输文件，连接超时时间，单连接请求数等。<br>什么是MIME-TYPE？<br>在浏览器中显示的内容有 HTML、有 XML、有 GIF、还有 Flash …那么，浏览器是如何区分它们，什么内容用什么形式来显示呢？<br>答案是 MIME Type，也就是该资源的媒体类型。<br>当web服务器收到静态的资源文件请求时，依据请求文件的后缀名在服务器的MIME配置文件中找到对应的MIME Type，<br>再根据MIME Type设置HTTP Response的Content-Type，然后浏览器根据Content-Type的值处理文件。<br>当我们在配置Nginx的时候，缺少mime.types，自然就会出现我们js,css等静态问题加载不正常的问题。</p>
+<p>nginx: [error] open() “/usr/local/var/run/nginx.pid” failed (2: No such file or directory)<br>解决方法：找到你的nginx.conf的文件夹目录，然后运行这个<br>nginx -c /usr/local/etc/nginx/nginx.conf命令，<br>再运行nginx -s reload，就可以了</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wn1245343496/article/details/77974756">https://blog.csdn.net/wn1245343496/article/details/77974756</a></p>
+<p>如果curl命令返回一个”405 Not Allowed”错误，说明您的Nginx服务器无法处理这个请求方法（POST请求）。</p>
+<p>这可能是因为您的Nginx配置文件中没有正确设置允许POST请求的方法。可以尝试添加以下配置到Nginx配置文件中：</p>
+<p>nginx<br>Copy<br>location / {<br>    # 允许POST请求<br>    if ($request_method = ‘POST’) {<br>        add_header ‘Access-Control-Allow-Origin’ ‘*’;<br>        add_header ‘Access-Control-Allow-Methods’ ‘POST, OPTIONS’;<br>        add_header ‘Access-Control-Allow-Headers’ ‘Content-Type’;<br>        add_header ‘Content-Type’ ‘text/plain; charset=utf-8’;<br>        return 200;<br>    }</p>
+<pre><code class="hljs"># 其他请求方式处理
+...
+</code></pre>
+<p>}<br>这将允许POST请求，并返回一个200响应码。请注意，这只是一个示例配置，您需要根据您的实际需求进行适当的配置。</p>
+<p>如果您已经添加了上述配置并且仍然无法解决问题，请检查您的curl命令是否正确。请确保您使用的URL和请求方法（POST）是正确的，并且您的SSL证书已正确安装。如果证书无效或过期，您也可能会收到这个错误。</p>
+<p>如果您使用curl命令发送HTTPS POST请求没有收到任何响应，不能保证这个请求已经成功到达并被正确处理了。通常情况下，您应该会收到一个HTTP响应，其中包含有关请求处理结果的信息。</p>
+<p>如果您没有收到任何响应，则可能是由于网络、服务器或其他问题导致请求失败。您可以尝试使用其他工具来发送HTTPS POST请求，例如Postman或浏览器的开发者工具，以获得更详细的错误消息。</p>
+<p>另外，您可以检查您的Nginx服务器的访问日志来查看请求是否已成功到达。您可以使用以下命令来查看Nginx的访问日志：</p>
+<p>sudo tail -f /var/log/nginx/access.log<br>这将显示Nginx的访问日志，其中包含有关每个请求的信息。如果您的请求已成功到达Nginx服务器，则应该能够在日志中看到相关的记录。</p>
 
                 
               </div>
@@ -406,6 +420,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/08/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" title="面向对象三大特性">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面向对象三大特性</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
