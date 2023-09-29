@@ -16,19 +16,22 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Coding">
-<meta property="og:url" content="http://example.com/2023/09/18/6-4-3%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB/index.html">
+    <meta name="description" content="动态路由协议分类 距离矢量协议，传的路由表：RIP    BGP（严格意义叫路径矢量） 链路状态协议：OSPF、IS-IS  学习全网拓扑 根据SPF 最短路径算法找出最佳路径 类比：距离矢量：不知道全网情况，成都-&gt;北京，问张三-&gt;问李四 链路状态：了解全网架构，全国地图包，根据起点和终点计算怎么走，计算出多条路径，距离最短的 or 时间最短的 or 最熟悉的 IGP: RIP OS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6-4-3 动态路由协议 RIP&#x2F;OSPF&#x2F;BGP&#x2F;ISIS">
+<meta property="og:url" content="http://example.com/2023/09/23/6-4-3%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Coding">
+<meta property="og:description" content="动态路由协议分类 距离矢量协议，传的路由表：RIP    BGP（严格意义叫路径矢量） 链路状态协议：OSPF、IS-IS  学习全网拓扑 根据SPF 最短路径算法找出最佳路径 类比：距离矢量：不知道全网情况，成都-&gt;北京，问张三-&gt;问李四 链路状态：了解全网架构，全国地图包，根据起点和终点计算怎么走，计算出多条路径，距离最短的 or 时间最短的 or 最熟悉的 IGP: RIP OS">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-09-18T12:58:55.182Z">
-<meta property="article:modified_time" content="2023-09-18T12:58:55.182Z">
+<meta property="article:published_time" content="2023-09-23T02:44:00.000Z">
+<meta property="article:modified_time" content="2023-09-23T06:53:24.056Z">
 <meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考_新增">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Coding</title>
+  <title>6-4-3 动态路由协议 RIP/OSPF/BGP/ISIS - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="6-4-3 动态路由协议 RIP/OSPF/BGP/ISIS"></span>
           
         </div>
 
@@ -205,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-18 20:58" pubdate>
-          September 18, 2023 pm
+        <time datetime="2023-09-23 10:44" pubdate>
+          September 23, 2023 am
         </time>
       </span>
     
@@ -217,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          2.2k words
         
       </span>
     
@@ -228,7 +231,7 @@
         
         
         
-          1 mins
+          19 mins
         
       </span>
     
@@ -266,12 +269,51 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">6-4-3 动态路由协议 RIP/OSPF/BGP/ISIS</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <p>动态路由协议分类</p>
+<p>距离矢量协议，传的路由表：RIP    BGP（严格意义叫路径矢量）</p>
+<p>链路状态协议：OSPF、IS-IS  学习全网拓扑 根据SPF 最短路径算法找出最佳路径</p>
+<p>类比：<br>距离矢量：不知道全网情况，成都-&gt;北京，问张三-&gt;问李四</p>
+<p>链路状态：了解全网架构，全国地图包，根据起点和终点计算怎么走，计算出多条路径，距离最短的 or 时间最短的 or 最熟悉的</p>
+<p>IGP: RIP OSPF ISIS<br>EGP: BGP</p>
+<p>RIP  UDP 520端口<br>OSPF  IP<br>BGP  TCP 179<br>ISIS  封装在链路层</p>
+<p>RIP：IGP内部网关协议，距离矢量路由协议<br>华为设备上优先级100<br>计算跳数，中小型网络，16跳不可达，最大15跳</p>
+<p>时钟：<br>每30s发一次路由表，180s没有更新，认为这条路由不可达，将cost值设置成16跳。再过120s从路由表中删除</p>
+<p>180+120=300s删除路由表</p>
+<p>RIPv1和RIPv2</p>
+<p>RIPv1<br>有类，不携带子网掩码<br>更新时按照主类更新的。A类：8   B类：16  C类：24<br>广播更新<br>周期性更新 每30s<br>不支持VLSM、CIDR<br>不提供认证</p>
+<p>RIPv2<br>无类，携带子网掩码<br>组播更新(224.0.0.9)<br>触发更新<br>支持VLSM、CIDR<br>提供明文和MD5认证</p>
+<p>距离矢量路由协议<br>只知道距离cost（几跳）和方向（上下左右、哪个接口转发数据包）</p>
+<p>周期性更新（广播）整张路由表<br>距离 Distance 多远<br>矢量 Vector 哪个方向</p>
+<p>RIP<br>以跳数作为度量。虽然简单，但不科学<br>跳数低的，可能链路带宽低，但会被RIP优选</p>
+<p>display ip routing-table：查看RIP路由的度量值</p>
+<p>优先级高的路由协议，会优先走</p>
+<p>OSFP   Open Shortest Path First 开放式最短路径优先协议<br>内网网关协议，链路状态路由协议</p>
+<p>路由器之间交互链路状态信息，路由器连了哪些接口，分别是哪些网段<br>采用SPF 迪杰斯特拉算法，计算达到目的地的最短路径</p>
+<p>支持VLSM，支持手工路由汇总，不支持自动汇总。RIP和BGP这种带距离矢量特性的才支持自动汇总</p>
+<p>OSPF<br>适应范围广：支持各种规模的网络，中大型网络都支持<br>快速收敛：在网络拓扑结构发生变化后立即发送更新报文，使这一变化在自治系统中同步。<br>无自环：使用SPF最短路径树算法进行路由计算，不会产生环路。<br>区域划分：允许网络被划分成区域来管理，链路状态数据库仅需和区域内其他路由器保持一致。减小<br>对路由器内存和CPU的消耗。同时区域间传送的路由信息减小，降低网络带宽占用。</p>
+<p>减少网络变化对路由的影响，在区域内变化即可</p>
+<p>OSPF接口cost=100M/接口带宽，100M为OSPF参考带宽（reference-bandwidth可以在路由器修改）<br>GE0/0/0  千兆口 cost = 100/1000 = 1<br>Serial0/0/0 2M口 cost = 100/2 = 50</p>
+<p>一条OSPF路由的cost由该路由从起源一路到达本地的所有入接口cost值总和。<br>按照路由来算是入接口<br>按照流量来算是出接口</p>
+<p>OSPF<br>所有非骨干区域必须与骨干区域直连</p>
+<p>虚链路建立连接</p>
+<p>路由器角色<br>区域内路由器Internal Router<br>区域边界路由器 ABR    Area Border Router<br>骨干路由器 BR        Backbone Router<br>AS边界路由器ASBR AS Boundary Router</p>
+<p>有接口在area0里面就算骨干路由器，1个路由器既可以是ABR也可以是BR</p>
+<p>OSPF总结<br>触发式更新、分层路由、支持大型网络<br>Area 0.0.0.0 或者 Area 0 来表示骨干区域，不是区域1<br>点对点网络上每10秒发送一次hello，在NBMA网络每30秒发送一次，Deadtime为hello时间4倍（每10秒打招呼，4倍hello时间就认为该邻居不存在了）</p>
+<p>OSPF系统内几个特殊组播地址：<br>224.0.0.1  在本地子网的所有主机<br>224.0.0.2  在本地子网的所有路由器<br>224.0.0.5  运行OSPF协议的路由器<br>224.0.0.6  OSPF 指定/备用指定路由器DR/BDR<br>DR全称Designated Router，指定路由器。<br>BDR全称Backup Designated Router，备份指定路由器<br>目标地址224.0.0.5指所有路由器，用于发现建立邻居、还用于选出区域内的指定路由器DR和备份指定路由器BDR（DR/BDR组播地址是224.0.0.6）</p>
+<p>BGP和ISIS</p>
+<p>BGP四个报文<br>Open打开  建立邻居关系    建立外交<br>Update更新  发送新的路由信息  更新外交信息<br>Keepalive保持活动状态（Keepalive） 对Open的应答/周期性确认邻居关系  保持外交活动<br>Notification通告   报告检测到的错误    发布外交通告</p>
+<p>ISIS 1个路由器只能属于1个区域<br>OSPF 1个路由器可以属于多个区域</p>
+<p>ISIS L1-&gt;L1    L1-&gt;L1/L2  可以形成邻居关系，L1-&gt;L2不能形成邻居关系</p>
+<p>LSA（Link State Advertisement）本身不是OSPF的消息，而是一类数据结构，<br>存放在路由器的链路状态库LSDB中（Link State DataBase），并可包含在LSU消息中进行交换。<br>LSA包括有关邻居和通道成本的信息。<br>接收路由器用LSA维护其路由选择表</p>
+<p>OSPF使用HELLO报文维护邻居</p>
+<p>先配置OSPF，再配置接口，第一个配置的接口ip即为Router-ID<br>先配接口，再配置OSPF，手动-&gt;回环最大-&gt; 普通接口里ip地址最大的</p>
+<p>router id 不一定是ip地址，可以自定义配置</p>
+
                 
               </div>
             
@@ -279,6 +321,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+      
+    </div>
   
 </div>
 
@@ -288,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://example.com/2023/09/18/6-4-3动态路由协议分类/</div>
+      <div>6-4-3 动态路由协议 RIP/OSPF/BGP/ISIS</div>
+      <div>http://example.com/2023/09/23/6-4-3动态路由协议分类/</div>
     </div>
     <div class="license-meta">
       
@@ -301,7 +371,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>September 18, 2023</div>
+          <div>September 23, 2023</div>
         </div>
       
       
@@ -333,9 +403,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/19/3-2%E5%B9%BF%E5%9F%9F%E7%BD%91%E7%89%A9%E7%90%86%E7%89%B9%E6%80%A7/" title="3-2广域网物理特性">
+                      <a href="/2023/09/23/7-2.IPv4%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B9%E8%BF%9B/" title="7-2 IPv4与改进">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">3-2广域网物理特性</span>
+                        <span class="hidden-mobile">7-2 IPv4与改进</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -343,8 +413,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/15/%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/" title="存储与RAID技术专题">
-                        <span class="hidden-mobile">存储与RAID技术专题</span>
+                      <a href="/2023/09/23/5-7WLAN%E5%AE%89%E5%85%A8/" title="5-7 WLAN安全">
+                        <span class="hidden-mobile">5-7 WLAN安全</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,7 +4,1107 @@
   
   
   <entry>
-    <title>4-9 移动通信与5G</title>
+    <title>12-6网络故障排查与诊断</title>
+    <link href="/2023/09/29/12-6%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E4%B8%8E%E8%AF%8A%E6%96%AD/"/>
+    <url>/2023/09/29/12-6%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E4%B8%8E%E8%AF%8A%E6%96%AD/</url>
+    
+    <content type="html"><![CDATA[<p>思科: show<br>华为: display</p><p>电缆：近端串音（特有）、信号衰减、噪音<br>测试指标：波长是光纤独有的</p><p>OTDR：光纤的长度、断裂位置、信号衰减<br>OTDR（光时域反射仪）是一种用于光纤网络的无损检测仪器。它可以测量光纤的衰减、连接器损耗、光纤故障点等多种参数。</p><p>OTDR的工作原理是基于光的背向散射和菲涅尔反射效应。当激光脉冲在光纤中传输时，会由于光纤的不均匀性、散射、吸收等因素导致一部分光反射回来，形成背向散射光。菲涅尔反射则是由光波在光纤/空气界面处反射形成的。</p><p>OTDR通过对背向散射光和菲涅尔反射光的检测和分析，可以得出光纤的损耗、长度、连接器位置等参数。它还可以用于定位光纤故障点，检查光纤网络的性能和维护光纤网络的可靠性。</p><p>网络分析仪：科来<br>华为网管软件esight、IMOC实现网络监测<br>智能运维(IMOC)-eSight对接前准备指南<br><a href="https://forum.huawei.com/enterprise/zh/thread/580937268452016128">https://forum.huawei.com/enterprise/zh/thread/580937268452016128</a></p><p>光时域反射仪：OTRD定位故障位置<br>光纤断裂后熔接</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>12-5广域网接入技术</title>
+    <link href="/2023/09/29/12-5%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8E%A5%E5%85%A5%E6%8A%80%E6%9C%AF/"/>
+    <url>/2023/09/29/12-5%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8E%A5%E5%85%A5%E6%8A%80%E6%9C%AF/</url>
+    
+    <content type="html"><![CDATA[<p>同轴电缆看电视的闭路线</p><p>ADSL xDSL数字用户线路远程接入，基于频分复用</p><p>PON无源光网络，上行TDMA，下行是广播</p><p>运营商网络用户认证一般都采用PPPOE，BRAS宽带远程接入设备 m160</p><p>ADSL Modem是ADSL（非对称用户数字环路）提供调制数据和解调数据的机器，被称为宽带调制解调器或DSL调制解调器，是一种将网络信号转换成电话线路上的模拟信号的设备，它可以将数据流压缩成数字信号，通过电话线路传输到另一台计算机或电话设备上。</p><p>ADSL Modem最高支持8Mbps/s（下行）和1Mbps/s（上行）的速率，抗干扰能力强，适于普通家庭用户使用。该产品耗电量与一台一级能效的电冰箱相仿，发热量较大。某些型号的产品还带有路由功能。该产品性价比介于ISDN和LAN+光纤之间。有一个RJ-11电话线孔和一个或多个RJ-45网线孔，某些型号的产品带有无线功能。</p><p>Cable Modem是电缆调制解调器，是用来在有线电视网络上上互联网的设备。</p><p>Cable Modem是串接在用户家的有线电视电缆插座和上网设备之间的，它把用户要上传的上行数据以5-65MHz的频率以QPSK或16QAM的调制方式调制之后向上传送，带宽2-3MHz左右，速率从300Kbps到10Mbps。它把从头端发来的下行数据，解调的方式是64QAM或256QAM，带宽6-8MHz，速率可达40Mbps1。</p><p>ADSL modem和Cable modem的区别如下：</p><p>1、传输介质不同：ADSL使用普通的电话线路，但传输频率远高于电话语音传输的频率；Cable使用有限电视网络。<br>2、速率不同：ADSL最高速率可以达到2Mbps；Cable最高速率可达到10M。<br>3、特点不同：ADSL不占用电话，但稳定性、可靠性、供电以及运行维护体制上仍存在一些问题；Cable稳定性、可靠性、供电以及运行维护体制上存在问题，但属于电力承载线路。</p><p>ONU（家庭光猫）  OLT（运营商设备）<br>PON网络上行（ONU到OLT）是TDMA，下行（OLT到ONU）是广播</p><p>PON网络上行采用TDMA（时分多址）技术，下行采用广播技术。</p><p>PON网络由OLT（光线路终端）、ONU（光网络单元）和ODN（光分配网络）组成。在上行方向，即从ONU到OLT传输方向，上行波长为1310nm，采用TDMA技术，由多个ONU共享带宽；在下行方向，即从OLT到ONU传输方向，下行波长为1490nm，采用广播技术，所有ONU都可以收到相同的数据。</p><p>时分多址（Time Division Multiple Access，TDMA）是一种数字信号的多路复用技术，在通信系统的同一时间内，允许多个用户同时发送或接收信息。</p><p>TDMA的工作原理是将时间分成若干个片段，每个用户在特定的时间片段内进行通信。每个用户都有自己的时间片段，并且这些时间片段是轮流分配的。这样，即使多个用户同时发送信号，也可以通过时间上的分离来避免信号冲突。</p><p>TDMA的优点包括可以实现多路通信、提高信道利用率、容易实现数字信号处理等。但它也有一些缺点，如需要进行精确的时间同步、需要较复杂的硬件等。</p><p>TDMA是移动通信系统中常用的一种技术，例如在GSM（全球移动通信系统）和UMTS（通用移动通信系统）等移动通信系统中都有应用。</p><p>ONU（光网络单元）是PON网络（无源光网络）中的一个重要组成部分，通常被部署在用户端，与OLT（光线路终端）进行通信，用户可以在ONU之后接入各类网络终端（如计算机、电话或因特网等）。ONU的作用是为用户提供网关和接口，包括但不限于ADSL Modem等功能。</p><p>在通信过程中，ONU上行时采用TDMA（时分多址）技术，通过OLT和ODN进行传输；下行时采用广播技术，所有ONU都可以收到相同的数据。</p><p>ONU具有多种类型和规格，可以根据实际需要进行选择。</p><p>OLT（光线路终端）是无源光网络（PON）中的重要组成部分，通常被部署在局端，与ODN（光分配网络）和ONU（光网络单元）进行通信。OLT的作用是为用户提供网络接口，包括但不限于ADSL Modem等功能。</p><p>在通信过程中，OLT下行时采用广播技术，所有ONU都可以收到相同的数据；上行时采用TDMA（时分多址）技术，由多个ONU共享带宽。</p><p>OLT具有多种类型和规格，可以根据实际需要进行选择。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>12-2 综合布线</title>
+    <link href="/2023/09/29/12-4%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%8E%E5%8A%9F%E8%83%BD/"/>
+    <url>/2023/09/29/12-4%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E4%B8%8E%E5%8A%9F%E8%83%BD/</url>
+    
+    <content type="html"><![CDATA[<p>单核心局域网结构 二层<br>1、成本低<br>2、管理简单</p><p>1、不支持高可用</p><p>双核心局域网结构 二层<br>1、链路冗余、设备冗余</p><p>三层架构</p><p>核心层交换机  高性能，快速转发<br>汇聚层交换机 策略和路由控制<br>接入层交换机  用户接入，安全控制（认证）</p><p>网络出口：广域网接入、地址转换、出口策略<br>1、NAT<br>2、多链路负载均衡、智能选路<br>3、IPSec<br>4、多个广域网接入<br>5、安全检测和过滤</p><p>核心层：高速转发、服务器接入、路由选择<br>汇聚层：流量汇聚、设备/链路冗余、路由选择、策略控制ACL等<br>接入层：用户接入、接入安全、访问控制</p><p>VLAN间路由靠汇聚层实现，网关一般在汇聚层（三层架构时）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>12-3 网络分析与设计</title>
+    <link href="/2023/09/29/12-3%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/"/>
+    <url>/2023/09/29/12-3%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/</url>
+    
+    <content type="html"><![CDATA[<p>1、需求分析：<br>商业：合同文件有没有规定要求<br>用户：客户提的要求<br>应用：传语音、视频、数据<br>计算机平台：<br>网络：</p><p>2、通信规范分析：<br>估计和测量通信量及设备利用率</p><p>3、逻辑网络设计<br>网络拓扑<br>IP地址规划<br>安全管理</p><p>4、物理网络设计<br>综合布线<br>设备清单</p><p>5、实施（运维）阶段<br>用户培训</p><p>物理层的技术选型属于逻辑网络设计</p><p>网络流量分析<br>80/20</p><p>对于大型网络工程来说，项目本身不能成为新技术的试验田</p><p>金融、运营商、军</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>12-2 综合布线</title>
+    <link href="/2023/09/29/12-2%E7%BB%BC%E5%90%88%E5%B8%83%E7%BA%BF/"/>
+    <url>/2023/09/29/12-2%E7%BB%BC%E5%90%88%E5%B8%83%E7%BA%BF/</url>
+    
+    <content type="html"><![CDATA[<p>网络规划和设计是一个迭代和优化的过程</p><p>视频<br>模拟监控：同轴电缆<br>数字监控：网线</p><p>多网融合，常用传输介质：光线和双绞线</p><p>综合布线六大子系统<br>1、工作区子系统<br>电脑到信息插座（网口）之间<br>小于10米，双绞线</p><p>2、水平子系统（线缆）<br>信息插座到楼层配线间配线架（RJ45）上<br>双绞线小于90米</p><p>3、干线子系统<br>各个楼层的配线间连接起来的主干光缆（一捆一捆光纤）</p><p>4、设备间子系统<br>机房，各种各样设备，核心交换机、汇聚交换机等</p><p>5、管理子系统<br>每个楼层配线间包含的配线架（管理线缆）<br>光纤配线架</p><p>6、建筑群子系统<br>实现不同楼宇建筑间互联的主干光缆（也可能有配线架）<br>光缆埋地、架空</p><p>实现跟服务器之间互联：光纤到服务器光纤网口连接起来。</p><p>光纤跟交换机互联需要哪些部件？<br>光模块、光纤跳线、光纤配线架、尾纤</p><p>光口服务器跟交换机互联需要哪些部件？<br>光模块、光纤跳线、光纤配线架</p><p>设备间和管理子系统区别？<br>管理子系统：线缆管理调配<br>设备间子系统：机架和设备</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>11-5 网络管理命令</title>
+    <link href="/2023/09/28/11-5%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4/"/>
+    <url>/2023/09/28/11-5%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<p>tracert 里有 * 1、超时 2、可能nat 3、防火墙或其他安全设备过滤</p><p>windows：<br>接口上配置ip后，会自动生成一条指向自己的127.x主机路由，32位子网掩码255.255.255.255</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>11-4 RMON</title>
+    <link href="/2023/09/28/11-4RMON/"/>
+    <url>/2023/09/28/11-4RMON/</url>
+    
+    <content type="html"><![CDATA[<p>RMON（Remote Network Monitoring）<br>监测网络流量的一个协议<br>SNMP监测设备运行状态，修改设备配置</p><p>RMON目标：监视子网范围内通信，减少管理站和被管系统之间的通信负载</p><p>向下兼容SNMP的MIB 2</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>11-3 SNMP</title>
+    <link href="/2023/09/28/11-3SNMP/"/>
+    <url>/2023/09/28/11-3SNMP/</url>
+    
+    <content type="html"><![CDATA[<p>网络管理协议五大标准<br>ISO制定：CMIS/CMIP公共管理信息服务规范<br>基于TCP/IP：简单网络管理协议SNMPv1、SNMPv2、SNMPv3<br>基于局域网：远程监控网络RMON-1和RMON-2<br>IEEE制定：基于物理层和数据链路层CMOL<br>ITU-T：电信网络管理标准TMN</p><p>CMIS和CMIP是网络管理协议中的两个重要协议</p><p>CMIS（Common Management Information Services）是通用管理信息服务，是一种与通用管理信息协议同时使用的重要协议，主要支持网络管理应用程序和管理代理之间的信息交换服务。<br>CMIP（Common Management Information Protocol）是通用管理信息协议，是与通用管理信息服务同时使用的一种ISO协议，主要支持网络管理应用程序和管理代理之间的信息交换服务。</p><p>TCP和UDP协议区别<br>①UDP报头8B，TCP报头20B<br>②UDP面向无连接的<br>③</p><p>get-request、get-next-request、set-request网管找客户端，客户端Agent接收NMS网管服务器的指令<br>下发配置命令用set-request</p><p>get-reponse、trap，客户端Agent反馈（下属向领导汇报）</p><p>客户端都用161，NMS都用162 </p><p>trap报文和SNMPTrap服务的区别</p><p>SNMPTrap开放udp 162端口接收远端agent发送trap报文</p><p>SNMPv3 </p><p>安全机制：认证和加密传输<br>时间序列模块：提供重放攻击防护<br>认证模块：完整性和数据源认证，使用SHA或MD5<br>加密模块：防止内容泄露，使用DES算法</p><p>拒绝服务DOS（主动攻击）和通信分析（被动攻击）SNMPv3没有防护</p><p>提前导入相应厂商MIB库，锐捷的SNC、华为esight、华三IMC。新的产品可能查不到</p><p>被管对象标识符OID   OID=1.3.6.1.4</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>11-2 网络管理基础</title>
+    <link href="/2023/09/28/11-2%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80/"/>
+    <url>/2023/09/28/11-2%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<p>网络管理五大功能域：故障管理、配置管理、计费管理、性能管理、安全管理。</p><p>安（安全管理）配（配置管理）能（性能管理）计（计费管理）障（故障管理）</p><p>故障管理：尽快发现故障，找出故障原因，以便及时采取补救措施。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>10-3 路由器基础</title>
+    <link href="/2023/09/27/10-3%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9F%BA%E7%A1%80/"/>
+    <url>/2023/09/27/10-3%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<p>路由器接口：</p><p>广域网WAN端口（接光猫）和局域网LAN端口（接PC） 都是以太网电接口（RJ45），企业级有光口<br>RJ45端口：常规以太网电口<br>以太网光口：SC/GBIC/SFP/SFP+/SFP28<br>AUI端口：用于令牌环或总线型以太网接口。（被淘汰）<br>Serial串口：用于连接DDN、帧中继、X.25、PSTN等网络<br>ISDN BRI/PRI端口：ISDN线路互联<br>SDH（时分复用网络） POS接口：155M/622M/2.5G/10G<br>PON接口：交换机上有，华三的核心交换机。广域网技术，城域网接入手段</p><p>交换机路由器管理方式<br>1、Console接口（最基础最常用）    现网<br>2、AUX端口连接Modem<br>3、Telnet（tcp 23 明文）/SSH（tcp 22 密文）  Stelnet（密文） 现网<br>4、浏览器   防火墙、IDS 应用层用的多<br>5、网管软件（SNMP 对设备管理） 现网</p><p>路由器的串口  PPP HDLC 都是点对点网络，路由器的以太网口之间是点对点连接。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>10-2 交换机基础</title>
+    <link href="/2023/09/26/10-2%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    <url>/2023/09/26/10-2%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<p>交换机基础</p><p>交换机分类<br>1、根据交换方式分：</p><p>①存储式转发交换（Store and Forward）：（现网中用的，现在硬件芯片加速处理，延时问题可以忽略）<br>完整接收数据帧、缓存、验证、碎片过滤（数据被破坏就过滤掉），然后转发<br>优点：可以提供差错校验和非对称交换（发给我100M数据，可以做成10M再发出去）。<br>缺点：延迟大。</p><p>②直通式交换（cut-through）：<br>输入端口扫描到目标地址后立即开始转发。（扫描6字节的目的mac地址后，前48位后，6*8=48目的mac地址后，立即转发）<br>优点：延迟小，交换速度快。<br>缺点：没有检错能力（得到CRC），不能实现非对称交换。</p><p>③碎片过滤式交换（Fragment Free）：<br>开始转发前先检查数据包的长度是否够64个字节（最小帧长46+6+6+2+4=64B），如果小于64个字节，说明是冲突碎片，则丢弃；<br>如果大于等于64个字节，则转发该包。</p><p>2、根据交换机的协议层划分：二层交换机、三层交换机、多层交换机（插入负载均衡板卡、防火墙板卡，实现更多高层功能）</p><p>3、根据交换机结构划分：固定端口交换机（常见24口、48口企业级交换机，用于接入）、模块化交换机（用于汇聚或者接入，华为12708，8个扩展板卡，插千兆板卡、万兆板卡等）</p><p>4、根据配置方式划分：堆叠交换机（企业级交换机都支持堆叠）、非堆叠交换机。</p><p>5、根据管理类型划分：网管交换机、非网管交换机、智能交换机。<br>网管软件、命令行配置<br>非网管交换机：直接插入用<br>智能交换机：支持SDN功能、支持流量探针功能（植入流量分析芯片进行 基础流量分析）</p><p>6、层次结构划分：核心交换机、汇聚交换机、接入层交换机。</p><p>级联和堆叠（连接的方式），堆叠可以实现交换机之间共享背板带宽。实现内部数据快速交换，堆叠线缆、接口都要使用速率比较高的，至少10Gbps，有的40Gbps<br>级联：<br>接入、汇聚、核心 级联起来，一级一级实现互联<br>堆叠：<br>多台交换机通过运行 堆叠协议（私有协议，各厂商自己定制）思科：VSS  华为：CSS（箱式核心交换机）、istack（接入交换机） 锐捷：VSU  华三：IRF</p><p>3个24口交换机，运行后，相当于一台72口交换机。有时也把堆叠说成虚拟化。</p><p>好处：①扩展端口②简化管理③增加系统冗余性、可靠性。<br>优势：<br>①逻辑上把多台设备虚拟成一台设备，简化运维，方便管理<br>②一台物理设备故障，其他设备可以接管转发、控制平台，避免单点故障<br>2台核心交换机做链路捆绑，然后堆叠（华为CSS），虚拟成一台<br>③跨设备的链路聚合，物理上的无环网络，无需再部署STP。<br>STP配置麻烦、网络规模大的时候，STP会有问题。 堆叠+链路聚合（捆绑）形成无环网络<br>④链路聚合中的链路全部有效使用，链路利用率100%<br>MSTP要阻塞相应端口，聚合后10G+10G=20G<br>劣势：<br>①堆叠都是私有协议，不支持跨厂商设备堆叠<br>②需要单独购买堆叠线缆（现在最新的用光纤也能实现堆叠，用普通业务光口也能实现堆叠）<br>③存在一定资源浪费，特别高端设备，如果2台核心都配置双引擎，堆叠后只有1个引擎工作。<br>高端箱式设备，都会插2个引擎，2个发动机，主备。1个引擎几十万。<br>④如果堆叠系统升级或重启，一般会有20~60s的业务中断。<br>⑤可靠性风险：控制层面统一后，相当于把鸡蛋放在一个篮子里，如果整个逻辑设备的控制平面出现问题<br>（比如说路由表被人攻击破坏），就有可能导致整机瘫痪，影响的范围大。</p><p>以太网交换机性能参数</p><p>1、端口类型：RJ45电口、光口（SC/GBIC/SFP/SFP+/SFP28）<br>SFP：千兆光口   SFP+：万兆光口   SFP28：100G接口   QSFP：40G接口</p><p>2、传输模块：半双工、全双工</p><p>3、交换容量：端口数<em>端口速率</em>2（一进一出，限速转发）    24口千兆交换机，要让交换机实现限速转发，交换容量至少为多少？<br>24<em>1G</em>2 = 48G 实现限速转发，进多少，就出多少，不然就会有延时</p><p>4、包转发率：单位时间内发送64字节数据包的个数 1000Mbps/8(64+8+12)=1.488Mbps</p><p>5、MAC地址数：交换机MAC地址表中可以存储最大的MAC地址数量。<br>mac地址表，低端交换机8K、16K、32K，高端512K甚至更高。mac地址表泛洪，属于二层DDOS拒绝服务攻击</p><p>6、VLAN表项：交换机最大支持VLAN数量，现在都是4094个。 可用vlan 1~4094</p><p>以太网都是二层交换机，不支持IP交换</p><p>基于源mac地址构建mac地址表，根据目的mac地址表转发</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-11 Linux用户和组管理</title>
+    <link href="/2023/09/26/9-11Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/"/>
+    <url>/2023/09/26/9-11Linux%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%AE%A1%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>根用户 root UID=0，根用户名root可以变，只要确保UID=0就行<br>防止暴力破解，将root用户名改成非root</p><p>/etc/passwd  所有用户都可以读取，不加密</p><p>/etc/shadow  只有超级管理员root才能读</p><p>useradd -d /home/test user1  为user1新添加默认登录目录<br>useradd -g test user2  为user2添加一个组 test组</p><p>userdel删除用户 groupadd添加组 groupdel删除组</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-10 Linux文件和目录管理</title>
+    <link href="/2023/09/26/9-10Linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/"/>
+    <url>/2023/09/26/9-10Linux%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>Linux文件挂载<br>挂载点必须是一个目录，而不能是一个文件。<br>一个分区挂载 在一个已知的目录节点上，这个目录可以不为空，挂载后这个目录以前的内容不可用。</p><p>Linux文件类型与访问权限<br>五种文件类型：普通文件、目录文件、链接文件、设备文件和管道文件<br>四类权限：读(r)可读的4、写(w)可写的2、执行(x)可执行的1、无访问权限(-)<br>三类用户：文件所有者、与文件所有者同组用户、其他用户</p><p>-rwx rwx —<br>4+2+1=7</p><p>more 分屏显示<br>less 允许用户向前向后翻页，B向前，P向后</p><p>rm -f force<br>rm -r recursion 递归删除</p><p>mkdir rmdir删除目录</p><p>chmod 文件访问权限   chmod g+rw test.txt</p><p>文件链接命令ln  link 在文件之间创建链接</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-9 iptables防火墙配置</title>
+    <link href="/2023/09/25/9-9iptables%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE/"/>
+    <url>/2023/09/25/9-9iptables%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<p>iptables的四表五链</p><p>4个规则表<br>raw表       确定是否对该数据包进行状态跟踪<br>mangle表    为数据包设置标记<br>nat表       修改数据包中的源、目的IP地址或端口<br>filter表    确定是否放行该数据包（过滤） </p><p>默认额度5种规则链<br>filter表主要用如下3个：<br>INPUT   处理入站数据包<br>OUTPUT  处理出站数据包<br>FORWARD</p><p>iptables -t filter -A INPUT -s 192.168.184.20 -p tcp –dport 22 -j DROP</p><p>-s源ip地址<br>-p 协议TCP<br>–dport 目的端口 （直接丢弃）<br>-j 处理动作  DROP：丢弃   REJECT：丢弃（回显ICMP不可达消息）LOG：将数据包信息记录到syslog  ACCEPT：允许数据包通过</p><p>-P：Policy 设置默认策略   iptables -P INPUT DROP 或 iptables -P INPUT ACCEPT<br>-p才是协议，后面可以跟TCP、UDP、ICMP等。</p><p>telnet 是 tcp 23端口</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-8 Linux网络配置</title>
+    <link href="/2023/09/24/9-8Linux%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    <url>/2023/09/24/9-8Linux%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<p>/etc/hosts: 包含IP地址和主机名之间映射，还包含主机名。<br>127.0.0.1 pc1 localhost    pc1主机名  localhost别名</p><p>/etc/host.conf 指定客户机域名解析顺序<br>order hosts, bind</p><p>/etcresolv.conf 指定客户机域名搜索顺序和DNS服务器地址</p><p>Search test.edu.cn<br>nameserver 114.114.114.114 #首选DNS服务器<br>nameserver 8.8.8.8   #备用DNS服务器</p><p>ifconfig eno123 10.1.1.1 netmask 255.255.255.0 up</p><p>ifconfig eno123</p><p>route查看路由表<br>route add -net target 3.3.3.0/24 gw 2.2.2.254<br>route add -host target 192.168.168.119 gw 192.168.168.1</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-7 DHCP服务器</title>
+    <link href="/2023/09/24/9-7DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <url>/2023/09/24/9-7DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<p>DHCP工作原理</p><p>Gratuitous ARP检测IP冲突</p><p>在手工配完ip地址后 或者 DHCP过程完成后，获得地址，发Gratuitous ARP做冲突检测</p><p>Gratuitous ARP 免费ARP广播，用来检测IP地址冲突</p><p>原理：以我自己的ip地址去请求相应的mac地址，如果有回应，则证明冲突</p><p>DHCP租约期更新<br>默认租约8天</p><p>50%   DHCP REQUEST<br>87.5%  DHCP REQUEST</p><p>169.254.0.0/16中随机的一个地址，并且每隔5分钟再进行尝试</p><p>ipconfig /renew重新获取地址</p><p>华为路由器/三层交换机DHCP配置<br>[dhcp] dhcp enable //开启DHCP功能<br>[dhcp] ip pool vlan 10 //DHCP地址池vlan10<br>[dhcp-ip-pool-vlan10] network 192.168.10.0 mask 24<br>[dhcp-ip-pool-vlan10] gateway-list 192.168.10.254 //指定网关地址<br>[dhcp-ip-pool-vlan10] dns-list 8.8.8.8 //指定DNS地址<br>[dhcp-ip-pool-vlan10] quit<br>[dhcp] ip pool vlan 20 //DHCP地址池vlan10<br>[dhcp-ip-pool-vlan10] network 192.168.20.0 mask 24<br>[dhcp-ip-pool-vlan10] gateway-list 192.168.20.254 //指定网关地址<br>[dhcp-ip-pool-vlan10] ns-list 8.8.8.8 //指定DNS地址</p><p>Option43: 为AP分配IP地址的同时，通告AC的地址</p><p>option 43 sub-option 3 ascii 10.10.10.1（AC的地址）</p><p>DHCP分配固定IP地址<br>DHCP server static-bind ip-address 192.168.2.2<br>mac-address 00e0-fc00-00aa #为PC3分配固定的IP地址</p><p>DHCP中继（DHCP Relay）</p><p>DHCP client通过DHCP Relay将广播报文转换为单播穿透路由器到啊DHCP server上</p><p>DHCP select relay<br>DHCP relay server-select HW（HW就是DHCP Server地址）</p><p>DHCP Snooping防止私接DHCP服务器<br>私接路由器导致 发现获取到 非指定网段的IP地址<br>解决方案：在交换机指定接口与DHCP Server通信，Trusted</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-6-5 DNS通知和配置文件</title>
+    <link href="/2023/09/24/9-6-5DNS%E9%80%9A%E7%9F%A5%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <url>/2023/09/24/9-6-5DNS%E9%80%9A%E7%9F%A5%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<p>主域名服务器向辅助服务器发DNS通知消息，让辅助域名服务器从主域名服务器 区域复制</p><img src="/2023/09/24/9-6-5DNS%E9%80%9A%E7%9F%A5%E5%92%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/1.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-6-4 递归查询和迭代查询</title>
+    <link href="/2023/09/24/9-6-4%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2/"/>
+    <url>/2023/09/24/9-6-4%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2/</url>
+    
+    <content type="html"><![CDATA[<p>递归查询：域名服务器帮助用户进行名字解析，并返回最后的结果。  老好人<br>迭代查询：域名服务器进行迭代访问，反复多次，直到最后找到结果。 踢皮球</p><p>DNS查询过程</p><p>权限（授权）域名服务器返回结果的阶段 可能是递归，也可能是迭代</p><img src="/2023/09/24/9-6-4%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2/1.png" class=""><img src="/2023/09/24/9-6-4%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2/2.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-6-3 DNS查询顺序</title>
+    <link href="/2023/09/24/9-6-3DNS%E6%9F%A5%E8%AF%A2%E9%A1%BA%E5%BA%8F/"/>
+    <url>/2023/09/24/9-6-3DNS%E6%9F%A5%E8%AF%A2%E9%A1%BA%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[<p>ipconfig /displaydns 查看DNS缓存<br>ipconfig /flushdns 清除DNS缓存</p><p>系统缓存在内存里，host文件在硬盘上，因此DNS系统缓存快，先查DNS系统缓存</p><p>本地DNS服务器就是主域名服务器，先查区域记录，再查DNS服务器缓存（其他DNS服务器告知的，会定时清除）</p><p>test.com 授权域名服务器/权威（权限）域名服务器：最原始的记录</p><p>chrome对每个域名默认缓存60秒，IE缓存30分钟，Firefox缓存1分钟</p><img src="/2023/09/24/9-6-3DNS%E6%9F%A5%E8%AF%A2%E9%A1%BA%E5%BA%8F/1.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-6-2 DNS6种记录类型</title>
+    <link href="/2023/09/24/9-6-2DNS6%E7%A7%8D%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/"/>
+    <url>/2023/09/24/9-6-2DNS6%E7%A7%8D%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<p>NS有一堆，SOA只有一台，SOA起始授权机构记录，SOA记录用于表示在众多NS记录中哪一台是主服务器。</p><p>A：主机名解析为IP地址</p><p>PTR：反向查询，IP地址解析为主机名</p><p>邮件服务器MX(mail exchange)</p><p>别名CNAME</p><img src="/2023/09/24/9-6-2DNS6%E7%A7%8D%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/1.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-6-1 DNS服务器</title>
+    <link href="/2023/09/24/9-6-1DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <url>/2023/09/24/9-6-1DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<p>FQDN 是完全限定域名（Fully Qualified Domain Name）的缩写。它指的是一个完整的域名，包括顶级域名（TLD）和所有子域名。例如，”example.com” 是一个 FQDN，而 “.com” 是一个顶级域名。</p><p>与FQDN相对的是非完全限定域名（FQDN），它不包括顶级域名。例如，”example” 是一个非完全限定域名，而 “example.com” 是一个 FQDN。</p><p>在编程和网络通信中，使用 FQDN 可以确保域名解析的准确性和唯一性，从而避免混淆和误解。</p><img src="/2023/09/24/9-6-1DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/1.png" class=""><img src="/2023/09/24/9-6-1DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/2.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-5 IIS服务器Web FTP</title>
+    <link href="/2023/09/24/9-5IIS%E6%9C%8D%E5%8A%A1%E5%99%A8Web%20FTP/"/>
+    <url>/2023/09/24/9-5IIS%E6%9C%8D%E5%8A%A1%E5%99%A8Web%20FTP/</url>
+    
+    <content type="html"><![CDATA[<p>IIS(Internet Information Server)因特网信息服务器<br>IIS可以搭建Web服务器、FTP服务器和SMTP服务器（没有POP3和IMAP）</p><p>集成Windows身份验证安全级别最高</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-4 远程桌面和Samba</title>
+    <link href="/2023/09/24/9-4%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E5%92%8CSamba/"/>
+    <url>/2023/09/24/9-4%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E5%92%8CSamba/</url>
+    
+    <content type="html"><![CDATA[<p>远程桌面协议RDP，基于TCP 3389</p><p>命令快捷键：mstsc</p><p>Samba:向Linux主机提供Windows风格的文件和打印机共享服务。<br>目的：现网Windows居多，为了让Linux兼容与现网用户共享数据和服务</p><p>提供文件和打印机共享服务：Samba<br>提供IP地址分配服务：DHCP<br>提供FTP服务：IIS<br>提供用户的认证服务：PKI、Kerberos、Radius、AD </p><p>NFS:网络文件系统 NAS windows叫CIFS，linux用NFS实现文件共享</p><p>NetBIOS名字系统，跟DNS类似。</p><p>Appletalk苹果的局域网协议</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-3 活动目录</title>
+    <link href="/2023/09/24/9-3%E6%B4%BB%E5%8A%A8%E7%9B%AE%E5%BD%95/"/>
+    <url>/2023/09/24/9-3%E6%B4%BB%E5%8A%A8%E7%9B%AE%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p>工作组模式：每台计算机都拥有自己的本地安全账户管理数据库SAM<br>域模式：用户信息存储在域控制器，可以在域中漫游，访问域中任意一台服务器上的资源</p><p>活动目录（Active Diretory,AD）微软技术<br>对域中的账户、资源对象进行存放并集中管理<br>一个动态的分布式文件系统，包含存储网络信息的目录结构和相关目录服务</p><p>域控制器（Domain Controller,DC）域中安装了活动目录的计算机。dcpromo</p><p>活动目录中对象的名字采用DNS域名结构，安装AD必须先安装DNS组件，必须安装在NTFS分区</p><p>NTFS（New Technology File System）是Windows NT内核的系列操作系统支持的、一个特别为网络和磁盘配额、文件加密等管理安全特性设计的磁盘格式，提供长文件名、数据保护和恢复，能通过目录和文件许可实现安全性，并支持跨越分区。</p><p>组策略<br>A：Acoount用户账号   G：Global全局组    U：universal通用组  DL：Domain Local域本地组  P：Privilege资源权限</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>9-2 本地用户和组</title>
+    <link href="/2023/09/24/9-2%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84/"/>
+    <url>/2023/09/24/9-2%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<p>本地用户信息存储在本地SAM数据库</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-10 计算机病毒与防护</title>
+    <link href="/2023/09/24/8-10%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E4%B8%8E%E9%98%B2%E6%8A%A4/"/>
+    <url>/2023/09/24/8-10%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E4%B8%8E%E9%98%B2%E6%8A%A4/</url>
+    
+    <content type="html"><![CDATA[<p>震网病毒<br>美 -&gt; 伊 核设施，铀 主机感染后，潜伏下来，再繁殖。</p><p>病毒四个阶段：<br>潜伏阶段（震网病毒）<br>繁殖阶段（勒索病毒）<br>触发阶段（震网病毒）<br>执行阶段</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-9 防火墙与入侵检测</title>
+    <link href="/2023/09/24/8-9%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/"/>
+    <url>/2023/09/24/8-9%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/</url>
+    
+    <content type="html"><![CDATA[<p>防火墙：<br>可以实现内部信任网络 与 外部不可信任网络之间 或是 内部网络不同区域隔离与访问控制。<br>防火墙技术与分类：包过滤、状态化防火墙、应用层网关、应用层检测DPI。</p><p>考试给的默认是包过滤防火墙（ACL）。基于IP or TCP报头做过滤</p><p>状态化防火墙，基于TCP的session状态做检测；应用层网关ALG（针对某个应用）</p><p>防火墙区域划分（根据安全信任程度和需要保护的对象，人为划分若干安全区域）<br>1、本地区域（Local）：防火墙本身<br>2、信任区域（Trust）：内部安全网络，如内部文件服务器、数据库服务器<br>3、非信任区域（Untrust）：外部网络，比如互联网。<br>4、军事缓冲区域（DMZ）：内部网络和外部网络之间的网络，常放置公共服务设备，向外提供信息服务。</p><p>安全区域    安全级别    说明<br>Local       100      设备本身，包括设备的各接口本身<br>Trust       85       通常用于定义内网终端用户所在区域<br>DMZ         50       通常用于定义内网服务器所在区域<br>Untrust     5        通常用于定义Internet等不安全的网络</p><p>受信任程度：Local &gt; Trust &gt; DMZ &gt; Untrust<br>Inbound：低安全级别 -&gt; 高安全级别，比如Untrust -&gt; trust<br>Outbound： 高安全级别 -&gt; 低安全级别，比如DMZ -&gt; Untrust</p><p>防火墙工作层次（OSI）越高，工作效率越低，安全性越高</p><p>考试的防火墙默认当做包过滤防火墙，只能基于网络层、传输层做检测</p><p>①IP包/分组<br>②TCP报文段</p><p>ACL：访问控制</p><p>IDS：入侵检测<br>美国国防部剔除公共入侵检测系统架构：CIDF体系结构<br>1、事件产生器 采集数据<br>2、事件分析器 ①模式匹配②统计分析③数据完整性分析<br>3、响应单元   发日志告警，声光告警？<br>4、事件数据库  存放结果和数据</p><p>IDS入侵检测系统的数据源<br>IDS检测系统旁路部署在核心交换机旁边，流量镜像<br>检测流量多种来源<br>1、服务器、PC的日志，扔给IDS<br>2、在交换机上做端口镜像，把端口流量copy一份扔给IDS系统做分析</p><p>华为交换机端口镜像配置<br>oberserve-port观察端口，用来接IDS设备的</p><p>将交换机网口GigabitEthernet1/0/2的流量镜像部署到Snort的网口GigabitEthernet1/0/1上</p><p>system-view<br>observe-port 1 interface gigabitethernet 1/0/1 //定义索引号为1的观察端口g1/0/1<br>interface gigabitethernet 1/0/2  //进入流量采集接口<br>port-mirroring to observe-port 1 inbound //将g1/0/2入方向的流量镜像到g1/0/1</p><p>入侵检测分类<br>一、按信息来源分：HIDS、NIDS、DIDS（主机/网络/分布式）<br>多个IDS信息汇聚到态势感知监控后台，除了分析各种攻击威胁后，可以做可视化显示</p><p>二、按响应方式分：实时检测和非实时检测<br>按数据分析技术和处理方式分：异常检测、误用检测和混合检测</p><p>1、异常检测：建立并不断更新和维护系统正常行为的轮廓、定义报警阈值，超过阈值则报警。<br>能够检测从未出现的攻击，但误报率高。</p><p>2、误用检测：对已知的入侵行为特征进行提取，形成入侵模式库，匹配则进行报警。<br>已知入侵检测准确率高，对于未知入侵检测准确率低，高度依赖特征库。<br>检测技术：专家系统和模式匹配</p><p>入侵防御系统 IPS<br>IPS在攻击响应上采取的是 主动的全面深层次的防御</p><p>入侵防御系统IPS 和 入侵检测系统IDS<br>1、部署位置不同：IPS一般串行部署，IDS一般旁路部署<br>2、入侵响应能力不同：IPS能检测入侵，并能主动防御，IDS只能检测记录日志，发出警报。</p><p>异常检测、误用检测（专家系统、模式匹配） 和 混合检测都是属于 IDS入侵检测技术，漏洞扫描不属于。</p><p>防御SQL注入手段<br>①对用户输入做关键字过滤<br>②部署Web应用防火墙进行防护<br>③定期扫描系统漏洞并及时修复</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-8 SSL HTTPS</title>
+    <link href="/2023/09/24/8-8SSL%20HTTPS/"/>
+    <url>/2023/09/24/8-8SSL%20HTTPS/</url>
+    
+    <content type="html"><![CDATA[<p>Secure Socket Layer，SSL 安全套接层</p><p>IETF 互联网工程任务组（Internet Engineering Task Force）和RFC 互联网工程任务组（Internet Engineering Task Force）是密切相关的。<br>RFC（Request for Comments）是由IETF发布的一系列备忘录，包含了关于互联网的重要文字资料，是IETF的工作成果之一。IETF是一个非常大的开放性国际组织，由网络设计师、运营者、服务提供商和研究人员组成，致力于Internet架构的发展和顺利操作。大多数IETF的实际工作是在其工作组中完成的，这些工作组又根据主题的不同划分到若干个领域，如路由、传输、网络安全等。</p><p>SSL/TLS，SSL应用广</p><p>HTTP<br>SSL/TLS<br>TCP（端口443）<br>IP（协议号6）<br>HTTPS协议栈</p><p>S-HTTP 安全的超文本传输协议 语法与HTTP一样，而报文头有区别，进行了加密。因此语法与HTTP一样，但报文格式与HTTP不一样</p><p>S-HTTP<br>TCP（端口80）<br>IP（协议号6）<br>S-HTTP协议栈</p><p>PGP（Pretty Good Privacy）是一个完整的电子邮件安全软件包，PGP提供数据加密和数字签名两种服务。<br>采用RSA公钥证书进行身份验证，使用IDEA进行数据加密，使用MD5进行数据完整性验证。</p><p>PGP应用广泛原因：<br>支持多平台（Windows，Linux，MacOS）上免费使用，得到许多厂商支持。<br>基于比较安全的算法（RSA、IDEA、MD5）<br>即可以加密文件和电子邮件，也可以用于个人通信，应用集成PGP。</p><p>Kerberos用于进行身份认证的安全协议，支持AAA：认证、授权、审计</p><p>Kerberos服务器（KDC）只包含AS和TGS<br>AS（认证服务器） 保存所有用户的账号和密码<br>①请求许可凭证<br>②返回许可凭证给到客户方C</p><p>TGS（授权服务器）<br>③客户方C请求服务器凭据<br>④返回服务器凭据凭证给到客户方C</p><p>最后<br>服务器方S<br>⑤请求服务<br>⑥提供双向认证</p><p>用DES/3DES加密消息</p><p>用户和AS服务器需要共享长期密钥</p><p>其他应用层安全协议<br>S/MIME（Security/Mutipurpose Internet Mail Extension）提供电子邮件安全服务<br>SET（Secure Electronic Transation）安全的电子交易，用于保障电子商务安全。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-7 IPSec原理</title>
+    <link href="/2023/09/24/8-7IPSec%E5%8E%9F%E7%90%86/"/>
+    <url>/2023/09/24/8-7IPSec%E5%8E%9F%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>虚拟专用网 Virtual Private Network<br>建立公网上，由某一组织或某一群用户专用的通信网络</p><p>二层：L2TP和PPTP（基于PPP） 数据链路层<br>三层：IPSec和GRE           网络层<br>四层：SSL/TLS              传输层</p><p>实现数据加密的技术：PPTP、IPSec、SSL、TLS</p><p>L2TP和GRE不加密</p><p>实现虚拟专用网关键技术<br>1、隧道技术   ☆  公司总部里面有文件服务器，在外出差，通过隧道访问公司内网文件<br>2、加解密技术  ☆<br>3、密钥管理技术<br>4、身份认证技术</p><p>虚拟专用解决方案<br>实现总分机构互联，常用IPSec<br>实现用户远程接入，比如出差拨号访问内网，常用SSL/TLS</p><p>二层隧道协议 PPTP和L2TP，都基于PPP协议。<br>PPTP（微软）只支持TCP/IP体系，网络层必须是IP协议。<br>L2TP可以运行在IP协议、X.25、帧中继、ATM网络上使用。</p><p>PPP协议包含链路控制协议LCP（Link Control Protocol） 和 网络控制协议NCP（NetWork Control Protocol）</p><p>PPP协议可以在点对点链路上传输多种上层协议的数据包，有校验位。<br>但HDLC只支持IP协议（网络层）</p><p>PPP认证方式：PAP和CHAP ☆</p><p>PAP：两次握手，口令以明文传送<br>CHAP：三次握手，传送的是HMAC散列值（哈希值、摘要值）<br>      上层协议     地址协商     错误检测<br>PPP   多协议         能          可以<br>HDLC    IP          不能        可以</p><p>IPSec基础</p><p>IPSec（IP Security）是IETF定义的一组协议，用于增强网络的安全性。</p><p>IPSec协议集提供如下安全服务：<br>1、数据完整性<br>2、认证<br>3、保密性<br>4、应用安全透明性</p><p>IPSec集成在IPv6中，给IPv4打补丁，增强安全性。</p><p>IPSec原理<br>AH：认证头<br>ESP：封装安全负荷  Encapsulating Security Payload<br>IKE：Internet密钥交换协议</p><p>IPSec协议     功能                代表协议<br>AH        数据完整性和源认证       MD5、SHA<br>ESP          数据加密             DES、3DES、AES<br>IKE         密钥生成和分发          DH</p><p>IPSec两种封装模式<br>原始报文   原来的IP头 + TCP + 数据<br>传输模式   原来的IP头 + AH + TCP + 数据<br>隧道模式   新的IP头 + AH + 原来的IP头 + TCP + 数据</p><p>IPSec是网络层协议</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-6 数字证书与CA</title>
+    <link href="/2023/09/23/8-6%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E4%B8%8ECA/"/>
+    <url>/2023/09/23/8-6%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E4%B8%8ECA/</url>
+    
+    <content type="html"><![CDATA[<p>数字证书解决了什么问题？<br>Alice给Bob发消息，拿Bob的公钥加密消息，但怎么获取Bob的公钥呢？</p><p>通过Bob的数字证书获取Bob的公钥。</p><p>数字签名先做HASH，然后用户私钥对HASH值签名</p><p>数字证书里有CA的签名，用CA私钥签名。</p><p>证书里面HASH算法：MD5，签名算法：RSA</p><p>PKI体系：数字证书怎么颁发，怎么管理的过程。严格意义由系统工程师负责 </p><p>证书里有用户公钥+CA的签名（防伪标记）CA签名用CA的私钥签名的。</p><p>数字证书来对用户的身份进行认证，使用数字签名确保消息不可否认。</p><p>SM2数字证书采用的公钥密码算法是 ECC 椭圆曲线问题</p><p>SM2算法基于ECC</p><p>SM2算法是中国国家密码管理局制定的一种非对称加密算法，使用一对密钥（公钥和私钥）来加密和解密信息。它使用椭圆曲线密码体制（ECC）作为基础，在ECC的基础上进行了改进，使用了更加安全的点压缩方式来表示点。SM2算法还包括一组标准，用于实现加密和解密的流程2。</p><p>由于SM2算法基于ECC，故其签名速度与秘钥生成速度都快于RSA，且ECC256位（SM2采用的就是ECC256位的一种）安全强度比RSA2048位高，所以SM2算法比较快且比较安全。</p><p>证书链：<br>2个用户分别从2个CA中取得证书后，接下来，2个CA要相互交换CA的公钥去验证对方身份。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-5 数字签名</title>
+    <link href="/2023/09/23/8-5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/"/>
+    <url>/2023/09/23/8-5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/</url>
+    
+    <content type="html"><![CDATA[<p>签名目的：防止抵赖、否认</p><p>私钥签名，公钥验签。用签名方的私钥签名，接收方用签名方的公钥验签</p><p>数字签名：确认发送者身份和消息完整性<br>1、数字签名是可信的<br>2、数字签名不可伪造（私钥保密的）<br>3、数字签名不能重新使用（一次性，一次签名只能用一次）<br>4、签名文件是不能改变的<br>5、数字签名不能抵赖<br>6、接收者能够核实发送者身份</p><p>用A私钥对消息签名，用B的公钥对签名进行加密 发给B</p><p>B收到，用B的私钥解密，得到A的签名，再用A公钥进行验证。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-4 Hash哈希算法</title>
+    <link href="/2023/09/23/8-4Hash%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/"/>
+    <url>/2023/09/23/8-4Hash%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>HASH函数，又称杂凑函数、散列函数，它能够将任意长度的信息转换成固定长度的哈希值（数字摘要）<br>并且任意不同消息或文件所生成的哈希值是不一样的。</p><p>不可逆性（单向）<br>无碰撞性：无法找到2个数据的hash值相同<br>雪崩效应：输入稍微变化，输出会相差很大</p><p>HASH应用</p><p>一、文件完整性校验<br>下载文件时，在服务器上放下载文件 + HASH值<br>客户端下载后，自己计算HASH值。对比看是否有变化</p><p>二、账号密码存储<br>网站、数据库后台用户名、密码存储方式<br>明文存储：防止内部人员盗号</p><p>用户名和密码HASH处理，不一定安全，彩虹表攻击。解决方案：Hash+盐</p><p>盐：时间戳、随机数。在数据里面加盐再Hash</p><p>三、用户身份认证 （解决密码在网络上明文传送的问题）<br>典型的：PPP里面CHAP认证</p><p>HMAC哈希认证码<br>1、客户端发起认证<br>2、服务端检查有对应信息，返回随机数R<br>3、客户端用密码+随机数生成hash发给服务端，服务端用随机数+密码生成hash值进行对比，来确认客户端是否知道密码。</p><p>哈希、摘要、散列算法相同<br>MD5 128 哈希值  SHA1 160  SM3 256</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-3 现代加密技术</title>
+    <link href="/2023/09/23/8-3%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
+    <url>/2023/09/23/8-3%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/</url>
+    
+    <content type="html"><![CDATA[<p>密码学技术</p><p>私钥和公钥，介于私钥和公钥之间的密码称为混合密码</p><p>混合密码：发送方用对称加密需要发送的消息，再用接收方的公钥加密对称密钥，然后一起发送给接收方；<br>接收方先用自己的私钥解码得到对称密钥，然后用对称密钥解密得到明文。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>8-2 网络安全基础</title>
+    <link href="/2023/09/23/8-2%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/"/>
+    <url>/2023/09/23/8-2%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<p>网络安全威胁类型</p><p>1、窃听<br>2、假冒<br>3、重放：重复发送一份报文或报文的一部分，以便产生一个被授权效果 （发的数据包加随机数 或 时间戳解决）<br>4、流量分析：大数据分析是其中一种应用</p><p>5、数据完整性破坏<br>6、拒绝服务Dos：耗尽服务端资源，让服务不能为正常用户提供服务  SYN-Flooding<br>DDOS 分布式拒绝攻击</p><p>SYN-Flooding：开辟内存空间保存半连接。<br>Mac-Fooding：短时间发大量2层数据包，有伪造的源mac地址，基于源mac地址学习，短时间耗尽mac地址表</p><p>7、资源的非授权使用<br>8、陷门和特洛伊木马：远程控制，从内部发起攻击<br>9、病毒<br>10、诽谤</p><p>网络攻击分类<br>被动攻击：嗅探、监听、流量分析   难被检测，重点预防，主要手段：加密<br>主动攻击：假冒、重放、欺骗、消息篡改和拒绝服务，重点检测，不是预防，主要手段：防火墙、IDS（入侵检测）</p><p>物理临近攻击<br>内部人员攻击<br>分发攻击  软件开发出来未安装之前，被篡改（疫苗运输恒温不合格）</p><p>安全目标和技术<br>访问控制<br>认证：身份认证、消息认证<br>完整性：确保接收到的信息与发送的信息一致<br>审计：不可抵赖<br>保密：确保敏感信息不被泄露</p><p>基本安全技术：数据加密、数字签名、身份认证、防火墙、入侵检测、内容检查</p><p>ARP Flooding、Mac Flooding、SYN-Flooding</p><p>系统干涉：攻击者获取系统访问权，从而干涉系统的正常运行</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>7-5 过渡技术</title>
+    <link href="/2023/09/23/7-5%E8%BF%87%E6%B8%A1%E6%8A%80%E6%9C%AF/"/>
+    <url>/2023/09/23/7-5%E8%BF%87%E6%B8%A1%E6%8A%80%E6%9C%AF/</url>
+    
+    <content type="html"><![CDATA[<p>IPv4到IPv6过渡技术</p><p>双栈技术：同时运行IPv4和IPv6</p><p>隧道技术：解决IPv6节点之间通过IPv4网络进行通信</p><p>翻译技术：解决纯IPv6节点与纯IPv4节点之间进行通信</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>7-4 IPv6地址</title>
+    <link href="/2023/09/23/7-4IPv6%E5%9C%B0%E5%9D%80/"/>
+    <url>/2023/09/23/7-4IPv6%E5%9C%B0%E5%9D%80/</url>
+    
+    <content type="html"><![CDATA[<p>IPv6地址基础<br>IPv6 128位   冒号分隔的十六进制数（8组）表示<br>8000:0000:0000:0000:0123:4567:89AB:CDEF<br>4<em>4</em>8=128位 （16进制的1位可以转换成2进制的4位）</p><p>0123 -&gt; 123  每个字段前面的0可以省去</p><p>一个或多个全0字段，可以用一对冒号 “::”代替<br>8000:0000:0000:0000:0123:4567:89AB:CDEF<br>8000::123:4567:89AB:CDEF</p><p>IPv4兼容地址可以写为 ::192.168.10.1</p><p>IPv6地址分类<br>单播地址<br>1、可聚合全球单播地址   前缀 001<br>2、链路本地地址        前缀 1111 1110 10<br>3、站点本地地址        前缀 1111 1110 11</p><p>1聚2链3站    1聚2恋3占</p><p>组播地址<br>广播功能被组播代替<br>组播地址格式前缀   1111 1111 即FF00开头</p><p>任意播地址<br>表示一组接口的标识符，通常是路由距离最近的接口<br>不能用作源地址，只能作为目标地址<br>不能给IPv6主机，只能指定给IPv6路由器</p><p>IPv6地址书写</p><p>特殊地址对比 IPv4 vs IPv6</p><p>IPv4               IPv6<br>默认地址：0.0.0.0    不确定地址 ::<br>回环地址 127.0.0.1   回环地址::1</p><p>IPv6路由协议<br>RIPng、OSPFv3、BGP4+</p><p>DHCPv6 无状态配置和有状态配置<br>有：DHCPv6直接分配前缀和接口ID、网关和DNS等 （全部信息）<br>无：路由器接口前缀+终端EUI-64  EUI-64，根据mac地址自动生成</p><p>ICMPv6：新增加的邻居发现功能代替了ARP协议的功能<br>ICMPv6是互联网控制信息协议版本六，是为了与IPv6配套使用而开发的1。<br>IPv6也需要使用ICMP，旧版本的ICMP不能满足IPv6全部要求，因此开发了新版本的ICMP，称为ICMPv6</p><p>ARP协议，全称地址解析协议，是用来将网络地址（IP地址）解析为硬件地址（MAC地址），以保证通信的顺利进行。在IPv6中，这个功能被并入到了ICMPv6中</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>7-3 IPv6报文格式</title>
+    <link href="/2023/09/23/7-3IPv6%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/"/>
+    <url>/2023/09/23/7-3IPv6%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<p>版本：0110 表示IPv6   0100 IPv4</p><p>IPv4头部默认20B，可以扩展到60B<br>IPv6头部默认40B。</p><p>IPv6没有头部校验和字段，IPv4有头部校验和字段</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>7-2 IPv4与改进</title>
+    <link href="/2023/09/23/7-2.IPv4%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B9%E8%BF%9B/"/>
+    <url>/2023/09/23/7-2.IPv4%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B9%E8%BF%9B/</url>
+    
+    <content type="html"><![CDATA[<p>IPv4 32位   IPv6 128位</p><p>IPv6集成IPSec功能<br>IPv6支持多报头嵌套<br>IPv6只能由源节点进行分段，中间路由器不能分段，目的是简化路由处理，MTU发现。</p><p>路由器原来是CPU查询，后来引入硬件ASIC芯片查询，提高查找速度</p><p>ipv4头部有13个字段，ipv6有8个字段</p><p>ip报文有标志段，MF、DF</p><p>MTU发现，提前发现最小的MTU，这样IP数据包就不会被分片，简化路由处理，提高传输效率</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>6-4-3 动态路由协议 RIP/OSPF/BGP/ISIS</title>
+    <link href="/2023/09/23/6-4-3%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB/"/>
+    <url>/2023/09/23/6-4-3%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB/</url>
+    
+    <content type="html"><![CDATA[<p>动态路由协议分类</p><p>距离矢量协议，传的路由表：RIP    BGP（严格意义叫路径矢量）</p><p>链路状态协议：OSPF、IS-IS  学习全网拓扑 根据SPF 最短路径算法找出最佳路径</p><p>类比：<br>距离矢量：不知道全网情况，成都-&gt;北京，问张三-&gt;问李四</p><p>链路状态：了解全网架构，全国地图包，根据起点和终点计算怎么走，计算出多条路径，距离最短的 or 时间最短的 or 最熟悉的</p><p>IGP: RIP OSPF ISIS<br>EGP: BGP</p><p>RIP  UDP 520端口<br>OSPF  IP<br>BGP  TCP 179<br>ISIS  封装在链路层</p><p>RIP：IGP内部网关协议，距离矢量路由协议<br>华为设备上优先级100<br>计算跳数，中小型网络，16跳不可达，最大15跳</p><p>时钟：<br>每30s发一次路由表，180s没有更新，认为这条路由不可达，将cost值设置成16跳。再过120s从路由表中删除</p><p>180+120=300s删除路由表</p><p>RIPv1和RIPv2</p><p>RIPv1<br>有类，不携带子网掩码<br>更新时按照主类更新的。A类：8   B类：16  C类：24<br>广播更新<br>周期性更新 每30s<br>不支持VLSM、CIDR<br>不提供认证</p><p>RIPv2<br>无类，携带子网掩码<br>组播更新(224.0.0.9)<br>触发更新<br>支持VLSM、CIDR<br>提供明文和MD5认证</p><p>距离矢量路由协议<br>只知道距离cost（几跳）和方向（上下左右、哪个接口转发数据包）</p><p>周期性更新（广播）整张路由表<br>距离 Distance 多远<br>矢量 Vector 哪个方向</p><p>RIP<br>以跳数作为度量。虽然简单，但不科学<br>跳数低的，可能链路带宽低，但会被RIP优选</p><p>display ip routing-table：查看RIP路由的度量值</p><p>优先级高的路由协议，会优先走</p><p>OSFP   Open Shortest Path First 开放式最短路径优先协议<br>内网网关协议，链路状态路由协议</p><p>路由器之间交互链路状态信息，路由器连了哪些接口，分别是哪些网段<br>采用SPF 迪杰斯特拉算法，计算达到目的地的最短路径</p><p>支持VLSM，支持手工路由汇总，不支持自动汇总。RIP和BGP这种带距离矢量特性的才支持自动汇总</p><p>OSPF<br>适应范围广：支持各种规模的网络，中大型网络都支持<br>快速收敛：在网络拓扑结构发生变化后立即发送更新报文，使这一变化在自治系统中同步。<br>无自环：使用SPF最短路径树算法进行路由计算，不会产生环路。<br>区域划分：允许网络被划分成区域来管理，链路状态数据库仅需和区域内其他路由器保持一致。减小<br>对路由器内存和CPU的消耗。同时区域间传送的路由信息减小，降低网络带宽占用。</p><p>减少网络变化对路由的影响，在区域内变化即可</p><p>OSPF接口cost=100M/接口带宽，100M为OSPF参考带宽（reference-bandwidth可以在路由器修改）<br>GE0/0/0  千兆口 cost = 100/1000 = 1<br>Serial0/0/0 2M口 cost = 100/2 = 50</p><p>一条OSPF路由的cost由该路由从起源一路到达本地的所有入接口cost值总和。<br>按照路由来算是入接口<br>按照流量来算是出接口</p><p>OSPF<br>所有非骨干区域必须与骨干区域直连</p><p>虚链路建立连接</p><p>路由器角色<br>区域内路由器Internal Router<br>区域边界路由器 ABR    Area Border Router<br>骨干路由器 BR        Backbone Router<br>AS边界路由器ASBR AS Boundary Router</p><p>有接口在area0里面就算骨干路由器，1个路由器既可以是ABR也可以是BR</p><p>OSPF总结<br>触发式更新、分层路由、支持大型网络<br>Area 0.0.0.0 或者 Area 0 来表示骨干区域，不是区域1<br>点对点网络上每10秒发送一次hello，在NBMA网络每30秒发送一次，Deadtime为hello时间4倍（每10秒打招呼，4倍hello时间就认为该邻居不存在了）</p><p>OSPF系统内几个特殊组播地址：<br>224.0.0.1  在本地子网的所有主机<br>224.0.0.2  在本地子网的所有路由器<br>224.0.0.5  运行OSPF协议的路由器<br>224.0.0.6  OSPF 指定/备用指定路由器DR/BDR<br>DR全称Designated Router，指定路由器。<br>BDR全称Backup Designated Router，备份指定路由器<br>目标地址224.0.0.5指所有路由器，用于发现建立邻居、还用于选出区域内的指定路由器DR和备份指定路由器BDR（DR/BDR组播地址是224.0.0.6）</p><p>BGP和ISIS</p><p>BGP四个报文<br>Open打开  建立邻居关系    建立外交<br>Update更新  发送新的路由信息  更新外交信息<br>Keepalive保持活动状态（Keepalive） 对Open的应答/周期性确认邻居关系  保持外交活动<br>Notification通告   报告检测到的错误    发布外交通告</p><p>ISIS 1个路由器只能属于1个区域<br>OSPF 1个路由器可以属于多个区域</p><p>ISIS L1-&gt;L1    L1-&gt;L1/L2  可以形成邻居关系，L1-&gt;L2不能形成邻居关系</p><p>LSA（Link State Advertisement）本身不是OSPF的消息，而是一类数据结构，<br>存放在路由器的链路状态库LSDB中（Link State DataBase），并可包含在LSU消息中进行交换。<br>LSA包括有关邻居和通道成本的信息。<br>接收路由器用LSA维护其路由选择表</p><p>OSPF使用HELLO报文维护邻居</p><p>先配置OSPF，再配置接口，第一个配置的接口ip即为Router-ID<br>先配接口，再配置OSPF，手动-&gt;回环最大-&gt; 普通接口里ip地址最大的</p><p>router id 不一定是ip地址，可以自定义配置</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5-7 WLAN安全</title>
+    <link href="/2023/09/23/5-7WLAN%E5%AE%89%E5%85%A8/"/>
+    <url>/2023/09/23/5-7WLAN%E5%AE%89%E5%85%A8/</url>
+    
+    <content type="html"><![CDATA[<p>SSID访问控制：隐藏SSID，让不知道的人搜索不到</p><p>物理地址过滤：在无线路由器设置MAC地址黑白名单</p><p>WEP认证和加密：PSK预共享密钥认证，RC4加密</p><p>WPA 802.11i草案<br>支持完整性认证和防重放共计</p><p>WPA2  802.11i<br>针对WPA优化，加密协议是由RC4变为基于AES的CCMP</p><p>计数器模式密码块链消息完整码协议（CounterCipherModewithBlockChainingMessageAuthenticationCodeProtocol，CCMP）是一种为无线局域网设计的安全协议。<br>其为IEEE802.11i标准的具体实现。CCMP是一种增强的数据加密封装机制，基于CounterwithCBC-MAC和AES标准。它的出现是为了解决WEP这个过时且不安全的协议所存在的漏洞。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5-6 移动AD HOC网络</title>
+    <link href="/2023/09/23/5-6%E7%A7%BB%E5%8A%A8ADHOC%E7%BD%91%E7%BB%9C/"/>
+    <url>/2023/09/23/5-6%E7%A7%BB%E5%8A%A8ADHOC%E7%BD%91%E7%BB%9C/</url>
+    
+    <content type="html"><![CDATA[<p>移动AD HOC网络<br>不需要AP和基站   MANNET（Mobile Ad Hoc Network）</p><p>信号衰落和噪声干扰</p><p>无线路由器组网才是所有终端必须通过无线路由器中心结点互相通信</p><p>ARP：广播包，其他一般都是单播</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5-5 802.11 MAC层</title>
+    <link href="/2023/09/20/5-5_802.11MAC%E5%B1%82/"/>
+    <url>/2023/09/20/5-5_802.11MAC%E5%B1%82/</url>
+    
+    <content type="html"><![CDATA[<p>数据链路层包括2个子层</p><p>MAC子层：物理层对接，解决物理线路访问控制问题</p><p>CSMA-CD：载波侦听冲突检测，实现有线网络访问控制（Mac子层）</p><p>上一次 LLC逻辑链路控制，对接上层网络 </p><p>PPP：①网络控制协议NCP<br>     ②LCP（针对物理层做控制的）</p><p>802.11 wifi访问控制机制<br>CSMA/CA 载波侦听冲突避免   分布式协调功能：大家争用访问（有竞争）很多终端一起竞争<br>RTS/CTS信道预约：要发送先打报告，其他终端记录信道占用时间<br>PCF点协调功能：AP集中轮询所有终端，将发送权限轮流交给各个终端，类似令牌</p><p>为什么不用CSMA/CD？<br>隐藏节点和暴露节点</p><p>1、隐藏节点<br>有线网络：光缆或电缆，有线连接线路，电缆连接，发信号有电平变化，光纤连接，有光信号变化<br>通过检测电信号变化 检测到线路有没有人使用，是否空闲</p><p>2、暴露节点<br>2个AP，2台PC（STA）<br>AP1跟STA1发送数据<br>AP2跟STA2发送数据<br>但是由于STA1和STA2在彼此覆盖范围内，其中1个发，另一个认为我的空间信道被占用，就无法发数据了</p><p>1、<br>IFS 分布式协调IFS “分布式协调文件系统”（Distributed Coordinated File System）<br>最长的IFS  优先级最低 大型校园网里PC几万台，优先级不高</p><p>IFS可以指代”分布式协调文件系统”（Distributed Coordinated File System）的缩写。分布式协调IFS是一种文件系统，旨在支持分布式环境中的文件共享和协调。它允许多个计算机节点通过网络连接共享文件和数据，并提供一致性、可靠性和并发访问控制。</p><p>在分布式协调IFS中，文件的元数据和内容可能会分散存储在不同的节点上，而协调机制负责管理文件的访问、更新和一致性。这些协调机制可以涵盖分布式锁、事务处理、版本控制等技术，以确保多个节点之间的文件访问操作不会发生冲突或数据不一致的情况。</p><p>通过分布式协调IFS，用户可以在分布式环境中像在本地文件系统一样访问和操作文件，同时享受到分布式环境的优势，如可扩展性、容错性和高性能。这样的文件系统在分布式计算、云计算和大规模数据处理等领域具有广泛应用。</p><p>2、<br>PIFS  点协调IFS  “点对点协调文件系统”（Point-to-Point Coordinated File System）<br>中等长度IFS，优先级居中，在PCF操作中使用  点轮询 由AP轮询</p><p>PIFS是”点对点协调文件系统”（Point-to-Point Coordinated File System）的缩写。PIFS是一种分布式文件系统，其中文件的协调由系统中的各个节点进行点对点通信和协作来实现。在PIFS中，文件的元数据和内容分散存储在不同的节点上，并通过协调和通信来实现文件的一致性和可靠性。这种点对点的协调方式可以提高系统的吞吐量和性能。</p><p>3、<br>SIFS “短间隔插槽时间”（Short Interframe Space）<br>最短的IFS  优先级最高  ACK应答 小帧，64B字节，数据量不大</p><p>SIFS可以指代”短间隔插槽时间”（Short Interframe Space）的缩写。在无线通信领域中，SIFS是指在无线通信设备之间传输帧之间的最短时间间隔。它用于在帧之间传递关键控制信息，如ACK（确认应答）和CTS（清除发送）。</p><p>另外，IFS是”插槽时间间隔”（Interframe Space）的缩写，是一种在网络通信中用于控制帧之间时间间隔的机制。IFS根据不同的协议和场景，规定了在发送帧之前必须等待的时间间隔。不同类型的帧通常具有不同的IFS值，用于控制发送顺序和通信优先级。</p><p>因此，最短的IFS是指具有最小时间间隔的IFS，用于实现最高优先级的通信或控制信息传输。具体的最短IFS值取决于所使用的无线通信协议和网络设备的配置。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5-4 WLAN频谱与信道</title>
+    <link href="/2023/09/20/5-4WLAN%E9%A2%91%E8%B0%B1%E4%B8%8E%E4%BF%A1%E9%81%93/"/>
+    <url>/2023/09/20/5-4WLAN%E9%A2%91%E8%B0%B1%E4%B8%8E%E4%BF%A1%E9%81%93/</url>
+    
+    <content type="html"><![CDATA[<p>Ad Hoc网络</p><p>分布式无线系统：无缝漫游</p><p>无线通信频谱<br>ISM：工业、科学（2.4G、5G）、医疗频段</p><p>2.4G频段<br>13个信道，3个不重叠信道（1、6、11）</p><p>5G + 5.8G频段<br>开放的不重叠信道有5个</p><p>AP部署：  有效避免信道干扰，相邻信道保持不一样</p><p>802.11ax wifi6 第6代wifi技术</p><p>802.11b、802.11a 第二代</p><p>802.11n  MIMO  150M<em>2=300M，150M</em>4=600M</p><p>802.11ac AP里有2个芯片，802.11n和802.11ac的芯片来同时兼容</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5-3 WLAN通信技术</title>
+    <link href="/2023/09/20/5-3WLAN%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"/>
+    <url>/2023/09/20/5-3WLAN%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/</url>
+    
+    <content type="html"><![CDATA[<p>电视遥控器、机顶盒之间通信用的就是红外线技术</p><p>红外线技术特点：必须在可视范围内，不能有物体遮挡</p><p>数据通信用的多的是扩展频谱（扩频）技术</p><p>跳频   频率跳动扩频FHSS跳频技术 (Frequency-Hopping Spread Spectrum)（蓝牙），保密性好</p><p>直扩   直接序列扩展频技术 (Direct Sequence Spread Spectrum； DSSS) wifi</p><p>通信范围跟功率有关，跟频率没有关系</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5-2 移动通信与5G</title>
     <link href="/2023/09/19/5-2%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E4%B8%8E5G/"/>
     <url>/2023/09/19/5-2%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E4%B8%8E5G/</url>
     
@@ -123,19 +1223,6 @@
       <tag>备考_新增</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/2023/09/18/6-4-3%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB/"/>
-    <url>/2023/09/18/6-4-3%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%88%86%E7%B1%BB/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
     
   </entry>
   
