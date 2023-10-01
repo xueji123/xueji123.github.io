@@ -1,0 +1,679 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ipv4总长度字段16位0~65535B 端口号：1024知名端口 NAPT（PAT）基于端口号做NAT 1个公网ip，100个连接，1个公网可以带起多少用户 (65535-1024)&#x2F;100 带起多少个用户 IPV4报文格式版本（4位） 0100 就是ipv4   0110 就是ipv6头部长度IHL（4位）：最小值5，最大值15，单位4字节。因此基本IP头部范围（20~60字节）TOS（8位）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络层封装协议IPv4与IPv6">
+<meta property="og:url" content="http://example.com/2023/10/01/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AEIPv4%E4%B8%8EIPv6/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="ipv4总长度字段16位0~65535B 端口号：1024知名端口 NAPT（PAT）基于端口号做NAT 1个公网ip，100个连接，1个公网可以带起多少用户 (65535-1024)&#x2F;100 带起多少个用户 IPV4报文格式版本（4位） 0100 就是ipv4   0110 就是ipv6头部长度IHL（4位）：最小值5，最大值15，单位4字节。因此基本IP头部范围（20~60字节）TOS（8位）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-01T03:09:00.000Z">
+<meta property="article:modified_time" content="2023-10-01T08:31:25.512Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考_新增">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>网络层封装协议IPv4与IPv6 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="网络层封装协议IPv4与IPv6"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-01 11:09" pubdate>
+          October 1, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">网络层封装协议IPv4与IPv6</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>ipv4总长度字段16位<br>0~65535B</p>
+<p>端口号：<br>1024知名端口</p>
+<p>NAPT（PAT）基于端口号做NAT</p>
+<p>1个公网ip，100个连接，1个公网可以带起多少用户</p>
+<p>(65535-1024)/100 带起多少个用户</p>
+<p>IPV4报文格式<br>版本（4位） 0100 就是ipv4   0110 就是ipv6<br>头部长度IHL（4位）：最小值5，最大值15，单位4字节。因此基本IP头部范围（20~60字节）<br>TOS（8位）：区分服务字段，即QoS，控制服务优先级的<br>总长度字段（16位）：IPv4数据报的总长度。<br>标识（16位）：主机发送IP报文的序号，每发送一次+1<br>生存期（TTL）：用于设置一个数据包可经过的路由器数量上限，每经过一台路由器减1，防止三层环路<br>协议号（8位）：1 ICMP    17 UDP   6  TCP<br>头部校验和（16位）：仅计算IPv4头部，不检查数据有效载荷部分的正确性。当TTL减一时，头部校验和必须重新计算。<br>源IP地址：32位bit       ipv6是128bit<br>目的IP地址：32位bit     ipv6是128bit</p>
+<p>IP数据，可变长度，最多65515字节</p>
+<p>IPv6头部是40字节，头部做了精简，字段数少了。ipv6地址长度长，所有整体头部长的，但路由效率高。<br>版本号（4位）：0110<br>通信类型/流量等级（8位）：<br>流标签（20位）：网页、音视频等<br>负载长度（16位）：表示除了IPv6固定头部40字节之外的负载长度，扩展头包含在负载长度之中。<br>下一头部（8位）：指明下一个头部类型，可能是IPv6扩展头部或高层协议的头部。<br>跳数限制（8位）：用于检测路由循环，类似TTL<br>源地址（128位）：发送节点的地址<br>目的地址（128位）：接收节点的地址</p>
+<p>扩展报文：下一报头（8位） 报头扩展长度（8位）</p>
+<p>IPv6扩展报文：（RFC2460）<br>下一头部编号        下一头部类型                            解释<br>  0         Hop-by-Hop Options Header                 逐跳选项：这些信息由沿途各个路由器处理，必须严格按照规定路径去走<br>  6         TCP(Upper Layer)                            该IPv6报文的上层封装的是TCP<br>  17        UDP(Upper Layer)                            该IPv6报文的上层封装的是UDP<br>  43        Routing Header                              路由选择头：给出一个路由器地址列表，类似于IPv4的松散源路由和路由记录<br>  44        Fragment Header                             分段：处理数据报的分段问题<br>  50        Encapsulation Security Payload              ESP:封装安全载荷，跟IPSec类似<br>  51        Authentication Header                       AH:认证头，跟IPSec类似<br>  60        Destination Options                         目标选项：选项中的信息由目标节点检查处理<br>IPv6地址分类<br>单播<br>1聚2恋3占   相聚  恋爱  占有<br>可聚合全球单播地址： 前缀001  相当于IPv4公用地址<br>链路本地地址：用于同一链路的相邻节点间的通信  前缀1111 1110 10结合mac地址自动生成<br>站点本地地址：相当于IPv4中的私网地址 前缀为 1111 1110 11</p>
+<p>组播<br>没有广播地址，广播功能被组播代替<br>组播格式前缀1111 1111，即FF00开头</p>
+<p>任意播地址<br>标识一组接口的标识符，通常是路由距离最近的接口<br>任意播地址不能用作源地址，只能作为目标地址<br>任意播地址不能指定给IPv6主机，只能指定给IPv6路由器</p>
+<pre><code class="hljs">    IPv4            IPv6
+</code></pre>
+<p>组播地址 224.0.0.0/4       FF00::/8<br>广播地址 主机位全为1        任意播（限于子网内部）<br>默认地址 0.0.0.0           不确定地址::<br>回环地址 127.0.0.1          ::1<br>        公共地址            可聚合全球单播地址FP=001<br>私有地址 10.0.0.0/8         站点本地地址: FEC0::/48<br>        127.16.0.0/12<br>        192.168.0.0/16<br>自动专用IP地址169.254.0.0/16    链路本地地址FE80::/48<br>                            6to4隧道地址2002::/16</p>
+<p>255.255.255.255穿越路由器如何实现？<br>DHCP Relay中继，广播转换为单播做传递</p>
+<p>如果IPv4偏移量对不上，是因为泪滴攻击，会导致操作系统死机。<br>ping of death   DOS攻击，攻击系统的可用性</p>
+<p>TTL的用途：<br>1、通过TTL判断操作系统<br>2、tracert：路由节点跟踪</p>
+<p>原理：<br>①发TTL递增报文<br>②每一跳TTL=0的时候，发出一个报错告警信息</p>
+<p>ipv6是mtu discover，不用分片</p>
+<p>ipv6报文也可以分片，在源端就分了，中间不分。因为每段链路传输的MTU都不同</p>
+<p>ipv6没有头部校验和</p>
+<p>DHCPv6 ①有状态：网络号（前缀）给到，分完整ip地址。<br>       ②无状态：只分网络前缀，接口ID自己生成（通过自己的mac地址生成）</p>
+<pre><code class="hljs">   双栈、隧道、翻译
+</code></pre>
+<p>一、IP相关协议：<br>IP地址-&gt;mac地址  ARP<br>mac地址-&gt;ip地址  RARP<br>ip地址在网络出口时做NAT（私有地址转换成公网）<br>nat-server，私有服务器映射出去<br>DNS：域名和ip地址做转换<br>DHCP分配ip地址</p>
+<p>二、<br>三张表：ARP表、MAC地址表、路由表</p>
+<p>三、<br>网络层协议：IP/IPv6、ICMP、ARP、IGMP、GRE</p>
+<p>实现主机 A ping 主机 B 10.1.1.2<br>第一步：<br>A判断B是否跟我在同一网段<br>怎么判断A和B是否在同一网段？<br>用A自己的掩码和A的IP地址与运算。10.1.1.0/24<br>用A自己的掩码和B的目的IP与运算。10.1.1.0/24</p>
+<p>第二步：<br>进行数据封装。ICMP   IP里面<br>网络层封装 SIP=10.1.1.1  DIP=10.1.1.2<br>二层以太网封装。DMAC=?   SMAC=AA.AA.AA.AA</p>
+<p>第三步：<br>ARP查询，通过IP地址找MAC。</p>
+<p>ARP协议工作流程<br>①主机A查询自己的ARP缓存，发现没有主机B对应的MAC地址<br>②主机A发送ARP Request报文（广播）<br>③主机B把主机A的IP、MAC对应信息填入自己的ARP缓存中<br>④主机B向主机A回送包含主机B的MAC地址的ARP Reply报文（单播）<br>⑤主机A收到主机B的ARP Reply报文，将主机B的IP和MAC对应关系填入自己的ARP缓存中</p>
+<p>透明：二层转发一般被看成透明的</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>网络层封装协议IPv4与IPv6</div>
+      <div>http://example.com/2023/10/01/网络层封装协议IPv4与IPv6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 1, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/01/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AETCPUDP/" title="传输层封装协议TCP UDP">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">传输层封装协议TCP UDP</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/30/%E4%BA%8C%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE%20%E4%BB%A5%E5%A4%AA%E7%BD%91%20HDLC%20PPP/" title="二层封装协议 以太网 HDLC PPP">
+                        <span class="hidden-mobile">二层封装协议 以太网 HDLC PPP</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

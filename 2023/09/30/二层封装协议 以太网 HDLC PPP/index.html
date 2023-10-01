@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="协议分类总结 二层封装协议以太网协议HDLC协议PPP协议 在广域网上用的：HDLC协议、PPP协议以太网：局域网和数据中心、城域以太网 最小利用率 46&#x2F;64  最大利用率  1500&#x2F;1518 先导字段7字节（10101010）+ 帧开始标识符1字节（10101011）+ 目的mac地址6字节 + 源mac地址6字节 + 长度2字节 + 数据（46~1500字节）+ 校验和4字节 先导字段+帧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二层封装协议 以太网 HDLC PPP">
+<meta property="og:url" content="http://example.com/2023/09/30/%E4%BA%8C%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE%20%E4%BB%A5%E5%A4%AA%E7%BD%91%20HDLC%20PPP/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="协议分类总结 二层封装协议以太网协议HDLC协议PPP协议 在广域网上用的：HDLC协议、PPP协议以太网：局域网和数据中心、城域以太网 最小利用率 46&#x2F;64  最大利用率  1500&#x2F;1518 先导字段7字节（10101010）+ 帧开始标识符1字节（10101011）+ 目的mac地址6字节 + 源mac地址6字节 + 长度2字节 + 数据（46~1500字节）+ 校验和4字节 先导字段+帧">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-30T08:23:00.000Z">
+<meta property="article:modified_time" content="2023-10-01T02:57:36.210Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考_新增">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>二层封装协议 以太网 HDLC PPP - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="二层封装协议 以太网 HDLC PPP"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-30 16:23" pubdate>
+          September 30, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">二层封装协议 以太网 HDLC PPP</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>协议分类总结</p>
+<p>二层封装协议<br>以太网协议<br>HDLC协议<br>PPP协议</p>
+<p>在广域网上用的：HDLC协议、PPP协议<br>以太网：局域网和数据中心、城域以太网</p>
+<p>最小利用率 46/64  最大利用率  1500/1518</p>
+<p>先导字段7字节（10101010）+ 帧开始标识符1字节（10101011）+ 目的mac地址6字节 + 源mac地址6字节 + 长度2字节 + 数据（46~1500字节）+ 校验和4字节</p>
+<p>先导字段+帧开始标识符用于时钟同步，不算入帧长</p>
+<p>以太网报文封装</p>
+<p>以太网首部：目的mac地址6+源mac地址6+长度2<br>MTU：IP首部+TCP首部+应用数据</p>
+<pre><code class="hljs">     TCP首部+应用数据
+         TCP报文段
+     IP首部+TCP首部+应用数据
+         IP数据包
+</code></pre>
+<p>以太网首部+IP首部+TCP首部+应用数据+校验和<br>             以太网帧</p>
+<p>IP头：20B<del>60B<br>TCP头：20B</del>60B<br>UDP：80B</p>
+<p>帧优先级 VLAN 802.1Q 插入tag<br>VID：12bit<br>VLAN：1~4094  0和4095无法用</p>
+<p> VLANID 字段 VID 占 12 位 ， 也 就 是 最 多 4 0 9 6 个 ， 其 中 0 和 4 0 9 5 是 协 议 保 留 ， 可 用<br>• VLAN范围是1-4094。标准范围VLAN是1-1005，1006-4094是扩展VLAN。<br>• 注:1002- 1005也有特殊用途，用于FDDI和令牌环的默认VLAN ，不能删除。1002是fadi-default ，1003是 token-ring-default 令牌环的，1004是fddinet-default，1005是trnet-default.<br>• 【思科的叫法，了解即可，以前低端交换机只支持1KVLAN ，即标准范围VLAN范国1- 1005 ，思科中高端交换机 3 5 5 0 以 上 才 支 持 4 K V L A N ，即 4 0 9 4 个 V L A N ，现 在 企 业 级 的 交 换 机 ，无 论 低 端 还 是 高 端 都 支 持 4 K V L A N 】</p>
+<p>voice-vlan 语音VLAN  IP电话接交换机SW 语音50ms比数据延时200ms低，优先级也高。<br>给高的TOS值，802.1Q PRI里设置</p>
+<p>mux-vlan，对应思科的pvlan</p>
+<p>PC1不能和PC2互通（PC1和PC2在VLAN200里）<br>PC3可以和PC4互通（PC3和PC4在VLAN300里）<br>所有PC都要和Sever互通<br>PC1-2和PC3-4不能互通</p>
+<p>VLAN 100为主网关<br>VLAN 200为隔离VLAN<br>VLAN 300为组VLAN<br>subordinate</p>
+<p>aggrtage-vlan（Super-VLAN）聚合VLAN</p>
+<p>划分100个VLAN会浪费很多地址</p>
+<p>vlan10<br>①vlanif 10<br>②网络号<br>③广播地址</p>
+<p>1个vlan浪费3个地址，super vlan，多个vlan用同一个ip，多个vlan共用网关</p>
+<p>运营商不都是骨干网，还有IDC机房技术</p>
+<p>比特填充技术，连续5个1，就填充1个0</p>
+<p>HDLC帧结构，帧边界符：01111110</p>
+<p>控制字段：1字节=8比特</p>
+<p>I帧：信息帧 info 承载数据和控制<br>N（S）发送帧序号，N（R）下一个预期要接收帧的序号</p>
+<p>S帧：监控帧 surveillance 差错控制和流量控制<br>U帧：无编号帧 unnumbered 链路建立、拆除及多种控制功能，要求提供不可靠的无连接服务时，有时也可以承载数据</p>
+<p>RR：receive ready  接收准备好<br>RNR：receive not ready<br>REJ：reject<br>SERJ：select</p>
+<p>HDLC只能基于IP<br>PPP协议 可以 基于支持IPX、SPX等</p>
+<p>PPP可以通过NCP进行IP地址协商</p>
+<p>PPP和HDLC都能进行错误检测</p>
+<p>PPP包含链路控制协议LCP 和 网络控制协议NCP</p>
+<p>PPP认证方式：PAP和CHAP</p>
+<p>CHAP是主认证方主动发起质询的，问用户名和密码是什么，把随机报文也给到被质询方</p>
+<p>CHAP：挑战握手认证协议 （Challenge Handshake Authentication Protocol）<br>挑战握手认证协议（CHAP）通过三次握手周期性的校验对端的身份，在初始链路建立时完成，可以在链路建立之后的任何时候重复进行。</p>
+<p>数据交换方式</p>
+<p>数据的重组是在终点进行</p>
+<p> 虚电路：帧中继FR、X.25、ATM</p>
+<p>电路交换，针对传统语音，延时最低</p>
+<p>POTS（Plain Old Telephone Service）普通老式电话业务。是电路交换</p>
+<p>现在电信业务：<br>①网络（线路）IPTV、宽带等<br>②云（云计算，天翼云）<br>③移动业务<br>④集成业务，系统集成<br>⑤厂商（设备）中移物联网<br>⑥安全，CDN，抗D</p>
+<p>多路复用技术<br>把多个低速的信道组合成一个高速的信道技术</p>
+<p>OLT    OUN光网络单元</p>
+<p>频分多路复用：无线电广播、ADSL、FDD-LTE</p>
+<p>时分复用TDM：T1/E1、SONET/SDH、WIFI、TDD-LTE</p>
+<p>统计时分复用：按需分配时隙</p>
+<p>波分复用WDM：本质也是频分复用<br>光纤频率与波长关系：光速c=</p>
+<p>4G开始数字化骨干网</p>
+<p>OLT局端设备放在运营商ISP机房    ONU放在家里</p>
+<p>时分多址（Time division multiple access，缩写：TDMA）</p>
+<p>OLT和ONU之间：分光器、配线架、配线箱、尾纤、跳线</p>
+<p>SONET采用的成帧方法是 时分复用</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>二层封装协议 以太网 HDLC PPP</div>
+      <div>http://example.com/2023/09/30/二层封装协议 以太网 HDLC PPP/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 30, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/01/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AEIPv4%E4%B8%8EIPv6/" title="网络层封装协议IPv4与IPv6">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网络层封装协议IPv4与IPv6</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/30/BC4-2%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/" title="BC 4-2知识产权">
+                        <span class="hidden-mobile">BC 4-2知识产权</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
