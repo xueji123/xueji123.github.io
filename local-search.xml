@@ -4,6 +4,106 @@
   
   
   <entry>
+    <title>华为配置20231003</title>
+    <link href="/2023/10/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE20231003/"/>
+    <url>/2023/10/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE20231003/</url>
+    
+    <content type="html"><![CDATA[<p>一、DHCP</p><p>基于接口地址池的DHCP配置</p><p>不用配置DHCP地址池，分配的地址就是跟路由器接口同一网段的地址</p><p>display vlan summary查看已经创建的vlan</p><p>pc1 ping pc2<br>ping报文交给自己的默认网关（三层交换机）基于目的地址查路由表<br>通过子网掩码</p><p>①PC配置IP地址<br>②三层交换机启vlan，三呢个<br>③</p><p>PC1、PC2划分在同一个VLAN进行通信<br>1、在core1、core2、switch2和switch3上创建VLAN<br>2、在接入交换机上，把连接PC-1和PC-2的接口设置为access口，并划入对应vlan<br>3、把接入交换机和核心交换机的链路配置成trunk，并允许vlan通过</p><p>1、PC-1 ping PC-2，看是否能正常通信，arp -a查看是否学习到arp表项<br>2、在交换机上display vlan summary，查看vlan是否创建成功，vlan划分是否成功<br>3、在交换机上display mac-address-table，查看是否学习到了相应的mac地址</p><p>gratuitous arp 免费arp</p><p>在手工配完ip地址后 或者 DHCP过程完成后，获得地址，发Gratuitous ARP做冲突检测</p><p>Gratuitous ARP 免费ARP，用来检测IP地址冲突</p><p>原理：以我自己的ip地址去请求相应的mac地址，如果有回应，则证明冲突</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2023年5月下</title>
+    <link href="/2023/10/03/2023%E5%B9%B45%E6%9C%88%E4%B8%8B/"/>
+    <url>/2023/10/03/2023%E5%B9%B45%E6%9C%88%E4%B8%8B/</url>
+    
+    <content type="html"><![CDATA[<p>一、<br>二层接入交换机一般在楼层配电间里，即管理子系统</p><p>2台核心交换机，网关冗余技术VRRP或堆叠在一起。</p><p>核心交换机实现冗余配置<br>单台核心交换机冗余配置：（做部件冗余）<br>双引擎、双交换网板（数据交换用的，类似电脑显卡）、双电源</p><p>①干线子系统：核心交换机到各个楼层交换机的布线<br>各个楼层的配线间连接起来的主干光缆（一捆一捆光纤）</p><p>②水平子系统（线缆）：楼层交换机（配线架）到信息点的布线<br>信息插座到楼层配线间配线架（RJ45）上<br>双绞线小于90米</p><p>网络施工线路中应该遵循哪些规范？<br>①水平子双绞线系统≤90米，工作区线缆≤10米<br>②强电和弱电应该分开部署，并保持适当距离<br>③线缆部署于桥架内，或使用PVC管保护<br>④光缆控制弯曲角度<br>⑤线缆打好标签<br>⑥布线系统相关文档资料的保存</p><p>PC1、PC2划分在同一个VLAN进行通信<br>1、在core1、core2、switch2和switch3上创建VLAN<br>2、在接入交换机上，把连接PC-1和PC-2的接口设置为access口，并划入对应vlan<br>3、把接入交换机和核心交换机的链路配置成trunk，并允许vlan通过</p><p>1、PC-1 ping PC-2，看是否能正常通信，arp -a查看是否学习到arp表项<br>2、在交换机上display vlan breif，查看vlan是否创建成功，vlan划分是否成功<br>3、在交换机上display mac-address-table，查看是否学习到了相应的mac地址</p><p>核心交换机的冗余配置方式<br>1、VRRP+MSTP<br>2、堆叠+链路聚合</p><p>接入认证设备<br>802.1x  企业级环境，在接入交换机配置<br>web portal  网页认证，火车站、酒店较多，在认证服务器配置<br>pppoe   运营商和校园网里，BRAS属于核心层<br>mac地址认证   华为SDN、认证server </p><p>放在核心层，理由：带宽大、集中部署，方便获取所有用户的认证流量</p><p>二、<br>1、基于源地址的策略路由（例如server区域走ISP1，PC区域走ISP2）<br>2、基于目的地址的策略路由，防止出现跨运营商访问，绕行+网间瓶颈，导致用户体验差。（例如访问ISP1的IP地址走ISP1，访问ISP2的IP地址走ISP2）<br>3、基于应用的策略路由（应用路由）（例如视频会议走ISP1，Web访问走ISP2）<br>4、基于链路权重负载均衡（电信60%，联调40%）<br>5、根据链路质量负载均衡<br>6、根据链路带宽负载均衡<br>7、根据综合指标负载均衡<br>8、基于链路优先级负载均衡</p><p>出口负载均衡策略设置存在问题，用户访问服务器的流量存在跨运营商访问。<br>解决方案：打开设备上2条运营商出口的源进源出功能</p><p>内网用户通过公网访问内网服务器为了什么？  为了测试<br>第一步：PC访问服务器公网<br>SIP=10.11.11.11（张三）  DIP=200.200.200.1（李四）</p><p>第二步：流量到达防火墙NAT Server，基于目的地址转换<br>SIP=10.11.11.11  DIP=10.10.10.10<br>源NAT（域内NAT）<br>SIP=200.200.200.2 DIP=10.10.10.10</p><p>第三步：流量转发到内部服务器，服务器回包。<br>SIP=10.10.10.10 （王五） DIP=10.11.11.11 （张三）<br>SIP=10.10.10.10 （王五） DIP=200.200.200.2 （防火墙）<br>SIP=200.200.200.1 DIP=10.11.11.11</p><p>nat回流</p><p>通信正常不？<br>不正常，Web应用，三次握手</p><p>三、<br>BGP路由<br>①network宣告<br>②import引入</p><p>路由RD将OSPF引入到BGP后，然后传递给RB，接着在RC继续将BGP引入到OSPF，产生路由环路<br>在OSPF引入路由时，配置环路检测功能</p><p>OSPF认证，区域认证和接口认证，RC使用区域认证<br>authentication-mode simple ruankao默认会加密认证密码<br>authentication-mode simple plain ruankao 明文显示认证密码</p><p>路由策略<br>import-route bgp permit-ibgp 允许把iBGP引入到OSPF中</p><p>import-route ospf 1 route-policy rp</p><p>loop-detect</p><p>四、<br>version 2<br>undo summary关闭自动汇总，只有rip v2支持</p><p>1、undo portswitch关闭二层转发特性，然后接口配置ip<br>2、access vlanif 10<br>3、trunk</p><p>default-route originate 把默认路由放入到rip进程里传给其他路由器</p><hr><p>防火墙：<br>local 防火墙所在区域<br>trust 连内网的<br>untrust 连互联网的</p><p>防火墙区域划分（根据安全信任程度和需要保护的对象，人为划分若干安全区域）<br>1、本地区域（Local）：防火墙本身<br>2、信任区域（Trust）：内部安全网络，如内部文件服务器、数据库服务器<br>3、非信任区域（Untrust）：外部网络，比如互联网。<br>4、军事缓冲区域（DMZ）：内部网络和外部网络之间的网络，常放置公共服务设备，向外提供信息服务。</p><p>安全区域    安全级别    说明<br>Local       100      设备本身，包括设备的各接口本身<br>Trust       85       通常用于定义内网终端用户所在区域<br>DMZ         50       通常用于定义内网服务器所在区域<br>Untrust     5        通常用于定义Internet等不安全的网络</p><p>受信任程度：Local &gt; Trust &gt; DMZ &gt; Untrust<br>Inbound：低安全级别 -&gt; 高安全级别，比如Untrust -&gt; trust<br>Outbound： 高安全级别 -&gt; 低安全级别，比如DMZ -&gt; Untrust</p><p>网络规划和设计是一个迭代和优化的过程</p><p>视频<br>模拟监控：同轴电缆<br>数字监控：网线</p><p>多网融合，常用传输介质：光线和双绞线</p><p>综合布线六大子系统<br>1、工作区子系统<br>电脑到信息插座（网口）之间<br>小于10米，双绞线</p><p>2、水平子系统（线缆）<br>信息插座到楼层配线间配线架（RJ45）上<br>双绞线小于90米</p><p>3、干线子系统<br>各个楼层的配线间连接起来的主干光缆（一捆一捆光纤）</p><p>4、设备间子系统<br>机房，各种各样设备，核心交换机、汇聚交换机等</p><p>5、管理子系统<br>每个楼层配线间包含的配线架（管理线缆）<br>光纤配线架</p><p>6、建筑群子系统<br>实现不同楼宇建筑间互联的主干光缆（也可能有配线架）<br>光缆埋地、架空</p><p>实现跟服务器之间互联：光纤到服务器光纤网口连接起来。</p><p>光纤跟交换机互联需要哪些部件？<br>光模块、光纤跳线、光纤配线架、尾纤</p><p>光口服务器跟交换机互联需要哪些部件？<br>光模块、光纤跳线、光纤配线架</p><p>设备间和管理子系统区别？<br>管理子系统：线缆管理调配<br>设备间子系统：机架和设备</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>真题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>路由配置专题</title>
+    <link href="/2023/10/02/%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%98/"/>
+    <url>/2023/10/02/%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>pc1和pc2能够互访</p><p>核心交换机（三层交换机）启2个vlanif实现，配置ip地址</p><p>二层交换机的话 要在路由器上要配置单臂路由</p><p>PC1和PC2能访问互联网</p><p>1、核心交换机配置默认路由<br>2、出口路由器上配置默认路由到互联网<br>3、出口路由器配置回城路由</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>路由协议原理RIP OSPF BGP ISIS</title>
+    <link href="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/"/>
+    <url>/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/</url>
+    
+    <content type="html"><![CDATA[<p>交换机基于目的mac地址进行转发<br>路由器基于目的ip地址进行转发</p><p>直连路由：路由器本地接口所在网段<br>静态路由：手工配置的路由条目<br>动态路由：路由器之间通过动态路由协议学习到的路由</p><p>display ip routing-table查看路由表</p><p>路由协议或路由种类    相应路由的优先级<br>DIRECT                  0<br>OSPF                    10<br>IS-IS                   15<br>STATIC(default)         60<br>RIP                     100<br>OSPF AS E               150<br>OSPF NSSA               150<br>IBGP                    255<br>EBGP                    255</p><p>Flags<br>D：download to fib，路由表RIB下发到FIB（forward information table）<br>路由表通过CPU查表   转发表通过硬件芯片高速转发<br>路由信息下载到fib中，快速转发</p><p>查了2次表-&gt;迭代路由  跟DNS迭代查询一样的</p><p>OSPF cost值不是跳数计的</p><p>路由权值: cost</p><p>迭代路由不论有多少出接口和下一跳，仅统计为1条路由</p><p>RIP 路由信息协议</p><p>最大15跳，16跳不可达，一般用于小型网络。RIP最大跳数是15</p><p>从功能来讲是网络层，封装层面是应用层<br>ARP网络层 or 链路层</p><p>hash保证完整性</p><p>优先级pre用在不同路由协议之间，cost用在同一个路由协议不同路径之间</p><p>无类的可以CIDR、VLSM</p><p>OSPF以带宽作为度量值</p><p>OSPF（Open Shortest Path First，开放式最短路径优先协议）<br>OSPF是一种内部网关协议IGP，也是链路状态路由协议，支持VLSM，通过连通性、距离、带宽等状态计算最佳路径。<br>cost跟带宽有关<br>华为设备OSPF协议优先级Internal 10,External 150(import-route)<br>支持VLSM，支持在ABR/ASBR手工路由汇总，不支持自动汇总</p><p>分层路由设计优点<br>1、减小对路由器内存和CPU消耗<br>2、降低网络带宽占用<br>3、减少路由震荡</p><p>同步路由时<br>1、先发DD 摘要（目录）信息<br>2、<br>3、</p><img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png" class=""><p>OSPF DR/BDR优先级选举</p><p>1、优先级<br>2、router id or ip地址<br>3、优先级设置0，就不参与选举</p><p>DR：指定路由器<br>BDR：备用指定路由器</p><p>OSPF的router-id选举规则：<br>1、优选手工配置的router-id<br>①OSPF进程手工配置的router-id具有最高优先级。<br>②在全局模式下配置的公用router-id的优先级仅次于直接给OSPF进程手工配置router-id，即它具有第二优先级。<br>2、在没有手工配置的前提下，优选loopback接又地址中最大的地址作为router-id.<br>3、在没有配置lopback接口地址的前提下，优选普通接口的IP地址中选择最大的地址作为router-id (不考虑接口<br>的Up/Down状态)。</p><p>cost=100M/接口带宽，100M为OSPF参考带宽（reference-bandwidth）</p><p>一条OSPF路由的cost由该路由从起源一路到达本地的所有入接口cost值的总和。</p><p>流量方向和路由方向相反</p><p>如果有区域没有与Area 0相联，可以通过虚链路临时解决，只能横穿一个非骨干区域。</p><p>在R3上配置：<br>ospf 1<br>arear 2<br>vlink-peer 4.4.4.4<br>在R4上的配置：<br>ospf 1<br>area 2<br>vlink-peer 3.3.3.3</p><img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/2.png" class=""><p>OSPF使用HELLO报文维护建立邻居关系<br>OSPF广播网络和点对点网络hello是10s，NBMA网络hello是30s，默认都是广播型网络（以太网）。<br>同步数据库采用LSA报文。</p><p>Non Broadcast Multiple Access – 非广播多重访问</p><p>NBMA（非广播多路访问网络）是OSPF（开放最短路径优先）通信协议中四种网络的一种。NBMA用于精确模型X.25和帧中继环境，这些模型不具备内部广播和多点传送能力。其他的OSPF网络类型有：广播、点对点和点对多点。在NBMA设置里，OSPF一次只发送一个呼叫包（在路由器间周期性发送的建立和确认临近关系的包）而不是多广播是的发送给他们。呼叫计时器（它控制路由器每发送一个呼叫包需要隔多少时间）需要延迟10到30秒，死路由器计时器（它控制在决定临近路由器失效时应该等待多少时间）需要延迟40到120秒。</p><p>只有RIP和BGP有自动聚合，OSPF没有</p><p>不同区域里面，router id也不能相同</p><p>IP地址是VLSM，非CIDR地址聚合</p><p>CIDR一般指无类别域间路由。 无类别域间路由（Classless Inter-Domain Routing、CIDR）是一个用于给用户分配IP地址以及在互联网上有效地路由IP数据包的对IP地址进行归类的方法。</p><p>VLSM（Variable Length Subnet Masking）是一种网络地址分配和路由选择的技术，用于IPv4和IPv6网络。</p><p>传统的IPv4地址由四个字节组成，每个字节可以有256个可能的值（0-255）。这些字节可以由网络管理员分配给网络或子网。传统上，网络地址中的每个字节都被分配一个固定长度的子网掩码（例如，/24表示24个1s和8个0s）。</p><p>然而，VLSM允许网络管理员为每个子网分配不同的子网掩码长度。例如，一个网络管理员可以为每个子网分配不同的子网掩码，以便更好地适应其网络拓扑和结构。这提供了更大的灵活性，并允许网络管理员更有效地使用IPv4地址空间。</p><p>VLSM通常与CIDR（无类域间路由）一起使用。CIDR允许网络管理员将多个网络地址组合成一个单一的路由条目，以便通过单个路由表条目进行路由选择。这大大减少了路由表的大小，并提高了网络的效率。</p><img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/3.png" class=""><p>选router id<br>ospf进程下的、全局、环回loopback、普通ip地址</p><p>rip udp 520<br>ospf ip 89<br>bgp tcp 179<br>isis 链路层</p><p>AS path防环</p><img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/4.png" class=""><img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/5.png" class=""><p>BGP<br>优选手动聚合 &gt; 自动聚合 &gt; network &gt; import &gt; 从对等体学到的<br>network i<br>import ?</p><p>IS-IS使用 L1 L2路由器建立分级网络拓扑<br>使用LSP传递链路信息，完成链路数据库同步</p><p>有MD5校验路由有没有被修改过，校验完整性</p><p>洪泛：Link State Update LSU 同步LSA过程</p><p>network后是 OSPF，import-route后是 O_ASE</p><p>rip、ospf、bgp都支持ipv6</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>网络工程师</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>备考_新增</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>传输层封装协议TCP UDP</title>
     <link href="/2023/10/01/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AETCPUDP/"/>
     <url>/2023/10/01/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AETCPUDP/</url>
@@ -2058,7 +2158,7 @@
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/</url>
     
-    <content type="html"><![CDATA[<p>ACL概述</p><p>ACL工作原理</p><p>ACL配置及应用</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/1.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/2.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/3.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/4.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/5.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/6.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/7.png" class=""><p>eq=equal</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/8.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/9.png" class=""><p>ACL应用位置</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/10.png" class=""><p>ACL基础配置命令</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/11.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/12.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/13.png" class=""><p>高级ACL命令<br>gt port   greater than 大于</p><p>lt port   less than  小于</p><p>eq port   equal   等于</p><p>tcp-flag {ack|fin|syn}</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/14.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/15.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/16.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/17.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/18.png" class="">]]></content>
+    <content type="html"><![CDATA[<p>华为设备默认情况<br>①流量 permit<br>②路由 deny</p><p>特殊的通配符<br>精确匹配192.168.1.1这个ip地址<br>192.168.1.1 0.0.0.0  =  192.168.1.1 0<br>匹配所有ip地址<br>0.0.0.0 255.255.255.255 = any</p><p>基本ACL 2000<del>2999 匹配源ip  rule permit source any<br>高级ACL 3000</del>3999 匹配源ip、目的ip、协议类型、源目端口号等</p><p>允许后不一定是允许流量通过，可能交给其他设备做应用和设置</p><p>ACL概述</p><p>ACL工作原理</p><p>ACL配置及应用</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/1.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/2.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/3.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/4.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/5.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/6.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/7.png" class=""><p>eq=equal</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/8.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/9.png" class=""><p>ACL应用位置</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/10.png" class=""><p>ACL基础配置命令</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/11.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/12.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/13.png" class=""><p>高级ACL命令<br>gt port   greater than 大于</p><p>lt port   less than  小于</p><p>eq port   equal   等于</p><p>tcp-flag {ack|fin|syn}</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/14.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/15.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/16.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/17.png" class=""><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9804ACL%E5%8E%9F%E7%90%86/18.png" class="">]]></content>
     
     
     <categories>
@@ -2083,7 +2183,7 @@
     <link href="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/"/>
     <url>/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/</url>
     
-    <content type="html"><![CDATA[<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/1.png" class=""><p>PC1和PC2跨VLAN通信实验，通过SW三层交换机</p><p>undo info-center enable 关闭设备自动消息提示</p><p>display vlan summary 查看现有vlan</p><p>一、<br>三层启VLAN接口</p><p>vlan 10</p><p>interface Vlanif 10  进入VLANIF10接口</p><p>ip address 192.168.10.254 24  配置IP地址为 192.168.10.254，掩码长度为24位</p><p>vlan 20</p><p>interface Vlanif 20  进入VLANIF20接口</p><p>ip address 192.168.20.254 24  配置IP地址为 192.168.20.254，掩码长度为24位</p><p>quit</p><p>二、<br>二层，把相应接口放到对应的VLAN里</p><p>创建了3层的vlan接口后</p><p>（VLANIF接口是基于VLAN的三层逻辑接口，可以配置IP地址。划分VLAN后，同一VLAN内的用户可以互相通信，但是属于不同VLAN的用户不能直接通信。为了实现VLAN间通信，可通过配置逻辑的三层接口——VLANIF接口来实现）</p><p>interface GigabitEthernet 0/0/1  进入千兆以太网接口 G 0/0/1</p><p>port link-type access  配置端口链路类型位ACCESS</p><p>port default vlan 10   配置端口的默认VLAN为10</p><hr><p>interface GigabitEthernet 0/0/2 进入千兆以太网接口 G 0/0/2</p><p>port link-type access  配置端口链路类型位ACCESS</p><p>port default vlan 20   配置端口的默认VLAN为20</p><p>参考链接：<br><a href="https://www.itmemo.cn/html/819.html">https://www.itmemo.cn/html/819.html</a></p><p>display ip routing-table</p><p>把三层交换机作为DHCP服务器</p><hr><p>基于接口地址池的DHCP</p><p>dhcp enable  开启DHCP功能</p><p>interface Vlanif 10  进入接口Vlanif 10</p><p>dhcp select interface 选择基于接口地址池，把接口ip地址段作为DHCP地址池</p><p>dhcp server dns-list 8.8.8.8  指定接口地址池下的DNS服务器地址</p><p>dhcp server excluded-ip-address 192.168.10.101 192.168.10.253 配置接口地址池中不参与自动分配的ip地址范围</p><p>dhcp server lease day 8 配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p><p>display this</p><p>在PC1接口处抓包看还有 Gratuitous ARP（免费ARP）：<br>去请求自己ip地址的mac地址<br>发Gratuitous ARP做冲突检测<br>Gratuitous ARP 免费ARP，用来检测IP地址是否冲突</p><hr><p>开始配置PC2</p><p>基于全局地址池的DHCP</p><p>interface Vlanif 20<br>dhcp select global<br>quit</p><p>ip pool 20   创建全局地址池</p><p>network 192.168.20.0 mask 24 配置全局地址池可动态分配的IP地址范围（宣告）</p><p>gateway-list 192.168.20.254   配置DHCP客户端的网关地址</p><p>dns-list 9.9.9.9  指定接口地址池下的DNS服务器地址</p><p>lease day 10  配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p><p>excluded-ip-address 192.168.20.151 192.168.20.253 配置接口地址池中不参与自动分配的ip地址范围</p><p>quit</p><p>display current-configuration 查看全局地址池配置</p><hr><p>把PC1也变成基于全局地址池</p><p>interface Vlanif10</p><p>undo dhcp select interface</p><p>display this</p><p>dhcp select global</p><p>ip pool 10</p><p>network 192.168.10.0 mask 24  配置全局地址池可动态分配的IP地址范围（宣告）</p><p>dns-list 8.8.8.8</p><p>lease 8</p><p>流量上来时先会判断属于哪个VLAN，会跟VLANIF10相同网关地址，也就是pool 10地址</p><p>relay，DHCP服务器和DHCP客户端不在同一网段</p><p>扩展知识点</p><p>一、DHCP Relay 中继<br>如果LSW2是DHCP服务器，路由器可以隔离广播，PC1和PC2的广播就不能到LSW2了<br>通过DHCP Relay，DHCP广播转换成单播，发给DHCP服务器</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/2.png" class=""><p>二、DHCP Snooping</p><p>dhcp snooping enable</p><p>有其他DHCP服务器，插入家用路由器（默认是一个DHCP服务器）<br>启用snooping功能，把GE 0/0/3设置成trust接口，其他接口都是unTrust<br>其他任何地方来的DHCP地址都不接受</p><p>interface GigabitEthernet 0/0/1<br>DHCP snooping trusted</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/3.png" class=""><p>三、DHCP选项</p><p>要配置到pool里</p><p>interface VLANIF10</p><p>ip pool 20</p><p>option 43</p><p>跟下面的主机分配ip地址同时，再分配一个ip地址<br>无线里面经常用<br>DHCP<br>option 43<br>给AP分ip地址的同时，告诉AP AC的地址是多少，AP要找AC，通过AC对AP进行全局控制</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/4.png" class="">]]></content>
+    <content type="html"><![CDATA[<img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/1.png" class=""><p>PC1和PC2跨VLAN通信实验，通过SW三层交换机</p><p>undo info-center enable 关闭设备自动消息提示</p><p>display vlan summary 查看现有vlan</p><p>一、<br>三层启VLAN接口</p><p>vlan 10</p><p>interface Vlanif 10  进入VLANIF10接口</p><p>ip address 192.168.10.254 24  配置IP地址为 192.168.10.254，掩码长度为24位</p><p>vlan 20</p><p>interface Vlanif 20  进入VLANIF20接口</p><p>ip address 192.168.20.254 24  配置IP地址为 192.168.20.254，掩码长度为24位</p><p>quit</p><p>二、<br>二层，把相应接口放到对应的VLAN里</p><p>创建了3层的vlan接口后</p><p>（VLANIF接口是基于VLAN的三层逻辑接口，可以配置IP地址。划分VLAN后，同一VLAN内的用户可以互相通信，但是属于不同VLAN的用户不能直接通信。为了实现VLAN间通信，可通过配置逻辑的三层接口——VLANIF接口来实现）</p><p>interface GigabitEthernet 0/0/1  进入千兆以太网接口 G 0/0/1</p><p>port link-type access  配置端口链路类型位ACCESS</p><p>port default vlan 10   配置端口的默认VLAN为10</p><hr><p>interface GigabitEthernet 0/0/2 进入千兆以太网接口 G 0/0/2</p><p>port link-type access  配置端口链路类型位ACCESS</p><p>port default vlan 20   配置端口的默认VLAN为20</p><p>参考链接：<br><a href="https://www.itmemo.cn/html/819.html">https://www.itmemo.cn/html/819.html</a></p><p>display ip routing-table</p><p>把三层交换机作为DHCP服务器</p><hr><p>基于接口地址池的DHCP</p><p>dhcp enable  开启DHCP功能</p><p>interface Vlanif 10  进入接口Vlanif 10</p><p>dhcp select interface 选择基于接口地址池，把接口ip地址段作为DHCP地址池</p><p>dhcp server dns-list 8.8.8.8  指定接口地址池下的DNS服务器地址</p><p>dhcp server excluded-ip-address 192.168.10.101 192.168.10.253 配置接口地址池中不参与自动分配的ip地址范围</p><p>dhcp server lease day 8 配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p><p>display this</p><p>在PC1接口处抓包看还有 Gratuitous ARP（免费ARP）：<br>去请求自己ip地址的mac地址<br>发Gratuitous ARP做冲突检测<br>Gratuitous ARP 免费ARP，用来检测IP地址是否冲突</p><hr><p>开始配置PC2</p><p>基于全局地址池的DHCP</p><p>interface Vlanif 20<br>dhcp select global<br>quit</p><p>ip pool 20   创建全局地址池</p><p>network 192.168.20.0 mask 24 配置全局地址池可动态分配的IP地址范围（宣告）</p><p>gateway-list 192.168.20.254   配置DHCP客户端的网关地址</p><p>dns-list 9.9.9.9  指定接口地址池下的DNS服务器地址</p><p>lease day 10  配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p><p>excluded-ip-address 192.168.20.151 192.168.20.253 配置接口地址池中不参与自动分配的ip地址范围</p><p>quit</p><p>display current-configuration 查看全局地址池配置</p><hr><p>把PC1也变成基于全局地址池</p><p>interface Vlanif10</p><p>undo dhcp select interface</p><p>display this</p><p>dhcp select global</p><p>ip pool 10</p><p>network 192.168.10.0 mask 24  配置全局地址池可动态分配的IP地址范围（宣告）</p><p>dns-list 8.8.8.8</p><p>lease 8</p><p>ipconfig /renew查看更新后分配的ip</p><p>流量上来时先会判断属于哪个VLAN，会跟VLANIF10相同网关地址，也就是pool 10地址</p><p>relay，DHCP服务器和DHCP客户端不在同一网段</p><p>扩展知识点</p><p>一、DHCP Relay 中继<br>如果LSW2是DHCP服务器，路由器可以隔离广播，PC1和PC2的广播就不能到LSW2了<br>通过DHCP Relay，DHCP广播转换成单播，发给DHCP服务器</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/2.png" class=""><p>二、DHCP Snooping</p><p>有些主机分配到了10.1.1.0/24网段</p><p>dhcp snooping enable</p><p>可能有其他DHCP服务器，比如插入了家用路由器（默认是一个DHCP服务器）<br>启用snooping功能，把GE 0/0/3设置成trust接口，其他接口都是unTrust<br>其他任何地方来的DHCP地址都不接受</p><p>interface GigabitEthernet 0/0/1<br>DHCP snooping trusted</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/3.png" class=""><p>三、DHCP选项</p><p>要配置到pool里</p><p>ip pool 20</p><p>option 43 </p><p>跟下面的主机分配ip地址同时，再分配一个ip地址<br>无线里面经常用<br>DHCP<br>option 43 ip-address 192.168.10.121</p><p>给AP分ip地址的同时，告诉AP AC的地址是多少，AP要找AC，通过AC对AP进行全局控制</p><img src="/2023/05/02/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9803DHCPVLAN%E9%85%8D%E7%BD%AE/4.png" class="">]]></content>
     
     
     <categories>

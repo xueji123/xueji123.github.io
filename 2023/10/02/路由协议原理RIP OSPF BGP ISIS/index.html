@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="交换机基于目的mac地址进行转发路由器基于目的ip地址进行转发 直连路由：路由器本地接口所在网段静态路由：手工配置的路由条目动态路由：路由器之间通过动态路由协议学习到的路由 display ip routing-table查看路由表 路由协议或路由种类    相应路由的优先级DIRECT                  0OSPF                    10IS-IS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由协议原理RIP OSPF BGP ISIS">
+<meta property="og:url" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="交换机基于目的mac地址进行转发路由器基于目的ip地址进行转发 直连路由：路由器本地接口所在网段静态路由：手工配置的路由条目动态路由：路由器之间通过动态路由协议学习到的路由 display ip routing-table查看路由表 路由协议或路由种类    相应路由的优先级DIRECT                  0OSPF                    10IS-IS">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png">
+<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/2.png">
+<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/3.png">
+<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/4.png">
+<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/5.png">
+<meta property="article:published_time" content="2023-10-02T01:42:00.000Z">
+<meta property="article:modified_time" content="2023-10-02T08:15:57.513Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考_新增">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png">
+  
+  
+  
+  <title>路由协议原理RIP OSPF BGP ISIS - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="路由协议原理RIP OSPF BGP ISIS"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-02 09:42" pubdate>
+          October 2, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">路由协议原理RIP OSPF BGP ISIS</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>交换机基于目的mac地址进行转发<br>路由器基于目的ip地址进行转发</p>
+<p>直连路由：路由器本地接口所在网段<br>静态路由：手工配置的路由条目<br>动态路由：路由器之间通过动态路由协议学习到的路由</p>
+<p>display ip routing-table查看路由表</p>
+<p>路由协议或路由种类    相应路由的优先级<br>DIRECT                  0<br>OSPF                    10<br>IS-IS                   15<br>STATIC(default)         60<br>RIP                     100<br>OSPF AS E               150<br>OSPF NSSA               150<br>IBGP                    255<br>EBGP                    255</p>
+<p>Flags<br>D：download to fib，路由表RIB下发到FIB（forward information table）<br>路由表通过CPU查表   转发表通过硬件芯片高速转发<br>路由信息下载到fib中，快速转发</p>
+<p>查了2次表-&gt;迭代路由  跟DNS迭代查询一样的</p>
+<p>OSPF cost值不是跳数计的</p>
+<p>路由权值: cost</p>
+<p>迭代路由不论有多少出接口和下一跳，仅统计为1条路由</p>
+<p>RIP 路由信息协议</p>
+<p>最大15跳，16跳不可达，一般用于小型网络。RIP最大跳数是15</p>
+<p>从功能来讲是网络层，封装层面是应用层<br>ARP网络层 or 链路层</p>
+<p>hash保证完整性</p>
+<p>优先级pre用在不同路由协议之间，cost用在同一个路由协议不同路径之间</p>
+<p>无类的可以CIDR、VLSM</p>
+<p>OSPF以带宽作为度量值</p>
+<p>OSPF（Open Shortest Path First，开放式最短路径优先协议）<br>OSPF是一种内部网关协议IGP，也是链路状态路由协议，支持VLSM，通过连通性、距离、带宽等状态计算最佳路径。<br>cost跟带宽有关<br>华为设备OSPF协议优先级Internal 10,External 150(import-route)<br>支持VLSM，支持在ABR/ASBR手工路由汇总，不支持自动汇总</p>
+<p>分层路由设计优点<br>1、减小对路由器内存和CPU消耗<br>2、降低网络带宽占用<br>3、减少路由震荡</p>
+<p>同步路由时<br>1、先发DD 摘要（目录）信息<br>2、<br>3、</p>
+<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>OSPF DR/BDR优先级选举</p>
+<p>1、优先级<br>2、router id or ip地址<br>3、优先级设置0，就不参与选举</p>
+<p>DR：指定路由器<br>BDR：备用指定路由器</p>
+<p>OSPF的router-id选举规则：<br>1、优选手工配置的router-id<br>①OSPF进程手工配置的router-id具有最高优先级。<br>②在全局模式下配置的公用router-id的优先级仅次于直接给OSPF进程手工配置router-id，即它具有第二优先级。<br>2、在没有手工配置的前提下，优选loopback接又地址中最大的地址作为router-id.<br>3、在没有配置lopback接口地址的前提下，优选普通接口的IP地址中选择最大的地址作为router-id (不考虑接口<br>的Up/Down状态)。</p>
+<p>cost=100M/接口带宽，100M为OSPF参考带宽（reference-bandwidth）</p>
+<p>一条OSPF路由的cost由该路由从起源一路到达本地的所有入接口cost值的总和。</p>
+<p>流量方向和路由方向相反</p>
+<p>如果有区域没有与Area 0相联，可以通过虚链路临时解决，只能横穿一个非骨干区域。</p>
+<p>在R3上配置：<br>ospf 1<br>arear 2<br>vlink-peer 4.4.4.4<br>在R4上的配置：<br>ospf 1<br>area 2<br>vlink-peer 3.3.3.3</p>
+<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/2.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>OSPF使用HELLO报文维护建立邻居关系<br>OSPF广播网络和点对点网络hello是10s，NBMA网络hello是30s，默认都是广播型网络（以太网）。<br>同步数据库采用LSA报文。</p>
+<p>Non Broadcast Multiple Access – 非广播多重访问</p>
+<p>NBMA（非广播多路访问网络）是OSPF（开放最短路径优先）通信协议中四种网络的一种。NBMA用于精确模型X.25和帧中继环境，这些模型不具备内部广播和多点传送能力。其他的OSPF网络类型有：广播、点对点和点对多点。在NBMA设置里，OSPF一次只发送一个呼叫包（在路由器间周期性发送的建立和确认临近关系的包）而不是多广播是的发送给他们。呼叫计时器（它控制路由器每发送一个呼叫包需要隔多少时间）需要延迟10到30秒，死路由器计时器（它控制在决定临近路由器失效时应该等待多少时间）需要延迟40到120秒。</p>
+<p>只有RIP和BGP有自动聚合，OSPF没有</p>
+<p>不同区域里面，router id也不能相同</p>
+<p>IP地址是VLSM，非CIDR地址聚合</p>
+<p>CIDR一般指无类别域间路由。 无类别域间路由（Classless Inter-Domain Routing、CIDR）是一个用于给用户分配IP地址以及在互联网上有效地路由IP数据包的对IP地址进行归类的方法。</p>
+<p>VLSM（Variable Length Subnet Masking）是一种网络地址分配和路由选择的技术，用于IPv4和IPv6网络。</p>
+<p>传统的IPv4地址由四个字节组成，每个字节可以有256个可能的值（0-255）。这些字节可以由网络管理员分配给网络或子网。传统上，网络地址中的每个字节都被分配一个固定长度的子网掩码（例如，/24表示24个1s和8个0s）。</p>
+<p>然而，VLSM允许网络管理员为每个子网分配不同的子网掩码长度。例如，一个网络管理员可以为每个子网分配不同的子网掩码，以便更好地适应其网络拓扑和结构。这提供了更大的灵活性，并允许网络管理员更有效地使用IPv4地址空间。</p>
+<p>VLSM通常与CIDR（无类域间路由）一起使用。CIDR允许网络管理员将多个网络地址组合成一个单一的路由条目，以便通过单个路由表条目进行路由选择。这大大减少了路由表的大小，并提高了网络的效率。</p>
+<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/3.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>选router id<br>ospf进程下的、全局、环回loopback、普通ip地址</p>
+<p>rip udp 520<br>ospf ip 89<br>bgp tcp 179<br>isis 链路层</p>
+<p>AS path防环</p>
+<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/4.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/5.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>BGP<br>优选手动聚合 &gt; 自动聚合 &gt; network &gt; import &gt; 从对等体学到的<br>network i<br>import ?</p>
+<p>IS-IS使用 L1 L2路由器建立分级网络拓扑<br>使用LSP传递链路信息，完成链路数据库同步</p>
+<p>有MD5校验路由有没有被修改过，校验完整性</p>
+<p>洪泛：Link State Update LSU 同步LSA过程</p>
+<p>network后是 OSPF，import-route后是 O_ASE</p>
+<p>rip、ospf、bgp都支持ipv6</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>路由协议原理RIP OSPF BGP ISIS</div>
+      <div>http://example.com/2023/10/02/路由协议原理RIP OSPF BGP ISIS/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 2, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/02/%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%98/" title="路由配置专题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">路由配置专题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/01/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AETCPUDP/" title="传输层封装协议TCP UDP">
+                        <span class="hidden-mobile">传输层封装协议TCP UDP</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
