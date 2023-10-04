@@ -16,12 +16,12 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="NAT（Network Address Translation），是指网络地址转换           静态NAT       动态NAT               NAPT（增加地址利用率）          Easy-IP      NAT Server（解决安全问题和负载均衡问题f5？） 外部用户访问内网服务器，右外到内主动发起访问 外网用户访问到内网服务器几种方式①给内网服务器配置一个公">
+    <meta name="description" content="NAT（Network Address Translation），是指网络地址转换           静态NAT       动态NAT             1、公网地址池写出来2、ACL匹配内部私网地址3、转换 NAPT（增加地址利用率） ping的时候ICMP会生成伪报文          Easy-IP PPPOE拨号上网，公网ip会变化      NAT Server（解决安全问题和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="华为配置专题06 NAT原理">
 <meta property="og:url" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="NAT（Network Address Translation），是指网络地址转换           静态NAT       动态NAT               NAPT（增加地址利用率）          Easy-IP      NAT Server（解决安全问题和负载均衡问题f5？） 外部用户访问内网服务器，右外到内主动发起访问 外网用户访问到内网服务器几种方式①给内网服务器配置一个公">
+<meta property="og:description" content="NAT（Network Address Translation），是指网络地址转换           静态NAT       动态NAT             1、公网地址池写出来2、ACL匹配内部私网地址3、转换 NAPT（增加地址利用率） ping的时候ICMP会生成伪报文          Easy-IP PPPOE拨号上网，公网ip会变化      NAT Server（解决安全问题和">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/1.png">
 <meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/2.png">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/22.png">
 <meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/23.png">
 <meta property="article:published_time" content="2023-05-03T00:24:00.000Z">
-<meta property="article:modified_time" content="2023-05-03T01:31:04.831Z">
+<meta property="article:modified_time" content="2023-10-04T00:27:42.808Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="备考">
 <meta name="twitter:card" content="summary_large_image">
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          176 words
+          237 words
         
       </span>
     
@@ -329,9 +329,9 @@
 
 <img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/12.png" srcset="/img/loading.gif" lazyload class="">
 
-
-
+<p>1、公网地址池写出来<br>2、ACL匹配内部私网地址<br>3、转换</p>
 <p>NAPT（增加地址利用率）</p>
+<p>ping的时候ICMP会生成伪报文</p>
 <img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/13.png" srcset="/img/loading.gif" lazyload class="">
 
 <img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/14.png" srcset="/img/loading.gif" lazyload class="">
@@ -342,6 +342,7 @@
 
 
 <p>Easy-IP</p>
+<p>PPPOE拨号上网，公网ip会变化</p>
 <img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/17.png" srcset="/img/loading.gif" lazyload class="">
 
 <img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9806NAT%E5%8E%9F%E7%90%86/18.png" srcset="/img/loading.gif" lazyload class="">
