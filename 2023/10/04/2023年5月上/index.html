@@ -16,31 +16,26 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、先把router 4个接口的ip配置上 display ip interface brief 查看是否配置错误 CMCC、CUCC、internet 3台设备的接口也都配置好 interface LoopBack 0 环回口一般用来做测试，比较稳定 2、 CMCC、CUCC、internet 3台设备  配置OSPF，把所有的网段宣告出去 ospf 1area 0network 0.0.0">
+    <meta name="description" content="1、固态硬盘SSD存储介质是闪存Flash，一个一个芯片 机械硬盘HDD 存储介质 磁盘 通过机械臂巡道，磁盘盘面旋转，不建议经常移动，移动过程中，机械手臂划伤盘面，导致数据丢失 固态硬盘和U盘存储介质都是闪存（Flash） 光盘、磁带用来做数据备份的 2、虚拟存储是把硬盘扣一块当内存 3、硬盘接口协议SPI（Serial Peripheral Interface）串行外设接口，是一种同步外设接口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="华为配置专题10浮动路由和BFD配置">
-<meta property="og:url" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="2023年5月上">
+<meta property="og:url" content="http://example.com/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="1、先把router 4个接口的ip配置上 display ip interface brief 查看是否配置错误 CMCC、CUCC、internet 3台设备的接口也都配置好 interface LoopBack 0 环回口一般用来做测试，比较稳定 2、 CMCC、CUCC、internet 3台设备  配置OSPF，把所有的网段宣告出去 ospf 1area 0network 0.0.0">
+<meta property="og:description" content="1、固态硬盘SSD存储介质是闪存Flash，一个一个芯片 机械硬盘HDD 存储介质 磁盘 通过机械臂巡道，磁盘盘面旋转，不建议经常移动，移动过程中，机械手臂划伤盘面，导致数据丢失 固态硬盘和U盘存储介质都是闪存（Flash） 光盘、磁带用来做数据备份的 2、虚拟存储是把硬盘扣一块当内存 3、硬盘接口协议SPI（Serial Peripheral Interface）串行外设接口，是一种同步外设接口">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/1.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/2.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/3.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/4.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/5.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/6.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/7.png">
-<meta property="og:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/8.png">
-<meta property="article:published_time" content="2023-05-03T08:52:00.000Z">
-<meta property="article:modified_time" content="2023-10-04T11:01:51.769Z">
+<meta property="og:image" content="http://example.com/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/1.png">
+<meta property="og:image" content="http://example.com/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/2.png">
+<meta property="og:image" content="http://example.com/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/3.png">
+<meta property="article:published_time" content="2023-10-04T06:02:00.000Z">
+<meta property="article:modified_time" content="2023-10-04T08:06:30.077Z">
 <meta property="article:author" content="xueji123">
-<meta property="article:tag" content="华为配置">
+<meta property="article:tag" content="真题">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/1.png">
+<meta name="twitter:image" content="http://example.com/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/1.png">
   
   
   
-  <title>华为配置专题10浮动路由和BFD配置 - Coding</title>
+  <title>2023年5月上 - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="华为配置专题10浮动路由和BFD配置"></span>
+            <span id="subtitle" data-typed-text="2023年5月上"></span>
           
         </div>
 
@@ -217,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-03 16:52" pubdate>
-          May 3, 2023 pm
+        <time datetime="2023-10-04 14:02" pubdate>
+          October 4, 2023 pm
         </time>
       </span>
     
@@ -229,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k words
+          1.4k words
         
       </span>
     
@@ -240,7 +235,7 @@
         
         
         
-          16 mins
+          12 mins
         
       </span>
     
@@ -278,69 +273,48 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">华为配置专题10浮动路由和BFD配置</h1>
+            <h1 style="display: none">2023年5月上</h1>
             
             
               <div class="markdown-body">
                 
-                <img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/1.png" srcset="/img/loading.gif" lazyload class="">
+                <p>1、固态硬盘SSD存储介质是闪存Flash，一个一个芯片</p>
+<p>机械硬盘HDD 存储介质 磁盘 通过机械臂巡道，磁盘盘面旋转，不建议经常移动，移动过程中，机械手臂划伤盘面，导致数据丢失</p>
+<p>固态硬盘和U盘存储介质都是闪存（Flash）</p>
+<p>光盘、磁带用来做数据备份的</p>
+<p>2、虚拟存储是把硬盘扣一块当内存</p>
+<p>3、硬盘接口协议<br>SPI（Serial Peripheral Interface）串行外设接口，是一种同步外设接口，它可以使单片机与各种外围设备以串行方式通信以交换信息</p>
+<p>机械硬盘接口：IDE（老电脑硬盘）、SATA（普通电脑和服务器）、SAS（服务器）、SCSI、FC，其中SATA和SAS目前应用最广。<br>固态硬盘接口：M.2（电脑）、U.2（服务器）、SATA、mSATA（surface超极本、联想x230）、SAS、PCIE，其中家用级M.2接口应用很广。企业级固态一般采用U.2、SAS和PCIE接口。</p>
+<p>4、资源得到满足，进程从阻塞（等待）变为就绪态<br>CPU时间片调度得到满足，变为执行态</p>
+<p>6、多道程序设计提高CPU利用率</p>
+<p>7、用户需求了解、分析在 需求分析 阶段<br>生命周期5阶段：①需求分析 ②通信分析 ③逻辑网络设计 ④物理网络设计 ⑤运维实施</p>
+<p>8、SecureCRT 和 Putty 远程连接设备，SecureCRT多窗口，Putty单个窗口<br>WireShark、Sniffer抓包软件<br>Eclipse 开发IDE   elog：日志管理  kali网络攻防</p>
+<p>9、日志审计、上网行为管理，根据《中华人民共和国网络安全法》网络日志留存时间：6个月 </p>
+<p>10、</p>
+<img src="/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/1.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>1、先把router 4个接口的ip配置上</p>
-<p>display ip interface brief 查看是否配置错误</p>
-<p>CMCC、CUCC、internet 3台设备的接口也都配置好</p>
-<p>interface LoopBack 0 环回口一般用来做测试，比较稳定</p>
-<p>2、</p>
-<p>CMCC、CUCC、internet 3台设备  配置OSPF，把所有的网段宣告出去</p>
-<p>ospf 1<br>area 0<br>network 0.0.0.0 0.0.0.0 把自己直连的所有网段通告进OSPF中 （传统的方法是把当前路由器直连的网段宣告进OSPF，必须写全8个0）</p>
-<p>display ospf peer brief 查看邻居路由</p>
-<p>3、配置出口路由器router</p>
-<p>NAT配置<br>easy ip 把所有内部ip都转成出口ip地址</p>
-<p>acl 2000<br>rule 10 permit source 192.168.10.0 0.0.0.255<br>rule 20 permit source 192.168.20.0 0.0.0.255<br>quit</p>
-<p>interface GigabitEthernet 0/0/2<br>nat outbound 2000<br>quit</p>
-<p>interface GigabitEthernet 4/0/0<br>nat outbound 2000<br>quit</p>
-<p>配置了2个NAT，到底往哪边走，配置出口路由决定</p>
-<p>配置2条出口路由（2个运营商 电信和联通），2条等价（优先级一样的话）的默认路由，出口必须要用默认路由</p>
-<p>ip route-static 0.0.0.0 0 12.1.1.2</p>
-<p>ip route-static 0.0.0.0 0 13.1.1.2</p>
-<p>在PC1和PC2 tracert 互联网地址 22.22.22.22，发现都是从 13.1.1.2走的</p>
-<p>所以要在router配置负载均衡  load-balance src-ip</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/2.png" srcset="/img/loading.gif" lazyload class="">
+<p>11、测试参数<br>线路测试指标：<br>1）双绞线：<br>①连接图<br>②线路长度（一般不超过100米）<br>③近端/远端串扰<br>④环路电阻<br>⑤特性抗阻<br>⑥回波损耗（起点到终点入射功率/反射功率）<br>⑦时延<br>⑧衰减</p>
+<p>光纤：<br>①波长<br>②回波损耗（起点到终点入射功率/反射功率，越大越好，最小值趋近于0）<br>③时延<br>④衰减。</p>
+<p>2者都有的：回波损耗、衰减</p>
+<p>设备性能测试参数：<br>①吞吐量<br>②时延<br>③帧丢失率（丢包率）<br>④背靠背数据帧处理能力<br>⑤地址缓冲容量（ARP、路由表容量）<br>⑥地址学习速率和协议的一致性</p>
+<p>12、光接口：<br>SFP：光模块类型或光接口类型，表示千兆，SFP+表示万兆、QSFP+ 40G  SFP28+ 100G</p>
+<p>光纤跳线接头：<br>FC（配线架）、LC（交换机用的多）、SC（配线架）</p>
+<p>交换机上4个光接口（SPF或SPF+等），光接口插光模块</p>
+<p>13、认证：802.1x 交换机上<br>pppoe：运营商BARS<br>portal：网页认证，有认证网关</p>
+<p>14、百兆以太网数据编码方法  4B/5B</p>
+<img src="/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/2.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>还是不行，是不是上面链路不通，可以把上面关闭试试看<br>interface GigabitEthernet 4/0/0<br>shutdown</p>
-<p>取消关闭接口<br>undo shutdown<br>display ip interface brief 查看接口状态</p>
-<p>还是只走下面的13.1.1.2，因为华为的AR中低端系列路由器，不是基于单个包进行负载均衡的，不能设置。<br>高端NE系列，NE40、NE20是支持的。基于单包做负载均衡，对路由器的CPU和缓存消耗较大</p>
-<p>浮动路由：<br>出口router上调节路由的Preference，越小越优先<br>ip route-static 0.0.0.0 0 13.1.1.2 preference 100</p>
-<p>display ip routing-table 查看联通路由已经没有了</p>
-<p>这就是浮动路由！！！<br>把preference调大后，就不优先了，不优先就隐藏起来<br>上面电信的路由一挂，就会走下面的preference 100的路由，会重新启用</p>
-<p>interface GigabitEthernet 0/0/2<br>shutdown<br>quit</p>
-<p>display ip routing-table</p>
-<p>电信的 0/0/0挂了，也会走下面preference 100的路由<br>在CTCC上 interface GigabitEthernet 0/0/0<br>shutdown<br>quit</p>
-<p>在router和CTCC之间增加一台交换机，并把CTCC的 0/0/0接口shutdown</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/3.png" srcset="/img/loading.gif" lazyload class="">
+<p>15、<br>W=2MHz<br>B=2W<br>R=Blog2N=4Mlog2N=28Mbps</p>
+<p>16、</p>
+<img src="/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/3.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>这时候出口路由还是走CTCC，这时候需要通过BFD来解决该问题（router探测不到LSW1和CTCC之间线路故障）</p>
-<p>BFD是Bidirectional Forwarding Detection的缩写，它是一个用于检测两个转发点之间故障的网络协议<br><a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/BFD.html">https://info.support.huawei.com/info-finder/encyclopedia/zh/BFD.html</a></p>
-<p>BFD链路质量、接口地址探测</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/4.png" srcset="/img/loading.gif" lazyload class="">
-
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/5.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>display bfd session all 查看BFD状态</p>
-<p>模拟器不支持单臂回声，因此要在2台路由器设备都配置BFD才行</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/6.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>router上：<br>bfd<br>quit<br>bfd 1 bind peer-ip 12.1.1.2 source-ip 12.1.1.1 auto<br>commit   让BFD生效</p>
-<p>display bfd session all</p>
-<p>这时去router上把 0/0/2 shutdown<br>在CTCC上监测BFD就会是 Init关闭状态了</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/7.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>这时在router上做一件事情，上面这条默认路由跟踪一个BFD<br>ip route-static 0.0.0.0 12.1.1.2 track bfd-session 1<br>如果这个bfd不通了后，这条路由就会删掉</p>
-<p>在CTCC上<br>interface GigabitEthernet 0/0/0<br>shutdown</p>
-<p>display bfd session all</p>
-<img src="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9810%E6%B5%AE%E5%8A%A8%E8%B7%AF%E7%94%B1%E5%92%8CBFD%E9%85%8D%E7%BD%AE/8.png" srcset="/img/loading.gif" lazyload class="">
-
-<p>router上的电信路由就被删除了<br>display ip routing-table</p>
-<p>浮动路由和BFD联合应用！！！</p>
+<p>17、TTL的用途：<br>1、通过TTL判断操作系统<br>2、tracert：路由节点跟踪</p>
+<p>tracert原理：<br>①发TTL递增报文<br>②每一跳TTL=0的时候，发出一个报错告警信息</p>
+<p>18、ONU到OLT注册，由OLT统一管理，下面用户不需要额外操作。进行透传就行</p>
+<p>ONU（家庭光猫）  OLT（运营商设备）<br>PON网络上行（ONU到OLT）是TDMA（时分多址）技术，下行（OLT到ONU）是广播<br>时分多址（Time division multiple access，缩写：TDMA）</p>
+<p>PON网络上行采用TDMA（时分多址）技术，下行采用广播技术。</p>
+<p>19、wifi 6 802.11ax</p>
+<p>21、压缩、加密  表示层</p>
 
                 
               </div>
@@ -374,7 +348,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE/">#华为配置</a>
+        <a href="/tags/%E7%9C%9F%E9%A2%98/">#真题</a>
       
     </div>
   
@@ -386,8 +360,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>华为配置专题10浮动路由和BFD配置</div>
-      <div>http://example.com/2023/05/03/华为配置专题10浮动路由和BFD配置/</div>
+      <div>2023年5月上</div>
+      <div>http://example.com/2023/10/04/2023年5月上/</div>
     </div>
     <div class="license-meta">
       
@@ -399,7 +373,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 3, 2023</div>
+          <div>October 4, 2023</div>
         </div>
       
       
@@ -431,18 +405,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/" title="华为配置专题11路由综合实验">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">华为配置专题11路由综合实验</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9809VRRP%E9%85%8D%E7%BD%AE/" title="华为配置专题09 VRRP配置">
-                        <span class="hidden-mobile">华为配置专题09 VRRP配置</span>
+                      <a href="/2023/10/03/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE20231003/" title="华为配置20231003">
+                        <span class="hidden-mobile">华为配置20231003</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
