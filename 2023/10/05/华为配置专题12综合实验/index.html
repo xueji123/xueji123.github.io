@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="port link-type dot1q-tunnel   把用户VLAN封装在运营商VLAN里  802.1ad标准协议QinQQinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。 由于在骨干网中传递的报文有两层802.1Q Tag（一层公网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为配置专题11路由综合实验 DHCP NAT BFD 策略路由">
+<meta property="og:url" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="port link-type dot1q-tunnel   把用户VLAN封装在运营商VLAN里  802.1ad标准协议QinQQinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。 由于在骨干网中传递的报文有两层802.1Q Tag（一层公网">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/1.png">
+<meta property="og:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/2.png">
+<meta property="article:published_time" content="2023-10-05T03:01:00.000Z">
+<meta property="article:modified_time" content="2023-10-05T12:30:54.257Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="华为配置">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/1.png">
+  
+  
+  
+  <title>华为配置专题11路由综合实验 DHCP NAT BFD 策略路由 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="华为配置专题11路由综合实验 DHCP NAT BFD 策略路由"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-05 11:01" pubdate>
+          October 5, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          75 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">华为配置专题11路由综合实验 DHCP NAT BFD 策略路由</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>port link-type dot1q-tunnel</p>
+<img src="/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/1.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>把用户VLAN封装在运营商VLAN里  802.1ad标准协议<br>QinQ<br>QinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。</p>
+<p>由于在骨干网中传递的报文有两层802.1Q Tag（一层公网Tag，一层私网Tag），即802.1Q-in-802.1Q，所以称之为QinQ协议。</p>
+<p><a target="_blank" rel="noopener" href="https://info.support.huawei.com/info-finder/encyclopedia/zh/VLAN.html">https://info.support.huawei.com/info-finder/encyclopedia/zh/VLAN.html</a></p>
+<p>一、内网配置<br>1、acsw接入交换机<br>①创建vlan<br>vlan batch 10 20</p>
+<p>③交换机链路配置成trunk or access，并允许vlan通过<br>interface GigabitEthernet 0/0/1<br>port link-type access<br>port default vlan 10</p>
+<p>interface GigabitEthernet 0/0/2<br>port link-type access<br>port default vlan 20</p>
+<p>interface GigabitEthernet 0/0/3<br>port link-type trunk<br>port trunk allow-pass vlan 10 20</p>
+<p>2、coresw核心交换机<br>vlan batch 10 20 30</p>
+<p>interface GigabitEthernet 0/0/2<br>port link-type trunk<br>port trunk allow-pass vlan 10 20</p>
+<p>②配置网关Vlanif地址，3层接口Vlanif<br>interface Vlanif 10<br>ip address 192.168.10.254 24<br>quit</p>
+<p>interface Vlanif 20<br>ip address 192.168.20.254 24<br>quit</p>
+<p>ip pool 10 //创建全局地址池</p>
+<p>network 192.168.10.0 mask 24 //配置全局地址池可动态分配的IP地址范围（宣告）</p>
+<p>gateway-list 192.168.10.254 //配置DHCP客户端的网关地址</p>
+<p>dns-list 8.8.8.8 //指定接口地址池下的DNS服务器地址</p>
+<p>lease day 3 //配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p>
+<p>excluded-ip-address 192.168.10.2 192.168.10.253  //配置接口地址池中不参与自动分配的ip地址范围</p>
+<p>宣告192.168.10.0 24  192.168.10.1-192.168.10.254  所以可以用的是10.1-10.253</p>
+<p>pc1 VLAN 10，找到自己Vlanif 10 192.168.10.254 属于192.168.10.0网段 从配置的地址池中找与此网段相同网段的地址池</p>
+<p>interface Vlanif 10<br>dhcp select global<br>quit</p>
+<p>ip pool 20 //创建全局地址池</p>
+<p>network 192.168.20.0 mask 24 //配置全局地址池可动态分配的IP地址范围（宣告）</p>
+<p>gateway-list 192.168.20.254 //配置DHCP客户端的网关地址</p>
+<p>dns-list 114.114.114.114 //指定接口地址池下的DNS服务器地址</p>
+<p>lease day 3 //配置DHCP服务器接口地址池中ip地址的租用有效期功能，缺省情况下，ip地址的租期为1天</p>
+<p>excluded-ip-address 192.168.20.2 192.168.20.253  //配置接口地址池中不参与自动分配的ip地址范围</p>
+<p>interface Vlanif 20<br>dhcp select global<br>quit</p>
+<p>pc1 ping pc2的通信过程：<br>pc1判断目的ip是否在同一个网段。<br>192.168.10.1 ping 192.168.20.1</p>
+<p>192.168.20.1 /24 做与运算 = 192.168.20.0<br>192.168.10.1 /24 做与运算 = 192.168.10.0</p>
+<p>ping数据扔给网关（核心交换机），核心交换机coresw查看自己路由表</p>
+<img src="/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/2.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>跨vlan的3层路由通过Vlanif实现（单臂路由也可以实现，用的很少）</p>
+<p>二、配置骨干路由<br>3层交换机和路由器的互联2种方式<br>①三层交换机的接口设置为access口，配置vlanif；路由器的接口配置ip地址<br>②三层交换机的接口配置ip（设置成3层接口）undo port switch 直接配置成3层接口；路由器的接口配置ip地址</p>
+<p>有些模拟器不支持把交换机接口配置成ip（只能通过虚拟接口方式互联）</p>
+<p>1、coresw核心交换机<br>interface GigabitEthernet 0/0/1<br>undo portswitch<br>portswitch<br>port link-type access<br>port default vlan 30</p>
+<p>interface Vlanif 30<br>ip address 192.168.30.254 24<br>quit</p>
+<p>2、router出口路由器</p>
+<p>interface GigabitEthernet 0/0/1<br>ip address 192.168.30.3 24</p>
+<p>PC1 ping 192.168.30.3 在router出口路由器上要加静态或者动态路由<br>静态路由<br>ip route-static 192.168.10.0 24 192.168.30.254<br>动态路由<br>1）coresw和router运行rip<br>route上<br>rip 1<br>version 2<br>network 192.168.30.0<br>quit</p>
+<p>coresw上<br>rip 1<br>version 2   ripv1和ripv2区别？<br>network 192.168.10.0<br>network 192.168.20.0<br>network 192.168.30.0<br>quit</p>
+<p>2）coresw和router运行ospf<br>undo rip 1</p>
+<p>coresw上<br>ospf 1<br>area 0<br>network 192.168.10.0 0.0.0.255<br>network 192.168.20.0 0.0.0.255<br>network 192.168.30.0 0.0.0.255</p>
+<p>router上<br>ospf 1<br>area 0<br>network 192.168.30.0 0.0.0.255</p>
+<p>display ospf peer brief  full状态代表成功建立<br>display ip routing-table</p>
+<p>三、网络出口配置</p>
+<p>配置ip地址</p>
+<p>在电信CTCC和联通CUCC之间运行动态路由（实际跑的bgp）<br>rip</p>
+<p>CTCC:<br>rip 1<br>version 2<br>network 100.0.0.0<br>network 12.0.0.0<br>network 1.0.0.0</p>
+<p>CUCC:<br>rip 1<br>version 2<br>network 100.0.0.0<br>network 23.0.0.0<br>network 2.0.0.0</p>
+<p>display ip routing table<br>ping 1.1.1.1    //ping CTCC 测试LoopBack口</p>
+<p>router出口路由器配置NAT<br>easy ip</p>
+<p>acl 2000<br>rule 10 permit source 192.168.10.0 0.0.0.255<br>rule 20 permit source 192.168.20.0 0.0.0.255<br>quit</p>
+<p>interface GigabitEthernet 0/0/0<br>nat outbound 2000<br>quit</p>
+<p>interface GigabitEthernet 0/0/2<br>nat outbound 2000<br>quit</p>
+<p>所有流量默认走电信，如果电信故障，流量切到联通。</p>
+<p>[coresw]ip route-static 0.0.0.0 0 192.168.30.3</p>
+<p>CTCC 12.1.1.1优先，static路由默认优先级是60，配置成50，越小越优先<br>[router]ip route-static 0.0.0.0 0 12.1.1.1 preference 50<br>[router]ip route-static 0.0.0.0 0 23.1.1.2</p>
+<p>[router]undo ip route-static 0.0.0.0 0 12.1.1.1<br>[router]bfd<br>[router-bfd]quit<br>[router]bfd dianxin bind peer-ip 12.1.1.1 source-ip 12.1.1.3 auto<br>[router-bfd-session-dianxin]<br>[router-bfd-session-dianxin]<br>[router-bfd-session-dianxin]<br>[router-bfd-session-dianxin]<br>[router-bfd-session-dianxin]quit</p>
+<p>[CTCC]bfd<br>[CTCC-bfd]bfd dianxin bind peer-ip 12.1.1.3 source-ip 12.1.1.1 auto<br>[CTCC-bfd-session-dianxin]<br>[CTCC-bfd-session-dianxin]<br>[CTCC-bfd-session-dianxin]<br>[CTCC-bfd-session-dianxin]quit</p>
+<h2 id="CTCC-display-bfd-session-all"><a href="#CTCC-display-bfd-session-all" class="headerlink" title="[CTCC]display bfd session all"></a>[CTCC]display bfd session all</h2><h2 id="Local-Remote-PeerIpAddr-State-Type-InterfaceName"><a href="#Local-Remote-PeerIpAddr-State-Type-InterfaceName" class="headerlink" title="Local Remote     PeerIpAddr      State     Type        InterfaceName            "></a>Local Remote     PeerIpAddr      State     Type        InterfaceName            </h2><h2 id="8192-8192-12-1-1-3-Up-S-AUTO-PEER"><a href="#8192-8192-12-1-1-3-Up-S-AUTO-PEER" class="headerlink" title="8192  8192       12.1.1.3        Up        S_AUTO_PEER       -                  "></a>8192  8192       12.1.1.3        Up        S_AUTO_PEER       -                  </h2><pre><code class="hljs"> Total UP/DOWN Session Number : 1/0
+</code></pre>
+<p>[router]bfd<br>[router-bfd]quit</p>
+<p>[router]bfd dianxin bind peer-ip 12.1.1.1 source-ip 12.1.1.3 auto<br>[router-bfd-session-dianxin]quit</p>
+<p>[router]ip route-static 0.0.0.0 0 12.1.1.1 preference 50 track bfd-session dianxin</p>
+<p>更改电信出接口ip地址，模拟电信线路故障<br>[CTCC]interface GigabitEthernet 0/0/0<br>[CTCC-GigabitEthernet0/0/0]ip address 12.1.1.100 24<br>[CTCC-GigabitEthernet0/0/0]quit<br>[CTCC]display bfd session all</p>
+<hr>
+<h2 id="Local-Remote-PeerIpAddr-State-Type-InterfaceName-1"><a href="#Local-Remote-PeerIpAddr-State-Type-InterfaceName-1" class="headerlink" title="Local Remote     PeerIpAddr      State     Type        InterfaceName            "></a>Local Remote     PeerIpAddr      State     Type        InterfaceName            </h2><h2 id="8192-0-12-1-1-3-Down-S-AUTO-PEER"><a href="#8192-0-12-1-1-3-Down-S-AUTO-PEER" class="headerlink" title="8192  0          12.1.1.3        Down      S_AUTO_PEER       -                  "></a>8192  0          12.1.1.3        Down      S_AUTO_PEER       -                  </h2><pre><code class="hljs"> Total UP/DOWN Session Number : 0/1
+</code></pre>
+<p>[router]display ip routing-table 发现出口路由走联通了，NextHop 23.1.1.2<br>Route Flags: R - relay, D - download to fib</p>
+<hr>
+<p>Routing Tables: Public<br>         Destinations : 17       Routes : 16       </p>
+<p>Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface</p>
+<pre><code class="hljs">    0.0.0.0/0   Static  60   0          RD   23.1.1.2        GigabitEthernet
+</code></pre>
+<p>0/0/2<br>       12.1.1.0/24  Direct  0    0           D   12.1.1.3        GigabitEthernet<br>0/0/0<br>       12.1.1.3/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>     12.1.1.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>       23.1.1.0/24  Direct  0    0           D   23.1.1.3        GigabitEthernet<br>0/0/2<br>       23.1.1.3/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/2<br>     23.1.1.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/2<br>      127.0.0.0/8   Direct  0    0           D   127.0.0.1       InLoopBack0<br>      127.0.0.1/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>127.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>   192.168.10.0/24  OSPF    10   2           D   192.168.30.254  GigabitEthernet<br>0/0/1<br>   192.168.20.0/24  OSPF    10   2           D   192.168.30.254  GigabitEthernet<br>0/0/1<br>   192.168.30.0/24  Direct  0    0           D   192.168.30.3    GigabitEthernet<br>0/0/1<br>   192.168.30.3/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/1<br> 192.168.30.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/1<br>255.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0</p>
+<p>[router]undo ip route-static 0.0.0.0 0 23.1.1.2<br>[router]undo ip route-static 0.0.0.0 0 12.1.1.1</p>
+<p>删除静态路由，发现这条路由消失。<br>Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface</p>
+<pre><code class="hljs">    0.0.0.0/0   Static  60   0          RD   23.1.1.2        GigabitEthernet
+</code></pre>
+<p>0/0/2</p>
+<p>[router]display ip routing-table<br>Route Flags: R - relay, D - download to fib</p>
+<hr>
+<p>Routing Tables: Public<br>         Destinations : 16       Routes : 15       </p>
+<p>Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface</p>
+<pre><code class="hljs">   12.1.1.0/24  Direct  0    0           D   12.1.1.3        GigabitEthernet
+</code></pre>
+<p>0/0/0<br>       12.1.1.3/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>     12.1.1.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>       23.1.1.0/24  Direct  0    0           D   23.1.1.3        GigabitEthernet<br>0/0/2<br>       23.1.1.3/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/2<br>     23.1.1.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/2<br>      127.0.0.0/8   Direct  0    0           D   127.0.0.1       InLoopBack0<br>      127.0.0.1/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>127.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>   192.168.10.0/24  OSPF    10   2           D   192.168.30.254  GigabitEthernet<br>0/0/1<br>   192.168.20.0/24  OSPF    10   2           D   192.168.30.254  GigabitEthernet<br>0/0/1<br>   192.168.30.0/24  Direct  0    0           D   192.168.30.3    GigabitEthernet<br>0/0/1<br>   192.168.30.3/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/1<br> 192.168.30.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/1<br>255.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0</p>
+<p>策略路由！！！<br>教学楼流量走电信出口，宿舍楼流量走联通出口<br>1、配置流分类，定义流分类中的匹配规则；匹配创建的ACL规则或者直接匹配报文优先级等参数。<br>2、配置流行为，根据实际情况定义流行为中的动作；配置报文过滤、重标记优先级、重定向、流量监管、流量统计等动作。<br>3、配置流策略，在流策略中为指定的流分类配置所需流行为，即绑定流分类和流行为。<br>4、应用流策略，在接口、VLAN或者全局应用流策略。</p>
+<p>1、ACL规则：acl 2000<br>2、流分类：traffic classifier classifier-name<br>3、流行为：traffic behavior behavior-name<br>4、流策略：traffic policy policy-name<br>5、接口下应用：<br>[Switch]interface GigabitEthernet 0/0/3<br>[Switch-GigibitEthernet0/0/3]traffic-policy p1 inbound</p>
+<p>1、配置ACL，匹配流量<br>[router]acl 2010<br>[router-acl-basic-2010]rule 10 permit source 192.168.10.0 0.0.0.255<br>[router-acl-basic-2010]quit</p>
+<p>[router]acl 2020<br>[router-acl-basic-2020]rule 10 permit source 192.168.20.0 0.0.0.255<br>[router-acl-basic-2020]quit</p>
+<p>2、流分类<br>[router]traffic classifier jiaoxue<br>[router-classifier-jiaoxue]if-match acl 2010<br>[router-classifier-jiaoxue]quit</p>
+<p>[router]traffic classifier sushe<br>[router-classifier-sushe]if-match acl 2020<br>[router-classifier-sushe]quit</p>
+<p>3、流行为<br>[router]traffic behavior re-dianxin<br>[router-behavior-re-dianxin]redirect ip-nexthop 12.1.1.1<br>[router-behavior-re-dianxin]quit</p>
+<p>[router]traffic behavior re-liantong<br>[router-behavior-re-liantong]redirect ip-nexthop 23.1.1.2<br>[router-behavior-re-liantong]quit</p>
+<p>4、流策略<br>[router]traffic policy p<br>[router-trafficpolicy-p]classifier jiaoxue behavior re-dianxin<br>[router-trafficpolicy-p]classifier sushe behavior re-liantong<br>[router-trafficpolicy-p]quit</p>
+<p>5、入接口应用策略路由<br>[router]interface GigabitEthernet 0/0/1<br>[router-GigabitEthernet0/0/1]traffic-policy ?<br>  STRING&lt;1-31&gt;  Name of Traffic policy<br>[router-GigabitEthernet0/0/1]traffic-policy p inbound</p>
+<p>tips：<br>undo traffic-policy inbound</p>
+<p>访问电信的服务器走电信出口，访问联通服务器走联通出口</p>
+<p>1、配置ACL，匹配流量<br>[router-GigabitEthernet0/0/1]undo traffic-policy inboun</p>
+<p>[router]acl 3010<br>[router-acl-adv-3010]rule 10 permit ip source any destination 1.1.1.0 0.0.0.255<br>[router-acl-adv-3010]acl 3020<br>[router-acl-adv-3020]rule 10 permit ip source any destination 2.2.2.0 0.0.0.255</p>
+<p>2、流分类<br>[router]traffic classifier ctcc<br>[router-classifier-ctcc]if-match acl 3010<br>[router-classifier-ctcc]quit<br>[router]traffic classifier cucc<br>[router-classifier-cucc]if-match acl 3020<br>[router-classifier-cucc]quit</p>
+<p>3、流行为<br>[router]traffic behavior re-dianxin<br>[router-behavior-re-dianxin]redirect ip-nexthop 12.1.1.1<br>[router-behavior-re-dianxin]quit</p>
+<p>[router]traffic behavior re-liantong<br>[router-behavior-re-liantong]redirect ip-nexthop 23.1.1.2<br>[router-behavior-re-liantong]quit</p>
+<p>4、流策略<br>[router]traffic policy p<br>[router-trafficpolicy-p]undo classifier jiaoxue<br>[router-trafficpolicy-p]undo classifier sushe<br>[router-trafficpolicy-p]classifier ctcc behavior re-dianxin<br>[router-trafficpolicy-p]classifier cucc behavior re-liantong<br>[router-trafficpolicy-p]quit</p>
+<p>5、接口应用策略路由<br>[router]interface GigabitEthernet 0/0/1<br>[router-GigabitEthernet0/0/1]traffic-policy p inbound<br>[router-GigabitEthernet0/0/1]quit</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE/">#华为配置</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>华为配置专题11路由综合实验 DHCP NAT BFD 策略路由</div>
+      <div>http://example.com/2023/10/05/华为配置专题12综合实验/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 5, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/04/2023%E5%B9%B45%E6%9C%88%E4%B8%8A/" title="2023年5月上">
+                        <span class="hidden-mobile">2023年5月上</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

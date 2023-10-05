@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://example.com/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/10.png">
 <meta property="og:image" content="http://example.com/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/11.png">
 <meta property="article:published_time" content="2023-05-04T03:15:00.000Z">
-<meta property="article:modified_time" content="2023-10-04T06:00:28.730Z">
+<meta property="article:modified_time" content="2023-10-05T02:34:16.571Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="华为配置">
 <meta name="twitter:card" content="summary_large_image">
@@ -295,7 +295,7 @@
 <p>一、配置R1、R2、R3、R4、R5的接口ip<br>检查ip是否配错</p>
 <p>二、配置路由</p>
 <p>先配置AS 100里的，R1、R2、R3运行RIP协议</p>
-<p>R1:<br>rip 1（进程号）<br>version 2   RIP2才支持子网掩码等<br>将3个网段都宣告进rip，只能宣告主类网络<br>network 100.0.0.0<br>network 12.0.0.0<br>network 13.0.0.0<br>quit</p>
+<p>R1:<br>rip 1（进程号）<br>version 2   RIP2才支持子网掩码等<br>将3个网段都宣告进rip，只能宣告主类网络，RIP2对外传递路由才携带子网掩码<br>network 100.0.0.0<br>network 12.0.0.0<br>network 13.0.0.0<br>quit</p>
 <p>R2:<br>rip 1<br>version 2<br>network 12.0.0.0<br>network 23.0.0.0<br>quit</p>
 <p>R3:<br>rip 1<br>version 2<br>network 23.0.0.0<br>network 13.0.0.0<br>quit<br>display ip routing-table</p>
 <p>运行OSPF最短路径优先路由协议</p>
@@ -330,8 +330,7 @@
 <p>这时R4上有100.1.1.0/24的路由，但R5上没有</p>
 <img src="/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/6.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>display bgp routing-table</p>
-<p>R5上已经学到了左边OSPF的路由，但没有加表</p>
+<p>display bgp routing-table查看  R5上已经学到了左边OSPF的路由，但没有加表</p>
 <img src="/2023/05/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9811%E8%B7%AF%E7%94%B1%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/7.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>因为R5没有34.1.1.0/30的路由，就不会加入路由表<br>下一跳不可达</p>
