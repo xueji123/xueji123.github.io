@@ -16,22 +16,22 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="协议分类总结 二层封装协议以太网协议HDLC协议PPP协议 在广域网上用的：HDLC协议、PPP协议以太网：局域网和数据中心、城域以太网 最小利用率 46&#x2F;64  最大利用率  1500&#x2F;1518 先导字段7字节（10101010）+ 帧开始标识符1字节（10101011）+ 目的mac地址6字节 + 源mac地址6字节 + 长度2字节 + 数据（46~1500字节）+ 校验和4字节 先导字段+帧">
+    <meta name="description" content="nat-server即为端口映射 [Internet]interface GigabitEthernet 0&#x2F;0&#x2F;0[Internet-GigabitEthernet0&#x2F;0&#x2F;0]ip address 100.1.1.2 24[Internet-GigabitEthernet0&#x2F;0&#x2F;0]quit 接口加入防火墙对应区域 [Firewall]firewall zone trust[Firewall-z">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二层封装协议 以太网 HDLC PPP">
-<meta property="og:url" content="http://example.com/2023/09/30/%E4%BA%8C%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AE%20%E4%BB%A5%E5%A4%AA%E7%BD%91%20HDLC%20PPP/index.html">
+<meta property="og:title" content="华为配置专题14防火墙配置">
+<meta property="og:url" content="http://example.com/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9814%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="协议分类总结 二层封装协议以太网协议HDLC协议PPP协议 在广域网上用的：HDLC协议、PPP协议以太网：局域网和数据中心、城域以太网 最小利用率 46&#x2F;64  最大利用率  1500&#x2F;1518 先导字段7字节（10101010）+ 帧开始标识符1字节（10101011）+ 目的mac地址6字节 + 源mac地址6字节 + 长度2字节 + 数据（46~1500字节）+ 校验和4字节 先导字段+帧">
+<meta property="og:description" content="nat-server即为端口映射 [Internet]interface GigabitEthernet 0&#x2F;0&#x2F;0[Internet-GigabitEthernet0&#x2F;0&#x2F;0]ip address 100.1.1.2 24[Internet-GigabitEthernet0&#x2F;0&#x2F;0]quit 接口加入防火墙对应区域 [Firewall]firewall zone trust[Firewall-z">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-09-30T08:23:00.000Z">
-<meta property="article:modified_time" content="2023-10-01T02:57:36.210Z">
+<meta property="article:published_time" content="2023-10-06T02:43:00.000Z">
+<meta property="article:modified_time" content="2023-10-06T07:05:22.413Z">
 <meta property="article:author" content="xueji123">
-<meta property="article:tag" content="备考_新增">
+<meta property="article:tag" content="华为配置">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>二层封装协议 以太网 HDLC PPP - Coding</title>
+  <title>华为配置专题14防火墙配置 - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="二层封装协议 以太网 HDLC PPP"></span>
+            <span id="subtitle" data-typed-text="华为配置专题14防火墙配置"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-30 16:23" pubdate>
-          September 30, 2023 pm
+        <time datetime="2023-10-06 10:43" pubdate>
+          October 6, 2023 am
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k words
+          6.9k words
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          17 mins
+          58 mins
         
       </span>
     
@@ -269,67 +269,45 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">二层封装协议 以太网 HDLC PPP</h1>
+            <h1 style="display: none">华为配置专题14防火墙配置</h1>
             
             
               <div class="markdown-body">
                 
-                <p>协议分类总结</p>
-<p>二层封装协议<br>以太网协议<br>HDLC协议<br>PPP协议</p>
-<p>在广域网上用的：HDLC协议、PPP协议<br>以太网：局域网和数据中心、城域以太网</p>
-<p>最小利用率 46/64  最大利用率  1500/1518</p>
-<p>先导字段7字节（10101010）+ 帧开始标识符1字节（10101011）+ 目的mac地址6字节 + 源mac地址6字节 + 长度2字节 + 数据（46~1500字节）+ 校验和4字节</p>
-<p>先导字段+帧开始标识符用于时钟同步，不算入帧长</p>
-<p>以太网报文封装</p>
-<p>以太网首部：目的mac地址6+源mac地址6+长度2<br>MTU：IP首部+TCP首部+应用数据</p>
-<pre><code class="hljs">     TCP首部+应用数据
-         TCP报文段
-     IP首部+TCP首部+应用数据
-         IP数据包
-</code></pre>
-<p>以太网首部+IP首部+TCP首部+应用数据+校验和<br>             以太网帧</p>
-<p>IP头：20B<del>60B<br>TCP头：20B</del>60B<br>UDP：80B</p>
-<p>帧优先级 VLAN 802.1Q 插入tag<br>VID：12bit<br>VLAN：1~4094  0和4095无法用</p>
-<p> VLANID 字段 VID 占 12 位 ， 也 就 是 最 多 4 0 9 6 个 ， 其 中 0 和 4 0 9 5 是 协 议 保 留 ， 可 用<br>• VLAN范围是1-4094。标准范围VLAN是1-1005，1006-4094是扩展VLAN。<br>• 注:1002- 1005也有特殊用途，用于FDDI和令牌环的默认VLAN ，不能删除。1002是fadi-default ，1003是 token-ring-default 令牌环的，1004是fddinet-default，1005是trnet-default.<br>• 【思科的叫法，了解即可，以前低端交换机只支持1KVLAN ，即标准范围VLAN范国1- 1005 ，思科中高端交换机 3 5 5 0 以 上 才 支 持 4 K V L A N ，即 4 0 9 4 个 V L A N ，现 在 企 业 级 的 交 换 机 ，无 论 低 端 还 是 高 端 都 支 持 4 K V L A N 】</p>
-<p>voice-vlan 语音VLAN  IP电话接交换机SW 语音50ms比数据延时200ms低，优先级也高。<br>给高的TOS值，802.1Q PRI里设置</p>
-<p>mux-vlan，对应思科的pvlan</p>
-<p>PC1不能和PC2互通（PC1和PC2在VLAN200里）<br>PC3可以和PC4互通（PC3和PC4在VLAN300里）<br>所有PC都要和Sever互通<br>PC1-2和PC3-4不能互通</p>
-<p>VLAN 100为主网关<br>VLAN 200为隔离VLAN<br>VLAN 300为组VLAN<br>subordinate</p>
-<p>aggrtage-vlan（Super-VLAN）聚合VLAN</p>
-<p>划分100个VLAN会浪费很多地址</p>
-<p>vlan10<br>①vlanif 10<br>②网络号<br>③广播地址</p>
-<p>1个vlan浪费3个地址，super vlan，多个vlan用同一个ip，多个vlan共用网关</p>
-<p>运营商不都是骨干网，还有IDC机房技术</p>
-<p>比特填充技术，连续5个1，就填充1个0</p>
-<p>HDLC帧结构，帧边界符：01111110</p>
-<p>控制字段：1字节=8比特</p>
-<p>I帧：信息帧 info 承载数据和控制<br>N（S）发送帧序号，N（R）下一个预期要接收帧的序号</p>
-<p>S帧：监控帧 surveillance 差错控制和流量控制<br>U帧：无编号帧 unnumbered 链路建立、拆除及多种控制功能，要求提供不可靠的无连接服务时，有时也可以承载数据</p>
-<p>RR：receive ready  接收准备好<br>RNR：receive not ready<br>REJ：reject<br>SERJ：select</p>
-<p>HDLC只能基于IP<br>PPP协议 可以 基于支持IPX、SPX等</p>
-<p>PPP可以通过NCP进行IP地址协商</p>
-<p>PPP和HDLC都能进行错误检测</p>
-<p>PPP包含链路控制协议LCP 和 网络控制协议NCP</p>
-<p>PPP认证方式：PAP和CHAP</p>
-<p>CHAP是主认证方主动发起质询的，问用户名和密码是什么，把随机报文也给到被质询方</p>
-<p>CHAP：挑战握手认证协议 （Challenge Handshake Authentication Protocol）<br>挑战握手认证协议（CHAP）通过三次握手周期性的校验对端的身份，在初始链路建立时完成，可以在链路建立之后的任何时候重复进行。</p>
-<p>数据交换方式</p>
-<p>数据的重组是在终点进行</p>
-<p> 虚电路：帧中继FR、X.25、ATM</p>
-<p>电路交换，针对传统语音，延时最低</p>
-<p>POTS（Plain Old Telephone Service）普通老式电话业务。是电路交换</p>
-<p>现在电信业务：<br>①网络（线路）IPTV、宽带等<br>②云（云计算，天翼云）<br>③移动业务<br>④集成业务，系统集成<br>⑤厂商（设备）中移物联网<br>⑥安全，CDN，抗D</p>
-<p>多路复用技术<br>把多个低速的信道组合成一个高速的信道技术</p>
-<p>OLT    OUN光网络单元</p>
-<p>频分多路复用：无线电广播、ADSL、FDD-LTE</p>
-<p>时分复用TDM：T1/E1、SONET/SDH、WIFI、TDD-LTE</p>
-<p>统计时分复用：按需分配时隙</p>
-<p>波分复用WDM：本质也是频分复用<br>光纤频率与波长关系：光速c=</p>
-<p>4G开始数字化骨干网</p>
-<p>OLT局端设备放在运营商ISP机房    ONU放在家里</p>
-<p>时分多址（Time division multiple access，缩写：TDMA）</p>
-<p>OLT和ONU之间：分光器、配线架、配线箱、尾纤、跳线</p>
-<p>SONET采用的成帧方法是 时分复用</p>
+                <p>nat-server即为端口映射</p>
+<p>[Internet]interface GigabitEthernet 0/0/0<br>[Internet-GigabitEthernet0/0/0]ip address 100.1.1.2 24<br>[Internet-GigabitEthernet0/0/0]quit</p>
+<p>接口加入防火墙对应区域</p>
+<p>[Firewall]firewall zone trust<br>[Firewall-zone-trust]add interface GigabitEthernet 0/0/0<br> Error: The interface has been added to trust security zone.<br>[Firewall-zone-trust]quit</p>
+<p>[Firewall]firewall zone untrust<br>[Firewall-zone-untrust]add interface GigabitEthernet 1/0/1<br>[Firewall-zone-untrust]quit</p>
+<p>[Firewall]firewall zone dmz<br>[Firewall-zone-dmz]add interface GigabitEthernet 1/0/0<br>[Firewall-zone-dmz]quit</p>
+<p>[Firewall]security-policy<br>[Firewall-policy-security]<br>[Firewall-policy-security]rule name trust_to_untrust<br>[Firewall-policy-security-rule-trust_to_untrust]source-zone trust<br>[Firewall-policy-security-rule-trust_to_untrust]destination-zone untrust</p>
+<p>[Firewall-policy-security-rule-trust_to_untrust]source-address 192.168.1.0 24<br>[Firewall-policy-security-rule-trust_to_untrust]destination-address any</p>
+<p>[Firewall-policy-security-rule-trust_to_untrust]action ?<br>  deny    Indicate the rule action deny<br>  permit  Indicate the rule action permit</p>
+<p>[Firewall-policy-security-rule-trust_to_untrust]action permit<br>[Firewall-policy-security-rule-trust_to_untrust]quit<br>[Firewall-policy-security]quit</p>
+<p>出口防火墙做NAT</p>
+<p>[Firewall]nat address-group ?<br>  STRING&lt;1-34&gt;  Specify the name of the address group (can not be ‘all’,’vsys’,<br>                or ‘all-systems’); the length of the name is 1 to 32<br>                characters, if the name contains spaces, the name must be<br>                enclosed with double quotation marks, for example, “group for<br>                test”</p>
+<p>[Firewall]nat address-group addressgroup1<br>[Firewall-address-group-addressgroup1]mode ?<br>  full-cone  Indicate the Fullone mode<br>  no-pat     Indicate the NOPAT mode<br>  pat        Indicate the Pat mode<br>  pcp        Indicate the PCP mode</p>
+<p>[Firewall-address-group-addressgroup1]mode pat<br>[Firewall-address-group-addressgroup1]section ?<br>  INTEGER&lt;0-40959&gt;  Specify section ID<br>  X.X.X.X           Specify the start address</p>
+<p>[Firewall-address-group-addressgroup1]section 0 ?<br>  X.X.X.X  Specify the start address</p>
+<p>[Firewall-address-group-addressgroup1]section 0 100.1.1.10 100.1.1.20<br>[Firewall-address-group-addressgroup1]quit<br>[Firewall]nat-policy<br>[Firewall-policy-nat]rule name policy_nat1<br>[Firewall-policy-nat-rule-policy_nat1]source-zone trust<br>[Firewall-policy-nat-rule-policy_nat1]destination-zone untrust<br>[Firewall-policy-nat-rule-policy_nat1]source-address 192.168.1.0 24<br>[Firewall-policy-nat-rule-policy_nat1]destination-address any</p>
+<p>[Firewall-policy-nat-rule-policy_nat1]action ?<br>  destination-nat  Indicate that the rule action is destination NAT<br>  no-nat           Indicate that the rule action is NO-NAT<br>  source-nat       Indicate that the rule action is source NAT<br>                                                        ^<br>[Firewall-policy-nat-rule-policy_nat1]action source-nat ?<br>  address-group   Indicate that the NAT mode is the NAT address group<br>  easy-ip         Indicate the action is easy-ip<br>  static-mapping  Indicate the action is static mapping</p>
+<p>[Firewall-policy-nat-rule-policy_nat1]action source-nat address-group ?<br>  STRING&lt;1-34&gt;  Specify the NAT address-group name</p>
+<p>[Firewall-policy-nat-rule-policy_nat1]action source-nat address-group addressgroup1<br>[Firewall-policy-nat-rule-policy_nat1]quit<br>[Firewall-policy-nat]quit</p>
+<p>[Firewall]display firewall session table<br>2023-10-06 06:53:13.470<br> Current Total Sessions : 5<br> icmp  VPN: public –&gt; public  192.168.1.1:57518[100.1.1.20:2067] –&gt; 100.1.1.2:<br>2048<br> icmp  VPN: public –&gt; public  192.168.1.1:57006[100.1.1.20:2065] –&gt; 100.1.1.2:<br>2048<br> icmp  VPN: public –&gt; public  192.168.1.1:56494[100.1.1.20:2063] –&gt; 100.1.1.2:<br>2048<br> icmp  VPN: public –&gt; public  192.168.1.1:56750[100.1.1.20:2064] –&gt; 100.1.1.2:<br>2048<br> icmp  VPN: public –&gt; public  192.168.1.1:57262[100.1.1.20:2066] –&gt; 100.1.1.2:<br>2048</p>
+<p>pc1 ping server 192.168.2.100 不通</p>
+<p>要放行trust区域到dmz区域流量</p>
+<p>[Firewall]security-policy<br>[Firewall-policy-security]rule name trust_to_dmz<br>[Firewall-policy-security-rule-trust_to_dmz]source-zone trust<br>[Firewall-policy-security-rule-trust_to_dmz]destination-zone dmz<br>[Firewall-policy-security-rule-trust_to_dmz]source-address ?<br>  H-H-H             Specify the MAC address<br>  STRING&lt;11-17&gt;     Specify the MAC addresses type of XX:XX:XX:XX:XX:XX or<br>                    XX-XX-XX-XX-XX-XX<br>  X.X.X.X           Specify IPv4 address<br>  X:X::X:X          Specify IPv6 address<br>  address-set       Indicate the address-set<br>  any               Indicate any conditions of ip address set<br>  domain-set        Indicate a domain set<br>  geo-location      Indicate geographic location<br>  geo-location-set  Indicate geographic location set<br>  range             Indicate the IP address range</p>
+<p>[Firewall-policy-security-rule-trust_to_dmz]destination-address ?<br>  H-H-H             Specify the MAC address<br>  STRING&lt;11-17&gt;     Specify the MAC addresses type of XX:XX:XX:XX:XX:XX or<br>                    XX-XX-XX-XX-XX-XX<br>  X.X.X.X           Specify IPv4 address<br>  X:X::X:X          Specify IPv6 address<br>  address-set       Indicate the address-set<br>  any               Indicate any conditions of ip address set<br>  domain-set        Indicate a domain set<br>  geo-location      Indicate geographic location<br>  geo-location-set  Indicate geographic location set<br>  range             Indicate the IP address range</p>
+<p>[Firewall-policy-security-rule-trust_to_dmz]action permit<br>[Firewall-policy-security-rule-trust_to_dmz]quit<br>[Firewall-policy-security]quit</p>
+<p>端口映射，内网web服务映射到公网一个ip地址</p>
+<p>[Firewall]nat server ?<br>  STRING&lt;1-256&gt;  Specify the name of the NAT server (starting with [a-z,<br>                 A-Z,0-9] and can not be<br>                 ‘all’,’vsys’,’all-systems’,’id’,’name’,’global’,’protocol’,’v<br>                 pn-instance’, or ‘zone’)<br>  global         Indicate global information<br>  name           Specify the name of the NAT server (starting with [a-z,<br>                 A-Z,0-9] and can not be<br>                 ‘all’,’vsys’,’all-systems’,’id’,’name’,’global’,’protocol’,’v<br>                 pn-instance’, or ‘zone’)<br>  protocol       Indicate protocol of server<br>  vpn-instance   Indicate a VPN instance<br>  zone           Indicate zone of NAT server</p>
+<p>[Firewall]nat server protocol tcp global 100.1.1.100 80 inside 192.168.2.100 ?<br>  &lt;0-65535&gt;    Port number<br>  CHARgen      Character generator (19)<br>  X.X.X.X      Local IP address of the last server host<br>  any          Any protocol (0)<br>  bgp          Border Gateway Protocol (179)<br>  cmd          Remote commands (rcmd, 514)<br>  daytime      Daytime (13)<br>  discard      Discard (9)<br>  domain       Domain Name Service (53)<br>  echo         Echo (7)<br>  exec         Exec (rsh, 512)<br>  finger       Finger (79)<br>  ftp          File Transfer Protocol (21)<br>  gopher       Gopher (70)<br>  h323         H323 (1719)<br>  hostname     NIC hostname server (101)<br>  ils          Internet Location Service (1002)<br>  irc          Internet Relay Chat (194)<br>  klogin       Kerberos login (543)<br>  kshell       Kerberos shell (544)<br>  login        Login (rlogin, 513)<br>  lpd          Printer service (515)<br>  mms          Mircosoft Media Server Protocol(1755)<br>  netbios-ssn  NETBIOS Session Service (139)<br>  nntp         Network News Transport Protocol (119)<br>  pop2         Post Office Protocol v2 (109)<br>  pop3         Post Office Protocol v3 (110)<br>  pptp         Point to Point Tunnel Protocol (1723)<br>  rpc          Remote Procedure Call (135)<br>  rtsp         Real Time Streaming Protocol (554)<br>  sccp         Cisco Skinny Client Control Protocol (2000)<br>  sip          Session Initiation Protocol (5060)<br>  smtp         Simple Mail Transport Protocol (25)<br>  sqlnet       SQLNET(1521)<br>  sunrpc       Sun Remote Procedure Call (111)<br>  tacacs       TAC Access Control System (49)<br>  talk         Talk (517)<br>  telnet       Telnet (23)<br>  time         Time (37)<br>  uucp         Unix-to-Unix Copy Program (540)<br>  whois        Nicname (43)<br>  www          World Wide Web (HTTP, 80)</p>
+<p>[Firewall]nat server protocol tcp global 100.1.1.100 80 inside 192.168.2.100 80</p>
+<p>Internet telnet 100.1.1.100 80 不通</p>
+<p>因为untrust到dmz区域流量也要放行</p>
+<p>[Firewall]security-policy<br>[Firewall-policy-security]rule name untrust_to_dmz</p>
+<p>[Firewall-policy-security-rule-untrust_to_dmz]source-zone untrust<br>[Firewall-policy-security-rule-untrust_to_dmz]destination-zone dmz<br>[Firewall-policy-security-rule-untrust_to_dmz]destination-address 192.168.2.100 32<br>[Firewall-policy-security-rule-untrust_to_dmz]action permit<br>[Firewall-policy-security-rule-untrust_to_dmz]quit<br>[Firewall-policy-security]quit</p>
+<p>[Firewall]display firewall session table<br>2023-10-06 07:10:46.320<br> Current Total Sessions : 1<br> http  VPN: public –&gt; public  100.1.1.2:50932 –&gt; 100.1.1.100:80[192.168.2.100:<br>80]</p>
 
                 
               </div>
@@ -363,7 +341,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+        <a href="/tags/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE/">#华为配置</a>
       
     </div>
   
@@ -375,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>二层封装协议 以太网 HDLC PPP</div>
-      <div>http://example.com/2023/09/30/二层封装协议 以太网 HDLC PPP/</div>
+      <div>华为配置专题14防火墙配置</div>
+      <div>http://example.com/2023/10/06/华为配置专题14防火墙配置/</div>
     </div>
     <div class="license-meta">
       
@@ -388,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>September 30, 2023</div>
+          <div>October 6, 2023</div>
         </div>
       
       
@@ -420,9 +398,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/01/%E7%BD%91%E7%BB%9C%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AEIPv4%E4%B8%8EIPv6/" title="网络层封装协议IPv4与IPv6">
+                      <a href="/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/" title="华为配置专题15无线WLAN配置">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">网络层封装协议IPv4与IPv6</span>
+                        <span class="hidden-mobile">华为配置专题15无线WLAN配置</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -430,8 +408,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/30/BC4-2%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/" title="BC 4-2知识产权">
-                        <span class="hidden-mobile">BC 4-2知识产权</span>
+                      <a href="/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9816%E8%B7%AF%E7%94%B1%E7%AD%96%E7%95%A5/" title="华为配置专题16路由策略">
+                        <span class="hidden-mobile">华为配置专题16路由策略</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

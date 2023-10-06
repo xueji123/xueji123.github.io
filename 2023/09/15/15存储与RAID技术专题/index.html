@@ -1,0 +1,851 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="机械硬盘和固态硬盘区分①成本，固态硬盘更高 ②体积（占用空间）机械硬盘更大 ③容量，机械硬盘更大1块盘 机械：20T，固态：4T ④IOPS，固态硬盘更高IOPS （Input&#x2F;Output Operations Per Second）每秒进行读写操作的次数 是一个用于计算机存储设备（如硬盘（HDD）、固态硬盘（SSD）或存储区域网络（SAN））性能测试的量测方式，可以视为是每秒的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="15存储与RAID技术专题">
+<meta property="og:url" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="机械硬盘和固态硬盘区分①成本，固态硬盘更高 ②体积（占用空间）机械硬盘更大 ③容量，机械硬盘更大1块盘 机械：20T，固态：4T ④IOPS，固态硬盘更高IOPS （Input&#x2F;Output Operations Per Second）每秒进行读写操作的次数 是一个用于计算机存储设备（如硬盘（HDD）、固态硬盘（SSD）或存储区域网络（SAN））性能测试的量测方式，可以视为是每秒的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/1.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/2.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/3.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/4.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/5.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/6.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/7.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/8.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/9.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/10.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/11.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/12.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/13.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/14.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/15.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/16.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/17.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/18.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/19.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/20.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/21.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/22.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/23.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/24.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/25.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/26.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/27.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/28.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/29.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/30.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/31.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/32.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/33.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/34.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/35.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/36.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/37.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/38.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/39.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/40.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/41.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/42.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/43.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/44.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/45.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/46.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/47.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/48.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/49.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/50.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/51.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/52.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/53.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/54.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/55.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/56.png">
+<meta property="og:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/57.png">
+<meta property="article:published_time" content="2023-09-15T11:58:00.000Z">
+<meta property="article:modified_time" content="2023-10-06T10:05:56.892Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考_新增">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/1.png">
+  
+  
+  
+  <title>15存储与RAID技术专题 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="15存储与RAID技术专题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-15 19:58" pubdate>
+          September 15, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">15存储与RAID技术专题</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/1.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/2.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/3.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/4.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>机械硬盘和固态硬盘区分<br>①成本，固态硬盘更高</p>
+<p>②体积（占用空间）机械硬盘更大</p>
+<p>③容量，机械硬盘更大<br>1块盘 机械：20T，固态：4T</p>
+<p>④IOPS，固态硬盘更高<br>IOPS （Input/Output Operations Per Second）每秒进行读写操作的次数 是一个用于计算机存储设备（如硬盘（HDD）、固态硬盘（SSD）或存储区域网络（SAN））性能测试的量测方式，<br>可以视为是每秒的读写次数。和其他性能测试一样，存储设备制造商提出的IOPS不保证就是实际应用下的性能。</p>
+<p>⑤安全性，机械硬盘安全性更高<br>固态硬盘数据丢失很难恢复，可以通过备份技术恢复，所以问题不大</p>
+<p>固态硬盘的存储介质是 闪存</p>
+<p>光盘、磁带：离线备份<br>软盘：1.44M，淘汰了<br>磁盘：机械硬盘</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/5.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/6.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/7.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/8.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/9.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/10.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/11.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/12.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/13.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/14.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/15.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/16.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/17.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/18.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/19.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/20.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/21.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/22.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/23.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/24.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/25.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/26.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>RAID2.0<br>快速重构，自动负载均衡，系统性能提升，自愈合。<br>1、自动负载均衡，降低存储系统整体故障率。<br>2、快速精简重构，降低双盘失效率和数据丢失的风险。<br>3、故障自检自愈，保证系统的可靠性。<br>4、虚拟池化设计，降低存储规划管理难度。</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/27.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/28.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/29.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>网络存储技术<br>SAN（Storage Area Network）存储区域网络  可以装操作系统，提供块服务<br>进行存储资源整合，一台高端存储（比如500T）解决DAS量大了之后，无法共享的问题</p>
+<p>IBSAN：高性能计算</p>
+<p>NAS（Network Attached Storage）网络附属存储    只能存文件，无法装操作系统，百度云盘、阿里云盘、腾讯微盘等<br>带有瘦AP服务的存储设备，有自己控制器，大大降低存储成本<br>NAS中存储信息都是采用RAID技术进行管理的，能有效保护数据。NAS可以通过以太网网络同时共享给多个客户端</p>
+<p>DAS：块服务，也可以装操作系统</p>
+<p>DAS：移动硬盘（家用或者企业级）<br>SAN：通过网络（IPSAN、FCSAN、IBSAN）将存储分给许多服务器用，为服务器提供块服务。文件系统在前端文件服务器<br>NAS：只能共享文件，文件系统在后端NAS存储设备上</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/30.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/31.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/32.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/33.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/34.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/35.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>题目</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/36.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>RAID 5    1块     热备盘</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/37.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>1、建议更换相同型号和容量的磁盘<br>2、RAID2.0 是按需重构</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/38.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/39.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>DAS<br>SAN、NAS 集中式存储</p>
+<p>分布式存储、超融合（服务器安装分布式存储虚拟化软件，将服务器硬盘软件虚拟成一个大的资源池）<br>对象存储（分布式存储里一个重要的概念）</p>
+<p>分布式，3台起步<br>①专业版 金融、广电、国家电网、烟草<br>②丐版</p>
+<p>集中式存储1台或2台</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/40.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/41.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>云计算数据中心需要做的：<br>①服务器、存储、交换机等<br>②虚拟化软件（VMware、华为、曙光浪潮）<br>③云平台（openstack）</p>
+<p>超融合（服务器内置以上所需） -&gt; 开箱即云</p>
+<p>分布式方案技术：<br>①多副本，如果是存储硬盘是专用的，很贵</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/42.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/43.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>上网日志保存6个月，网络安全法</p>
+<p>题目：</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/44.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/45.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/46.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/47.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/48.png" srcset="/img/loading.gif" lazyload class="">
+
+
+<p>NFS、CIFS 就是填NAS</p>
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/49.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/50.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/51.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/52.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/53.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/54.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/55.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/56.png" srcset="/img/loading.gif" lazyload class="">
+
+<img src="/2023/09/15/15%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/57.png" srcset="/img/loading.gif" lazyload class="">
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>15存储与RAID技术专题</div>
+      <div>http://example.com/2023/09/15/15存储与RAID技术专题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 15, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/15/%E5%AD%98%E5%82%A8%E4%B8%8ERAID%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/" title="存储与RAID技术专题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">存储与RAID技术专题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" title="面向对象三大特性">
+                        <span class="hidden-mobile">面向对象三大特性</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

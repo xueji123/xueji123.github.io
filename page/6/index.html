@@ -224,15 +224,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/24/8-7IPSec%E5%8E%9F%E7%90%86/" target="_self">
-          8-7 IPSec原理
+        <a href="/2023/09/24/9-6-4%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2/" target="_self">
+          9-6-4 递归查询和迭代查询
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/8-7IPSec%E5%8E%9F%E7%90%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-6-4%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2/" target="_self">
         <div>
-          虚拟专用网 Virtual Private Network建立公网上，由某一组织或某一群用户专用的通信网络 二层：L2TP和PPTP（基于PPP） 数据链路层三层：IPSec和GRE           网络层四层：SSL/TLS              传输层 实现数据加密的技术：PPTP、IPSec、SSL、TLS L2TP和GRE不加密 实现虚拟专用网关键技术1、隧道技术   ☆  公司总
+          递归查询：域名服务器帮助用户进行名字解析，并返回最后的结果。  老好人迭代查询：域名服务器进行迭代访问，反复多次，直到最后找到结果。 踢皮球 DNS查询过程 权限（授权）域名服务器返回结果的阶段 可能是递归，也可能是迭代
         </div>
       </a>
 
@@ -240,7 +240,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-24 11:04" pubdate>
+            <time datetime="2023-09-24 18:25" pubdate>
               2023-09-24
             </time>
           </div>
@@ -285,15 +285,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/8-6%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E4%B8%8ECA/" target="_self">
-          8-6 数字证书与CA
+        <a href="/2023/09/24/9-6-3DNS%E6%9F%A5%E8%AF%A2%E9%A1%BA%E5%BA%8F/" target="_self">
+          9-6-3 DNS查询顺序
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/8-6%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E4%B8%8ECA/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-6-3DNS%E6%9F%A5%E8%AF%A2%E9%A1%BA%E5%BA%8F/" target="_self">
         <div>
-          数字证书解决了什么问题？Alice给Bob发消息，拿Bob的公钥加密消息，但怎么获取Bob的公钥呢？ 通过Bob的数字证书获取Bob的公钥。 数字签名先做HASH，然后用户私钥对HASH值签名 数字证书里有CA的签名，用CA私钥签名。 证书里面HASH算法：MD5，签名算法：RSA PKI体系：数字证书怎么颁发，怎么管理的过程。严格意义由系统工程师负责  证书里有用户公钥+CA的签名（防伪标记）C
+          ipconfig /displaydns 查看DNS缓存ipconfig /flushdns 清除DNS缓存 系统缓存在内存里，host文件在硬盘上，因此DNS系统缓存快，先查DNS系统缓存 本地DNS服务器就是主域名服务器，先查区域记录，再查DNS服务器缓存（其他DNS服务器告知的，会定时清除） test.com 授权域名服务器/权威（权限）域名服务器：最原始的记录 chrome对每个域名默认缓
         </div>
       </a>
 
@@ -301,8 +301,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 19:55" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 17:43" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -346,15 +346,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/8-5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" target="_self">
-          8-5 数字签名
+        <a href="/2023/09/24/9-6-2DNS6%E7%A7%8D%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/" target="_self">
+          9-6-2 DNS6种记录类型
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/8-5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-6-2DNS6%E7%A7%8D%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B/" target="_self">
         <div>
-          签名目的：防止抵赖、否认 私钥签名，公钥验签。用签名方的私钥签名，接收方用签名方的公钥验签 数字签名：确认发送者身份和消息完整性1、数字签名是可信的2、数字签名不可伪造（私钥保密的）3、数字签名不能重新使用（一次性，一次签名只能用一次）4、签名文件是不能改变的5、数字签名不能抵赖6、接收者能够核实发送者身份 用A私钥对消息签名，用B的公钥对签名进行加密 发给B B收到，用B的私钥解密，得到A的签名
+          NS有一堆，SOA只有一台，SOA起始授权机构记录，SOA记录用于表示在众多NS记录中哪一台是主服务器。 A：主机名解析为IP地址 PTR：反向查询，IP地址解析为主机名 邮件服务器MX(mail exchange) 别名CNAME
         </div>
       </a>
 
@@ -362,8 +362,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 19:40" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 17:34" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -407,15 +407,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/8-4Hash%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/" target="_self">
-          8-4 Hash哈希算法
+        <a href="/2023/09/24/9-6-1DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+          9-6-1 DNS服务器
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/8-4Hash%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-6-1DNS%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
         <div>
-          HASH函数，又称杂凑函数、散列函数，它能够将任意长度的信息转换成固定长度的哈希值（数字摘要）并且任意不同消息或文件所生成的哈希值是不一样的。 不可逆性（单向）无碰撞性：无法找到2个数据的hash值相同雪崩效应：输入稍微变化，输出会相差很大 HASH应用 一、文件完整性校验下载文件时，在服务器上放下载文件 + HASH值客户端下载后，自己计算HASH值。对比看是否有变化 二、账号密码存储网站、数据
+          FQDN 是完全限定域名（Fully Qualified Domain Name）的缩写。它指的是一个完整的域名，包括顶级域名（TLD）和所有子域名。例如，”example.com” 是一个 FQDN，而 “.com” 是一个顶级域名。 与FQDN相对的是非完全限定域名（FQDN），它不包括顶级域名。例如，”example” 是一个非完全限定域名，而 “example.com” 是一个 FQDN。
         </div>
       </a>
 
@@ -423,8 +423,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 18:39" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 17:18" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -468,15 +468,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/8-3%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/" target="_self">
-          8-3 现代加密技术
+        <a href="/2023/09/24/9-5IIS%E6%9C%8D%E5%8A%A1%E5%99%A8Web%20FTP/" target="_self">
+          9-5 IIS服务器Web FTP
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/8-3%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-5IIS%E6%9C%8D%E5%8A%A1%E5%99%A8Web%20FTP/" target="_self">
         <div>
-          密码学技术 私钥和公钥，介于私钥和公钥之间的密码称为混合密码 混合密码：发送方用对称加密需要发送的消息，再用接收方的公钥加密对称密钥，然后一起发送给接收方；接收方先用自己的私钥解码得到对称密钥，然后用对称密钥解密得到明文。
+          IIS(Internet Information Server)因特网信息服务器IIS可以搭建Web服务器、FTP服务器和SMTP服务器（没有POP3和IMAP） 集成Windows身份验证安全级别最高
         </div>
       </a>
 
@@ -484,8 +484,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 17:29" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 17:01" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -529,15 +529,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/8-2%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/" target="_self">
-          8-2 网络安全基础
+        <a href="/2023/09/24/9-4%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E5%92%8CSamba/" target="_self">
+          9-4 远程桌面和Samba
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/8-2%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9F%BA%E7%A1%80/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-4%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E5%92%8CSamba/" target="_self">
         <div>
-          网络安全威胁类型 1、窃听2、假冒3、重放：重复发送一份报文或报文的一部分，以便产生一个被授权效果 （发的数据包加随机数 或 时间戳解决）4、流量分析：大数据分析是其中一种应用 5、数据完整性破坏6、拒绝服务Dos：耗尽服务端资源，让服务不能为正常用户提供服务  SYN-FloodingDDOS 分布式拒绝攻击 SYN-Flooding：开辟内存空间保存半连接。Mac-Fooding：短时间发大量
+          远程桌面协议RDP，基于TCP 3389 命令快捷键：mstsc Samba:向Linux主机提供Windows风格的文件和打印机共享服务。目的：现网Windows居多，为了让Linux兼容与现网用户共享数据和服务 提供文件和打印机共享服务：Samba提供IP地址分配服务：DHCP提供FTP服务：IIS提供用户的认证服务：PKI、Kerberos、Radius、AD  NFS:网络文件系统 NAS
         </div>
       </a>
 
@@ -545,8 +545,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 17:06" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 16:51" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -590,15 +590,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/7-5%E8%BF%87%E6%B8%A1%E6%8A%80%E6%9C%AF/" target="_self">
-          7-5 过渡技术
+        <a href="/2023/09/24/9-3%E6%B4%BB%E5%8A%A8%E7%9B%AE%E5%BD%95/" target="_self">
+          9-3 活动目录
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/7-5%E8%BF%87%E6%B8%A1%E6%8A%80%E6%9C%AF/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-3%E6%B4%BB%E5%8A%A8%E7%9B%AE%E5%BD%95/" target="_self">
         <div>
-          IPv4到IPv6过渡技术 双栈技术：同时运行IPv4和IPv6 隧道技术：解决IPv6节点之间通过IPv4网络进行通信 翻译技术：解决纯IPv6节点与纯IPv4节点之间进行通信
+          工作组模式：每台计算机都拥有自己的本地安全账户管理数据库SAM域模式：用户信息存储在域控制器，可以在域中漫游，访问域中任意一台服务器上的资源 活动目录（Active Diretory,AD）微软技术对域中的账户、资源对象进行存放并集中管理一个动态的分布式文件系统，包含存储网络信息的目录结构和相关目录服务 域控制器（Domain Controller,DC）域中安装了活动目录的计算机。dcpromo
         </div>
       </a>
 
@@ -606,8 +606,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 16:54" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 16:38" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -651,15 +651,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/7-4IPv6%E5%9C%B0%E5%9D%80/" target="_self">
-          7-4 IPv6地址
+        <a href="/2023/09/24/9-2%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84/" target="_self">
+          9-2 本地用户和组
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/7-4IPv6%E5%9C%B0%E5%9D%80/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/9-2%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84/" target="_self">
         <div>
-          IPv6地址基础IPv6 128位   冒号分隔的十六进制数（8组）表示8000:0000:0000:0000:0123:4567:89AB:CDEF448=128位 （16进制的1位可以转换成2进制的4位） 0123 -&gt; 123  每个字段前面的0可以省去 一个或多个全0字段，可以用一对冒号 “::”代替8000:0000:0000:0000:0123:4567:89AB:CDEF800
+          本地用户信息存储在本地SAM数据库
         </div>
       </a>
 
@@ -667,8 +667,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 16:14" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 16:04" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -712,15 +712,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/7-3IPv6%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" target="_self">
-          7-3 IPv6报文格式
+        <a href="/2023/09/24/8-10%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E4%B8%8E%E9%98%B2%E6%8A%A4/" target="_self">
+          8-10 计算机病毒与防护
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/7-3IPv6%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/8-10%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E4%B8%8E%E9%98%B2%E6%8A%A4/" target="_self">
         <div>
-          版本：0110 表示IPv6   0100 IPv4 IPv4头部默认20B，可以扩展到60BIPv6头部默认40B。 IPv6没有头部校验和字段，IPv4有头部校验和字段
+          震网病毒美 -&gt; 伊 核设施，铀 主机感染后，潜伏下来，再繁殖。 病毒四个阶段：潜伏阶段（震网病毒）繁殖阶段（勒索病毒）触发阶段（震网病毒）执行阶段
         </div>
       </a>
 
@@ -728,8 +728,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 16:00" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 15:26" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -773,15 +773,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/09/23/7-2.IPv4%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B9%E8%BF%9B/" target="_self">
-          7-2 IPv4与改进
+        <a href="/2023/09/24/8-9%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/" target="_self">
+          8-9 防火墙与入侵检测
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/23/7-2.IPv4%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B9%E8%BF%9B/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/24/8-9%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/" target="_self">
         <div>
-          IPv4 32位   IPv6 128位 IPv6集成IPSec功能IPv6支持多报头嵌套IPv6只能由源节点进行分段，中间路由器不能分段，目的是简化路由处理，MTU发现。 路由器原来是CPU查询，后来引入硬件ASIC芯片查询，提高查找速度 ipv4头部有13个字段，ipv6有8个字段 ip报文有标志段，MF、DF MTU发现，提前发现最小的MTU，这样IP数据包就不会被分片，简化路由处理，提高传
+          防火墙：可以实现内部信任网络 与 外部不可信任网络之间 或是 内部网络不同区域隔离与访问控制。防火墙技术与分类：包过滤、状态化防火墙、应用层网关、应用层检测DPI。 考试给的默认是包过滤防火墙（ACL）。基于IP or TCP报头做过滤 状态化防火墙，基于TCP的session状态做检测；应用层网关ALG（针对某个应用） 防火墙区域划分（根据安全信任程度和需要保护的对象，人为划分若干安全区域）1、
         </div>
       </a>
 
@@ -789,8 +789,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-09-23 15:50" pubdate>
-              2023-09-23
+            <time datetime="2023-09-24 14:20" pubdate>
+              2023-09-24
             </time>
           </div>
         
@@ -832,7 +832,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

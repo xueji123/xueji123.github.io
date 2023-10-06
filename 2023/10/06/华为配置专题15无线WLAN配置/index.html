@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="AP:无线接入点&#x2F;无线交换机，所以AP和SW2之间用trunk口 2个SSID：work和guest 直接转发模式AP和AC之间有capwap隧道，控制信息经过AC，但数据信息不经过AC AC告诉AP 广播SSID名称、密码等。 一、出口路由器[Router]ip route-static 192.168.101.0 24 192.168.200.1[Router]ip route[Route">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为配置专题15无线WLAN配置">
+<meta property="og:url" content="http://example.com/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="AP:无线接入点&#x2F;无线交换机，所以AP和SW2之间用trunk口 2个SSID：work和guest 直接转发模式AP和AC之间有capwap隧道，控制信息经过AC，但数据信息不经过AC AC告诉AP 广播SSID名称、密码等。 一、出口路由器[Router]ip route-static 192.168.101.0 24 192.168.200.1[Router]ip route[Route">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/1.png">
+<meta property="article:published_time" content="2023-10-06T07:33:00.000Z">
+<meta property="article:modified_time" content="2023-10-06T09:55:53.393Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="华为配置">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/1.png">
+  
+  
+  
+  <title>华为配置专题15无线WLAN配置 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="华为配置专题15无线WLAN配置"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-06 15:33" pubdate>
+          October 6, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          89 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">华为配置专题15无线WLAN配置</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <img src="/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/1.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>AP:无线接入点/无线交换机，所以AP和SW2之间用trunk口</p>
+<p>2个SSID：work和guest</p>
+<p>直接转发模式<br>AP和AC之间有capwap隧道，控制信息经过AC，但数据信息不经过AC</p>
+<p>AC告诉AP 广播SSID名称、密码等。</p>
+<p>一、出口路由器<br>[Router]ip route-static 192.168.101.0 24 192.168.200.1<br>[Router]ip route<br>[Router]ip route-st<br>[Router]ip route-static 192.168.102.0 24 192.168.200.1<br>[Router]dis<br>[Router]display ip r<br>[Router]display ip rd-filter<br>[Router]display ip rou<br>[Router]display ip routing-table<br>Route Flags: R - relay, D - download to fib</p>
+<hr>
+<p>Routing Tables: Public<br>         Destinations : 9        Routes : 9        </p>
+<p>Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface</p>
+<pre><code class="hljs">  127.0.0.0/8   Direct  0    0           D   127.0.0.1       InLoopBack0
+  127.0.0.1/32  Direct  0    0           D   127.0.0.1       InLoopBack0
+</code></pre>
+<p>127.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>  192.168.101.0/24  Static  60   0          RD   192.168.200.1   GigabitEthernet<br>0/0/0<br>  192.168.102.0/24  Static  60   0          RD   192.168.200.1   GigabitEthernet<br>0/0/0<br>  192.168.200.0/30  Direct  0    0           D   192.168.200.2   GigabitEthernet<br>0/0/0<br>  192.168.200.2/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>  192.168.200.3/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>255.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0</p>
+<p>二、交换机</p>
+<p>内部工作人员的无线WIFI SSID：work 隧道模式<br>把用户流量通过管理VLAN 100封装，再扔给AC，AC把VLAN 100拆出来，再扔给VLAN 101</p>
+<p>[SW1]vlan batch 101 102 200<br>Info: This operation may take a few seconds. Please wait for a moment…done.<br>[SW1]interface GigabitEthernet 0/0/3<br>[SW1-GigabitEthernet0/0/3]port link-type access<br>[SW1-GigabitEthernet0/0/3]port default vlan 200<br>[SW1-GigabitEthernet0/0/3]quit</p>
+<p>[SW1]interface GigabitEthernet 0/0/2<br>[SW1-GigabitEthernet0/0/2]port link-ty<br>[SW1-GigabitEthernet0/0/2]port link-type trunk<br>[SW1-GigabitEthernet0/0/2]port trunk allow-pass vlan all<br>[SW1-GigabitEthernet0/0/2]quit</p>
+<p>[SW1]interface GigabitEthernet 0/0/1<br>[SW1-GigabitEthernet0/0/1]port link-type trunk<br>[SW1-GigabitEthernet0/0/1]port trunk allow-pass vlan 100<br>[SW1-GigabitEthernet0/0/1]quit</p>
+<p>[SW1]dhcp enable</p>
+<p>[SW1]interface Vlanif 101<br>[SW1-Vlanif101]dhcp select interface<br>[SW1-Vlanif101]quit</p>
+<p>[SW1]interface Vlanif 102<br>[SW1-Vlanif102]dhcp select ?<br>  global     Local server<br>  interface  Interface server pool<br>  relay      DHCP relay<br>[SW1-Vlanif102]dhcp select interface<br>[SW1-Vlanif102]quit</p>
+<hr>
+<p>[SW2]vlan 100<br>[SW2-vlan100]quit</p>
+<p>[SW2]interface GigabitEthernet 0/0/3<br>[SW2-GigabitEthernet0/0/3]port link-type trunk<br>[SW2-GigabitEthernet0/0/3]port trunk allow-pass vlan 100<br>[SW2-GigabitEthernet0/0/3]quit</p>
+<p>[SW2]interface GigabitEthernet 0/0/1<br>[SW2-GigabitEthernet0/0/1]<br>[SW2-GigabitEthernet0/0/1]port link-ty<br>[SW2-GigabitEthernet0/0/1]port link-type trun<br>[SW2-GigabitEthernet0/0/1]port link-type trunk<br>[SW2-GigabitEthernet0/0/1]port trunk all<br>[SW2-GigabitEthernet0/0/1]port trunk allow-pass vlan 100<br>[SW2-GigabitEthernet0/0/1]quit</p>
+<p>[SW2]interface GigabitEthernet 0/0/1<br>[SW2-GigabitEthernet0/0/1]port trunk pvid vlan 100 如果从这个trunk口进来的流量如果没有标签的话，默认会打上vlan 100的标签，之后可以把报文通过这个trunk传到AC。<br>[SW2-GigabitEthernet0/0/1]quit</p>
+<p>三、无线控制器AC6605<br>[AC6605]vlan batch 100 101 102<br>Info: This operation may take a few seconds. Please wait for a moment…done.<br>[AC6605]interface GigabitEthernet 0/0/1<br>[AC6605-GigabitEthernet0/0/1]port link-type trunk<br>[AC6605-GigabitEthernet0/0/1]port trunk allow-pass vlan all<br>[AC6605-GigabitEthernet0/0/1]quit</p>
+<p>[AC6605]interface Vlanif 100<br>[AC6605-Vlanif100]ip address 192.168.100.254 24<br>[AC6605-Vlanif100]quit<br>[AC6605]dhcp enable<br>Info: The operation may take a few seconds. Please wait for a moment.done.<br>[AC6605]interface Vlanif 100<br>[AC6605-Vlanif100]dhcp select interface<br>[AC6605-Vlanif100]quit</p>
+<p>1）配置AP的上线<br>wlan业务配置模式<br>①配置域管理模板<br>[AC6605]wlan<br>[AC6605-wlan-view]regulatory-domain-profile name china<br>[AC6605-wlan-regulate-domain-china]country-code CN   //AP有无线射频，不同国家信道有差异，比如2.4GHz频段，CN有13个信道，japan有14个<br>Info: The current country code is same with the input country code.<br>[AC6605-wlan-regulate-domain-china]quit</p>
+<p>②创建AP组<br>[AC6605-wlan-view]ap-group name jiaoxue<br>Info: This operation may take a few seconds. Please wait for a moment.done.<br>[AC6605-wlan-ap-group-jiaoxue]regulatory-domain-profile china<br>Warning: Modifying the country code will clear channel, power and antenna gain c<br>onfigurations of the radio and reset the AP. Continue?[Y/N]:y<br>[AC6605-wlan-ap-group-jiaoxue]quit<br>[AC6605-wlan-view]quit</p>
+<p>③配置capwap隧道<br>[AC6605]capwap source ?<br>  interface   Interface<br>  ip-address  IP address<br>[AC6605]capwap source interface Vlanif 100    //Vlanif 100是AC管理vlan接口</p>
+<p>④配置AP设备入网认证<br>查看AP设备mac地址  Hardware address is 00e0-fc88-44b0<br><Huawei>display interface GigabitEthernet 0/0/00<br>GigabitEthernet0/0/0 current state : UP<br>Line protocol current state : UP<br>Description:HUAWEI, AP Series, GigabitEthernet0/0/0 Interface<br>Switch Port, PVID :    1, TPID : 8100(Hex), The Maximum Frame Length is 1800<br>IP Sending Frames’ Format is PKTFMT_ETHNT_2, Hardware address is 00e0-fc88-44b0<br>Last physical up time   : 2023-10-06 13:34:15 UTC-05:13<br>Last physical down time : 2023-10-06 13:34:12 UTC-05:13<br>Current system time: 2023-10-06 14:19:56-05:13</p>
+<p>[AC6605]wlan<br>[AC6605-wlan-view]ap auth-mode ?<br>  mac-auth  MAC authenticated mode, default authenticated mode<br>  no-auth   No authenticated mode<br>  sn-auth   SN authenticated mode<br>[AC6605-wlan-view]ap auth-mode mac-auth<br>[AC6605-wlan-view]ap-id 1 ap-mac ?<br>  MAC_ADDR<XXXX-XXXX-XXXX>  AP MAC address<br>[AC6605-wlan-view]ap-id 1 ap-mac 00e0-fc88-44b0<br>[AC6605-wlan-ap-1]ap-name JX001<br>[AC6605-wlan-ap-1]ap-group jiaoxue<br>Warning: This operation may cause AP reset. If the country code changes, it will<br> clear channel, power and antenna gain configurations of the radio, Whether to c<br>ontinue? [Y/N]:y<br>Info: This operation may take a few seconds. Please wait for a moment.. done.<br>[AC6605-wlan-ap-1]quit<br>[AC6605-wlan-view]quit</p>
+<p>[AC6605]display ap all<br>Info: This operation may take a few seconds. Please wait for a moment.done.<br>Total AP information:<br>idle : idle            [1]</p>
+<hr>
+<h2 id="ID-MAC-Name-Group-IP-Type-State-STA-Uptime"><a href="#ID-MAC-Name-Group-IP-Type-State-STA-Uptime" class="headerlink" title="ID   MAC            Name  Group   IP Type            State STA Uptime"></a>ID   MAC            Name  Group   IP Type            State STA Uptime</h2><h2 id="1-00e0-fc88-44b0-JX001-jiaoxue-idle-0"><a href="#1-00e0-fc88-44b0-JX001-jiaoxue-idle-0" class="headerlink" title="1    00e0-fc88-44b0 JX001 jiaoxue -  -               idle  0   -"></a>1    00e0-fc88-44b0 JX001 jiaoxue -  -               idle  0   -</h2><p>Total: 1</p>
+<p>在AC接口抓包看下</p>
+<p>发现SW1少配置了vlan 100<br>[SW1]display vlan<br>The total number of vlans is : 4</p>
+<hr>
+<p>U: Up;         D: Down;         TG: Tagged;         UT: Untagged;<br>MP: Vlan-mapping;               ST: Vlan-stacking;<br>#: ProtocolTransparent-vlan;    *: Management-vlan;</p>
+<hr>
+<h2 id="VID-Type-Ports"><a href="#VID-Type-Ports" class="headerlink" title="VID  Type    Ports                                                          "></a>VID  Type    Ports                                                          </h2><p>1    common  UT:GE0/0/1(U)      GE0/0/2(U)      GE0/0/4(D)      GE0/0/5(D)<br>                GE0/0/6(D)      GE0/0/7(D)      GE0/0/8(D)      GE0/0/9(D)<br>                GE0/0/10(D)     GE0/0/11(D)     GE0/0/12(D)     GE0/0/13(D)<br>                GE0/0/14(D)     GE0/0/15(D)     GE0/0/16(D)     GE0/0/17(D)<br>                GE0/0/18(D)     GE0/0/19(D)     GE0/0/20(D)     GE0/0/21(D)<br>                GE0/0/22(D)     GE0/0/23(D)     GE0/0/24(D)                     </p>
+<p>101  common  TG:GE0/0/2(U)                                                      </p>
+<p>102  common  TG:GE0/0/2(U)                                                      </p>
+<p>200  common  UT:GE0/0/3(U)                                                      </p>
+<pre><code class="hljs">         TG:GE0/0/2(U)                                                      
+</code></pre>
+<h2 id="VID-Status-Property-MAC-LRN-Statistics-Description"><a href="#VID-Status-Property-MAC-LRN-Statistics-Description" class="headerlink" title="VID  Status  Property      MAC-LRN Statistics Description      "></a>VID  Status  Property      MAC-LRN Statistics Description      </h2><p>1    enable  default       enable  disable    VLAN 0001<br>101  enable  default       enable  disable    VLAN 0101<br>102  enable  default       enable  disable    VLAN 0102<br>200  enable  default       enable  disable    VLAN 0200   </p>
+<p>[SW1]vlan 100<br>[SW1-vlan100]quit</p>
+<p>在AC接口抓包看capwap隧道建立</p>
+<p>⑤查看AP是否成功上线<br>[AC6605]display ap all<br>Info: This operation may take a few seconds. Please wait for a moment.done.<br>Total AP information:<br>nor  : normal          [1]</p>
+<hr>
+<hr>
+<p>ID   MAC            Name  Group   IP             Type            State STA Uptim<br>e</p>
+<hr>
+<hr>
+<p>1    00e0-fc88-44b0 JX001 jiaoxue 192.168.100.35 AP6050DN        nor   0   6M:42<br>S</p>
+<hr>
+<hr>
+<p>Total: 1</p>
+<p>[AC6605]display ap all<br>Info: This operation may take a few seconds. Please wait for a moment.done.<br>Total AP information:<br>nor  : normal          [1]</p>
+<hr>
+<hr>
+<p>ID   MAC            Name  Group   IP             Type            State STA Uptim<br>e</p>
+<hr>
+<hr>
+<p>1    00e0-fc88-44b0 JX001 jiaoxue 192.168.100.35 AP6050DN        nor   0   6M:59<br>S</p>
+<hr>
+<hr>
+<p>Total: 1</p>
+<p>2）无线业务下发，需要在AC上配置<br>①配置用户认证方式<br>[AC6605]wlan<br>[AC6605-wlan-view]security-profile name sec_work<br>[AC6605-wlan-sec-prof-sec_work]security wpa-wpa2 psk pass-phrase a1234567 aes<br>[AC6605-wlan-sec-prof-sec_work]quit<br>[AC6605-wlan-view]quit</p>
+<p>②配置SSID<br>[AC6605]wlan<br>[AC6605-wlan-view]security-profile name sec_work<br>[AC6605-wlan-sec-prof-sec_work]security wpa-wpa2 psk pass-phrase a1234567 aes<br>[AC6605-wlan-sec-prof-sec_work]quit<br>[AC6605-wlan-view]quit<br>[AC6605]wlan<br>[AC6605-wlan-view]ssid-profile name profile_work<br>[AC6605-wlan-ssid-prof-profile_work]ssid work<br>Info: This operation may take a few seconds, please wait.done.<br>[AC6605-wlan-ssid-prof-profile_work]quit</p>
+<p>③配置VAP模板，设置为隧道模式，配置用户VLAN101，并绑定安全模板、SSID模板<br>虚拟化技术在网络的应用<br>交换机VLAN：划分很多虚拟局域网<br>无线控制器AC：可以划分VAP，每一个VAP，1个AP虚拟成2个小AP，每个小AP给你广播1个SSID<br>路由器：VRF<br>[AC6605-wlan-view]<br>[AC6605-wlan-view]vap-profile name vap_work<br>[AC6605-wlan-vap-prof-vap_work]forward-mode tunnel<br>Info: This operation may take a few seconds, please wait.done.<br>[AC6605-wlan-vap-prof-vap_work]service-vlan vlan-id 101<br>Info: This operation may take a few seconds, please wait.done.<br>[AC6605-wlan-vap-prof-vap_work]security-profile sec_work<br>Info: This operation may take a few seconds, please wait.done.<br>[AC6605-wlan-vap-prof-vap_work]quit</p>
+<p>④在AP组中绑定vap模板<br>radio 0：2.4GHz  radio 1： 5GHz<br>[AC6605-wlan-view]ap-group name jiaoxue<br>[AC6605-wlan-ap-group-jiaoxue]vap-profile vap_wo<br>[AC6605-wlan-ap-group-jiaoxue]vap-profile vap_work wlan 1 radio 0 //开启无线射频卡</p>
+<p>教学楼组里可能有20个AP，每个AP都开启 vap-work，20个AP  都虚拟出一个虚拟AP出来，虚拟AP叫vap-work。它里面有一些策略、认证<br>转发模式、属于VLAN、安全认证方式都设定了，最后开启无线射频卡</p>
+<p>教学组里目前就只有AP1，可以把其他的加进去</p>
+<p>STA1笔记本电脑Vap列表里没有SSID？</p>
+<p>[AC6605-wlan-view]vap-profile name vap_work<br>[AC6605-wlan-vap-prof-vap_work]ssd-pro<br>[AC6605-wlan-vap-prof-vap_work]ssid<br>[AC6605-wlan-vap-prof-vap_work]ssid-profile pro<br>[AC6605-wlan-vap-prof-vap_work]ssid-profile profile_work<br>Warning: This action may cause service interruption. Continue?[Y/N]y<br>Info: This operation may take a few seconds, please wait…done.</p>
+<p>如果把AP1下的访客用户（SSID:guest）划分到VLAN102，访客业务（VLAN 102）采用<br>直接转发模式，需要进行如下配置：</p>
+<p>[SW1]interface GigabitEthernet 0/0/1<br>[SW1-GigabitEthernet0/0/1]<br>[SW1-GigabitEthernet0/0/1]<br>[SW1-GigabitEthernet0/0/1]por<br>[SW1-GigabitEthernet0/0/1]port trun<br>[SW1-GigabitEthernet0/0/1]port trunk all<br>[SW1-GigabitEthernet0/0/1]port trunk allow-pass vlan 102 100<br>[SW1-GigabitEthernet0/0/1]quit</p>
+<p>[SW2]vlan 102<br>[SW2-vlan102]quit</p>
+<p>[SW2]interface GigabitEthernet 0/0/1<br>[SW2-GigabitEthernet0/0/1]port trunk all<br>[SW2-GigabitEthernet0/0/1]port trunk allow-pass vlan 100 102<br>[SW2-GigabitEthernet0/0/1]quit</p>
+<p>[SW2]interface GigabitEthernet 0/0/3<br>[SW2-GigabitEthernet0/0/3]por<br>[SW2-GigabitEthernet0/0/3]port tru<br>[SW2-GigabitEthernet0/0/3]port trunk all<br>[SW2-GigabitEthernet0/0/3]port trunk allow-pass vlan 100 102<br>[SW2-GigabitEthernet0/0/3]quit</p>
+<p>进入无线控制器AC，配置无线业务：<br>1）AP上线（复用，已经配置完毕）</p>
+<p>2）配置访客无线介入业务<br>①配置用户认证方式<br>认证方式，用前面的work认证方式</p>
+<p>②配置SSID<br>[AC6605]wlan<br>[AC6605-wlan-view]ssid-profile name profile_guest<br>[AC6605-wlan-ssid-prof-profile_guest]ssid guest<br>Info: This operation may take a few seconds, please wait.done.<br>[AC6605-wlan-ssid-prof-profile_guest]quit</p>
+<p>③配置VAP模板<br>[AC6605-wlan-view]vap-profile name vap_guest<br>[AC6605-wlan-vap-prof-vap_guest]forward-mode ?<br>  direct-forward  Direct forward<br>  softgre         Softgre profile<br>  tunnel          Tunnel<br>[AC6605-wlan-vap-prof-vap_guest]forward-mode direct-forward<br>[AC6605-wlan-vap-prof-vap_guest]service-vlan ?<br>  vlan-id    VLAN ID<br>  vlan-pool  Bind VLAN pool<br>[AC6605-wlan-vap-prof-vap_guest]service-vlan vlan-id 102<br>Info: This operation may take a few seconds, please wait.done.</p>
+<p>[AC6605-wlan-vap-prof-vap_guest]security-profile sec_work<br>Info: This operation may take a few seconds, please wait.done.</p>
+<p>[AC6605-wlan-vap-prof-vap_guest]ssid-profile profile_guest<br>Info: This operation may take a few seconds, please wait.done.<br>[AC6605-wlan-vap-prof-vap_guest]quit</p>
+<p>④在AP组中绑定vap模板<br>[AC6605-wlan-view]ap-group name jiaoxue<br>[AC6605-wlan-ap-group-jiaoxue]vap-profile vap_guest wlan 2 radio ?<br>  INTEGER&lt;0-2&gt;  Radio ID<br>  all           All<br>[AC6605-wlan-ap-group-jiaoxue]vap-profile vap_guest wlan 2 radio all<br>Info: This operation may take a few seconds, please wait…done.</p>
+<p>AC接口抓包看没有ping的ICMP包</p>
+<hr>
+<p>场景化无线部署方案</p>
+<p>室外AP<br>高密AP<br>墙面AP<br>分布式AP</p>
+<p>室外AP：<br>①防水、防尘，IP67、IP68<br>②覆盖范围广<br>③功率大</p>
+<p>发射功率<br>室内AP：100mw   20dBm<br>室外AP：500mw   27dBm</p>
+<p>无线控制器AC功能<br>①实现用户无线漫游（从学生宿舍走到教学楼，无线网络一直不掉线，AP之间切换无感知；AC控制下面所有AP）<br>②AP管理<br>③安全控制</p>
+<p>转发模式<br>①隧道转发（AP和AC建立capwap隧道，数据从AC出去）<br>②直接转发（数据从AP直接出去）</p>
+<p>capwap隧道功能<br>①控制流量（比如下发版本升级）<br>②传数据流量</p>
+<p>capwap隧道协议是基于udp的封装<br>vxlan基于udp的封装（数据中心用的多些）</p>
+<p>基于udp的封装具有很好的穿透性，穿透NAT</p>
+<p>云AC（华三绿洲、锐捷），AC放在云端，下面的AC跨过互联网，找到云AC，由云AC对所有的设备统一配置。</p>
+<p>教育、医疗不会用云AC；商业连锁云AC用的多些，稍微小一些的场景（商场）</p>
+<p>企业和分支机构也会用云AC：<br>比如中石油，每个加油站都要部署wifi，2、3个AP，在总部放2个AC，下面所有AP都找这2个AC</p>
+<p>一个项目里，部分人用隧道模式，另一部分用直接转发模式，如何实现？<br>①SSID<br>②VAP<br>一个AP广播出2个SSID，对应2个VAP，每个VAP服务模式在后台可以设置</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE/">#华为配置</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>华为配置专题15无线WLAN配置</div>
+      <div>http://example.com/2023/10/06/华为配置专题15无线WLAN配置/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 6, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/06/11IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9814%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE/" title="华为配置专题14防火墙配置">
+                        <span class="hidden-mobile">华为配置专题14防火墙配置</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

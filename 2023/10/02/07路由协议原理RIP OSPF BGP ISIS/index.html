@@ -18,26 +18,26 @@
   
     <meta name="description" content="交换机基于目的mac地址进行转发路由器基于目的ip地址进行转发 直连路由：路由器本地接口所在网段静态路由：手工配置的路由条目动态路由：路由器之间通过动态路由协议学习到的路由 display ip routing-table查看路由表 路由协议或路由种类    相应路由的优先级DIRECT                  0OSPF                    10IS-IS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="路由协议原理RIP OSPF BGP ISIS">
-<meta property="og:url" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/index.html">
+<meta property="og:title" content="07路由协议原理RIP OSPF BGP ISIS">
+<meta property="og:url" content="http://example.com/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/index.html">
 <meta property="og:site_name" content="Coding">
 <meta property="og:description" content="交换机基于目的mac地址进行转发路由器基于目的ip地址进行转发 直连路由：路由器本地接口所在网段静态路由：手工配置的路由条目动态路由：路由器之间通过动态路由协议学习到的路由 display ip routing-table查看路由表 路由协议或路由种类    相应路由的优先级DIRECT                  0OSPF                    10IS-IS">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png">
-<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/2.png">
-<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/3.png">
-<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/4.png">
-<meta property="og:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/5.png">
+<meta property="og:image" content="http://example.com/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png">
+<meta property="og:image" content="http://example.com/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/2.png">
+<meta property="og:image" content="http://example.com/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/3.png">
+<meta property="og:image" content="http://example.com/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/4.png">
+<meta property="og:image" content="http://example.com/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/5.png">
 <meta property="article:published_time" content="2023-10-02T01:42:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T08:15:57.513Z">
+<meta property="article:modified_time" content="2023-10-06T10:00:42.427Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="备考_新增">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png">
+<meta name="twitter:image" content="http://example.com/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png">
   
   
   
-  <title>路由协议原理RIP OSPF BGP ISIS - Coding</title>
+  <title>07路由协议原理RIP OSPF BGP ISIS - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="路由协议原理RIP OSPF BGP ISIS"></span>
+            <span id="subtitle" data-typed-text="07路由协议原理RIP OSPF BGP ISIS"></span>
           
         </div>
 
@@ -275,7 +275,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">路由协议原理RIP OSPF BGP ISIS</h1>
+            <h1 style="display: none">07路由协议原理RIP OSPF BGP ISIS</h1>
             
             
               <div class="markdown-body">
@@ -299,7 +299,7 @@
 <p>OSPF（Open Shortest Path First，开放式最短路径优先协议）<br>OSPF是一种内部网关协议IGP，也是链路状态路由协议，支持VLSM，通过连通性、距离、带宽等状态计算最佳路径。<br>cost跟带宽有关<br>华为设备OSPF协议优先级Internal 10,External 150(import-route)<br>支持VLSM，支持在ABR/ASBR手工路由汇总，不支持自动汇总</p>
 <p>分层路由设计优点<br>1、减小对路由器内存和CPU消耗<br>2、降低网络带宽占用<br>3、减少路由震荡</p>
 <p>同步路由时<br>1、先发DD 摘要（目录）信息<br>2、<br>3、</p>
-<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/1.png" srcset="/img/loading.gif" lazyload class="">
 
 
 <p>OSPF DR/BDR优先级选举</p>
@@ -311,7 +311,7 @@
 <p>流量方向和路由方向相反</p>
 <p>如果有区域没有与Area 0相联，可以通过虚链路临时解决，只能横穿一个非骨干区域。</p>
 <p>在R3上配置：<br>ospf 1<br>arear 2<br>vlink-peer 4.4.4.4<br>在R4上的配置：<br>ospf 1<br>area 2<br>vlink-peer 3.3.3.3</p>
-<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/2.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/2.png" srcset="/img/loading.gif" lazyload class="">
 
 
 <p>OSPF使用HELLO报文维护建立邻居关系<br>OSPF广播网络和点对点网络hello是10s，NBMA网络hello是30s，默认都是广播型网络（以太网）。<br>同步数据库采用LSA报文。</p>
@@ -325,15 +325,15 @@
 <p>传统的IPv4地址由四个字节组成，每个字节可以有256个可能的值（0-255）。这些字节可以由网络管理员分配给网络或子网。传统上，网络地址中的每个字节都被分配一个固定长度的子网掩码（例如，/24表示24个1s和8个0s）。</p>
 <p>然而，VLSM允许网络管理员为每个子网分配不同的子网掩码长度。例如，一个网络管理员可以为每个子网分配不同的子网掩码，以便更好地适应其网络拓扑和结构。这提供了更大的灵活性，并允许网络管理员更有效地使用IPv4地址空间。</p>
 <p>VLSM通常与CIDR（无类域间路由）一起使用。CIDR允许网络管理员将多个网络地址组合成一个单一的路由条目，以便通过单个路由表条目进行路由选择。这大大减少了路由表的大小，并提高了网络的效率。</p>
-<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/3.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/3.png" srcset="/img/loading.gif" lazyload class="">
 
 
 <p>选router id<br>ospf进程下的、全局、环回loopback、普通ip地址</p>
 <p>rip udp 520<br>ospf ip 89<br>bgp tcp 179<br>isis 链路层</p>
 <p>AS path防环</p>
-<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/4.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/4.png" srcset="/img/loading.gif" lazyload class="">
 
-<img src="/2023/10/02/%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/5.png" srcset="/img/loading.gif" lazyload class="">
+<img src="/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/5.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>BGP<br>优选手动聚合 &gt; 自动聚合 &gt; network &gt; import &gt; 从对等体学到的<br>network i<br>import ?</p>
 <p>IS-IS使用 L1 L2路由器建立分级网络拓扑<br>使用LSP传递链路信息，完成链路数据库同步</p>
@@ -386,8 +386,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>路由协议原理RIP OSPF BGP ISIS</div>
-      <div>http://example.com/2023/10/02/路由协议原理RIP OSPF BGP ISIS/</div>
+      <div>07路由协议原理RIP OSPF BGP ISIS</div>
+      <div>http://example.com/2023/10/02/07路由协议原理RIP OSPF BGP ISIS/</div>
     </div>
     <div class="license-meta">
       
@@ -431,9 +431,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/02/%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%98/" title="路由配置专题">
+                      <a href="/2023/10/02/08%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%98/" title="08路由配置专题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">路由配置专题</span>
+                        <span class="hidden-mobile">08路由配置专题</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -441,8 +441,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/01/%E4%BC%A0%E8%BE%93%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AETCPUDP/" title="传输层封装协议TCP UDP">
-                        <span class="hidden-mobile">传输层封装协议TCP UDP</span>
+                      <a href="/2023/10/01/06%E4%BC%A0%E8%BE%93%E5%B1%82%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AETCPUDP/" title="06传输层封装协议TCP UDP">
+                        <span class="hidden-mobile">06传输层封装协议TCP UDP</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
