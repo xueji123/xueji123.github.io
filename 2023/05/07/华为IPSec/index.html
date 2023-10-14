@@ -16,12 +16,12 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="IPSec (Internet Protocol Security)机密性：加密完整性：没被篡改过防重放：取款机的例子，随机数、时间戳、一次性密码https:&#x2F;&#x2F;baike.baidu.com&#x2F;item&#x2F;%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB&#x2F;2229240?fr&#x3D;aladdin    总分型机构 1、成都和北京之间拉裸光纤2、专线，运营商做好VPN（LPS？）3">
+    <meta name="description" content="IPSec (Internet Protocol Security)机密性：加密完整性：没被篡改过   1,2，3到1，2,3,4也是被篡改过防重放：取款机的例子，随机数、时间戳、一次性密码https:&#x2F;&#x2F;baike.baidu.com&#x2F;item&#x2F;%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB&#x2F;2229240?fr&#x3D;aladdin    总分型机构 1、成都和北京之间拉裸">
 <meta property="og:type" content="article">
 <meta property="og:title" content="华为Ipsec 路由策略 VRRP">
 <meta property="og:url" content="http://example.com/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="IPSec (Internet Protocol Security)机密性：加密完整性：没被篡改过防重放：取款机的例子，随机数、时间戳、一次性密码https:&#x2F;&#x2F;baike.baidu.com&#x2F;item&#x2F;%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB&#x2F;2229240?fr&#x3D;aladdin    总分型机构 1、成都和北京之间拉裸光纤2、专线，运营商做好VPN（LPS？）3">
+<meta property="og:description" content="IPSec (Internet Protocol Security)机密性：加密完整性：没被篡改过   1,2，3到1，2,3,4也是被篡改过防重放：取款机的例子，随机数、时间戳、一次性密码https:&#x2F;&#x2F;baike.baidu.com&#x2F;item&#x2F;%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB&#x2F;2229240?fr&#x3D;aladdin    总分型机构 1、成都和北京之间拉裸">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/1.png">
 <meta property="og:image" content="http://example.com/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/2.png">
@@ -45,7 +45,7 @@
 <meta property="og:image" content="http://example.com/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/20.png">
 <meta property="og:image" content="http://example.com/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/21.png">
 <meta property="article:published_time" content="2023-05-07T09:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-04T05:48:31.988Z">
+<meta property="article:modified_time" content="2023-10-07T01:36:16.740Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="华为配置">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k words
+          7k words
         
       </span>
     
@@ -253,7 +253,7 @@
         
         
         
-          41 mins
+          59 mins
         
       </span>
     
@@ -296,23 +296,24 @@
             
               <div class="markdown-body">
                 
-                <p>IPSec (Internet Protocol Security)<br>机密性：加密<br>完整性：没被篡改过<br>防重放：取款机的例子，随机数、时间戳、一次性密码<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB/2229240?fr=aladdin">https://baike.baidu.com/item/%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB/2229240?fr=aladdin</a></p>
+                <p>IPSec (Internet Protocol Security)<br>机密性：加密<br>完整性：没被篡改过   1,2，3到1，2,3,4也是被篡改过<br>防重放：取款机的例子，随机数、时间戳、一次性密码<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB/2229240?fr=aladdin">https://baike.baidu.com/item/%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB/2229240?fr=aladdin</a></p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/1.png" srcset="/img/loading.gif" lazyload class="">
 
 
 <p>总分型机构</p>
-<p>1、成都和北京之间拉裸光纤<br>2、专线，运营商做好VPN（LPS？）<br>3、IPSec VPN，在2边出口路由器或配置IpSec，隧道和加密<br>优点：<br>①成本低</p>
+<p>1、成都和北京之间拉裸光纤<br>2、专线，运营商做好VPN（LPS？）比裸光纤便宜<br>3、IPSec VPN，在2边出口路由器或防火墙上配置IPSec，隧道和加密</p>
+<p>优点：<br>①成本低</p>
 <p>缺点：<br>①配置管理复杂</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/2.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>IKE：密钥交换，A和B之间通过IKE协商密码   UDP 500</p>
-<p>AH：完整性校验，不提供数据加密   IP 51  （认证）<br>ESP：数据加密     IP 50  （认证和加密）</p>
+<p>IKE ：Internet Key Exchange  Internet密钥交换协议<br>密钥交换，A和B之间通过IKE协商密码   UDP 500  </p>
+<p>AH：Authentication Header 认证头 完整性校验，不提供数据加密   IP 51  （认证）<br>ESP Encapsulating Security Payload 封装安全负荷：数据加密     IP 50  （认证和加密）</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/3.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>安全联盟SA：一系列安全规则集合 </p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/4.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>IpSec传输模式和隧道模式（重新封装ip头）</p>
+<p>IpSec  传输模式和隧道模式（重新封装ip头）</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/5.png" srcset="/img/loading.gif" lazyload class="">
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/6.png" srcset="/img/loading.gif" lazyload class="">
 
@@ -338,14 +339,20 @@
 <p>2、配置ACL识别流</p>
 <p>①定义需要保护的流量(acl)<br>R1:<br>acl 3000<br>rule 10 permit ip source 192.168.10.0 0.0.0.255 destination 192.168.20.0 0.0.0.255</p>
 <p>R2:<br>acl 3000<br>rule 10 permit ip source 192.168.20.0 0.0.0.255 destination 192.168.10.0 0.0.0.255</p>
-<p>②配置IPSEC安全提议(proposal)<br>R1:<br>ipsec proposal cd<br>esp authentication-algorithm md5<br>esp encryption-algorithm des</p>
-<p>display ipsec proposal</p>
+<p>②配置IPSEC安全提议(proposal)<br>R1:<br>ipsec proposal cd<br>esp authentication-algorithm md5<br>[R1-ipsec-proposal-cd]esp authentication-algorithm ?<br>  md5       Use HMAC-MD5-96 algorithm<br>  sha1      Use HMAC-SHA1-96 algorithm<br>  sha2-256  Use SHA2-256 algorithm<br>  sha2-384  Use SHA2-384 algorithm<br>  sha2-512  Use SHA2-512 algorithm<br>  sm3       Use SM3 algorithm</p>
+<p>[R1-ipsec-proposal-cd]esp encryption-algorithm ?<br>  3des     Use 3DES<br>  aes-128  Use AES-128<br>  aes-192  Use AES-192<br>  aes-256  Use AES-256<br>  des      Use DES<br>  sm1      Use SM1<br>  <cr>     Please press ENTER to execute command </p>
+<p>esp encryption-algorithm des</p>
+<p>[R1]display ipsec proposal</p>
+<p>Number of proposals: 1</p>
+<p>IPSec proposal name: cd<br> Encapsulation mode: Tunnel<br> Transform         : esp-new<br> ESP protocol      : Authentication MD5-HMAC-96<br>                     Encryption     DES</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/12.png" srcset="/img/loading.gif" lazyload class="">
 
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/11.png" srcset="/img/loading.gif" lazyload class="">
 
-<p>对称加密算法是紧凑的，不会膨胀</p>
+<p>对称加密算法是紧凑的，不会膨胀，10T加密完还是10T，非对称加密算法会膨胀，数据过大。</p>
 <p>R2:<br>ipsec proposal bj<br>esp authentication-algorithm md5<br>esp encryption-algorithm des</p>
+<p>[R2]dis cu | b ac</p>
+<p> drop illegal-mac alarm<br>#<br> undo info-center enable<br>#<br> set cpu-usage threshold 80 restore 75<br>#<br>acl number 2000<br> rule 10 permit source 192.168.20.0 0.0.0.255<br>#<br>acl number 3000<br> rule 10 permit ip source 192.168.20.0 0.0.0.255 destination 192.168.10.0 0.0.0.<br>255<br>#<br>ipsec proposal bj<br>#<br>aaa<br> authentication-scheme default<br> authorization-scheme default<br> accounting-scheme default<br> domain default<br> domain default_admin<br> local-user admin password cipher %$%$K8m.Nt84DZ}e#&lt;0`8bmE3Uw}%$%$<br> local-user admin service-type http<br>#<br>firewall zone Local</p>
 <p>③配置ipsec手动方式安全策略</p>
 <p>IKE类似FTP的21控制端口</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/13.png" srcset="/img/loading.gif" lazyload class="">
@@ -358,23 +365,23 @@
 <p>sa spi outbound esp 54321<br>sa string-key outbound esp cipher summer</p>
 <p>④在接口上应用<br>R1:<br>interface GigabitEthernet 0/0/1<br>ipsec policy chengdu</p>
 <p>R2:<br>interface GigabitEthernet 0/0/1<br>ipsec policy beijing</p>
-<p>此时还不通<br>2个acl 2000 和acl 3000有冲突<br>在ACL 2000里面把去往总部的流量排除掉</p>
+<p>此时还不通<br>2个acl 2000 和acl 3000有冲突，不需要做NAT转换<br>在ACL 2000里面把去往总部的流量排除掉</p>
 <p>R1:<br>interface GigabitEthernet 0/0/1<br>undo nat outbound 2000<br>quit<br>undo acl 2000</p>
-<p>acl 3001<br>rule 10 deny ip source 192.168.10.0 0.0.0.255 destination 192.168.20.0 0.0.0.255<br>rule 20 permit ip 允许任何ip通过</p>
+<p>acl 3001<br>rule 10 deny ip source 192.168.10.0 0.0.0.255 destination 192.168.20.0 0.0.0.255<br>rule 20 permit ip //允许任何ip通过</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/14.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>quit<br>interface GigabitEthernet 0/0/1<br>nat outbound 3001<br>quit</p>
 <p>R2:<br>interface GigabitEthernet 0/0/1<br>undo nat outbound 2000<br>quit<br>undo acl 2000</p>
-<p>acl 3000<br>rule 10 deny ip source 192.168.20.0 0.0.0.255 destination 192.168.10.0 0.0.0.255<br>rule 20 permit ip<br>quit</p>
+<p>acl 3001<br>rule 10 deny ip source 192.168.20.0 0.0.0.255 destination 192.168.10.0 0.0.0.255<br>rule 20 permit ip<br>quit<br>interface GigabitEthernet 0/0/1<br>nat outbound 3001</p>
 <p>此时PC1可以ping通PC2</p>
-<p>rule 20 permit ip解释:<br>是给NAT用的，下面的第②种<br>ACL应用有2种情况<br>①直接通过ACL过滤流量  华为最后默认是permit<br>②用ACL去实现其他功能，抓流量的时候，抓路由的时候，就是匹配了哪些，才能抓到哪些</p>
+<p>rule 20 permit ip解释:<br>是给NAT用的，下面的第②种<br>ACL应用有2种情况<br>①直接通过ACL过滤流量  华为最后默认是permit<br>②用ACL去实现其他功能，抓流量的时候，抓路由的时候，就是匹配了哪些，才能抓到哪些。NAT</p>
 <p>配置ipsec自动方式安全策略，自动隧道</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/15.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>多了IKE相关配置，用的是UDP 500端口，IKE建议</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/17.png" srcset="/img/loading.gif" lazyload class="">
 
-
+<p>IPSec 密钥交换协议，DH非对称加密算法</p>
 <p>比特币非对称加密算法 ECC 椭圆曲线</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/18.png" srcset="/img/loading.gif" lazyload class="">
 
@@ -387,6 +394,8 @@
 <p>4、创建安全策略</p>
 <p>5、应用安全策略</p>
 <p>IKE v1和v2<br>野蛮模式一端有个固定ip就可以，甚至2端都可以是动态的</p>
+<p>[R1-ipsec-proposal-cd]transform ?<br>ah<br>ah-esp<br>esp</p>
+<hr>
 <p>路由策略：控制路由表<br>策略路由：控制数据走向（转发表）</p>
 <p>路由策略：<br>R1学到R3的路由，把R3路由学到后，设置cost值，默认cost=2<br>R3只学到部分R1路由</p>
 <img src="/2023/05/07/%E5%8D%8E%E4%B8%BAIPSec/20.png" srcset="/img/loading.gif" lazyload class="">
@@ -399,8 +408,9 @@
 <p>R3:<br>ospf 1<br>area 0<br>network 0.0.0.0 0.0.0.0 实验为了方便，可以全宣告，实际要宣告4个网段</p>
 <p>要让R1和R3学到彼此的路由，要在R2做路由的重分发（可以做一些匹配和设置，这就是路由策略）</p>
 <p>比如R3想学到R1的 10.1.2.1/24和10.1.3.1/24的路由，不要学到10.1.1.1/24的路由</p>
-<p>R2:<br>acl 2000<br>rule 10 permit source 10.1.2.0 0.0.0.255<br>rule 20 permit source 10.1.3.0 0.0.0.255<br>quit<br>route-policy FROMR1 permit node 10<br>if-match acl 2000<br>quit</p>
+<p>R2:<br>acl 2000<br>rule 10 permit source 10.1.2.0 0.0.0.255<br>rule 20 permit source 10.1.3.0 0.0.0.255<br>quit<br>route-policy FROM1 permit node 10<br>if-match acl 2000<br>quit</p>
 <p>ospf 1<br>import-route rip 1 route-policy FROM1  （RIP引入到OSPF内）</p>
+<hr>
 <p>浮动路由和策略路由是两种不同的路由方式。</p>
 <p>浮动路由是指在路由器间建立动态路由协议，使得不同的路由器可以交换路由信息，根据路由表中的信息选择合适的路由，从而实现网络的连通性。浮动路由常用的协议有RIP、OSPF、BGP等。</p>
 <p>策略路由是指在路由器上按照不同的策略设置不同的路由规则，通过匹配路由规则进而转发数据包。策略路由可以根据源地址、目的地址、端口号、协议类型等条件对数据包进行分类，从而使数据包经过不同的路径，实现对网络流量的控制和管理。</p>
@@ -438,6 +448,26 @@
 
 
 
+<hr>
+<p>虚拟专用网 Virtual Private Network<br>建立公网上，由某一组织或某一群用户专用的通信网络</p>
+<p>二层：L2TP和PPTP（基于PPP） 数据链路层<br>三层：IPSec和GRE           网络层<br>四层：SSL/TLS              传输层</p>
+<p>实现数据加密的技术：PPTP、IPSec、SSL、TLS</p>
+<p>L2TP和GRE不加密</p>
+<p>实现虚拟专用网关键技术<br>1、隧道技术   ☆  公司总部里面有文件服务器，在外出差，通过隧道访问公司内网文件<br>2、加解密技术  ☆<br>3、密钥管理技术<br>4、身份认证技术</p>
+<p>虚拟专用解决方案<br>实现总分机构互联，常用IPSec<br>实现用户远程接入，比如出差拨号访问内网，常用SSL/TLS</p>
+<p>二层隧道协议 PPTP和L2TP，都基于PPP协议。<br>PPTP（微软）只支持TCP/IP体系，网络层必须是IP协议。<br>L2TP可以运行在IP协议、X.25、帧中继、ATM网络上使用。</p>
+<p>PPP协议包含链路控制协议LCP（Link Control Protocol） 和 网络控制协议NCP（NetWork Control Protocol）</p>
+<p>PPP协议可以在点对点链路上传输多种上层协议的数据包，有校验位。<br>但HDLC只支持IP协议（网络层）</p>
+<p>PPP认证方式：PAP和CHAP ☆</p>
+<p>PAP：两次握手，口令以明文传送<br>CHAP：三次握手，传送的是HMAC散列值（哈希值、摘要值）<br>      上层协议     地址协商     错误检测<br>PPP   多协议         能          可以<br>HDLC    IP          不能        可以</p>
+<p>IPSec基础</p>
+<p>IPSec（IP Security）是IETF定义的一组协议，用于增强网络的安全性。</p>
+<p>IPSec协议集提供如下安全服务：<br>1、数据完整性<br>2、认证<br>3、保密性<br>4、应用安全透明性</p>
+<p>IPSec集成在IPv6中，给IPv4打补丁，增强安全性。</p>
+<p>IPSec原理<br>AH：认证头<br>ESP：封装安全负荷  Encapsulating Security Payload<br>IKE：Internet密钥交换协议</p>
+<p>IPSec协议     功能                代表协议<br>AH        数据完整性和源认证       MD5、SHA<br>ESP          数据加密             DES、3DES、AES<br>IKE         密钥生成和分发          DH</p>
+<p>IPSec两种封装模式<br>原始报文   原来的IP头 + TCP + 数据<br>传输模式   原来的IP头 + AH + TCP + 数据<br>隧道模式   新的IP头 + AH + 原来的IP头 + TCP + 数据</p>
+<p>IPSec是网络层协议</p>
 
                 
               </div>

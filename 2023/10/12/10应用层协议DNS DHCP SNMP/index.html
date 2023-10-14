@@ -16,19 +16,22 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Coding">
-<meta property="og:url" content="http://example.com/2023/10/06/11IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/index.html">
+    <meta name="description" content="DNS、DHCP、SNMP基于UDP封装的 3389 RDP windows远程桌面 APT攻击APT攻击一般指高级长期威胁。 高级长期威胁（英语：Advanced Persistent Threat，缩写：APT），又称高级持续性威胁、先进持续性威胁等，是指隐匿而持久的电脑入侵过程，通常由某些人员精心策划，针对特定的目标 态势感知APT攻击解决方式：态势感知分析、沙箱、联动解决 一、DNS DN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10应用层协议DNS DHCP SNMP">
+<meta property="og:url" content="http://example.com/2023/10/12/10%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AEDNS%20DHCP%20SNMP/index.html">
 <meta property="og:site_name" content="Coding">
+<meta property="og:description" content="DNS、DHCP、SNMP基于UDP封装的 3389 RDP windows远程桌面 APT攻击APT攻击一般指高级长期威胁。 高级长期威胁（英语：Advanced Persistent Threat，缩写：APT），又称高级持续性威胁、先进持续性威胁等，是指隐匿而持久的电脑入侵过程，通常由某些人员精心策划，针对特定的目标 态势感知APT攻击解决方式：态势感知分析、沙箱、联动解决 一、DNS DN">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-10-06T10:06:55.974Z">
-<meta property="article:modified_time" content="2023-10-06T10:06:55.974Z">
+<meta property="article:published_time" content="2023-10-12T05:37:00.000Z">
+<meta property="article:modified_time" content="2023-10-13T12:51:39.565Z">
 <meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考_新增">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Coding</title>
+  <title>10应用层协议DNS DHCP SNMP - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="10应用层协议DNS DHCP SNMP"></span>
           
         </div>
 
@@ -205,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-06 18:06" pubdate>
-          October 6, 2023 pm
+        <time datetime="2023-10-12 13:37" pubdate>
+          October 12, 2023 pm
         </time>
       </span>
     
@@ -217,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          1.2k words
         
       </span>
     
@@ -228,7 +231,7 @@
         
         
         
-          1 mins
+          11 mins
         
       </span>
     
@@ -266,12 +269,47 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">10应用层协议DNS DHCP SNMP</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <p>DNS、DHCP、SNMP基于UDP封装的</p>
+<p>3389 RDP windows远程桌面</p>
+<p>APT攻击<br>APT攻击一般指高级长期威胁。 高级长期威胁（英语：Advanced Persistent Threat，缩写：APT），又称高级持续性威胁、先进持续性威胁等，是指隐匿而持久的电脑入侵过程，通常由某些人员精心策划，针对特定的目标</p>
+<p>态势感知<br>APT攻击解决方式：<br>态势感知分析、沙箱、联动解决</p>
+<p>一、DNS</p>
+<p>DNS缓存放在内存里的，速度更快</p>
+<p>本地DNS服务器先查区域记录（A、PTR等，自己创建的），再查DNS服务器缓存</p>
+<p>转发器（运营商DNS服务器）114.114.114.114 8.8.8.8 很多缓存都在这里</p>
+<p>根域名服务器全球只有13台，都在USA</p>
+<p>递归查询：老好人   本地DNS服务器<br>迭代查询：踢皮球   </p>
+<p>辅助域名服务器是主域名服务器备份（本地DNS服务器or主域名服务器）</p>
+<p>转发器是运营商DNS缓存服务器</p>
+<p>授权域名服务器（权威域名服务器）存A、PTR记录，可能是递归也可能迭代</p>
+<p>二、DHCP<br>给AP分配IP的用途：<br>1、管理AP<br>2、CAPWAP隧道<br>①AP和AC的管理流量<br>②业务流量      </p>
+<p>室外AP：<br>①防水、防尘，IP67、IP68<br>②覆盖范围广<br>③功率大</p>
+<p>发射功率<br>室内AP：100mw   20dBm<br>室外AP：500mw   27dBm</p>
+<p>无线控制器AC功能<br>①实现用户无线漫游（从学生宿舍走到教学楼，无线网络一直不掉线，AP之间切换无感知；AC控制下面所有AP）<br>②AP管理<br>③安全控制</p>
+<p>转发模式<br>①隧道转发（AP和AC建立capwap隧道，数据从AC出去）<br>②直接转发（数据从AP直接出去）</p>
+<p>capwap隧道功能<br>①控制流量（比如下发版本升级）<br>②传数据流量</p>
+<p>AP找AC的方法<br>1、option43<br>2、手动配置<br>3、自动发现（广播）<br>4、DNS</p>
+<p>DHCP客户为大：UDP68</p>
+<p>三、SNMP  简单网络管理协议<br>2个服务</p>
+<p>3个端口  161 162 随机</p>
+<p>5个报文</p>
+<p>客户机Agent 161  网管服务器NMS 162<br>SNMPService 161     随机端口</p>
+<p>源端口 161 （考试填 随机端口）   →    SNMPTrap 目的端口（162）</p>
+<p>NMS发给Agent  get-request CPU利用率多少？<br>Agent发给NMS  get-response 答复CPU利用率50%</p>
+<p>NMS发给Agent  get-next-request 下一个MIB标识内存占用多少</p>
+<p>NMS发给Agent  set-request 下发配置命令关闭</p>
+<p>Agent发给NMS  trap 反馈CPU利用率100了，向管理进程报告代理发生的事件</p>
+<p>四、其他</p>
+<p>AC可以做portal，但人多了，还是要单独部署portal服务器。802.1x都会有单独的认证服务器</p>
+<p>radius是一个协议，认证服务器跟下面设备通信<br>RADIUS：Remote Authentication Dial In User Service，远程用户拨号认证系统由RFC2865，RFC2866定义，是应用最广泛的AAA协议</p>
+<p>通过option给AP分一个DNS，把DNS解析成IP地址就找到AP ip地址了</p>
+<p>dhcp snooping一般交换机功能</p>
+
                 
               </div>
             
@@ -279,6 +317,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+      
+    </div>
   
 </div>
 
@@ -288,8 +354,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://example.com/2023/10/06/11IP子网划分专题/</div>
+      <div>10应用层协议DNS DHCP SNMP</div>
+      <div>http://example.com/2023/10/12/10应用层协议DNS DHCP SNMP/</div>
     </div>
     <div class="license-meta">
       
@@ -301,7 +367,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 6, 2023</div>
+          <div>October 12, 2023</div>
         </div>
       
       
@@ -333,9 +399,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/06/12%E8%AE%A1%E7%AE%97%E4%B8%93%E9%A2%98%E7%AA%81%E7%A0%B4/" title="">
+                      <a href="/2023/10/14/11IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/" title="11IP子网划分专题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">11IP子网划分专题</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -343,8 +409,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/" title="华为配置专题15无线WLAN配置">
-                        <span class="hidden-mobile">华为配置专题15无线WLAN配置</span>
+                      <a href="/2023/10/09/%E7%BD%91%E5%B7%A5%E7%AE%80%E7%AD%94%E9%A2%98/" title="网工简答题">
+                        <span class="hidden-mobile">网工简答题</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

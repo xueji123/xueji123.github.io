@@ -16,16 +16,16 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="AP:无线接入点&#x2F;无线交换机，所以AP和SW2之间用trunk口 2个SSID：work和guest 直接转发模式AP和AC之间有capwap隧道，控制信息经过AC，但数据信息不经过AC AC告诉AP 广播SSID名称、密码等。 一、出口路由器[Router]ip route-static 192.168.101.0 24 192.168.200.1[Router]ip route[Route">
+    <meta name="description" content="Option43: 为AP分配IP地址的同时，通告AC的地址 option 43 sub-option 3 ascii 10.10.10.1（AC的地址）   AP:无线接入点&#x2F;无线交换机，所以AP和SW2之间用trunk口 2个SSID：work和guest 直接转发模式AP和AC之间有capwap隧道，控制信息经过AC，但数据信息不经过AC AC告诉AP 广播SSID名称、密码等。 一、出口路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="华为配置专题15无线WLAN配置">
 <meta property="og:url" content="http://example.com/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="AP:无线接入点&#x2F;无线交换机，所以AP和SW2之间用trunk口 2个SSID：work和guest 直接转发模式AP和AC之间有capwap隧道，控制信息经过AC，但数据信息不经过AC AC告诉AP 广播SSID名称、密码等。 一、出口路由器[Router]ip route-static 192.168.101.0 24 192.168.200.1[Router]ip route[Route">
+<meta property="og:description" content="Option43: 为AP分配IP地址的同时，通告AC的地址 option 43 sub-option 3 ascii 10.10.10.1（AC的地址）   AP:无线接入点&#x2F;无线交换机，所以AP和SW2之间用trunk口 2个SSID：work和guest 直接转发模式AP和AC之间有capwap隧道，控制信息经过AC，但数据信息不经过AC AC告诉AP 广播SSID名称、密码等。 一、出口路">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/1.png">
 <meta property="article:published_time" content="2023-10-06T07:33:00.000Z">
-<meta property="article:modified_time" content="2023-10-06T09:55:53.393Z">
+<meta property="article:modified_time" content="2023-10-13T03:10:20.655Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="华为配置">
 <meta name="twitter:card" content="summary_large_image">
@@ -233,7 +233,7 @@
         
         
         
-          89 mins
+          90 mins
         
       </span>
     
@@ -276,7 +276,9 @@
             
               <div class="markdown-body">
                 
-                <img src="/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/1.png" srcset="/img/loading.gif" lazyload class="">
+                <p>Option43: 为AP分配IP地址的同时，通告AC的地址</p>
+<p>option 43 sub-option 3 ascii 10.10.10.1（AC的地址）</p>
+<img src="/2023/10/06/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9815%E6%97%A0%E7%BA%BFWLAN%E9%85%8D%E7%BD%AE/1.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>AP:无线接入点/无线交换机，所以AP和SW2之间用trunk口</p>
 <p>2个SSID：work和guest</p>
@@ -373,7 +375,7 @@
 <p>室外AP<br>高密AP<br>墙面AP<br>分布式AP</p>
 <p>室外AP：<br>①防水、防尘，IP67、IP68<br>②覆盖范围广<br>③功率大</p>
 <p>发射功率<br>室内AP：100mw   20dBm<br>室外AP：500mw   27dBm</p>
-<p>无线控制器AC功能<br>①实现用户无线漫游（从学生宿舍走到教学楼，无线网络一直不掉线，AP之间切换无感知；AC控制下面所有AP）<br>②AP管理<br>③安全控制</p>
+<p>无线控制器AC功能<br>①实现用户无线漫游（从学生宿舍走到教学楼，无线网络一直不掉线，AP之间切换无感知；AC控制下面所有AP）<br>wifi无缝漫游详解<br><a target="_blank" rel="noopener" href="https://betheme.net/a/11104086.html?action=onClick">https://betheme.net/a/11104086.html?action=onClick</a><br>②AP管理<br>③安全控制</p>
 <p>转发模式<br>①隧道转发（AP和AC建立capwap隧道，数据从AC出去）<br>②直接转发（数据从AP直接出去）</p>
 <p>capwap隧道功能<br>①控制流量（比如下发版本升级）<br>②传数据流量</p>
 <p>capwap隧道协议是基于udp的封装<br>vxlan基于udp的封装（数据中心用的多些）</p>
@@ -472,7 +474,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/06/11IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/" title="">
+                      <a href="/2023/10/06/13%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/" title="">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">Previous</span>

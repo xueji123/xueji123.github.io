@@ -16,22 +16,22 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="pc1和pc2能够互访 核心交换机（三层交换机）启2个vlanif实现，配置ip地址 二层交换机的话 要在路由器上要配置单臂路由 PC1和PC2能访问互联网 1、核心交换机配置默认路由2、出口路由器上配置默认路由到互联网3、出口路由器配置回城路由到内网终端设备所在网段 不配置静态路由的话，可以在核心交换机和出口路由器上运行RIP或者OSPF 配置了动态路由后，出口还要配置静态路由吗？还需要配置的。">
+    <meta name="description" content="一、IP地址基础 二、子网划分VLSM A类 0                1-126B类 10               128-191C类 110              192-223D类 1110             224-239E类   Research 研究用  240.0.0.0 ~ 255.255.255.254 RFC1918规定的私有地址：10.0.0.0&#x2F;8">
 <meta property="og:type" content="article">
-<meta property="og:title" content="08路由配置专题">
-<meta property="og:url" content="http://example.com/2023/10/02/08%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%98/index.html">
+<meta property="og:title" content="11IP子网划分专题">
+<meta property="og:url" content="http://example.com/2023/10/14/11IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E4%B8%93%E9%A2%98/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="pc1和pc2能够互访 核心交换机（三层交换机）启2个vlanif实现，配置ip地址 二层交换机的话 要在路由器上要配置单臂路由 PC1和PC2能访问互联网 1、核心交换机配置默认路由2、出口路由器上配置默认路由到互联网3、出口路由器配置回城路由到内网终端设备所在网段 不配置静态路由的话，可以在核心交换机和出口路由器上运行RIP或者OSPF 配置了动态路由后，出口还要配置静态路由吗？还需要配置的。">
+<meta property="og:description" content="一、IP地址基础 二、子网划分VLSM A类 0                1-126B类 10               128-191C类 110              192-223D类 1110             224-239E类   Research 研究用  240.0.0.0 ~ 255.255.255.254 RFC1918规定的私有地址：10.0.0.0&#x2F;8">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-10-02T08:18:00.000Z">
-<meta property="article:modified_time" content="2023-10-12T05:13:59.106Z">
+<meta property="article:published_time" content="2023-10-14T02:40:00.000Z">
+<meta property="article:modified_time" content="2023-10-14T12:19:17.923Z">
 <meta property="article:author" content="xueji123">
-<meta property="article:tag" content="华为配置">
+<meta property="article:tag" content="备考_新增">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>08路由配置专题 - Coding</title>
+  <title>11IP子网划分专题 - Coding</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="08路由配置专题"></span>
+            <span id="subtitle" data-typed-text="11IP子网划分专题"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-02 16:18" pubdate>
-          October 2, 2023 pm
+        <time datetime="2023-10-14 10:40" pubdate>
+          October 14, 2023 am
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.8k words
+          1.5k words
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          49 mins
+          13 mins
         
       </span>
     
@@ -269,76 +269,37 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">08路由配置专题</h1>
+            <h1 style="display: none">11IP子网划分专题</h1>
             
             
               <div class="markdown-body">
                 
-                <p>pc1和pc2能够互访</p>
-<p>核心交换机（三层交换机）启2个vlanif实现，配置ip地址</p>
-<p>二层交换机的话 要在路由器上要配置单臂路由</p>
-<p>PC1和PC2能访问互联网</p>
-<p>1、核心交换机配置默认路由<br>2、出口路由器上配置默认路由到互联网<br>3、出口路由器配置回城路由到内网终端设备所在网段</p>
-<p>不配置静态路由的话，可以在核心交换机和出口路由器上运行RIP或者OSPF</p>
-<p>配置了动态路由后，出口还要配置静态路由吗？还需要配置的。</p>
-<p>除了静态路由，还可以动态路由里产生默认路由：</p>
-<p>[R1-rip-1]default-route originate   əˈrɪdʒɪneɪt/</p>
-<p>☆☆☆☆☆☆<br>[R1]ospf 1<br>[R1-ospf-1]default-route-advertise  //本地路由表里有默认路由，才会向外通告<br>[AR2-ospf-1]display ip routing-table //直接向外通告一条默认路由<br>☆☆☆☆☆☆</p>
-<h2 id="Route-Flags-R-relay-D-download-to-fib"><a href="#Route-Flags-R-relay-D-download-to-fib" class="headerlink" title="Route Flags: R - relay, D - download to fib"></a>Route Flags: R - relay, D - download to fib</h2><p>Routing Tables: Public<br>         Destinations : 9        Routes : 9        </p>
-<p>Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface</p>
-<pre><code class="hljs">    0.0.0.0/0   O_ASE   150  1           D   12.1.1.1        GigabitEthernet
-</code></pre>
-<p>0/0/0<br>        1.1.1.1/32  OSPF    10   1           D   12.1.1.1        GigabitEthernet<br>0/0/0<br>       12.1.1.0/24  Direct  0    0           D   12.1.1.2        GigabitEthernet<br>0/0/0<br>       12.1.1.2/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>     12.1.1.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>      127.0.0.0/8   Direct  0    0           D   127.0.0.1       InLoopBack0<br>      127.0.0.1/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>127.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>255.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0</p>
-<p>[R1-ospf-1]default-route-advertise always  //强制下发<br>[AR2-ospf-1]display ip routing-table<br>Route Flags: R - relay, D - download to fib</p>
-<hr>
-<p>Routing Tables: Public<br>         Destinations : 9        Routes : 9        </p>
-<p>Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface</p>
-<pre><code class="hljs">    0.0.0.0/0   O_ASE   150  1           D   12.1.1.1        GigabitEthernet
-</code></pre>
-<p>0/0/0<br>        1.1.1.1/32  OSPF    10   1           D   12.1.1.1        GigabitEthernet<br>0/0/0<br>       12.1.1.0/24  Direct  0    0           D   12.1.1.2        GigabitEthernet<br>0/0/0<br>       12.1.1.2/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>     12.1.1.255/32  Direct  0    0           D   127.0.0.1       GigabitEthernet<br>0/0/0<br>      127.0.0.0/8   Direct  0    0           D   127.0.0.1       InLoopBack0<br>      127.0.0.1/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>127.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0<br>255.255.255.255/32  Direct  0    0           D   127.0.0.1       InLoopBack0</p>
-<p>PC1、PC2划分在同一个VLAN进行通信<br>1、在core1、core2、switch2和switch3上创建VLAN<br>2、在接入交换机上，把连接PC-1和PC-2的接口设置为access口，并划入对应vlan<br>3、把接入交换机和核心交换机的链路配置成trunk，并允许vlan通过</p>
-<p>1、PC-1 ping PC-2，看是否能正常通信，arp -a查看是否学习到arp表项<br>2、在交换机上display vlan breif，查看vlan是否创建成功，vlan划分是否成功<br>3、在交换机上display mac-address-table，查看是否学习到了相应的mac地址</p>
-<p>BGP自己宣告network的优先级更高</p>
-<p>BGP里network宣告限制，在路由器路由表里的有的，才能往BGP里network</p>
-<p>另一个是引入import</p>
-<p>路由汇总的优势<br>1、节省资源，减少路由器压力<br>2、防止路由表的震荡<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_64200765/article/details/131682952">https://blog.csdn.net/qq_64200765/article/details/131682952</a></p>
-<p>路由震荡原因 及解决方法<br>不一致的路由计算:当网络中的路由器使用不同的路由算法或配置参数不一致时,可能会导致路由信息在网络中传播时发生不一致,进而引发路由震荡。<br>网络拓扑变化:当网络中的拓扑结构发生变化,例如链路故障、路由器故障等,可能导致路由信息的快速变化,从而引发路由震荡。</p>
-<p>解决办法</p>
-<p>1、路由聚合和汇总：通过对网络中的路由信息进行聚合和汇总，减少路由表的规模，可以降低路由震荡的概率。这可以通过CIDR（无类别域间路由）和路由摘要等技术来实现。</p>
-<p>2、路由权限、限制和过滤：通过限制和过滤路由信息的传播范围，控制路由更新的频率和范围。例如，使用BGP（边界网关协议）的自治系统路径属性（AS_PATH）来限制路由的传播范围，防止不必要的路由信息传播。</p>
-<p>3、调整路由协议参数：可以调整路由协议的参数，例如更新时间间隔、阈值等，以控制路由信息的更新频率和稳定性。</p>
-<p>4、路由策略调整：根据网络的实际情况，合理调整路由策略，例如使用邻接过滤器、路由聚集等策略来减少路由表变化的频率和规模。</p>
-<p>5、使用路由重分发技术：通过使用路由反向刷新（route dampening）等技术，对路由信息的变化进行缓冲和衰减，减少不稳定的路由信息对网络的影响。</p>
-<p>6、监控和故障排除：定期监控网络中的路由状态和路由表变化情况，及时发现并解决潜在的路由震荡问题。</p>
-<p>策略路由<br>出口路由器<br>1、主备，浮动路由preference<br>浮动路由：<br>出口router上调节路由的Preference，越小越优先<br>ip route-static 0.0.0.0 0 13.1.1.2 preference 100</p>
-<p>display ip routing-table 查看联通路由已经没有了</p>
-<p>这就是浮动路由！！！<br>把preference调大后，就不优先了，不优先就隐藏起来<br>上面电信的路由一挂，就会走下面的preference 100的路由，会重新启用</p>
-<p>2、基于源地址的策略路由</p>
-<p>3、基于目的地址的策略路由<br>1）内部访问外部的时候<br>基于目的地址的策略路由，防止出现跨运营商访问，绕行+网间瓶颈，导致用户体验差。（例如访问ISP1的IP地址走ISP1，访问ISP2的IP地址走ISP2）</p>
-<p>跨运营商访问</p>
-<p>2）外部访问内网的时候，跨运营商访问<br>出口负载均衡策略设置存在问题，用户访问服务器的流量存在跨运营商访问。<br>解决方案：打开设备上2条运营商出口的源进源出功能</p>
-<hr>
-<p>1、基于源地址的策略路由（例如server区域走ISP1，PC区域走ISP2）<br>2、基于目的地址的策略路由，防止出现跨运营商访问，绕行+网间瓶颈，导致用户体验差。（例如访问ISP1的IP地址走ISP1，访问ISP2的IP地址走ISP2）<br>3、基于应用的策略路由（应用路由）（例如视频会议走ISP1，Web访问走ISP2）<br>4、基于链路权重负载均衡（电信60%，联调40%）<br>5、根据链路质量负载均衡<br>6、根据链路带宽负载均衡<br>7、根据综合指标负载均衡<br>8、基于链路优先级负载均衡</p>
-<p>策略路由！！！<br>教学楼流量走电信出口，宿舍楼流量走联通出口<br>1、配置流分类，定义流分类中的匹配规则；匹配创建的ACL规则或者直接匹配报文优先级等参数。<br>2、配置流行为，根据实际情况定义流行为中的动作；配置报文过滤、重标记优先级、重定向、流量监管、流量统计等动作。<br>3、配置流策略，在流策略中为指定的流分类配置所需流行为，即绑定流分类和流行为。<br>4、应用流策略，在接口、VLAN或者全局应用流策略。</p>
-<p>1、ACL规则：acl 2000<br>2、流分类：traffic classifier classifier-name<br>3、流行为：traffic behavior behavior-name<br>4、流策略：traffic policy policy-name<br>5、接口下应用：<br>[Switch]interface GigabitEthernet 0/0/3<br>[Switch-GigibitEthernet0/0/3]traffic-policy p1 inbound</p>
-<p>1、配置ACL，匹配流量<br>[router]acl 2010<br>[router-acl-basic-2010]rule 10 permit source 192.168.10.0 0.0.0.255<br>[router-acl-basic-2010]quit</p>
-<p>[router]acl 2020<br>[router-acl-basic-2020]rule 10 permit source 192.168.20.0 0.0.0.255<br>[router-acl-basic-2020]quit</p>
-<p>2、流分类<br>[router]traffic classifier jiaoxue<br>[router-classifier-jiaoxue]if-match acl 2010<br>[router-classifier-jiaoxue]quit</p>
-<p>[router]traffic classifier sushe<br>[router-classifier-sushe]if-match acl 2020<br>[router-classifier-sushe]quit</p>
-<p>3、流行为<br>[router]traffic behavior re-dianxin<br>[router-behavior-re-dianxin]redirect ip-nexthop 12.1.1.1<br>[router-behavior-re-dianxin]quit</p>
-<p>[router]traffic behavior re-liantong<br>[router-behavior-re-liantong]redirect ip-nexthop 23.1.1.2<br>[router-behavior-re-liantong]quit</p>
-<p>4、流策略<br>[router]traffic policy p<br>[router-trafficpolicy-p]classifier jiaoxue behavior re-dianxin<br>[router-trafficpolicy-p]classifier sushe behavior re-liantong<br>[router-trafficpolicy-p]quit</p>
-<p>5、入接口应用策略路由<br>[router]interface GigabitEthernet 0/0/1<br>[router-GigabitEthernet0/0/1]traffic-policy ?<br>  STRING&lt;1-31&gt;  Name of Traffic policy<br>[router-GigabitEthernet0/0/1]traffic-policy p inbound</p>
-<p>tips：<br>undo traffic-policy inbound</p>
-<p>访问电信的服务器走电信出口，访问联通服务器走联通出口</p>
-<p>1、配置ACL，匹配流量<br>[router-GigabitEthernet0/0/1]undo traffic-policy inboun</p>
-<p>[router]acl 3010<br>[router-acl-adv-3010]rule 10 permit ip source any destination 1.1.1.0 0.0.0.255<br>[router-acl-adv-3010]acl 3020<br>[router-acl-adv-3020]rule 10 permit ip source any destination 2.2.2.0 0.0.0.255</p>
-<p>2、流分类<br>[router]traffic classifier ctcc<br>[router-classifier-ctcc]if-match acl 3010<br>[router-classifier-ctcc]quit<br>[router]traffic classifier cucc<br>[router-classifier-cucc]if-match acl 3020<br>[router-classifier-cucc]quit</p>
-<p>3、流行为<br>[router]traffic behavior re-dianxin<br>[router-behavior-re-dianxin]redirect ip-nexthop 12.1.1.1<br>[router-behavior-re-dianxin]quit</p>
-<p>[router]traffic behavior re-liantong<br>[router-behavior-re-liantong]redirect ip-nexthop 23.1.1.2<br>[router-behavior-re-liantong]quit</p>
-<p>4、流策略<br>[router]traffic policy p<br>[router-trafficpolicy-p]undo classifier jiaoxue<br>[router-trafficpolicy-p]undo classifier sushe<br>[router-trafficpolicy-p]classifier ctcc behavior re-dianxin<br>[router-trafficpolicy-p]classifier cucc behavior re-liantong<br>[router-trafficpolicy-p]quit</p>
-<p>5、接口应用策略路由<br>[router]interface GigabitEthernet 0/0/1<br>[router-GigabitEthernet0/0/1]traffic-policy p inbound<br>[router-GigabitEthernet0/0/1]quit</p>
-<p>前缀列表更精确，ACL什么都可以</p>
+                <p>一、IP地址基础</p>
+<p>二、子网划分VLSM</p>
+<p>A类 0                1-126<br>B类 10               128-191<br>C类 110              192-223<br>D类 1110             224-239<br>E类   Research 研究用  240.0.0.0 ~ 255.255.255.254</p>
+<p>RFC1918规定的私有地址：<br>10.0.0.0/8    10    1个A类地址    2^24-2<br>172.16.0.0/12 172.16<del>172.31   16个B类地址   2^16-2<br>192.168.0.0/16  192.168.0</del>192.168.255  256个C类地址 2^8-2</p>
+<p>考点一：已知子网数量，进行子网划分<br>向主机位借位后，子网数=2^借用的位数</p>
+<p>地址块=2^主机位=2^（32-网络位）</p>
+<p>可划分的子网有<br>192.168.1.32n/27</p>
+<p>192.168.1.0/27  广播地址=192.168.31/27<br>192.168.32/27<br>192.168.64/27<br>192.168.96/27<br>192.168.128/27<br>192.168.160/27 </p>
+<p>前一个子网的广播地址是后一子网网络地址减1</p>
+<p>考点二：已知子网主机数量，进行子网划分</p>
+<p>2^n≥25 n=5   地址块=2^主机位=32   网络位=32-主机位=32-5=27</p>
+<p>192.168.1.0/27  广播地址=192.168.31/27<br>192.168.32/27<br>192.168.64/27<br>192.168.96/27<br>192.168.128/27<br>192.168.160/27<br>192.168.192/27 </p>
+<p>考点三：掩码转换</p>
+<p>0   128 192 224 240 248 252<br>/24 /25 /26 /27 /28 /29 /30</p>
+<p>试题一：<br>已知2个IP地址在同一个网段，判断其子网掩码为多少？</p>
+<p>地址块，2个IP地址在同一个网段，说明地址块大小区间要包含这2个IP地址<br>100-16=84，地址块&gt;84，2^n&gt;84，n=7  网络位=25</p>
+<p>试题二：<br>30个子网，子网位=5    19+5=24</p>
+<p>考点四：掩码作用位置与地址块计算<br>网络掩码x<br>x范围   掩码作用第几段  地址块     举例<br>25<del>32     第四段      2^(32-x)  2^(32-28)=2^4=16<br>17</del>24     第三段      2^(24-x)  2^(24-22)=2^2=4<br>9<del>16      第二段      2^(16-x)  2^(16-12)=2^4=16<br>0</del>8       第一段      2^(8-x)   2^(8-7)=2^1=2</p>
+<p>试题一：<br>下面IP地址不属于同一网络的<br>/21属于17~24，动第三段<br>172.20.8n.0/21     地址块=2^(24-21)=8<br>172.20.32.0/21<br>172.20.40.0/21<br>172.20.48.0/21</p>
+<p>试题二：<br>属于网络215.17.204.0/22的地址的IP是<br>2^(24-22)=4<br>215.17.4n.0/22<br>215.17.200.0/22<br>215.17.204.0/22<br>215.17.208.0/22<br>215.17.212.0/22<br>215.17.216.0/22</p>
+<p>试题三：<br>子网掩码为20，作用于第三段<br>地址块=2^(24-20)=16<br>192.168.16n.0/20<br>192.168.208.0/20<br>192.168.224.0/20<br>192.168.240.0/20</p>
+<p>考点五：应用型子网划分</p>
+<p>先算子网掩码<br>2^n-2≥20 n=5  子网掩码27<br>2^n-2≥8 n=4  子网掩码28</p>
+<p>2<em>2</em>2*2=16种</p>
+<p>RFC1918规定的私有地址：<br>10.0.0.0/8    10    1个A类地址    2^24-2<br>172.16.0.0/12 172.16<del>172.31   16个B类地址   2^16-2=65536-2=65534<br>192.168.0.0/16  192.168.0</del>192.168.255  256个C类地址 2^8-2</p>
+<p>三、无类域间路由CIDR<br>比较不同的段，发生变化 即不同的位，视为主机位，新的网络位数值会变小<br>汇聚后的网络地址要把主机位全部置0。称为超网网络地址</p>
 
                 
               </div>
@@ -372,7 +333,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE/">#华为配置</a>
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
       
     </div>
   
@@ -384,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>08路由配置专题</div>
-      <div>http://example.com/2023/10/02/08路由配置专题/</div>
+      <div>11IP子网划分专题</div>
+      <div>http://example.com/2023/10/14/11IP子网划分专题/</div>
     </div>
     <div class="license-meta">
       
@@ -397,7 +358,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 2, 2023</div>
+          <div>October 14, 2023</div>
         </div>
       
       
@@ -429,9 +390,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/03/2023%E5%B9%B45%E6%9C%88%E4%B8%8B/" title="2023年5月下">
+                      <a href="/2023/10/14/12%E8%AE%A1%E7%AE%97%E4%B8%93%E9%A2%98%E7%AA%81%E7%A0%B4/" title="12计算专题突破">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023年5月下</span>
+                        <span class="hidden-mobile">12计算专题突破</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -439,8 +400,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/02/07%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86RIP%20OSPF%20BGP%20ISIS/" title="07路由协议原理RIP OSPF BGP ISIS">
-                        <span class="hidden-mobile">07路由协议原理RIP OSPF BGP ISIS</span>
+                      <a href="/2023/10/12/10%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AEDNS%20DHCP%20SNMP/" title="10应用层协议DNS DHCP SNMP">
+                        <span class="hidden-mobile">10应用层协议DNS DHCP SNMP</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
