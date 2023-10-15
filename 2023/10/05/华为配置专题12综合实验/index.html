@@ -16,21 +16,22 @@
   <meta name="author" content="xueji123">
   <meta name="keywords" content="">
   
-    <meta name="description" content="port link-type dot1q-tunnel   把用户VLAN封装在运营商VLAN里  802.1ad标准协议QinQQinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。 由于在骨干网中传递的报文有两层802.1Q Tag（一层公网">
+    <meta name="description" content="port link-type dot1q-tunnel   把用户VLAN封装在运营商VLAN里  802.1ad标准协议QinQQinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。 由于在骨干网中传递的报文有两层802.1Q Tag（一层">
 <meta property="og:type" content="article">
 <meta property="og:title" content="华为配置专题11路由综合实验 DHCP NAT BFD 策略路由">
 <meta property="og:url" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="port link-type dot1q-tunnel   把用户VLAN封装在运营商VLAN里  802.1ad标准协议QinQQinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。 由于在骨干网中传递的报文有两层802.1Q Tag（一层公网">
+<meta property="og:description" content="port link-type dot1q-tunnel   把用户VLAN封装在运营商VLAN里  802.1ad标准协议QinQQinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。 由于在骨干网中传递的报文有两层802.1Q Tag（一层">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/3.png">
 <meta property="og:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/1.png">
 <meta property="og:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/2.png">
 <meta property="article:published_time" content="2023-10-05T03:01:00.000Z">
-<meta property="article:modified_time" content="2023-10-05T12:30:54.257Z">
+<meta property="article:modified_time" content="2023-10-15T12:00:11.130Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="华为配置">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/1.png">
+<meta name="twitter:image" content="http://example.com/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/3.png">
   
   
   
@@ -277,7 +278,9 @@
             
               <div class="markdown-body">
                 
-                <p>port link-type dot1q-tunnel</p>
+                <img src="/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/3.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>port link-type dot1q-tunnel</p>
 <img src="/2023/10/05/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E4%B8%93%E9%A2%9812%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/1.png" srcset="/img/loading.gif" lazyload class="">
 
 <p>把用户VLAN封装在运营商VLAN里  802.1ad标准协议<br>QinQ<br>QinQ（802.1Q-in-802.1Q）协议出自IEEE 802.1ad标准协议，通过在802.1Q标签报文的基础上再增加一层802.1Q的Tag来达到扩展VLAN空间的功能，可以使私网VLAN透传公网。</p>
@@ -319,8 +322,8 @@
 <p>interface Vlanif 30<br>ip address 192.168.30.254 24<br>quit</p>
 <p>2、router出口路由器</p>
 <p>interface GigabitEthernet 0/0/1<br>ip address 192.168.30.3 24</p>
-<p>PC1 ping 192.168.30.3 在router出口路由器上要加静态或者动态路由<br>静态路由<br>ip route-static 192.168.10.0 24 192.168.30.254<br>动态路由<br>1）coresw和router运行rip<br>route上<br>rip 1<br>version 2<br>network 192.168.30.0<br>quit</p>
-<p>coresw上<br>rip 1<br>version 2   ripv1和ripv2区别？<br>network 192.168.10.0<br>network 192.168.20.0<br>network 192.168.30.0<br>quit</p>
+<p>PC1 ping 192.168.30.3 在router出口路由器上要加静态或者动态路由<br>静态路由<br>ip route-static 192.168.10.0 24 192.168.30.254<br>动态路由<br>1）coresw和router运行rip<br>coresw上<br>rip 1<br>version 2   ripv1和ripv2区别？<br>network 192.168.10.0<br>network 192.168.20.0<br>network 192.168.30.0<br>quit</p>
+<p>route上<br>rip 1<br>version 2<br>network 192.168.30.0<br>quit</p>
 <p>2）coresw和router运行ospf<br>undo rip 1</p>
 <p>coresw上<br>ospf 1<br>area 0<br>network 192.168.10.0 0.0.0.255<br>network 192.168.20.0 0.0.0.255<br>network 192.168.30.0 0.0.0.255</p>
 <p>router上<br>ospf 1<br>area 0<br>network 192.168.30.0 0.0.0.255</p>

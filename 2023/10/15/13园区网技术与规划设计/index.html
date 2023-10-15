@@ -1,0 +1,748 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="电信诈骗，社会工程学，内容安全 一、主流技术 VLAN：隔离用户组，二层隔离 IP子网划分 VLAN二层隔离技术  1~4094Vlanif接口  配置ip地址 ip address 192.168.1.254 24，VLAN里所有主机网关 收敛速度：STP 慢  50sMSTP 快MSTP 实现负载均衡，用在交换机上的，让不同VLAN的流量沿着各自的路径转发，从而利用冗余链路提供更好的负载分担机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="13园区网技术与规划设计">
+<meta property="og:url" content="http://example.com/2023/10/15/13%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="电信诈骗，社会工程学，内容安全 一、主流技术 VLAN：隔离用户组，二层隔离 IP子网划分 VLAN二层隔离技术  1~4094Vlanif接口  配置ip地址 ip address 192.168.1.254 24，VLAN里所有主机网关 收敛速度：STP 慢  50sMSTP 快MSTP 实现负载均衡，用在交换机上的，让不同VLAN的流量沿着各自的路径转发，从而利用冗余链路提供更好的负载分担机">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-15T06:58:00.000Z">
+<meta property="article:modified_time" content="2023-10-15T13:06:52.095Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="备考_新增">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>13园区网技术与规划设计 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="13园区网技术与规划设计"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-15 14:58" pubdate>
+          October 15, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">13园区网技术与规划设计</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>电信诈骗，社会工程学，内容安全</p>
+<p>一、主流技术</p>
+<p>VLAN：隔离用户组，二层隔离</p>
+<p>IP子网划分</p>
+<p>VLAN二层隔离技术  1~4094<br>Vlanif接口  配置ip地址 ip address 192.168.1.254 24，VLAN里所有主机网关</p>
+<p>收敛速度：<br>STP 慢  50s<br>MSTP 快<br>MSTP 实现负载均衡，用在交换机上的，让不同VLAN的流量沿着各自的路径转发，从而利用冗余链路提供更好的负载分担机制</p>
+<p>交换机接口进入稳定状态（稳态：收敛完毕）<br>①转发<br>②阻塞</p>
+<p>生成树<br>1、选举根桥（网桥ID：优先级小的优先，默认是32768，必须是4096倍数root secondary，最小是0 root primary；mac地址小）<br>2、选根端口 root port   非根桥上距离根桥最近的端口<br>3、选指定端口 Designated port 根桥上的都是指定接口，具有最低根路径的接口（链路中间观察）<br>4、选非指定端口，然后阻塞它</p>
+<p>出口路由器，2条链路，ISP1和ISP2</p>
+<p>1、基于源地址的策略路由（例如server区域走ISP1，PC区域走ISP2）<br>2、基于目的地址的策略路由，防止出现跨运营商访问，绕行+网间瓶颈，导致用户体验差。（例如访问ISP1的IP地址走ISP1，访问ISP2的IP地址走ISP2）<br>3、基于应用的策略路由（应用路由）（例如视频会议走ISP1，Web访问走ISP2）<br>4、基于链路权重负载均衡（电信60%，联通40%）<br>5、根据链路质量负载均衡<br>6、根据链路带宽负载均衡<br>7、根据综合指标负载均衡<br>8、基于链路优先级负载均衡</p>
+<p>跨运营商访问，网间瓶颈</p>
+<p>出口做基于目的地址策略路由（访问电信的服务走电信出口，访问联通的服务走联通出口）</p>
+<p>实现出口多链路负载均衡设备：AR（华为）、MSR（华三）、LB、FW、上网行为管理</p>
+<p>负载均衡大的厂商：F5、A10、深信服、华为、华三</p>
+<p>服务器负载均衡：基于DNS、基于轮询</p>
+<p>全局负载均衡，不同地区的用户负载到不同的数据中心里</p>
+<p>策略路由核心配置<br>1、配置ACL，匹配流量<br>acl number 2010<br>rule 10 permit source 192.168.10.0 0.0.0.255<br>acl number 2020<br>rule 10 permit source 192.168.20.0 0.0.0.255</p>
+<p>2、流分类<br>traffic classifier jiaoxue<br>if-match acl 2010<br>traffic classifier sushe<br>if-match acl 2020</p>
+<p>3、流行为<br>traffic behavior re-dianxin<br>redirect ip-nexthop 12.1.1.1<br>traffic behavior re-liantong<br>redircet ip-nexthop 23.1.1.2</p>
+<p>4、流策略<br>traffic policy p<br>classifier jiaoxue behavior re-dianxin<br>classifier sushe behavior re-liantong</p>
+<p>5、入接口应用策略路由<br>interface GigabitEthernet 0/0/1<br>ip address 192.168.30.3 255.255.255.0<br>traffic-policy p inbound</p>
+<p>VRRP：实现的是 网关冗余</p>
+<p>三层的话，网关放在汇聚层；二层的话，网关放在核心层</p>
+<p>堆叠+端口聚合  链路聚合</p>
+<p>VRRP（网关冗余）+MSTP（防止环路）</p>
+<p>DHCP option43  中继 snooping</p>
+<p>ACL</p>
+<p>NAT<br>nat server   easy ip</p>
+<p>路由策略<br>1、匹配工具包括ACL或ip-prefix<br>定义一个acl 2000，用于匹配需要放行或阻断的路由<br>acl 2000<br>rule deny source 10.1.1.0 0.0.0.255 /拒绝网络10.1.1.0/24<br>rule permit 其他流量都允许<br>ip ip-prefix 3to2 index 10 permit 10.1.2.0 24 //前缀列表名字为3to2，匹配10.1.2.0/24</p>
+<p>2、定义路由策略，并引用匹配工具<br>route-policy rip-to-ospf permit node 10 //定义路由策略，名为rip-to-ospf<br>if-match acl 2000 //引用前面配置的ACL<br>route-policy test permit node 10<br>if-match ip-prefix 3to2 //引用前面配置的ip-prefix</p>
+<p>3、应用路由策略，2个工具：route-policy、filter-policy</p>
+<p>(1)在路由引入时，调用路由策略<br>ospf 1<br>import-route rip route-policy rip-to-ospf //引入rip路由时，调用路由策略<br>(2)配置发布策略，引用地址前缀列表3to2进行过滤<br>ospf<br>area 0<br>filter-policy ip-prefix 3to2 export static</p>
+<p>二、网络设备<br>工作原理：<br>交换机<br>基于源mac地址进行mac地址表构建，基于目的mac地址进行数据帧转发<br>路由器<br>构建路由表，基于目的ip地址进行数据转发</p>
+<p>交换机转发速度快，路由器查表依赖CPU</p>
+<p>防火墙<br>inbound和outbound</p>
+<p>行为管理</p>
+<p>入侵检测IDS（不能阻断）旁路 联动机制，交给态势感知等平台综合分析<br>核心交换机扔给IDS，用的是 端口镜像 技术   observe-port观察端口，用来接IDS设备的</p>
+<p>入侵防御IPS（可以阻断）串行</p>
+<p>FC交换机:<br>光纤通道交换机，速率2G/4G/8G/16G 用于FC存储。性能强，成本高，IOPS。只有16G，带宽低</p>
+<p>以太网光纤交换机 100M/1G/10G/40G/100G  用于以太网存储。以太网单接口800G</p>
+<p>数据中心有3台服务器<br>1、<br>2、<br>3、</p>
+<p>交换机1：网络管理  1000M千兆<br>交换机2：存储     10G万兆</p>
+<p>三、规划设计</p>
+<p>路由交换</p>
+<p>无线网络</p>
+<p>网络安全</p>
+<p>网络优化</p>
+<p>网络管理/IT综合运维</p>
+<p>园区网（企业网）中大型局域网<br>比如学校、医院、ZF、企业园区</p>
+<p>园区网连电脑、监控摄像头<br>数据中心连服务器、存储</p>
+<p>广域网/纵向网（省/市）</p>
+<p>三层网络架构</p>
+<p>核心层：流量高速转发<br>汇聚层：流量汇聚、链路和设备冗余，典型的双汇聚冗余，另外就是策略控制，各类访问控制列表在汇聚层配置</p>
+<p>接入层：提供接口，安全准入，比如常见802.1x配置，端口安全配置均在接入交换机实现</p>
+<p>主流技术：VLAN、STP/MSTP</p>
+<p>路由交换设计</p>
+<p>分区域设计：宿舍区、教学区、办公区</p>
+<p>分层次设计：典型三层架构<br>        接入：用户接入，安全控制<br>        汇聚：流量汇聚，策略，FW/IPS<br>        核心：数据高速转发<br>    汇聚、核心：OSPF、RIP 动态路由协议</p>
+<p>出口路由器：<br>        主要实现NAT、默认路由、多业务接口<br>        策略路由、智能选路、端口映射</p>
+<p>出口路由器配置功能：NAT、默认路由、负责均衡</p>
+<p>联合综合布线：<br>工作区子系统（PC到信息面板插座之间，小于10m）、水平子系统（小于90m）、管理子系统、干线（垂直）子系统、设备间子系统、建筑群子系统<br>接入交换机放入每个楼层，接入交换机通过多模光纤（橘黄色、浅绿色）连入楼宇汇聚</p>
+<p>单模光纤（黄色） 多模光模块便宜，比单模便宜不少</p>
+<p>点位根据设计院CAD图纸<br>设备网：视频监控、门禁</p>
+<p>冗余技术：<br>设备冗余<br>多台设备：集群/堆叠/虚拟化<br>单台设备：双引擎、双电源、双交换网板、多个风扇</p>
+<p>链路冗余<br>链路/端口聚合、STP/RSTP/MSTP、Smartlink、环网ERPS/RRPP/SEP、备份接口</p>
+<p>网关冗余<br>VRRP、堆叠</p>
+<p>10台接入交换机需要40个光模块，单个接口需要双上行，1个接入交换机需要2个，核心交换机也需要2个</p>
+<p>AOC线缆：10米，堆叠线缆</p>
+<p>级连和堆叠（虚拟化、横向虚拟化）<br>堆叠优势<br>1、逻辑上把多台设备虚拟成一台设备，简化运维，方便管理<br>2、一台物理设备故障，其他设备可以接管转发、控制平台，避免单点故障（汇聚、核心节点）<br>3、跨设备的链路聚合，物理上的无环网络，无需部署STP<br>4、链路聚合中的链路全部有效使用，链路利用率100%</p>
+<p>劣势：<br>1、堆叠都是私有协议，不支持跨厂商设备堆叠（思科VSS，华为CSS/istack，华三IRF，锐捷LSU）<br>2、需要单独购买堆叠线缆（现在最新的用光纤也能实现堆叠）<br>3、存在一定资源浪费，特别高端设备，如果2台核心都配置双引擎，堆叠后只有1个引擎工作<br>4、堆叠系统升级或重启，会有20~60秒的业务中断<br>5、可靠性风险，控制层面统一后，如果整个逻辑设备的控制平面出现问题（比如路由表被人攻击破坏），可能导致整机瘫痪，影响范围大</p>
+<p>无线网络规划设计<br>无线设计思路：<br>1、有线无线一体化：共用汇聚交换机（最常见）<br>在接入层单独挂POE交换机，挂AP</p>
+<p>2、无线独立组网：有线无线两张网（医疗）</p>
+<p>无线四件套<br>AC：漫游、认证、安全控制<br>AP：将有线转换成无线<br>POE：供电交换机或POE模块<br>POE供电几种方法：交换机供电，POE15W、POE+30W、POE++60W（球机、门禁系统）<br>POE供电距离：100米<br>网管：网络管理，射频管理</p>
+<p>无线地勘，确定AP数量、AP部署位置、防止干扰</p>
+<p>POE供电模块<br>集成电源模块<br>POE供电是指现有的以太网CAT-5布线基础架构，在不用做任何改动的情况下，借助一根常规以太网线缆在传输数据的同时供应电力，从而保证该线缆在为以太网终端设备如IP电话机、无线局域网接入点AP、安全网络摄像机以及其他一些基于IP的终端传输数据信号的同时，还能为此类设备提供直流供电能力的集成电源模块。</p>
+<p>华为新的方案：POE 300米，光电复合缆，光纤传数据，电缆用于供电</p>
+<p>场景化无线设计与部署方案<br>1、高密场景：高密AP<br>2、小房间参考：墙面AP<br>3、走廊型场景分布式AP 1个AP分成多个子AP，到每个房间里，实现房间信号覆盖，并降低干扰  （学校、医院）</p>
+<p>认证方式总结<br>认证方式      认证设备NAC       应用场景                    特点<br>802.1x        交换机         校园网、企业        安全性高，一般需要PC安装客户端<br>PPPoE        BRAS/BAS       家庭宽带、校园网     光猫或路由器拨号，实现简单，可以共享上网<br>IPoE         BRAS/BAS        机顶盒这类哑终端      IPoE+Web portal网页认证<br>portal       认证网关（服务器） 商超、公共场所       安全性低，便携性高<br>MAC认证       认证服务器       打印机等哑终端        一般入网第一次进行认证，后续即放行</p>
+<p>短信认证用于访客（实名），哑终端也可以不认证</p>
+<p>网络安全设计<br>交换机/路由器安全：端口安全（只学1个、2个mac地址）、BPDU Guard（生成树的控制报文）、DHCP Snooping</p>
+<p>交换机之间相互交互，决定哪些端口开，哪些端口阻塞。连PC不用BPDU，用BPDU Guard，不连优先级很高的交换机</p>
+<p>网络安全<br>FW：隔离安全区域，穿越攻击（门卫）<br>IDS：镜像流量分析，非穿越攻击（巡逻）<br>安全审计：满足公安部82号令</p>
+<p>认证/主机安全<br>认证：身份认证系统（医院、教育）<br>主机安全：杀软、桌面审计</p>
+<p>应用安全：网站（WAF）、数据库（审计）<br>数据安全：容灾备份系统（软件/硬件）</p>
+<p>等保2.0 一个中心 三重防护：安全管理中心、安全计算环境、安全区域边界、安全通信网络、安全物理环境</p>
+<p>网络优化设计<br>出口链路负载均衡<br>广域网双边加速，加速效果达5-30倍</p>
+<p>多种算法压缩数据，F5、A10、深信服WOC</p>
+<p>200ms到50ms</p>
+<p>SD-WAN 软件定义广域网  简化企业级用户对于广域网络控管<br>优化整合进去，出口买华为AR，配置SDN controller<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E5%B9%BF%E5%9F%9F%E7%BD%91%E7%BB%9C/22892153?fromtitle=SD-WAN&amp;fromid=18706229&amp;fr=aladdin">https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E5%B9%BF%E5%9F%9F%E7%BD%91%E7%BB%9C/22892153?fromtitle=SD-WAN&amp;fromid=18706229&amp;fr=aladdin</a></p>
+<p>对分支机构做管理，图形化界面，管理平台</p>
+<p>多协议标签交换（英语：Multi-Protocol Label Switching，缩写为MPLS）是一种在开放的通信网上利用标签引导数据高速、高效传输的新技术。多协议的含义是指MPLS不但可以支持多种网络层层面上的协议，还可以兼容第二层的多种数据链路层技术。<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%9A%E5%8D%8F%E8%AE%AE%E6%A0%87%E7%AD%BE%E4%BA%A4%E6%8D%A2/2991732?fromModule=lemma_inlink&amp;fromtitle=MPLS&amp;fromid=320618">https://baike.baidu.com/item/%E5%A4%9A%E5%8D%8F%E8%AE%AE%E6%A0%87%E7%AD%BE%E4%BA%A4%E6%8D%A2/2991732?fromModule=lemma_inlink&amp;fromtitle=MPLS&amp;fromid=320618</a></p>
+<p>总部和分支机构线路<br>1、裸光纤 （80公里以内）（学校不同校区、同城校区互联）<br>2、专线 zf机构用的多<br>3、IPSec VPN（动态隧道和手工隧道，配置繁琐）通过VPN集中器配置</p>
+<p>学校里裸光纤很多，新老校区之间<br>裸光纤成本最高，部署简单。IPSec VPN方案成本最低，部署难度稍高。<br>专线的成本和部署难度介于裸纤和IPSec VPN之间</p>
+<p>网络运维</p>
+<p>网络组网设备</p>
+<p>堡垒机：运维审计<br>出口带宽20G/50G等<br>内容缓存设备：比如热点视频缓存到内部</p>
+<p>拖库攻击 破坏了机密性。防止这种攻击，可以哈希+盐<br>inbound 低-&gt;高<br>outbound 高-&gt;低  </p>
+<p>VRRP实现 网关冗余 功能</p>
+<p>心跳线，监测VRRP组的状态，出现故障及时切换。<br>访问控制（ACL）措施</p>
+<p>默认路由：<br>核心交换机指向防火墙、防火墙指向出口、汇聚交换机。或者汇聚交换机和核心交换机配置OSPF或者RIP</p>
+<p>动态注入：<br>RIP<br>OSPF</p>
+<p>两个接入交换机之间连接方式<br>1、级连<br>2、堆叠<br>堆叠方式可以共享使用交换机背板带宽<br>级连方式可以使用双绞线将交换机连接在一起</p>
+<p>日志审计只有审计功能，没有控制功能</p>
+<p>IP-SAN，直接接入的交换机</p>
+<p>FC-SAN   IP-SAN  NAS（NFS Linux、CIFS windows）</p>
+<p>负载均衡设备部署在出口的地方</p>
+<p>路由器、防火墙、上网行为管理都可以实现负载均衡</p>
+<p>漏洞扫描设备：对指定计算机系统进行安全脆弱性扫描和检测，发现其安全漏洞，客观评估网络风险等。<br>入侵防御系统IPS  防火墙</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%87%E8%80%83-%E6%96%B0%E5%A2%9E/">#备考_新增</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>13园区网技术与规划设计</div>
+      <div>http://example.com/2023/10/15/13园区网技术与规划设计/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 15, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/14/12%E8%AE%A1%E7%AE%97%E4%B8%93%E9%A2%98%E7%AA%81%E7%A0%B4/" title="12计算专题突破">
+                        <span class="hidden-mobile">12计算专题突破</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

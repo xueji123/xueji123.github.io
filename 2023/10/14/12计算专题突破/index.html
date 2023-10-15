@@ -24,7 +24,7 @@
 <meta property="og:description" content="强电和弱网不能放在一起有干扰 pc-&gt;RJ45跳线连到信息面板-&gt;网线配线架-&gt;交换机 交换机 跟一台带光口的 服务器 互联服务器-&gt;光纤跳线-&gt;光纤配线架-&gt;光纤跳线-&gt;交换机光接口（插一个光模块） 2、建筑群子系统间是通过光纤（传输介质）连接，光纤与交换机连接需要用到：光模块、跳线、尾纤、光纤配线架 以太网独木桥，一次只能走一个人，多了就会冲突。停止发">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-14T12:19:00.000Z">
-<meta property="article:modified_time" content="2023-10-14T14:02:07.940Z">
+<meta property="article:modified_time" content="2023-10-15T06:46:37.304Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="备考_新增">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          476 words
+          1.6k words
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          4 mins
+          14 mins
         
       </span>
     
@@ -282,6 +282,34 @@
 <p>二进制指数退避算法。<br>τ*Random[0,1, …2^k-1]  τ=512比特时间  τ是基本退避时间，可以看做固定值。<br>k=min[重传次数,10],如果重传16次后，还不能正常发送数据，认为网络拥塞或信道故障，不再尝试重传。</p>
 <p>如果重传12次后，k=min[12,10]=10，那么可能等待时间是τ*Random[0,1023]，共有1024种可能。<br>每次站点等待的时间都是随机数，故后一次退避时间不一定比前一次长。重传次数越多，退避窗口（即Random取值）越大，从而降低冲突概率。</p>
 <p>如果连续发生16次碰撞后，认为网络繁忙或故障，不再尝试发送。</p>
+<p>冲突1次，k=min[1,10]=1   τ<em>Random[0,1]，有2个可选数字<br>冲突2次，k=min[2,10]=2   τ</em>Random[0,1,2,3]，有4个可选数字<br>冲突3次，k=min[3,10]=3   τ*Random[0,1,2,3,4,5,6,7]，有8个可选数字</p>
+<p>两个站点随机到的时间一样就会冲突，冲突概率1/(2^n)，n表示已经发生冲突的次数，n≤10</p>
+<p>k=min[3,10]=3  τ*Random[0,7]，立即发送随机到时间为0，即为1/8=0.125</p>
+<p>后一次平均退避时间一定比前一次长，是对的，多了平均</p>
+<p>1、资源抢占<br>2、链路故障</p>
+<p>奈奎斯特定理和香农定理<br>奈奎斯特定理<br>信道带宽W，最大码元速率：B=2W（Baud）波特率<br>极限数组速率为R=Blog2N=2Wlog2N</p>
+<p>B=1/T   T:码元宽度，N:码元种类数量  B:波特率</p>
+<p>香农定理<br>极限数据速率和带宽之间的关系，极限速率公示：C=Wlog2(1+S/N)</p>
+<p>C:极限数据速率，W:信道带宽，S:信号平均功率，N:噪声平均功率，S/N:表示信噪比（信息和噪声的比值）</p>
+<p>dB与S/N关系：<br>dB=10lg(S/N)</p>
+<p>DPSK N=2    QPSK N=4      1024QAM  N=1024</p>
+<p>PCM原理<br>PCM脉冲编码调制数字化3个步骤：采样、量化和编码</p>
+<p>奈奎斯特采样定理：如果模拟信号的最高频率为fmax，若以大于2fmax的采样频率对其进行采样，<br>则采样得到的离散信号序列就能完整地恢复出原始信号。</p>
+<p>编码编出来是二进制，看纵轴。<br>对声音信号数字化时，语音最高频率是4kHz，所以取样频率是8kHz</p>
+<p>对语音样本用128个等级量化，因而每个样本用7bit表示。在数字信道上传输这种数字化后的语音信号的速率是7*8000=56Kbps</p>
+<p>R=log2N=log2(128)=7bit/s</p>
+<p>曼彻斯特编码/差分曼彻斯特编码<br>码元速率是数据速率的2倍</p>
+<p>PCM和曼码都不要带公式</p>
+<p>差分曼彻斯特编码：有0无1，从第2位开始看，第1位看不出来。前结束和后开始</p>
+<p>信道延时计算<br>光速:300m/us=30 0000km/s<br>电缆:200m/us=20 0000km/s 为光速的67%</p>
+<p>以太网最大最小确认帧都是64B</p>
+<p>CRC和海明码</p>
+<p>CRC 循环冗余校验码 能检错不能纠错</p>
+<p>异或运算：相同为0，不同为1</p>
+<p>海明码是既能检错又能纠错，纠错成本高，效率低。</p>
+<p>海明不等式：校验码个数为k，可以表示2^k个信息，1个信息用来表示“没有错误”，<br>m:信息位   k:校验位<br>其余2^k-1个表示数据中存在错误，如果满足2^k-1≥m+k(m+k为编码后的数总长度)<br>则理论上k个校验码就可以判断哪一位（包括信息码和校验码）出现了问题</p>
+<p>在一个码组内为了检测e个误码，要求最小码距应该满足d≥e+1<br>在一个码组内为了纠正t个误码，要求最小码距应该满足d≥2t+1</p>
+<p>RSA缺点<br>1、加密速度慢<br>2、数据膨胀</p>
 
                 
               </div>
@@ -371,6 +399,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/10/15/13%E5%9B%AD%E5%8C%BA%E7%BD%91%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%A7%84%E5%88%92%E8%AE%BE%E8%AE%A1/" title="13园区网技术与规划设计">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">13园区网技术与规划设计</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
