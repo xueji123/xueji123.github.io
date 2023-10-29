@@ -24,7 +24,7 @@
 <meta property="og:description" content="电信诈骗，社会工程学，内容安全 一、主流技术 VLAN：隔离用户组，二层隔离 IP子网划分 VLAN二层隔离技术  1~4094Vlanif接口  配置ip地址 ip address 192.168.1.254 24，VLAN里所有主机网关 收敛速度：STP 慢  50sMSTP 快MSTP 实现负载均衡，用在交换机上的，让不同VLAN的流量沿着各自的路径转发，从而利用冗余链路提供更好的负载分担机">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-15T06:58:00.000Z">
-<meta property="article:modified_time" content="2023-10-15T13:06:52.095Z">
+<meta property="article:modified_time" content="2023-10-17T05:53:09.168Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="备考_新增">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.6k words
+          6.5k words
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          47 mins
+          55 mins
         
       </span>
     
@@ -382,6 +382,31 @@
 <p>负载均衡设备部署在出口的地方</p>
 <p>路由器、防火墙、上网行为管理都可以实现负载均衡</p>
 <p>漏洞扫描设备：对指定计算机系统进行安全脆弱性扫描和检测，发现其安全漏洞，客观评估网络风险等。<br>入侵防御系统IPS  防火墙</p>
+<p>防火墙旁挂 跟 IDS旁挂 区别<br>IDS旁挂：只能检测，不能阻断<br>防火墙旁挂：可以检测，可以阻断。引流，通过ACL或SDN工具引到防火墙检测</p>
+<p>1000路视频，只有部分视频流量经过防火墙。</p>
+<p>旁挂模式可以有选择地将流量引导到防火墙上，即对需要进行安全检测的流量引导到防火墙上进行处理，<br>对不需要进行安全检测的流量直接通过路由器转发。</p>
+<p>NAT  NAT Server/端口映射</p>
+<p>设备+链路</p>
+<p>优点</p>
+<p>缺点：<br>设备  接入交换机存在单点故障<br>链路  单链路上行，可靠性不足，且可能面临性能瓶颈<br>                设备多，管理复杂</p>
+<p>数据安全法<br>网络安全法<br>国家安全法</p>
+<p>环网接入：<br>2台核心或者汇聚，下面很多接入<br>2台跑VRRP，中间跑ERPS，天生可以解决环路，50ms切换<br>ERPS是以太网多环保护技术。Ethernet Ring Protection Switching<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/ERPS/10678255?fr=ge_ala">https://baike.baidu.com/item/ERPS/10678255?fr=ge_ala</a></p>
+<p>传统环网：<br>接入交换机连接双上行</p>
+<p>虚拟网关：VRRP</p>
+<p>(1)将2台汇聚交换机相联，同时接入交换机双上行到两台汇聚交换机<br>(2)采用STP/MSTP或堆叠/虚拟化技术打破环路，从而避免广播风暴<br>(3)在两台核心交换机上配置VRRP，虚拟出用户网关地址</p>
+<p>网络通过核心层进行认证计费，可采用认证方式有哪些？</p>
+<p>核心层，理由：带宽大，集中部署，方便获取所有用户流量</p>
+<p>802.1x，Portal认证，PPPOE</p>
+<p>出口路由器功能作用？<br>NAT、策略路由、路由选择、协议转换、多链路负载均衡<br>加强边界安全防范？<br>防火墙</p>
+<p>LB是上一代产品，现在都叫应用交付，优化。链路负载均衡，华为路由器就可以实现。<br>一台要10W、20W。</p>
+<p>基础负载均衡、应用优化、Web SSL加密，SSL工作交给应用优化设备</p>
+<p>SDW介于专线和IPSec之间的一种应用</p>
+<p>SDN  数据中心  SDC软件定义数据中心  园区SDN-campus  广域网 SDW出口</p>
+<p>核心交换机CSS和数据交换机 IStack 堆叠</p>
+<p>防火墙用在出口、边界</p>
+<p>WAF：保护网页  SQL注入、跨站脚本<br>IDS：不能阻断  旁路<br>IPS：阻断     串行</p>
+<p>AC旁挂，直接转发用的多些，隧道转发得绕。<br>转发模式<br>①隧道转发（AP和AC建立capwap隧道，数据从AC出去）<br>②直接转发（数据从AP直接出去）</p>
+<p>capwap隧道功能<br>①控制流量（比如下发版本升级）<br>②传数据流量</p>
 
                 
               </div>
@@ -471,6 +496,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/10/18/14.%E5%85%89%E7%BA%A4%E4%B8%8EPON%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/" title="14.光纤与PON技术专题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">14.光纤与PON技术专题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xueji123">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="试题一：2^n-2≥28   n&#x3D;5  272^n-2≥42   n&#x3D;6  262^n-2≥20   n&#x3D;5  272^n-2≥120  n&#x3D;7  25 172.16.1.0&#x2F;24172.16.1.0&#x2F;25   172.16.1.128&#x2F;25 业务部 172.16.1.0&#x2F;26   172.16.1.64&#x2F;26 市场部 172.16.1.0&#x2F;27行政部   172.16.1.64&#x2F;27172.16">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023年11月模拟卷">
+<meta property="og:url" content="http://example.com/2023/10/29/2023%E5%B9%B411%E6%9C%88%E6%A8%A1%E6%8B%9F%E5%8D%B7/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="试题一：2^n-2≥28   n&#x3D;5  272^n-2≥42   n&#x3D;6  262^n-2≥20   n&#x3D;5  272^n-2≥120  n&#x3D;7  25 172.16.1.0&#x2F;24172.16.1.0&#x2F;25   172.16.1.128&#x2F;25 业务部 172.16.1.0&#x2F;26   172.16.1.64&#x2F;26 市场部 172.16.1.0&#x2F;27行政部   172.16.1.64&#x2F;27172.16">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-29T05:49:00.000Z">
+<meta property="article:modified_time" content="2023-10-29T14:06:46.868Z">
+<meta property="article:author" content="xueji123">
+<meta property="article:tag" content="真题">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>2023年11月模拟卷 - Coding</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Coding</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2023年11月模拟卷"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-29 13:49" pubdate>
+          October 29, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          53 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2023年11月模拟卷</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>试题一：<br>2^n-2≥28   n=5  27<br>2^n-2≥42   n=6  26<br>2^n-2≥20   n=5  27<br>2^n-2≥120  n=7  25</p>
+<p>172.16.1.0/24<br>172.16.1.0/25   172.16.1.128/25 业务部</p>
+<p>172.16.1.0/26   172.16.1.64/26 市场部</p>
+<p>172.16.1.0/27行政部   172.16.1.64/27<br>172.16.1.32/27 财务部  172.16.1.96/27 </p>
+<p>一<br>(1)172.16.1.31<br>(2)255.255.255.192<br>(3)255.255.255.224<br>(4)172.16.1.255</p>
+<p>二<br>1、光纤配线架基本功能<br>①光纤固定<br>②光纤熔接<br>③光纤配接<br>④光纤存储</p>
+<p>2、综合布线的测试从工程角度可分为两类<br>验证和认证测试</p>
+<p>三<br>1、NAT、默认路由、静态路由、策略路由、路由策略</p>
+<p>NAT网络地址转换<br>路由功能<br>智能选路/多出口链路负载均衡/策略路由<br>总分互联IPSec、远程接入SSL<br>集成FW、IPS、WAC、URL过滤、AV病毒过滤</p>
+<p>2、链路冗余：<br>链路、端口聚合、堆叠<br>设备冗余：<br>双核心、双电源<br>网关冗余：<br>VRRP+MSTP、集群</p>
+<p>出口冗余：<br>1）出口配置多台设备，主备切换或者负载均衡<br>2）每台设备关键部件进行冗余配置，比如配置双电源、双引擎、多个风扇等<br>3）出口购买多条运营商线路，配置实现主备切换或者负载均衡</p>
+<p>核心和汇聚交换机冗余<br>1）配置多台核心设备，配置VRRP或堆叠实现网关冗余备份<br>2）每台核心关键部件进行冗余配置，比如配置双电源、双引擎、双交换网板、多个风扇。<br>3）核心与汇聚设备之间配置MSTP或者端口聚合、实现链路冗余<br>4）配置smartlink，备份接口等技术，实现链路冗余</p>
+<p>3、</p>
+<p>试题二：<br>一、<br>（1）源地址<br>（2）address-group<br>（3）policy-security<br>（4）<br>（5）address_1</p>
+<p>（1）源地址<br>（2）section<br>（3）security-policy<br>（4）next-hop<br>（5）address_1</p>
+<p>二、</p>
+<p>最大接入的设备数</p>
+<p>划分VLAN</p>
+<p>SYN Flooding  耗尽系统资源   跳板机  肉机  代理    流量清洗</p>
+<p>DDOS    控制大量肉鸡，对被攻击的主机发起访问，耗尽对方资源，让其不能正常提供服务</p>
+<p>代理服务器、肉鸡/僵尸主机</p>
+<p>（1）isis 1<br>（2）import-route<br>（3）prefix<br>（4）apply<br>（5）cost<br>（6）isis2ospf</p>
+<p>（1）isis 1<br>（2）import-route<br>（3）ip-prefix<br>（4）apply<br>（5）tag<br>（6）isis2ospf</p>
+<p>不能ping通，存在路由环路</p>
+<p>ospf路由汇总，在ABR、ASBR上进行</p>
+<p>（1）VLAN<br>（2）1~4094<br>（3）<br>（4）<br>（5）<br>（6）system-view<br>（7）sysname<br>（8）link-type<br>（9）allow<br>（10）super vlan enable<br>（11）enable</p>
+<p>（1）VLAN<br>（2）1-4094<br>（3）Super VLAN 或 VLAN聚合  多用户共享网关IP地址<br>（4）MUX-VLAN 二层流量隔离，实现对网络资源的控制<br>（5）VXLAN   数据中心隔离的<br>（6）system-view<br>（7）sysname<br>（8）link-type<br>（9）allow-pass<br>（10）aggregate-vlan<br>（11）enable</p>
+<p>将该静态路由进行重分布<br>Router<br>default-route-advertise</p>
+<p>☆☆☆☆☆☆<br>[R1]ospf 1<br>[R1-ospf-1]default-route-advertise  //本地路由表里有默认路由，才会向外通告<br>[AR2-ospf-1]display ip routing-table //直接向外通告一条默认路由<br>☆☆☆☆☆☆</p>
+<p>[R1-ospf-1]default-route-advertise always  //强制下发<br>[AR2-ospf-1]display ip routing-table</p>
+<hr>
+<p>网络架构<br>三层的话，网关放在汇聚层；二层的话，网关放在核心层<br>VLAN间路由靠汇聚层实现，网关一般在汇聚层（三层架构时）</p>
+<p>核心层：流量高速转发<br>汇聚层：流量汇聚、链路和设备冗余，典型的双汇聚冗余，另外就是策略控制，各类访问控制列表在汇聚层配置<br>接入层：提供接口，安全准入，比如常见802.1x配置，端口安全配置均在接入交换机实现</p>
+<p>核心层：高速转发、服务器接入、路由选择<br>汇聚层：流量汇聚、设备/链路冗余、路由选择、策略控制ACL等<br>接入层：用户接入、接入安全、访问控制</p>
+<p>核心层交换机  高性能，快速转发<br>汇聚层交换机 策略和路由控制<br>接入层交换机  用户接入，安全控制（认证）</p>
+<p>2台核心交换机：<br>①VRRP虚拟路由冗余+MSTP（防止环路）<br>②堆叠+端口聚合，2台核心合并成一台</p>
+<p>出口多链路，负载均衡</p>
+<p>级连和堆叠（虚拟化、横向虚拟化）<br>堆叠优势<br>1、逻辑上把多台设备虚拟成一台设备，简化运维，方便管理<br>2、一台物理设备故障，其他设备可以接管转发、控制平台，避免单点故障（汇聚、核心节点）<br>3、跨设备的链路聚合，物理上的无环网络，无需部署STP<br>4、链路聚合中的链路全部有效使用，链路利用率100%</p>
+<p>劣势：<br>1、堆叠都是私有协议，不支持跨厂商设备堆叠（思科VSS，华为CSS/istack，华三IRF，锐捷LSU）<br>2、需要单独购买堆叠线缆（现在最新的用光纤也能实现堆叠）<br>3、存在一定资源浪费，特别高端设备，如果2台核心都配置双引擎，堆叠后只有1个引擎工作<br>4、堆叠系统升级或重启，会有20~60秒的业务中断<br>5、可靠性风险，控制层面统一后，如果整个逻辑设备的控制平面出现问题（比如路由表被人攻击破坏），可能导致整机瘫痪，影响范围大</p>
+<p>网络拓扑缺点：<br>①设备层面：汇聚交换机没有冗余<br>②链路层面：接入层交换机没有多链路<br>③网关层面：已经有了，出口多链路，负载均衡<br>④没有安全设备</p>
+<p>综合布线要点：<br>工作区子系统<br>水平子系统<br>管理子系统<br>垂直（干线）子系统<br>设备间子系统<br>建筑群子系统</p>
+<p>网络规划和设计是一个迭代和优化的过程</p>
+<p>视频<br>模拟监控：同轴电缆<br>数字监控：网线</p>
+<p>多网融合，常用传输介质：光线和双绞线</p>
+<p>综合布线六大子系统<br>网线：RJ11（接电话） RJ45（接电脑）</p>
+<p>1、工作区子系统<br>电脑到信息插座（网口）之间<br>小于10米，双绞线、RJ45跳线</p>
+<p>2、水平子系统（线缆）<br>信息插座到楼层（管理子系统）配线间配线架（RJ45配线架）上<br>双绞线小于90米<br>基本链路测试<br>通道测试：PC终端到交换机或者服务器的整段端到端链路</p>
+<p>3、管理子系统<br>每个楼层配线间包含的配线架（管理线缆）<br>光纤配线架、楼层接入交换机、RJ45配线架</p>
+<p>RJ45配线架-&gt;RJ45跳线-&gt;楼层接入交换机-&gt;光纤跳线-&gt;光纤配线架</p>
+<p>光纤配线架基本功能：<br>①光纤固定<br>②光纤熔接<br>③光纤配接<br>④光纤存储</p>
+<p>理线架：让线缆变得整齐美观</p>
+<p>4、垂直/干线子系统<br>各个楼层的配线间连接起来的主干光缆（一捆一捆光纤）</p>
+<p>5、设备间子系统<br>机房，各种各样设备，核心交换机、汇聚交换机等</p>
+<p>6、建筑群子系统<br>实现不同楼宇建筑间互联的主干光缆（也可能有配线架）<br>光缆埋地、架空光缆</p>
+<p>管道、直埋、架空</p>
+<p>实现跟服务器之间互联：光纤到服务器光纤网口连接起来。</p>
+<p>光纤 跟 交换机 互联需要哪些部件？<br>光模块、光纤跳线、光纤配线架、尾纤</p>
+<p>光口服务器 跟 交换机 互联需要哪些部件？<br>光模块、光纤跳线、光纤配线架</p>
+<p>设备间和管理子系统区别？<br>管理子系统：线缆管理调配<br>设备间子系统：机架和设备（核心交换机、汇聚交换机等）</p>
+<p>传输介质：光纤、双绞线（千兆、百兆标准  STP、UTP）</p>
+<p>光纤优点：<br>抗电磁干扰、容量大、体积轻、方便布线</p>
+<p>测试指标<br>光纤：波长、回波损耗、时延、衰减<br>双绞线：近端/远端串扰、环路电阻、特性抗阻、回波损耗、时延、衰减（线路长度一般不超过100米）<br>回波损耗（起点到终点入射功率/反射功率，越大越好，最小值趋近于0）</p>
+<p>2者都有的：回波损耗、衰减、时延</p>
+<p>设备性能测试参数：<br>①吞吐量<br>②时延<br>③帧丢失率（丢包率）<br>④背靠背数据帧处理能力<br>⑤地址缓冲容量（ARP、路由表容量）<br>⑥地址学习速率和协议的一致性</p>
+<p>双绞线跳线是2边都有水晶头的（钳子加上水晶头），光纤跳线是2边都有接头的</p>
+<p>网线夹夹水晶头；光纤是通过熔接形式来做（熔纤），手工加的接头损耗较大，光信号衰减更小</p>
+<p>跳线与尾纤<br>跳线：带接头的传输介质<br>网线：没有接头</p>
+<p>跳线切一刀就变成2个尾纤了，尾纤用来跟光纤做熔纤</p>
+<p>手工做接头损耗大，光纤用的多的就是熔纤（损耗小）</p>
+<p>尾纤：一根跳线，中间切断，一端有接头，一端没有</p>
+<p>光纤-&gt;光纤跳线：2边各熔（熔纤机）一条尾纤<br>双绞线/网线-&gt;双绞线跳线/RJ45跳线：用网线钳在两端夹上水晶头</p>
+<p>ps：<br>双绞线跳线是2边都有水晶头的（钳子加上水晶头），光纤跳线是2边都有接头的</p>
+<p>光接口：<br>SFP：光模块类型或光接口类型，表示千兆，SFP+表示万兆、QSFP+ 40G  SFP28+ 100G</p>
+<p>光纤跳线接头：<br>FC（配线架）、SC（配线架）、ST（配线架）、LC（交换机用的多）</p>
+<p>交换机上4个光接口（SPF或SPF+等），光接口插光模块</p>
+<p>单芯：节省光纤，收和发都在同一根光纤里，家里的PON网络都是单芯，企业级双芯多些</p>
+<p>多模光纤跳线：浅绿色、橙黄色、橙色<br>单模光纤跳线：黄色</p>
+<p>光纤熔接机、OTDR（光时域反射仪）<br>OTDR：光纤的长度、断裂位置、信号衰减<br>OTDR（光时域反射仪）是一种用于光纤网络的无损检测仪器。它可以测量光纤的衰减、连接器损耗、光纤故障点等多种参数。<br>OTDR的工作原理是基于光的背向散射和菲涅尔反射效应。当激光脉冲在光纤中传输时，会由于光纤的不均匀性、散射、吸收等因素导致一部分光反射回来，形成背向散射光。菲涅尔反射则是由光波在光纤/空气界面处反射形成的。<br>OTDR通过对背向散射光和菲涅尔反射光的检测和分析，可以得出光纤的损耗、长度、连接器位置等参数。它还可以用于定位光纤故障点，检查光纤网络的性能和维护光纤网络的可靠性。</p>
+<p>出口路由器AR和防火墙FW功能接近</p>
+<p>①NAT网络地址转换<br>②路由功能<br>③智能选路/多出口链路负载均衡/策略路由<br>④总分互联IPSec、远程接入SSL<br>⑤集成FW、IPS、WAC、URL过滤、AV病毒过滤<br>安全过滤（如果是防火墙的话）</p>
+<p>出口冗余（防火墙/路由器）<br>1）出口配置多台设备，主备切换或者负载均衡<br>2）每台设备关键部件进行冗余配置，比如配置双电源、双引擎、多个风扇等<br>3）出口购买多条运营商线路，配置实现主备切换或者负载均衡</p>
+<p>网关冗余（核心交换机/汇聚交换机冗余）<br>1）配置多台核心设备，配置VRRP或堆叠实现网关冗余备份<br>2）每台核心关键部件进行冗余配置，比如配置双电源、双引擎、双交换网板、多个风扇。<br>3）核心与汇聚设备之间配置MSTP或者端口聚合、实现链路冗余<br>4）配置smartlink，备份接口等技术，实现链路冗余</p>
+<p>设备冗余<br>链路冗余</p>
+<p>核心交换机升级（板卡坏了）、网络割接<br>核心交换机<br>1、性能 满足业务高峰需要<br>2、功能 带宽满足业务需要、支持堆叠等<br>3、关键部件（引擎、电源、风扇等）硬件冗余，保证系统可用性<br>4、适当考虑未来发展</p>
+<p>网络割接关键流程和思路<br>1、对现网核心交换机配置进行备份    —备份<br>2、安装部署2台新核心，完成设备配置，暂不接入线缆  —完成新设备配置<br>3、将新核心接入路由器，测试网络联通性     —串联，测试联通性<br>4、将汇聚交换机逐个接入新核心交换机，测试下面能否正常服务互联网<br>5、完成所有区域割接后，测试正常后，老核心下线</p>
+<p>不能  还需要在防火墙上放行untrust到trust区域的流量</p>
+<p>没有做映射，查路由查不到，走默认路由会给到运营商路由器查询，运营商路由会再指向出口FW，直到TTL=1<br>可以在出口防火墙配置黑洞路由  ip route-static 110.1.1.1 32 null0</p>
+<p>解决mac flooding攻击（kali macof）mac地址洪泛</p>
+<p>交换机mac地址表，32K，下面连pc，疯狂发虚假的帧，很快充满mac地址表。<br>限制这种情况：接口下开端口安全，限制mac地址数量</p>
+<p>interface GigabitEthernet 0/0/1<br>port-security enable<br>port-security max-mac-num 2</p>
+<p>静态绑定</p>
+<p>user-bind static ip-address 192.168.1.1 mac-address 1-1-1 interface GigabitEthernet</p>
+<p>Interface+IP<br>Interface+MAC<br>Interface+IP+MAC<br>Interface+IP+VLAN<br>Interface+MAC+VLAN<br>Interface+IP+MAC+VLAN</p>
+<p>section     aggregate-vlan</p>
+<p>Get:http<br>针对网页的DDOS攻击<br>CC攻击</p>
+<p>控制大量肉鸡，对被攻击主机发起访问，耗尽对方资源，让其不能正常提供服务</p>
+<p>代理服务器、肉鸡/僵尸主机</p>
+<p>路由策略  route-policy</p>
+<p>ACL<br>①NAT<br>②流量过滤traffic<br>③路由策略/策略路由<br>④IPSec<br>⑤user-interface，vty 限制用户登录</p>
+<p>路由引入中可能出现的问题<br>次优路由、路由环路</p>
+<p>RIP自动汇总（在组内网络自动汇总）、缺默认路由</p>
+<p>S口：2.048M 低速接口  100M/2.048M=48</p>
+<p>路由引入、路由优先级</p>
+<p>OSPF<br>所有非骨干区域必须与骨干区域直连</p>
+<p>虚链路建立连接</p>
+<p>路由器角色<br>区域内路由器Internal Router<br>区域边界路由器 ABR    Area Border Router<br>骨干路由器 BR        Backbone Router<br>AS边界路由器ASBR AS Boundary Router</p>
+<p>有接口在area0里面就算骨干路由器，1个路由器既可以是ABR也可以是BR</p>
+<p>OSPF总结<br>触发式更新、分层路由、支持大型网络<br>Area 0.0.0.0 或者 Area 0 来表示骨干区域，不是区域1<br>点对点网络上每10秒发送一次hello，在NBMA网络每30秒发送一次，Deadtime为hello时间4倍（每10秒打招呼，4倍hello时间就认为该邻居不存在了）</p>
+<p>汇总必须在边界  区域边界或自治系统边界</p>
+<p>硬盘接口协议<br>SPI（Serial Peripheral Interface）串行外设接口，是一种同步外设接口，它可以使单片机与各种外围设备以串行方式通信以交换信息</p>
+<p>机械硬盘接口：IDE（老电脑硬盘）、SATA（普通电脑和服务器）、SAS（服务器）、SCSI、FC，其中SATA和SAS目前应用最广。<br>固态硬盘接口：M.2（电脑）、U.2（服务器）、SATA、mSATA（surface超极本、联想x230）、SAS、PCIE，其中家用级M.2接口应用很广。企业级固态一般采用U.2、SAS和PCIE接口。</p>
+<p>KiB、MiB与KB、MB的区别</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/starshine/article/details/8226320">https://blog.csdn.net/starshine/article/details/8226320</a></p>
+<p>MB等单位以10为底数的指数，MiB是以2为底数的指数<br>1KB=10^3=1000, 1MB=10^6=1000000=1000KB,1GB=10^9=1000000000=1000MB,<br>1KiB=2^10=1024,1MiB=2^20=1048576=1024KiB。</p>
+<p>与我们密切相关的是我们在买硬盘的时候，操作系统报的数量要比产品标出或商家号称的小一些<br>主要原因是标出的是以MB、GB为单位的，1GB就是1,000,000,000 Byte，而操作系统是以2进制为处理单位的，<br>因此检查硬盘容量时是以MiB、GiB为单位，1GB=2^30=1,073,741,824，<br>相比较而言，1GiB要比1GB多出1,073,741,824-1,000,000,000=73,741,824，所以检测实际结果要比标出的少一些。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="category-chain-item">网络工程师</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%9C%9F%E9%A2%98/">#真题</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2023年11月模拟卷</div>
+      <div>http://example.com/2023/10/29/2023年11月模拟卷/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>xueji123</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 29, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/24/19.%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E4%B8%93%E9%A2%98/" title="19网络故障排查专题">
+                        <span class="hidden-mobile">19网络故障排查专题</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
