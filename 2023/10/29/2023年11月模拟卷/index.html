@@ -24,7 +24,7 @@
 <meta property="og:description" content="试题一：2^n-2≥28   n&#x3D;5  272^n-2≥42   n&#x3D;6  262^n-2≥20   n&#x3D;5  272^n-2≥120  n&#x3D;7  25 172.16.1.0&#x2F;24172.16.1.0&#x2F;25   172.16.1.128&#x2F;25 业务部 172.16.1.0&#x2F;26   172.16.1.64&#x2F;26 市场部 172.16.1.0&#x2F;27行政部   172.16.1.64&#x2F;27172.16">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-29T05:49:00.000Z">
-<meta property="article:modified_time" content="2023-10-29T14:06:46.868Z">
+<meta property="article:modified_time" content="2023-11-04T03:32:21.067Z">
 <meta property="article:author" content="xueji123">
 <meta property="article:tag" content="真题">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.2k words
+          6.6k words
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          53 mins
+          55 mins
         
       </span>
     
@@ -325,7 +325,7 @@
 <p>RJ45配线架-&gt;RJ45跳线-&gt;楼层接入交换机-&gt;光纤跳线-&gt;光纤配线架</p>
 <p>光纤配线架基本功能：<br>①光纤固定<br>②光纤熔接<br>③光纤配接<br>④光纤存储</p>
 <p>理线架：让线缆变得整齐美观</p>
-<p>4、垂直/干线子系统<br>各个楼层的配线间连接起来的主干光缆（一捆一捆光纤）</p>
+<p>4、垂直/干线子系统<br>各个楼层的配线间连接起来的主干光缆（一捆一捆光纤） 或者 大对数双绞线（60芯、电话骨干的）</p>
 <p>5、设备间子系统<br>机房，各种各样设备，核心交换机、汇聚交换机等</p>
 <p>6、建筑群子系统<br>实现不同楼宇建筑间互联的主干光缆（也可能有配线架）<br>光缆埋地、架空光缆</p>
 <p>管道、直埋、架空</p>
@@ -356,7 +356,7 @@
 <p>①NAT网络地址转换<br>②路由功能<br>③智能选路/多出口链路负载均衡/策略路由<br>④总分互联IPSec、远程接入SSL<br>⑤集成FW、IPS、WAC、URL过滤、AV病毒过滤<br>安全过滤（如果是防火墙的话）</p>
 <p>出口冗余（防火墙/路由器）<br>1）出口配置多台设备，主备切换或者负载均衡<br>2）每台设备关键部件进行冗余配置，比如配置双电源、双引擎、多个风扇等<br>3）出口购买多条运营商线路，配置实现主备切换或者负载均衡</p>
 <p>网关冗余（核心交换机/汇聚交换机冗余）<br>1）配置多台核心设备，配置VRRP或堆叠实现网关冗余备份<br>2）每台核心关键部件进行冗余配置，比如配置双电源、双引擎、双交换网板、多个风扇。<br>3）核心与汇聚设备之间配置MSTP或者端口聚合、实现链路冗余<br>4）配置smartlink，备份接口等技术，实现链路冗余</p>
-<p>设备冗余<br>链路冗余</p>
+<p>设备冗余<br>链路冗余：<br>MSTP、端口聚合、smarklink</p>
 <p>核心交换机升级（板卡坏了）、网络割接<br>核心交换机<br>1、性能 满足业务高峰需要<br>2、功能 带宽满足业务需要、支持堆叠等<br>3、关键部件（引擎、电源、风扇等）硬件冗余，保证系统可用性<br>4、适当考虑未来发展</p>
 <p>网络割接关键流程和思路<br>1、对现网核心交换机配置进行备份    —备份<br>2、安装部署2台新核心，完成设备配置，暂不接入线缆  —完成新设备配置<br>3、将新核心接入路由器，测试网络联通性     —串联，测试联通性<br>4、将汇聚交换机逐个接入新核心交换机，测试下面能否正常服务互联网<br>5、完成所有区域割接后，测试正常后，老核心下线</p>
 <p>不能  还需要在防火墙上放行untrust到trust区域的流量</p>
@@ -389,6 +389,14 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/starshine/article/details/8226320">https://blog.csdn.net/starshine/article/details/8226320</a></p>
 <p>MB等单位以10为底数的指数，MiB是以2为底数的指数<br>1KB=10^3=1000, 1MB=10^6=1000000=1000KB,1GB=10^9=1000000000=1000MB,<br>1KiB=2^10=1024,1MiB=2^20=1048576=1024KiB。</p>
 <p>与我们密切相关的是我们在买硬盘的时候，操作系统报的数量要比产品标出或商家号称的小一些<br>主要原因是标出的是以MB、GB为单位的，1GB就是1,000,000,000 Byte，而操作系统是以2进制为处理单位的，<br>因此检查硬盘容量时是以MiB、GiB为单位，1GB=2^30=1,073,741,824，<br>相比较而言，1GiB要比1GB多出1,073,741,824-1,000,000,000=73,741,824，所以检测实际结果要比标出的少一些。</p>
+<p>二层攻击  mac-flooding</p>
+<p>三层攻击：<br>1、IP地址欺骗<br>2、ping of death<br>3、泪滴攻击<br>4、ARP欺骗</p>
+<p>SYN Flooding 传输层</p>
+<p>DNS欺骗  应用层</p>
+<p>对称加密：密钥分发和管理比较麻烦    分组加密   流加密RC4、5（不分组）</p>
+<p>非对称加密：耗性能，数据膨胀</p>
+<p>①配置ACL，匹配感兴趣的流量，即需要IPSec保护的数据流<br>②配置IPSec安全提议，定义IPSec的保护方法<br>③配置IKE对等体，定义对等体间IKE协商时的属性<br>④配置安全策略，并引用ACL、安全提议和IKE对等体，确定对何种数据流采取何种保护方法<br>⑤在接口上应用安全策略，保护相应流量</p>
+<p>OSPF 进入full<br>BGP 是established</p>
 
                 
               </div>
@@ -478,6 +486,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/11/03/16%E5%86%97%E4%BD%99%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98%20%E8%AE%BE%E5%A4%87%20%E9%93%BE%E8%B7%AF%20%E7%BD%91%E5%85%B3%E5%86%97%E4%BD%99/" title="16冗余技术专题 设备 链路 网关冗余">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">16冗余技术专题 设备 链路 网关冗余</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
